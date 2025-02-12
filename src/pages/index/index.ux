@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
 
     <div class="component-index-courseCard-card">
       <div class="component-index-courseCard-cardContent">
@@ -30,9 +30,6 @@ export default {
 </script>
 
 <style>
-.page{
-  background-color: black;
-}
 .gap-8{
   height: 8px;
 }
