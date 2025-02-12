@@ -25,7 +25,11 @@
       },
       "pages/detail": {
         "component": "detail"
+      },
+      "pages/components/index": {
+        "component": "InfoCard"
       }
+
     }
   }
 }
