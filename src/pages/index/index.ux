@@ -19,7 +19,7 @@ export default {
   routeDetail() {
     // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
     router.push({
-      uri: "/pages/detail"
+      uri: "/pages/components/index"
     })
   }
 }
