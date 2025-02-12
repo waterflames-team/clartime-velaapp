@@ -1,49 +1,95 @@
 <template>
-  <div class="demo-page">
-    <text class="title">{{ $t("a.b") }},欢迎打开{{ title }}</text>
-    <!-- 点击跳转详情页 -->
-    <input class="btn" type="button" value="跳转到详情页" onclick="routeDetail" />
+  <div class="page">
+
+    <div class="component-index-courseCard-card">
+      <div class="component-index-courseCard-cardContent">
+        <text class="component-index-courseCard-card-timeText">{{time}}</text>
+        <div class="gap-8"></div>
+        <div class="component-index-courseCard-card-dayDiv">
+          <text class="component-index-courseCard-card-dayText">{{day}}&nbsp;{{dayNum}}</text>
+          <text class="component-index-courseCard-card-dayText">{{weekNum}}</text>
+        </div>
+        <div class="gap-8"></div>
+        <text class="component-index-courseCard-card-remainingTimeText">{{remain}}</text>
+      </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import router from "@system.router"
-import configuration from "@system.configuration"
-
 export default {
-  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
   private: {
-    title: "示例页面"
-  },
-
-  routeDetail() {
-    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
-    router.push({
-      uri: "/pages/components/index"
-    })
+    time: "17:07",
+    day: "2月17日",
+    dayNum: "周一",
+    weekNum: "第一周",
+    remain: "还有 13 分钟下课"
   }
 }
 </script>
 
 <style>
-.demo-page {
+.page{
+  background-color: black;
+}
+.gap-8{
+  height: 8px;
+}
+.component-index-courseCard-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  left: 6px;
+  top: 86px;
+  width: 324px;
+  height: 190px;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-index-courseCard-cardContent {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.title {
-  font-size: 20px;
-  text-align: center;
+.component-index-courseCard-card-timeText {
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 66.3px;
+  color: rgba(255, 255, 255, 1);
 }
 
-.btn {
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: #09ba07;
-  font-size: 20px;
-  color: #ffffff;
+.component-index-courseCard-card-dayDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.component-index-courseCard-card-dayText {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.6);
+
+  white-space: pre-wrap;
+}
+
+.component-index-courseCard-card-remainingTimeText {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 23.87px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  vertical-align: top;
 }
 </style>
