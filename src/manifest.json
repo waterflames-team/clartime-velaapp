@@ -15,21 +15,14 @@
   ],
   "config": {
     "logLevel": "log",
-    "designWidth": 480
+    "designWidth": 336
   },
   "router": {
     "entry": "pages/index",
     "pages": {
       "pages/index": {
         "component": "index"
-      },
-      "pages/detail": {
-        "component": "detail"
-      },
-      "pages/components/index": {
-        "component": "InfoCard"
       }
-
     }
   }
 }
