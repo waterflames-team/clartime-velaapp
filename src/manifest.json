@@ -1,9 +1,9 @@
 {
-  "package": "com.application.watch.demo",
+  "package": "com.waterflames.timetable",
   "name": "澄序课程表",
-  "versionName": "1.0.0",
+  "versionName": "0.1.0",
   "versionCode": 1,
-  "minPlatformVersion": 1000,
+  "minAPILevel": 3,
   "icon": "/common/logo.png",
   "deviceTypeList": [
     "watch"
@@ -15,17 +15,17 @@
   ],
   "config": {
     "logLevel": "log",
-    "designWidth": 480
+    "designWidth": 336
   },
   "router": {
     "entry": "pages/index",
     "pages": {
       "pages/index": {
         "component": "index"
-      },
-      "pages/detail": {
-        "component": "detail"
       }
     }
+  },
+  "display": {
+    "backgroundColor": "#000000"
   }
 }
