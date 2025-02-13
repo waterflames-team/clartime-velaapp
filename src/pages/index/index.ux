@@ -1,5 +1,18 @@
 <template>
   <div>
+    <div class="component-nav-notime">
+      <div class="component-nav-notime-buttonIcon">
+        <image class="component-nav-notime-back" src="/common/Back.png" />
+        <input class="component-nav-notime-button" type="button" onclick="quit" />
+      </div>
+      <text class="component-nav-notime-title">{{title}}</text>
+      <div class="component-nav-notime-buttonIcon">
+        <div class="component-nav-notime-infoIcon1"></div>
+        <div class="component-nav-notime-infoIcon2"></div>
+        <div class="component-nav-notime-infoIcon3"></div>
+        <input class="component-nav-notime-button" type="button" onclick="jumpToOther" />
+      </div>
+    </div>
 
     <div class="component-index-courseCard-card">
       <div class="component-index-courseCard-cardContent">
@@ -18,18 +31,119 @@
 </template>
 
 <script>
+import { title } from '@system.audio';
+import router from "@system.router"
+import app from '@system.app' 
+
 export default {
   private: {
+    title: "课程表",
     time: "17:07",
-    day: "2月17日",
-    dayNum: "周一",
+    day: "",
+    dayNum: "",
     weekNum: "第一周",
     remain: "还有 13 分钟下课"
+  },
+
+  onInit() {
+    this.updateDate();
+  },
+  updateDate() {
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const dayOfMonth = date.getDate();
+    const dayOfWeek = date.getDay();
+    const days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+
+    this.day = `${month}月${dayOfMonth}日`;
+    this.dayNum = days[dayOfWeek];
+  },
+
+  quit() {
+    app.terminate()
+  },
+  jumpToOther() {
+    router.push({
+      uri: "/pages/other"
+    })
   }
+
 }
 </script>
 
 <style>
+.component-nav-notime {
+  left: 6px;
+  top: 6px;
+  width: 324px;
+  height: 72px;
+  opacity: 1;
+}
+.component-nav-notime-buttonIcon {
+  left: 0px;
+  top: 0px;
+  width: 72px;
+  height: 72px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 0.8);
+  border: 3px solid rgba(255, 255, 255, 0.06);
+}
+.component-nav-notime-back {
+  left: 13px;
+  top: 14px;
+  width: 44px;
+  height: 44px;
+  opacity: 1;
+}
+.component-nav-notime-title {
+  top: 13px;
+  width: 182px;
+  height: 44.8px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: top;
+}
+.component-nav-notime-button {
+  left: 0px;
+  top: 0px;
+  width: 72px;
+  height: 72px;
+  opacity: 0;
+}
+.component-nav-notime-infoIcon {
+  width: 72px;
+  height: 72px;
+}
+.component-nav-notime-infoIcon1 {
+  left: 46px;
+  top: 32px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.component-nav-notime-infoIcon2 {
+  left: 32px;
+  top: 32px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.component-nav-notime-infoIcon3 {
+  left: 18px;
+  top: 32px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+}
 .gap-8{
   height: 8px;
 }
