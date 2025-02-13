@@ -15,18 +15,21 @@
       <div class="component-other-button_AC">
         <image class="component-other-icon" src="/common/icon_AllCourses.png" />
       </div>
+      <text class="component-other-button_Text">全部课程</text>
       <!-- <input class="component-other-button" type="button" onclick="jumpAC" /> -->
     </div>
     <div class="component-other-button_Background">
       <div class="component-other-button_CC">
         <image class="component-other-icon" src="/common/icon_CourseChange.png" />
       </div>
+      <text class="component-other-button_Text">课程调节</text>
       <!-- <input class="component-other-button" type="button" onclick="jumpCC" /> -->
     </div>
     <div class="component-other-button_Background">
       <div class="component-other-button_Ab">
         <image class="component-other-icon" src="/common/icon_About.png" />
       </div>
+      <text class="component-other-button_Text">关于</text>
       <!-- <input class="component-other-button" type="button" onclick="jumpAb" /> -->
     </div>
 
@@ -168,6 +171,20 @@ export default {
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(41, 187, 5, 1);
+}
+.component-other-button_Text {
+  left: 8px;
+  top: 22px;
+  width: 128px;
+  height: 45px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
 }
 .component-other-icon {
   left: 15px;
