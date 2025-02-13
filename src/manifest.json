@@ -23,6 +23,9 @@
     "pages": {
       "pages/index": {
         "component": "index"
+      },
+      "pages/other": {
+        "component": "other"
       }
     }
   },
