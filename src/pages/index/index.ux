@@ -34,20 +34,41 @@
 import { title } from '@system.audio';
 import router from "@system.router"
 import app from '@system.app' 
+import timer from "@system.timer"
 
 export default {
   private: {
     title: "课程表",
-    time: "17:07",
+    time: "",
     day: "",
     dayNum: "",
     weekNum: "第一周",
-    remain: "还有 13 分钟下课"
+    remain: "还有 13 分钟下课",
+    timer: null // 添加定时器变量
   },
 
   onInit() {
     this.updateDate();
+    this.updateTime(); // 初始化时调用一次 updateTime
+    this.timer = setInterval(() => this.updateTime(), 1000); // 每秒调用一次 updateTime
   },
+
+  onDestroy() {
+    clearInterval(this.timer); // 清除定时器，防止内存泄漏
+  },
+
+  quit() {
+    app.terminate()
+  },
+
+  updateTime() {
+    const now = new Date()
+    const hours = String(now.getHours()).padStart(2, "0")
+    const minutes = String(now.getMinutes()).padStart(2, "0")
+    const Seconds = String(now.getSeconds()).padStart(2, "0")
+    this.time = `${hours}:${minutes}:${Seconds}`
+  }
+
   updateDate() {
     const date = new Date();
     const month = date.getMonth() + 1;
@@ -59,14 +80,11 @@ export default {
     this.dayNum = days[dayOfWeek];
   },
 
-  quit() {
-    app.terminate()
-  },
   jumpToOther() {
     router.push({
       uri: "/pages/other"
     })
-  }
+  },
 
 }
 </script>
