@@ -67,7 +67,7 @@ export default {
     const minutes = String(now.getMinutes()).padStart(2, "0")
     const Seconds = String(now.getSeconds()).padStart(2, "0")
     this.time = `${hours}:${minutes}:${Seconds}`
-  }
+  },
 
   updateDate() {
     const date = new Date();
