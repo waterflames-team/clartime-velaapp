@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="component-nav-normal">
-      <div class="component-nav-normal-button_Back">
+      <div class="component-nav-normal-button_Back" onclick="exit">
         <image class="component-nav-normal-icon_Back" src="/common/Back.png" />
-        <input class="component-nav-normal-button" type="button" onclick="exit" />
       </div>
       <div class="component-nav-normal-title">  
         <text class="component-nav-normal-title-time">{{title_time}}</text>
@@ -11,26 +10,23 @@
       </div>
     </div>
 
-    <div class="component-other-button_Background">
+    <div class="component-other-button_Background" onclick="jumpAC">
       <div class="component-other-button_AC">
         <image class="component-other-icon" src="/common/icon_AllCourses.png" />
       </div>
       <text class="component-other-button_Text">全部课程</text>
-      <!-- <input class="component-other-button" type="button" onclick="jumpAC" /> -->
     </div>
-    <div class="component-other-button_Background">
+    <div class="component-other-button_Background" onclick="jumpCC">
       <div class="component-other-button_CC">
         <image class="component-other-icon" src="/common/icon_CourseChange.png" />
       </div>
       <text class="component-other-button_Text">课程调节</text>
-      <!-- <input class="component-other-button" type="button" onclick="jumpCC" /> -->
     </div>
-    <div class="component-other-button_Background">
+    <div class="component-other-button_Background" onclick="jumpAb">
       <div class="component-other-button_Ab">
         <image class="component-other-icon" src="/common/icon_About.png" />
       </div>
       <text class="component-other-button_Text">关于</text>
-      <!-- <input class="component-other-button" type="button" onclick="jumpAb" /> -->
     </div>
 
   </div>
@@ -52,13 +48,13 @@ export default {
 
   jumpAC() {
     router.push({
-      // uri: "pages/other/AllCourses",
+      uri: "pages/other/AllCourses",
     })
   },
   jumpCC() {
     router.push({
       // uri: "pages/other/CourseChange",
-    })
+    })            
   },
   jumpAb() {
     router.push({
@@ -122,13 +118,6 @@ export default {
   text-align: center;
   vertical-align: top;
 }
-.component-nav-normal-button {
-  left: 0px;
-  top: 0px;
-  width: 72px;
-  height: 72px;
-  opacity: 0;
-}
 .component-other-button_Background {
   left: 6px;
   top: 86px;
@@ -137,13 +126,6 @@ export default {
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
-}
-.component-other-button {
-  left: 0px;
-  top: 0px;
-  width: 324px;
-  height: 90px;
-  opacity: 0;
 }
 .component-other-button_AC {
   left: 19px;
@@ -174,9 +156,6 @@ export default {
 }
 .component-other-button_Text {
   left: 8px;
-  top: 22px;
-  width: 128px;
-  height: 45px;
   opacity: 1;
   font-size: 32px;
   font-weight: 500;

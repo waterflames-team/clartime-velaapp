@@ -1,0 +1,153 @@
+<template>
+    <div>
+        <div class="component-nav-normal">
+            <div class="component-nav-notime-buttonIcon" onclick="exit">
+                <image class="component-nav-notime-back" src="/common/Back.png" />
+            </div>
+            <div class="component-nav-normal-title">
+                <text class="component-nav-normal-title-time">{{ title_time }}</text>
+                <text class="component-nav-normal-title-text">{{ title }}</text>
+            </div>
+            <div class="component-nav-notime-buttonIcon-Change">
+                <image class="component-nav-notime-change" src="/common/icon_List.png" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import router from "@system.router"
+
+export default {
+  private: {
+    title: "全部课程",
+    title_time: "09:28"
+  },
+  exit() {
+    router.back()
+  }
+}
+</script>
+
+<style>
+.component-nav-notime-infoIcon1 {
+    left: 46px;
+    top: 32px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.component-nav-notime-infoIcon2 {
+    left: 32px;
+    top: 32px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.component-nav-notime-infoIcon3 {
+    left: 18px;
+    top: 32px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.component-nav-normal {
+    left: 6px;
+    top: 6px;
+    width: 253px;
+    height: 73.8px;
+    opacity: 1;
+}
+.component-nav-notime-buttonIcon {
+    left: 0px;
+    top: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 1;
+    border-radius: 36px;
+    background-color: rgba(38, 38, 38, 0.8);
+    border: 3px solid rgba(255, 255, 255, 0.06);
+}
+.component-nav-notime-buttonIcon-Change {
+    left: 0px;
+    top: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 1;
+    border-radius: 36px;
+    background-color: rgba(13, 110, 255, 0.8);
+    border: 3px solid rgba(255, 255, 255, 0.06);
+}
+.component-nav-notime-back {
+    left: 13px;
+    top: 14px;
+    width: 44px;
+    height: 44px;
+    opacity: 1;
+}
+.component-nav-notime-change{   
+    left: 21px;
+    top: 20px;
+    width: 31px;
+    height: 31px;
+    opacity: 1;
+}
+.component-nav-normal-button_Back {
+    left: 0px;
+    top: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 1;
+    border-radius: 36px;
+    background-color: rgba(38, 38, 38, 0.8);
+    border: 3px solid rgba(255, 255, 255, 0.06);
+}
+.component-nav-normal-icon_Back {
+    left: 13px;
+    top: 14px;
+    width: 44px;
+    height: 44px;
+    opacity: 1;
+}
+.component-nav-normal-title {
+    top: 7px;
+    width: 182px;
+    height: 73px;
+}
+.component-nav-normal-title-time {
+    width: 182px;
+    height: 28px;
+    opacity: 1;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 33.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    vertical-align: top;
+}
+.component-nav-normal-title-text {
+    width: 182px;
+    height: 45px;
+    opacity: 1;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 44.8px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    vertical-align: top;
+}
+.component-nav-normal-button {
+    left: 0px;
+    top: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+}
+</style>
