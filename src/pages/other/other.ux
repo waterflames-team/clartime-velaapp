@@ -1,50 +1,197 @@
 <template>
-    <div class="demo-page">
-      <text class="title">{{ $t("a.b") }},欢迎打开{{ title }}</text>
-      <!-- 点击跳转详情页 -->
-      <input class="btn" type="button" value="跳转到详情页" onclick="routeDetail" />
+  <div>
+    <div class="component-nav-normal">
+      <div class="component-nav-normal-button_Back">
+        <image class="component-nav-normal-icon_Back" src="/common/Back.png" />
+        <input class="component-nav-normal-button" type="button" onclick="exit" />
+      </div>
+      <div class="component-nav-normal-title">  
+        <text class="component-nav-normal-title-time">{{title_time}}</text>
+        <text class="component-nav-normal-title-text">{{title}}</text>
+      </div>
     </div>
-  </template>
+
+    <div class="component-other-button_Background">
+      <div class="component-other-button_AC">
+        <image class="component-other-icon" src="/common/icon_AllCourses.png" />
+      </div>
+      <text class="component-other-button_Text">全部课程</text>
+      <!-- <input class="component-other-button" type="button" onclick="jumpAC" /> -->
+    </div>
+    <div class="component-other-button_Background">
+      <div class="component-other-button_CC">
+        <image class="component-other-icon" src="/common/icon_CourseChange.png" />
+      </div>
+      <text class="component-other-button_Text">课程调节</text>
+      <!-- <input class="component-other-button" type="button" onclick="jumpCC" /> -->
+    </div>
+    <div class="component-other-button_Background">
+      <div class="component-other-button_Ab">
+        <image class="component-other-icon" src="/common/icon_About.png" />
+      </div>
+      <text class="component-other-button_Text">关于</text>
+      <!-- <input class="component-other-button" type="button" onclick="jumpAb" /> -->
+    </div>
+
+  </div>
+</template>
   
-  <script>
-  import router from "@system.router"
-  import configuration from "@system.configuration"
+<script>
+import router from "@system.router"
+import configuration from "@system.configuration"
   
-  export default {
-    // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
-    private: {
-      title: "示例页面"
-    },
-  
-    routeDetail() {
-      // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
-      router.push({
-        uri: "/pages/index"
-      })
-    }
+export default {
+  private: {
+    title: "更多",
+    title_time: "09:28"
+  },
+
+  exit() {
+    router.back()
+  },
+
+  jumpAC() {
+    router.push({
+      // uri: "pages/other/AllCourses",
+    })
+  },
+  jumpCC() {
+    router.push({
+      // uri: "pages/other/CourseChange",
+    })
+  },
+  jumpAb() {
+    router.push({
+      // uri: "pages/other/About",
+    })
   }
-  </script>
+}
+</script>
   
-  <style>
-  .demo-page {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .title {
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .btn {
-    width: 200px;
-    height: 40px;
-    margin-top: 20px;
-    border-radius: 5px;
-    background-color: #09ba07;
-    font-size: 20px;
-    color: #ffffff;
-  }
-  </style>
+<style>
+.component-nav-normal {
+  left: 6px;
+  top: 6px;
+  width: 253px;
+  height: 73.8px;
+  opacity: 1;
+}
+.component-nav-normal-button_Back {
+  left: 0px;
+  top: 0px;
+  width: 72px;
+  height: 72px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 0.8);
+  border: 3px solid rgba(255, 255, 255, 0.06);
+}
+.component-nav-normal-icon_Back {
+  left: 13px;
+  top: 14px;
+  width: 44px;
+  height: 44px;
+  opacity: 1;
+}
+.component-nav-normal-title {
+  top: 7px;
+  width: 182px;
+  height: 73px;
+}
+.component-nav-normal-title-time {
+  width: 182px;
+  height: 28px;
+  opacity: 1;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 33.6px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  vertical-align: top;
+}
+.component-nav-normal-title-text {
+  width: 182px;
+  height: 45px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: top;
+}
+.component-nav-normal-button {
+  left: 0px;
+  top: 0px;
+  width: 72px;
+  height: 72px;
+  opacity: 0;
+}
+.component-other-button_Background {
+  left: 6px;
+  top: 86px;
+  width: 324px;
+  height: 90px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+.component-other-button {
+  left: 0px;
+  top: 0px;
+  width: 324px;
+  height: 90px;
+  opacity: 0;
+}
+.component-other-button_AC {
+  left: 19px;
+  top: 15px;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(31, 136, 255, 1);
+}
+.component-other-button_CC{
+  left: 19px;
+  top: 15px;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(255, 171, 31, 1);
+}
+.component-other-button_Ab{
+  left: 19px;
+  top: 15px;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(41, 187, 5, 1);
+}
+.component-other-button_Text {
+  left: 8px;
+  top: 22px;
+  width: 128px;
+  height: 45px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+.component-other-icon {
+  left: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+}
+</style>
   
