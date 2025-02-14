@@ -1,41 +1,54 @@
 <template>
-  <div>
-    <div class="component-nav-normal">
-      <div class="component-nav-normal-button_Back" onclick="exit">
-        <image class="component-nav-normal-icon_Back" src="/common/Back.png" />
+  <div class="page">
+    <div class="component-nav">
+      <div class="component-nav-button" onclick="exit">
+        <image class="component-nav-back" src="/common/Back.png" />
       </div>
-      <div class="component-nav-normal-title">  
-        <text class="component-nav-normal-title-time">{{title_time}}</text>
-        <text class="component-nav-normal-title-text">{{title}}</text>
+      <div class="component-nav-title">
+        <text class="component-nav-title-time">{{ title_time }}</text>
+        <text class="component-nav-title-text">{{ title }}</text>
       </div>
     </div>
 
+    <div class="gap-6"></div>
+
     <div class="component-other-button_Background" onclick="jumpAC">
+      <div class="gap-19"></div>
       <div class="component-other-button_AC">
         <image class="component-other-icon" src="/common/icon_AllCourses.png" />
       </div>
+      <div class="gap-8"></div>
       <text class="component-other-button_Text">全部课程</text>
     </div>
+
+    <div class="gap-6"></div>
+
     <div class="component-other-button_Background" onclick="jumpCC">
+      <div class="gap-19"></div>
       <div class="component-other-button_CC">
         <image class="component-other-icon" src="/common/icon_CourseChange.png" />
       </div>
+      <div class="gap-8"></div>
       <text class="component-other-button_Text">课程调节</text>
     </div>
+
+    <div class="gap-6"></div>
+
     <div class="component-other-button_Background" onclick="jumpAb">
+      <div class="gap-19"></div>
       <div class="component-other-button_Ab">
         <image class="component-other-icon" src="/common/icon_About.png" />
       </div>
+      <div class="gap-8"></div>
       <text class="component-other-button_Text">关于</text>
     </div>
-
   </div>
 </template>
-  
+
 <script>
 import router from "@system.router"
 import configuration from "@system.configuration"
-  
+
 export default {
   private: {
     title: "更多",
@@ -48,13 +61,13 @@ export default {
 
   jumpAC() {
     router.push({
-      uri: "pages/other/AllCourses",
+      uri: "pages/other/AllCourses"
     })
   },
   jumpCC() {
     router.push({
       // uri: "pages/other/CourseChange",
-    })            
+    })
   },
   jumpAb() {
     router.push({
@@ -63,97 +76,56 @@ export default {
   }
 }
 </script>
-  
+
 <style>
-.component-nav-normal {
-  left: 6px;
-  top: 6px;
-  width: 253px;
-  height: 73.8px;
-  opacity: 1;
-}
-.component-nav-normal-button_Back {
-  left: 0px;
-  top: 0px;
-  width: 72px;
-  height: 72px;
-  opacity: 1;
-  border-radius: 36px;
-  background-color: rgba(38, 38, 38, 0.8);
-  border: 3px solid rgba(255, 255, 255, 0.06);
-}
-.component-nav-normal-icon_Back {
-  left: 13px;
-  top: 14px;
-  width: 44px;
-  height: 44px;
-  opacity: 1;
-}
-.component-nav-normal-title {
-  top: 7px;
-  width: 182px;
-  height: 73px;
-}
-.component-nav-normal-title-time {
-  width: 182px;
-  height: 28px;
-  opacity: 1;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 0px;
-  line-height: 33.6px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: center;
-  vertical-align: top;
-}
-.component-nav-normal-title-text {
-  width: 182px;
-  height: 45px;
-  opacity: 1;
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 44.8px;
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-  vertical-align: top;
-}
+@import "../../common/css/universal.css";
+@import "../../common/css/nav.css";
+
 .component-other-button_Background {
-  left: 6px;
-  top: 86px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   width: 324px;
   height: 90px;
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
 }
+
 .component-other-button_AC {
-  left: 19px;
-  top: 15px;
+  justify-content: center;
+  align-items: center;
+
   width: 60px;
   height: 60px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(31, 136, 255, 1);
 }
-.component-other-button_CC{
-  left: 19px;
-  top: 15px;
+
+.component-other-button_CC {
+  justify-content: center;
+  align-items: center;
+
   width: 60px;
   height: 60px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(255, 171, 31, 1);
 }
-.component-other-button_Ab{
-  left: 19px;
-  top: 15px;
+
+.component-other-button_Ab {
+  justify-content: center;
+  align-items: center;
+
   width: 60px;
   height: 60px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(41, 187, 5, 1);
 }
+
 .component-other-button_Text {
   left: 8px;
   opacity: 1;
@@ -164,13 +136,12 @@ export default {
   color: rgba(255, 255, 255, 1);
   text-align: left;
   vertical-align: top;
+
+  
 }
+
 .component-other-icon {
-  left: 15px;
-  top: 15px;
   width: 30px;
   height: 30px;
   opacity: 1;
-}
-</style>
-  
+}</style>

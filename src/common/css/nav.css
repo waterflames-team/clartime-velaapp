@@ -7,7 +7,7 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
 }
 
 .component-nav-button {
@@ -28,10 +28,28 @@
     opacity: 1;
 }
 
-.component-nav-notime-title {
-    top: 13px;
+.component-nav-title {
     width: 182px;
-    height: 44.8px;
+    height: 72px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.component-nav-title-time {
+    opacity: 1;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 33.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    vertical-align: top;
+}
+
+.component-nav-title-text {
     opacity: 1;
     font-size: 32px;
     font-weight: 500;
