@@ -1,16 +1,14 @@
 <template>
   <div>
     <div class="component-nav-notime">
-      <div class="component-nav-notime-buttonIcon">
+      <div class="component-nav-notime-buttonIcon" onclick="quit">
         <image class="component-nav-notime-back" src="/common/Back.png" />
-        <input class="component-nav-notime-button" type="button" onclick="quit" />
       </div>
       <text class="component-nav-notime-title">{{title}}</text>
-      <div class="component-nav-notime-buttonIcon">
+      <div class="component-nav-notime-buttonIcon" onclick="jumpToOther">
         <div class="component-nav-notime-infoIcon1"></div>
         <div class="component-nav-notime-infoIcon2"></div>
         <div class="component-nav-notime-infoIcon3"></div>
-        <input class="component-nav-notime-button" type="button" onclick="jumpToOther" />
       </div>
     </div>
 
@@ -125,13 +123,6 @@ export default {
   color: rgba(255, 255, 255, 1);
   text-align: center;
   vertical-align: top;
-}
-.component-nav-notime-button {
-  left: 0px;
-  top: 0px;
-  width: 72px;
-  height: 72px;
-  opacity: 0;
 }
 .component-nav-notime-infoIcon {
   width: 72px;
