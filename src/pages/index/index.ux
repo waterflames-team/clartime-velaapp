@@ -4,8 +4,8 @@
       <div class="component-nav-button" onclick="quit">
         <image class="component-nav-back" src="/common/Back.png" />
       </div>
-      <div class="component-nav-title">  
-        <text class="component-nav-title-text">{{title}}</text>
+      <div class="component-nav-title">
+        <text class="component-nav-title-text">{{ title }}</text>
       </div>
       <div class="component-nav-button" onclick="jumpToOther">
         <div class="component-nav-infoIcon">
