@@ -15,7 +15,7 @@
     <div class="component-about-card">
       <div class="component-about-cardContent-container">
         <text class="component-about-card-text">澄序课程表</text>
-        <text class="component-about-card-version">0.1.1</text>
+        <text class="component-about-card-version">{{ version }}</text>
       </div>
       <div class="component-about-cardLogo-container">
         <image class="component-about-logo" src="/common/about_logo.png" />
@@ -42,6 +42,7 @@ export default {
   private: {
     title: "关于",
     title_time: "",
+    version: "0.1.1",
     timer: null
   },
 
