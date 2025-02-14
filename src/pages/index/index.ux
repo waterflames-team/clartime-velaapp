@@ -34,7 +34,6 @@
 import { title } from '@system.audio';
 import router from "@system.router"
 import app from '@system.app' 
-import timer from "@system.timer"
 
 export default {
   private: {
