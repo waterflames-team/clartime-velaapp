@@ -32,6 +32,9 @@
       },
       "pages/other/about":{
         "component": "about"
+      },
+      "pages/other/EGG":{
+        "component": "EGG"
       }
     }
   },

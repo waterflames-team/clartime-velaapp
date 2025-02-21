@@ -32,6 +32,9 @@
         <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
       </div>
     </div>
+
+    <div class="gap-8"></div>
+    
   </div>
 </template>
 
