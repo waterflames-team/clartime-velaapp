@@ -29,6 +29,9 @@
       },
       "pages/other/AllCourses":{
         "component": "AllCourses"
+      },
+      "pages/other/about":{
+        "component": "about"
       }
     }
   },
