@@ -1,0 +1,76 @@
+/* nav 通用样式 */
+
+.component-nav {
+    width: 324px;
+    height: 72px;
+    opacity: 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.component-nav-button {
+    width: 72px;
+    height: 72px;
+    opacity: 1;
+    border-radius: 36px;
+    background-color: rgba(38, 38, 38, 0.8);
+    border: 3px solid rgba(255, 255, 255, 0.06);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.component-nav-back {
+    width: 44px;
+    height: 44px;
+    opacity: 1;
+}
+
+.component-nav-title {
+    width: 182px;
+    height: 72px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.component-nav-title-time {
+    opacity: 1;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 33.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    vertical-align: top;
+}
+
+.component-nav-title-text {
+    opacity: 1;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 44.8px;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+.component-nav-infoIcon {
+    padding: 13px;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.component-nav-infoIconPoints {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+}

@@ -1,37 +1,44 @@
 <template>
-  <div>
-    <div class="component-nav-notime">
-      <div class="component-nav-notime-buttonIcon" onclick="quit">
-        <image class="component-nav-notime-back" src="/common/Back.png" />
+  <div class="page">
+    <div class="component-nav">
+      <div class="component-nav-button" onclick="quit">
+        <image class="component-nav-back" src="/common/Back.png" />
       </div>
-      <text class="component-nav-notime-title">{{title}}</text>
-      <div class="component-nav-notime-buttonIcon" onclick="jumpToOther">
-        <div class="component-nav-notime-infoIcon1"></div>
-        <div class="component-nav-notime-infoIcon2"></div>
-        <div class="component-nav-notime-infoIcon3"></div>
+      <div class="component-nav-title">
+        <text class="component-nav-title-text">{{ title }}</text>
+      </div>
+      <div class="component-nav-button" onclick="jumpToOther">
+        <div class="component-nav-infoIcon">
+          <div class="component-nav-infoIconPoints"></div>
+          <div class="gap-6"></div>
+          <div class="component-nav-infoIconPoints"></div>
+          <div class="gap-6"></div>
+          <div class="component-nav-infoIconPoints"></div>
+        </div>
       </div>
     </div>
 
+    <div class="gap-8"></div>
+
     <div class="component-index-courseCard-card">
       <div class="component-index-courseCard-cardContent">
-        <text class="component-index-courseCard-card-timeText">{{time}}</text>
+        <text class="component-index-courseCard-card-timeText">{{ time }}</text>
         <div class="gap-8"></div>
         <div class="component-index-courseCard-card-dayDiv">
-          <text class="component-index-courseCard-card-dayText">{{day}}&nbsp;{{dayNum}}</text>
-          <text class="component-index-courseCard-card-dayText">{{weekNum}}</text>
+          <text class="component-index-courseCard-card-dayText">{{ day }}&nbsp;{{ dayNum }}</text>
+          <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
         </div>
         <div class="gap-8"></div>
-        <text class="component-index-courseCard-card-remainingTimeText">{{remain}}</text>
+        <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-import { title } from '@system.audio';
+import {title} from "@system.audio"
 import router from "@system.router"
-import app from '@system.app' 
+import app from "@system.app"
 
 export default {
   private: {
@@ -45,13 +52,13 @@ export default {
   },
 
   onInit() {
-    this.updateDate();
-    this.updateTime(); // 初始化时调用一次 updateTime
-    this.timer = setInterval(() => this.updateTime(), 1000); // 每秒调用一次 updateTime
+    this.updateDate()
+    this.updateTime() // 初始化时调用一次 updateTime
+    this.timer = setInterval(() => this.updateTime(), 1000) // 每秒调用一次 updateTime
   },
 
   onDestroy() {
-    clearInterval(this.timer); // 清除定时器，防止内存泄漏
+    clearInterval(this.timer) // 清除定时器，防止内存泄漏
   },
 
   quit() {
@@ -62,99 +69,33 @@ export default {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
-    const Seconds = String(now.getSeconds()).padStart(2, "0")
-    this.time = `${hours}:${minutes}:${Seconds}`
+    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    this.time = `${hours}:${minutes}`
   },
 
   updateDate() {
-    const date = new Date();
-    const month = date.getMonth() + 1;
-    const dayOfMonth = date.getDate();
-    const dayOfWeek = date.getDay();
-    const days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+    const date = new Date()
+    const month = date.getMonth() + 1
+    const dayOfMonth = date.getDate()
+    const dayOfWeek = date.getDay()
+    const days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 
-    this.day = `${month}月${dayOfMonth}日`;
-    this.dayNum = days[dayOfWeek];
+    this.day = `${month}月${dayOfMonth}日`
+    this.dayNum = days[dayOfWeek]
   },
 
   jumpToOther() {
     router.push({
       uri: "/pages/other"
     })
-  },
-
+  }
 }
 </script>
 
 <style>
-.component-nav-notime {
-  left: 6px;
-  top: 6px;
-  width: 324px;
-  height: 72px;
-  opacity: 1;
-}
-.component-nav-notime-buttonIcon {
-  left: 0px;
-  top: 0px;
-  width: 72px;
-  height: 72px;
-  opacity: 1;
-  border-radius: 36px;
-  background-color: rgba(38, 38, 38, 0.8);
-  border: 3px solid rgba(255, 255, 255, 0.06);
-}
-.component-nav-notime-back {
-  left: 13px;
-  top: 14px;
-  width: 44px;
-  height: 44px;
-  opacity: 1;
-}
-.component-nav-notime-title {
-  top: 13px;
-  width: 182px;
-  height: 44.8px;
-  opacity: 1;
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 44.8px;
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-  vertical-align: top;
-}
-.component-nav-notime-infoIcon {
-  width: 72px;
-  height: 72px;
-}
-.component-nav-notime-infoIcon1 {
-  left: 46px;
-  top: 32px;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 1);
-}
-.component-nav-notime-infoIcon2 {
-  left: 32px;
-  top: 32px;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 1);
-}
-.component-nav-notime-infoIcon3 {
-  left: 18px;
-  top: 32px;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 1);
-}
-.gap-8{
-  height: 8px;
-}
+@import "../../common/css/universal.css";
+@import "../../common/css/nav.css";
+
 .component-index-courseCard-card {
   display: flex;
   justify-content: center;
@@ -162,9 +103,6 @@ export default {
 
   padding-top: 12px;
   padding-bottom: 12px;
-
-  left: 6px;
-  top: 86px;
   width: 324px;
   height: 190px;
   border-radius: 36px;
