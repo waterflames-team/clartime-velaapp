@@ -1,0 +1,25 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* 在同一垂直线上居中 */
+    align-items: center;
+    /* 在同一水平线上居中 */
+
+    padding: 6px;
+}
+
+.gap-6 {
+    height: 6px;
+    width: 6px;
+}
+
+.gap-8 {
+    height: 8px;
+    width: 8px;
+}
+
+.gap-19 {
+    height: 19px;
+    width: 19px;
+}
