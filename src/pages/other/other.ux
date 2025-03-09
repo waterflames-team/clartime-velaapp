@@ -10,36 +10,36 @@
       </div>
     </div>
 
-    <div class="gap-6"></div>
+    <div class="gap-60"></div>
 
     <div class="component-other-button_Background" onclick="jumpAC">
-      <div class="gap-19"></div>
+      <div class="gap-190"></div>
       <div class="component-other-button_AC">
         <image class="component-other-icon" src="/common/icon_AllCourses.png" />
       </div>
-      <div class="gap-8"></div>
+      <div class="gap-80"></div>
       <text class="component-other-button_Text">全部课程</text>
     </div>
 
-    <div class="gap-6"></div>
+    <div class="gap-60"></div>
 
     <div class="component-other-button_Background" onclick="jumpCC">
-      <div class="gap-19"></div>
+      <div class="gap-190"></div>
       <div class="component-other-button_CC">
         <image class="component-other-icon" src="/common/icon_CourseChange.png" />
       </div>
-      <div class="gap-8"></div>
+      <div class="gap-80"></div>
       <text class="component-other-button_Text">课程调节</text>
     </div>
 
-    <div class="gap-6"></div>
+    <div class="gap-60"></div>
 
     <div class="component-other-button_Background" onclick="jumpAb">
-      <div class="gap-19"></div>
+      <div class="gap-190"></div>
       <div class="component-other-button_Ab">
         <image class="component-other-icon" src="/common/icon_About.png" />
       </div>
-      <div class="gap-8"></div>
+      <div class="gap-80"></div>
       <text class="component-other-button_Text">关于</text>
     </div>
   </div>

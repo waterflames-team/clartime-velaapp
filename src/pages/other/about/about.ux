@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="gap-6"></div>
+    <div class="gap-60"></div>
 
     <div class="component-about-card">
       <div class="component-about-cardContent-container">
@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div class="gap-6"></div>
-    <div class="gap-6"></div>
+    <div class="gap-60"></div>
+    <div class="gap-60"></div>
 
     <div class="component-about-textContent-container">
       <text class="component-about-textContent-text1">参与开发的人员</text>

@@ -10,30 +10,30 @@
       <div class="component-nav-button" onclick="jumpToOther">
         <div class="component-nav-infoIcon">
           <div class="component-nav-infoIconPoints"></div>
-          <div class="gap-6"></div>
+          <div class="gap-60"></div>
           <div class="component-nav-infoIconPoints"></div>
-          <div class="gap-6"></div>
+          <div class="gap-60"></div>
           <div class="component-nav-infoIconPoints"></div>
         </div>
       </div>
     </div>
 
-    <div class="gap-8"></div>
+    <div class="gap-80"></div>
 
     <div class="component-index-courseCard-card">
       <div class="component-index-courseCard-cardContent">
         <text class="component-index-courseCard-card-timeText">{{ time }}</text>
-        <div class="gap-8"></div>
+        <div class="gap-80"></div>
         <div class="component-index-courseCard-card-dayDiv">
           <text class="component-index-courseCard-card-dayText">{{ day }}&nbsp;{{ dayNum }}</text>
           <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
         </div>
-        <div class="gap-8"></div>
+        <div class="gap-80"></div>
         <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
       </div>
     </div>
 
-    <div class="gap-8"></div>
+    <div class="gap-80"></div>
 
     <scroll class="component-coursePresentations" bounces="true" scroll-x="true">
       

@@ -26,7 +26,7 @@
                 <div class="gap-142"></div>
                 <text class="component-coursePresentations-text">上午第1节课</text>
                 <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-8"></div>
+                <div class="gap-80"></div>
                 <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
                 <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
                 <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
@@ -38,7 +38,7 @@
                 <div class="gap-142"></div>
                 <text class="component-coursePresentations-text">上午第2节课</text>
                 <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-8"></div>
+                <div class="gap-80"></div>
                 <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
                 <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
                 <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
@@ -56,7 +56,7 @@
                 <div class="gap-142"></div>
                 <text class="component-coursePresentations-text">上午第1节课</text>
                 <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-8"></div>
+                <div class="gap-80"></div>
                 <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
                 <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
                 <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
