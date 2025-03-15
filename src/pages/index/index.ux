@@ -11,7 +11,7 @@
       <div class="content-home">
         <div class="component-index-courseCard-card">
           <div class="component-index-courseCard-cardContent">
-            <text class="component-index-courseCard-card-timeText">{{ time }}</text>
+            <text class="component-index-courseCard-card-timeText">{{ fullTime }}</text>
             <div class="gap-80"></div>
             <div class="component-index-courseCard-card-dayDiv">
               <text class="component-index-courseCard-card-dayText">
@@ -142,6 +142,7 @@ export default {
   private: {
     title: "课程表",
     time: "",
+    fullTime: "",
     day: "",
     dayNum: "",
     weekNum: "第一周",
@@ -174,8 +175,9 @@ export default {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    const Seconds = String(now.getSeconds()).padStart(2, "0")
     this.time = `${hours}:${minutes}`
+    this.fullTime = `${hours}:${minutes}:${Seconds}`
   },
 
   updateDate() {
