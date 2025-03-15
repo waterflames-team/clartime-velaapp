@@ -1,14 +1,15 @@
 <template>
   <div class="page">
-    <div class="component-nav">
+    <!-- <div class="component-nav">
       <div class="component-nav-button" onclick="exit">
         <image class="component-nav-back" src="/common/Back.png" />
-      </div>
-      <div class="component-nav-title">
+      </div> -->
+      <!-- <div class="component-nav-title"> -->
+      <div class="component-nav">
         <text class="component-nav-title-time">{{ title_time }}</text>
-        <text class="component-nav-title-text">{{ title }}</text>
+        <text class="component-nav-title-text" onclick="exit"><{{ title }}</text>
       </div>
-    </div>
+    <!-- </div> -->
 
     <div class="gap-60"></div>
 
@@ -84,7 +85,7 @@ export default {
   },
   jumpCC() {
     router.push({
-      // uri: "pages/other/CourseChange",
+      uri: "pages/other/CourseChange",
     })
   },
   jumpAb() {

@@ -30,6 +30,15 @@
       "pages/other/AllCourses":{
         "component": "AllCourses"
       },
+      "pages/other/CourseChange":{
+        "component": "CourseChange"
+      },
+      "pages/other/CourseChange/ClassChange":{
+        "component": "ClassChange"
+      },
+      "pages/other/CourseChange/DayChange":{
+        "component": "DayChange"
+      },
       "pages/other/about":{
         "component": "about"
       },

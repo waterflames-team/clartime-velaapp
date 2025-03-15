@@ -3,7 +3,7 @@
     
     <div class="component-nav">
       <text class="component-nav-title-text">{{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
+      <text class="component-nav-title-time" onclick="jumpToOther">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
 
@@ -24,8 +24,6 @@
         </div>
       </div>
     </div> -->
-
-    <div class="gap-80"></div>
 
     <div class="component-index-courseCard-card">
       <div class="component-index-courseCard-cardContent">

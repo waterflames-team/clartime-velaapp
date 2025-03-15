@@ -15,6 +15,10 @@
     width: 2px;
 }
 
+.gap-36 {
+    height: 3.6px;
+    width: 3.6px;
+}
 .gap-60 {
     height: 6px;
     width: 6px;
@@ -30,9 +34,9 @@
     width: 11px;
 }
 
-.gap-190 {
-    height: 19px;
-    width: 19px;
+.gap-140 {
+    height: 14px;
+    width: 14px;
 }
 
 .gap-142 {
@@ -40,12 +44,12 @@
     width: 14.2px;
 }
 
+.gap-190 {
+    height: 19px;
+    width: 19px;
+}
+
 .gap-214 {
     height: 21.4px;
     width: 21.4px;
-}
-
-.gap-36 {
-    height: 3.6px;
-    width: 3.6px;
 }
