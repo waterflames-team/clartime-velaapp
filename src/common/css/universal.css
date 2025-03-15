@@ -6,7 +6,13 @@
     align-items: center;
     /* 在同一水平线上居中 */
 
-    padding: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.gap-20 {
+    height: 2px;
+    width: 2px;
 }
 
 .gap-60 {
@@ -17,6 +23,11 @@
 .gap-80 {
     height: 8px;
     width: 8px;
+}
+
+.gap-110 {
+    height: 11px;
+    width: 11px;
 }
 
 .gap-190 {
