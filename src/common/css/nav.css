@@ -52,6 +52,7 @@
     top: 3.5px;
     font-size: 33.55px;
     line-height: 44px;
+    vertical-align: middle;
 }
 /* 
 .component-nav-infoIcon {

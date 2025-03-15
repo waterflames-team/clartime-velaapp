@@ -1,10 +1,10 @@
 <template>
   <div class="page">
+
     <div class="component-nav">
       <text class="component-nav-title-text">{{ title }}</text>
-      <text class="component-nav-title-time" onclick="jumpToOther">{{ time }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
     </div>
-
     <div class="gap-110"></div>
 
     <scroll class="content" scroll-y="true" scroll-x="false">
@@ -129,6 +129,7 @@
       </div>
       
     </scroll>
+    
   </div>
 </template>
 
@@ -186,12 +187,6 @@ export default {
 
     this.day = `${month}月${dayOfMonth}日`
     this.dayNum = days[dayOfWeek]
-  },
-
-  jumpToOther() {
-    router.push({
-      uri: "/pages/other"
-    })
   },
 
   jumpAC() {
