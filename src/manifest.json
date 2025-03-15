@@ -24,9 +24,6 @@
       "pages/index": {
         "component": "index"
       },
-      "pages/other": {
-        "component": "other"
-      },
       "pages/other/AllCourses":{
         "component": "AllCourses"
       },

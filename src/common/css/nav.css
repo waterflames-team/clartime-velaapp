@@ -1,6 +1,7 @@
 /* nav 通用样式 */
 
 .component-nav {
+    top: 0px;
     width: 324px;
     height: 51px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -52,7 +53,7 @@
     font-size: 33.55px;
     line-height: 44px;
 }
-
+/* 
 .component-nav-infoIcon {
     padding: 13px;
 
@@ -66,4 +67,4 @@
     height: 8px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 1);
-}
+} */
