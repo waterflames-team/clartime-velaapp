@@ -98,10 +98,10 @@
       <div class="content-other">
         <div class="component-other-button_Background" onclick="jumpAC">
           <div class="gap-190"></div>
-          <div class="component-other-button_AC">
+          <div class="component-other-button component-other-button_AC">
             <image class="component-other-icon" src="/common/icon_AllCourses.png" />
           </div>
-          <div class="gap-80"></div>
+          <div class="gap-100"></div>
           <text class="component-other-button_Text">全部课程</text>
         </div>
 
@@ -109,10 +109,10 @@
 
         <div class="component-other-button_Background" onclick="jumpCC">
           <div class="gap-190"></div>
-          <div class="component-other-button_CC">
+          <div class="component-other-button component-other-button_CC">
             <image class="component-other-icon" src="/common/icon_CourseChange.png" />
           </div>
-          <div class="gap-80"></div>
+          <div class="gap-100"></div>
           <text class="component-other-button_Text">课程调节</text>
         </div>
 
@@ -120,10 +120,10 @@
 
         <div class="component-other-button_Background" onclick="jumpAb">
           <div class="gap-190"></div>
-          <div class="component-other-button_Ab">
+          <div class="component-other-button component-other-button_Ab">
             <image class="component-other-icon" src="/common/icon_About.png" />
           </div>
-          <div class="gap-80"></div>
+          <div class="gap-100"></div>
           <text class="component-other-button_Text">关于</text>
         </div>
       </div>
@@ -398,62 +398,47 @@ export default {
   align-items: center;
 
   width: 324px;
-  height: 90px;
+  height: 110px;
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
 }
 
-.component-other-button_AC {
+.component-other-button {
   justify-content: center;
   align-items: center;
 
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   opacity: 1;
   border-radius: 30px;
+}
+
+.component-other-button_AC {
   background-color: rgba(31, 136, 255, 1);
 }
 
 .component-other-button_CC {
-  justify-content: center;
-  align-items: center;
-
-  width: 60px;
-  height: 60px;
-  opacity: 1;
-  border-radius: 30px;
   background-color: rgba(255, 171, 31, 1);
 }
 
 .component-other-button_Ab {
-  justify-content: center;
-  align-items: center;
-
-  width: 60px;
-  height: 60px;
-  opacity: 1;
-  border-radius: 30px;
   background-color: rgba(41, 187, 5, 1);
 }
 
 .component-other-button_Text {
   left: 8px;
   opacity: 1;
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 550;
-  letter-spacing: 0px;
-  line-height: 44.8px;
   color: rgba(255, 255, 255, 1);
   text-align: left;
-  vertical-align: top;
-
-  
+  vertical-align: middle;
 }
 
 .component-other-icon {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   opacity: 1;
 }
 </style>
