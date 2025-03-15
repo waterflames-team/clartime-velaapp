@@ -5,10 +5,10 @@
       <text class="component-nav-title-time">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
-    <div class="component-indicator" id="indicator" ref="indicator"><div style="width: {{ indicatorHighlight }}" class="component-indicator-highlight" id="indicator_highlight" ref="indicator_highlight" ></div></div>
+    <div class="component-indicator" id="indicator"><div style="width: {{ indicatorHighlight }}" class="component-indicator-highlight" id="indicator_highlight" ></div></div>
     <div class="gap-36"></div>
 
-    <scroll class="component-allCourses-show" scroll-y="false" scroll-x="true" if="{{ !ChangeIntoList }}" @touchmove="updateHighlightLength">
+    <scroll class="component-allCourses-show" id="scroll" scroll-y="false" scroll-x="true" if="{{ !ChangeIntoList }}" @scroll="updateHighlightLength">
       <scroll class="component-allCourses-list" bounces="true" scroll-y="true">
         <div class="gap-36"></div>
         <text class="component-allCourses-text">周一</text>
@@ -329,10 +329,12 @@ export default {
   private: {
     title: "全部课程",
     time: "",
-    indicatorWidth: 0,
-    indicatorHighlight:"",
     timer: null,
     ChangeIntoList: false,
+
+    // indicatorWidth: 0,
+    scrollWidth:0,
+    indicatorHighlight:"10px",
 
     coursesName: "语文",
     coursesStartTime: "16:35 - 17:20",
@@ -341,14 +343,12 @@ export default {
   },
 
   onInit() {
-    this.updateTime() // 初始化时调用一次 updateTime
+    this.updateTime()
     this.timer = setInterval(() => this.updateTime(), 60000) // 每分调用一次 updateTime
   },
 
-  onShow(){
-    this.$nextTick(() => {
-      this.createHighlightLength()
-    })
+  onShow() {
+    this.HowWideScroll();
   },
 
   onDestroy() {
@@ -359,7 +359,6 @@ export default {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
     this.time = `${hours}:${minutes}`
   },
 
@@ -370,27 +369,29 @@ export default {
     this.ChangeIntoList = !this.ChangeIntoList
   },
 
-  createHighlightLength(howManyDays=5) {
-    // 获取元素
-    const indicator = this.$element('indicator');
-
-    indicator.getBoundingClientRect({
-      success: (data) => {
-        const indicatorWidth = data.width;
-        console.log(indicatorWidth);
-        const highlightWidth = `${indicatorWidth / howManyDays}px`;
-        console.log(highlightWidth);
-        this.indicatorHighlight = highlightWidth; // 更新 indicatorHighlight 的值
-        this.$forceUpdate(); // 强制刷新组件
-      }
-    });
+  HowWideScroll() {
+    this.$element('scroll').getScrollRect({
+        success: ({ width, height }) => {
+          this.scrollWidth = width;
+          console.log(`滚动区域的宽度: ${this.scrollWidth}`);
+        }
+      });
   },
 
   updateHighlightLength(event) {
+    
+
     console.log("滚动事件触发");
     const { scrollX, scrollY } = event;
     console.log(`滚动的水平距离: ${scrollX}`);
     console.log(`滚动的垂直距离: ${scrollY}`);
+    if (100 * scrollX / (this.scrollWidth-330) <= 330) {
+      this.indicatorHighlight =  `${100 * scrollX / (this.scrollWidth-330)+10}px`;
+    } else {
+      this.indicatorHighlight =  `${100 * scrollX / (this.scrollWidth-330)}px`;
+    }
+    console.log(`指示器的宽度: ${this.indicatorHighlight}`);
+    this.$forceUpdate(); // 强制刷新组件
   }
 }
 </script>
