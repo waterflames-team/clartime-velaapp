@@ -6,20 +6,50 @@
     align-items: center;
     /* 在同一水平线上居中 */
 
-    padding: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
-.gap-6 {
+.gap-20 {
+    height: 2px;
+    width: 2px;
+}
+
+.gap-36 {
+    height: 3.6px;
+    width: 3.6px;
+}
+.gap-60 {
     height: 6px;
     width: 6px;
 }
 
-.gap-8 {
+.gap-80 {
     height: 8px;
     width: 8px;
 }
 
-.gap-19 {
+.gap-110 {
+    height: 11px;
+    width: 11px;
+}
+
+.gap-140 {
+    height: 14px;
+    width: 14px;
+}
+
+.gap-142 {
+    height: 14.2px;
+    width: 14.2px;
+}
+
+.gap-190 {
     height: 19px;
     width: 19px;
+}
+
+.gap-214 {
+    height: 21.4px;
+    width: 21.4px;
 }
