@@ -2,7 +2,7 @@
   <div class="page">
     <div class="component-nav">
       <div class="component-nav-button" onclick="exit">
-        <image class="component-nav-back" src="/common/Back.png" />
+        <!-- <image class="component-nav-back" src="/common/Back.png" /> -->
       </div>
       <div class="component-nav-title">
         <text class="component-nav-title-time">{{ title_time }}</text>
