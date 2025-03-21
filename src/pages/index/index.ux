@@ -1,100 +1,139 @@
 <template>
   <div class="page">
-    
+
     <div class="component-nav">
       <text class="component-nav-title-text">{{ title }}</text>
-      <text class="component-nav-title-time" onclick="jumpToOther">{{ time }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
 
-    <!-- <div class="component-nav">
-      <div class="component-nav-button" onclick="quit">
-        <image class="component-nav-back" src="/common/Back.png" />
+    <scroll class="content" scroll-y="true" scroll-x="false">
+      <div class="content-home">
+        <div class="component-index-courseCard-card">
+          <div class="component-index-courseCard-cardContent">
+            <text class="component-index-courseCard-card-timeText">{{ fullTime }}</text>
+            <div class="gap-80"></div>
+            <div class="component-index-courseCard-card-dayDiv">
+              <text class="component-index-courseCard-card-dayText">
+                {{ day }}&nbsp;{{ dayNum }}
+              </text>
+              <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
+            </div>
+            <div class="gap-80"></div>
+            <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
+          </div>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <scroll class="component-coursePresentations" bounces="true" scroll-x="true">
+          <div class="component-coursePresentations-border">
+            <div class="component-coursePresentations-content" style="background-color: rgba(38, 38, 38, 1)">
+              <div class="gap-142"></div>
+              <div>
+                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
+                  当前课程
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
+                  现在是课间，下节课为
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
+                  上午第1节课
+                </text>
+              </div>
+              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+              <div class="gap-214"></div>
+              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+            </div>
+          </div>
+
+          <div class="component-coursePresentations-border">
+            <div class="component-coursePresentations-content">
+              <div class="gap-142"></div>
+              <div>
+                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
+                  当前课程
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
+                  现在是课间，下节课为
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
+                  上午第2节课
+                </text>
+              </div>
+              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+              <div class="gap-214"></div>
+              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+            </div>
+          </div>
+          <div class="component-coursePresentations-border">
+            <div class="component-coursePresentations-content" style="background-color: rgba(38, 38, 38, 1)">
+              <div class="gap-142"></div>
+              <div>
+                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
+                  当前课程
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
+                  现在是课间，下节课为
+                </text>
+                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
+                  上午第3节课
+                </text>
+              </div>
+              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+              <div class="gap-214"></div>
+              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+            </div>
+          </div>
+        </scroll>
+      </scroll>
       </div>
-      <div class="component-nav-title">
-        <text class="component-nav-title-text">{{ title }}</text>
-      </div>
-      <div class="component-nav-button" onclick="jumpToOther">
-        <div class="component-nav-infoIcon">
-          <div class="component-nav-infoIconPoints"></div>
-          <div class="gap-60"></div>
-          <div class="component-nav-infoIconPoints"></div>
-          <div class="gap-60"></div>
-          <div class="component-nav-infoIconPoints"></div>
+
+      <div class="content-other">
+        <div class="component-other-button_Background" onclick="jumpAC">
+          <div class="gap-190"></div>
+          <div class="component-other-button component-other-button_AC">
+            <image class="component-other-icon" src="/common/icon_AllCourses.png" />
+          </div>
+          <div class="gap-100"></div>
+          <text class="component-other-button_Text">全部课程</text>
+        </div>
+
+        <div class="gap-60"></div>
+
+        <div class="component-other-button_Background" onclick="jumpCC">
+          <div class="gap-190"></div>
+          <div class="component-other-button component-other-button_CC">
+            <image class="component-other-icon" src="/common/icon_CourseChange.png" />
+          </div>
+          <div class="gap-100"></div>
+          <text class="component-other-button_Text">课程调节</text>
+        </div>
+
+        <div class="gap-60"></div>
+
+        <div class="component-other-button_Background" onclick="jumpAb">
+          <div class="gap-190"></div>
+          <div class="component-other-button component-other-button_Ab">
+            <image class="component-other-icon" src="/common/icon_About.png" />
+          </div>
+          <div class="gap-100"></div>
+          <text class="component-other-button_Text">关于</text>
         </div>
       </div>
-    </div> -->
-
-    <div class="component-index-courseCard-card">
-      <div class="component-index-courseCard-cardContent">
-        <text class="component-index-courseCard-card-timeText">{{ time }}</text>
-        <div class="gap-80"></div>
-        <div class="component-index-courseCard-card-dayDiv">
-          <text class="component-index-courseCard-card-dayText">{{ day }}&nbsp;{{ dayNum }}</text>
-          <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
-        </div>
-        <div class="gap-80"></div>
-        <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
-      </div>
-    </div>
-
-    <div class="gap-80"></div>
-
-    <scroll class="component-coursePresentations" bounces="true" scroll-x="true">
       
-      <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" style="background-color: rgba(38, 38, 38, 1);">
-          <div class="gap-142"></div>
-          <div>
-            <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">当前课程</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">现在是课间，下节课为</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">上午第1节课</text>
-          </div>
-          <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-          <div class="gap-214"></div>
-          <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-          <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-          <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-        </div>
-      </div>
-
-      <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content">
-          <div class="gap-142"></div>
-          <div>
-            <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">当前课程</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">现在是课间，下节课为</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">上午第2节课</text>
-          </div>
-          <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-          <div class="gap-214"></div>
-          <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-          <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-          <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-        </div>
-      </div>
-      <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" style="background-color: rgba(38, 38, 38, 1);">
-          <div class="gap-142"></div>
-          <div>
-            <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">当前课程</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">现在是课间，下节课为</text>
-            <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">上午第3节课</text>
-          </div>
-          <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-          <div class="gap-214"></div>
-          <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-          <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-          <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-        </div>
-      </div>
-
     </scroll>
+    
   </div>
 </template>
 
 <script>
-import {title} from "@system.audio"
 import router from "@system.router"
 import app from "@system.app"
 
@@ -102,6 +141,7 @@ export default {
   private: {
     title: "课程表",
     time: "",
+    fullTime: "",
     day: "",
     dayNum: "",
     weekNum: "第一周",
@@ -134,8 +174,9 @@ export default {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    const Seconds = String(now.getSeconds()).padStart(2, "0")
     this.time = `${hours}:${minutes}`
+    this.fullTime = `${hours}:${minutes}:${Seconds}`
   },
 
   updateDate() {
@@ -149,10 +190,30 @@ export default {
     this.dayNum = days[dayOfWeek]
   },
 
-  jumpToOther() {
+  jumpAC() {
     router.push({
-      uri: "/pages/other"
+      uri: "pages/other/AllCourses"
     })
+  },
+  jumpCC() {
+    router.push({
+      uri: "pages/other/CourseChange",
+    })
+  },
+  jumpAb() {
+    router.push({
+      uri: "pages/other/about",
+    })
+  },
+
+  onVersionClick() {
+    this.eggClickCount++
+    if (this.eggClickCount === 7) {
+      router.push({
+        uri: "pages/other/EGG"
+      })
+      this.eggClickCount = 0
+    }
   }
 }
 </script>
@@ -160,7 +221,50 @@ export default {
 <style>
 @import "../../common/css/universal.css";
 @import "../../common/css/nav.css";
+/* 界面布局 */
 
+.content {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* 在同一垂直线上居中 */
+  align-items: center;
+  /* 在同一水平线上居中 */
+
+  width: 100%;
+  height: 412px;
+
+  scroll-snap-type: y cross;
+  scroll-snap-stop: always;
+
+}
+
+.content-home {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* 在同一垂直线上居中 */
+  align-items: center;
+  /* 在同一水平线上居中 */
+  width: 100%;
+
+  scroll-snap-align: start 
+}
+
+.content-other {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* 在同一垂直线上居中 */
+  align-items: center;
+  /* 在同一水平线上居中 */
+
+  height: 412px;
+
+  scroll-snap-align: start
+}
+
+/* 卡片 */
 .component-index-courseCard-card {
   display: flex;
   justify-content: center;
@@ -169,7 +273,8 @@ export default {
   padding-top: 12px;
   padding-bottom: 12px;
   width: 324px;
-  height: 190px;
+  /* height: 190px; */
+  height: 210px;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
 }
@@ -215,6 +320,7 @@ export default {
   vertical-align: top;
 }
 
+/* 实时课程 */
 .component-coursePresentations {
   display: flex;
   justify-content: center;
@@ -245,7 +351,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  
+
   left: 0px;
   top: 0px;
   width: 300px;
@@ -266,6 +372,7 @@ export default {
   text-align: left;
   vertical-align: top;
 }
+
 .component-coursePresentations-courses {
   left: 19px;
   opacity: 1;
@@ -276,5 +383,58 @@ export default {
   color: rgba(255, 255, 255, 1);
   text-align: left;
   vertical-align: top;
+}
+
+
+/* other part */
+
+.component-other-button_Background {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 324px;
+  height: 110px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-other-button {
+  justify-content: center;
+  align-items: center;
+
+  width: 70px;
+  height: 70px;
+  opacity: 1;
+  border-radius: 30px;
+}
+
+.component-other-button_AC {
+  background-color: rgba(31, 136, 255, 1);
+}
+
+.component-other-button_CC {
+  background-color: rgba(255, 171, 31, 1);
+}
+
+.component-other-button_Ab {
+  background-color: rgba(41, 187, 5, 1);
+}
+
+.component-other-button_Text {
+  left: 8px;
+  opacity: 1;
+  font-size: 34px;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.component-other-icon {
+  width: 35px;
+  height: 35px;
+  opacity: 1;
 }
 </style>

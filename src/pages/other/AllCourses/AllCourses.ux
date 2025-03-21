@@ -1,76 +1,97 @@
 <template>
-    <div class="page">
-        <div class="component-nav">
-            <div class="component-nav-button" onclick="exit">
-              <image class="component-nav-back" src="/common/Back.png" />
-            </div>
-            <div class="component-nav-title">
-              <text class="component-nav-title-time">{{ title_time }}</text>
-              <text class="component-nav-title-text">{{ title }}</text>
-            </div>
-            <div class="component-nav-button_change" onclick="change">
-              <image class="component-nav-List" src="/common/icon_List.png" if="{{ !ChangeIntoList }}"/>
-              <image class="component-nav-Calendar" src="/common/icon_Calendar.png" else/>
-            </div>
-        </div>
-
-        <swiper class="component-allCourses-show" if="{{ !ChangeIntoList }}">
-          
-          <scroll class="component-allCourses-list" bounces="true" scroll-y="true">
-            
-            <div class="gap-36"></div>
-            <text class="component-allCourses-text">周一</text>
-
-            <div class="component-coursePresentations-border">
-              <div class="component-coursePresentations-content">
-                <div class="gap-142"></div>
-                <text class="component-coursePresentations-text">上午第1节课</text>
-                <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-80"></div>
-                <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-                <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-                <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-              </div>
-            </div>
-
-            <div class="component-coursePresentations-border">
-              <div class="component-coursePresentations-content">
-                <div class="gap-142"></div>
-                <text class="component-coursePresentations-text">上午第2节课</text>
-                <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-80"></div>
-                <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-                <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-                <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-              </div>
-            </div>
-
-          </scroll>
-          <scroll class="component-allCourses-list" bounces="true" scroll-y="true">
-            
-            <div class="gap-36"></div>
-            <text class="component-allCourses-text">周二</text>
-
-            <div class="component-coursePresentations-border">
-              <div class="component-coursePresentations-content">
-                <div class="gap-142"></div>
-                <text class="component-coursePresentations-text">上午第1节课</text>
-                <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-                <div class="gap-80"></div>
-                <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-                <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-                <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-              </div>
-            </div>
-
-          </scroll>
-
-        </swiper>
-        <swiper class="component-allCourses-show" else>
-
-        </swiper>
-          
+  <div class="page">
+    <div class="component-nav">
+      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
     </div>
+    <div class="gap-110"></div>
+    <div class="component-indicator" id="indicator"><div style="width: {{ indicatorHighlight_width }};left :{{ indicatorHighlight_left }};" class="component-indicator-highlight" id="indicator_highlight" ></div></div>
+    <div class="gap-36"></div>
+
+    <scroll class="component-allCourses-show" id="scroll" scroll-y="false" scroll-x="true" if="{{ !ChangeIntoList }}" @scroll="updateHighlightLength">
+      <scroll class="component-allCourses-list">
+        <div class="gap-36"></div>
+        <text class="component-allCourses-text">周一</text>
+
+        <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-content">
+            <div class="gap-142"></div>
+            <text class="component-coursePresentations-text">上午第1节课</text>
+            <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+            <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+            <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      </scroll>
+      <scroll class="component-allCourses-list">
+        <div class="gap-36"></div>
+        <text class="component-allCourses-text">周二</text>
+
+        <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-content">
+            <div class="gap-142"></div>
+            <text class="component-coursePresentations-text">上午第1节课</text>
+            <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+            <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+            <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      </scroll>
+      <scroll class="component-allCourses-list">
+        <div class="gap-36"></div>
+        <text class="component-allCourses-text">周三</text>
+
+        <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-content">
+            <div class="gap-142"></div>
+            <text class="component-coursePresentations-text">上午第1节课</text>
+            <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+            <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+            <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      </scroll>
+      <scroll class="component-allCourses-list">
+        <div class="gap-36"></div>
+        <text class="component-allCourses-text">周四</text>
+
+        <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-content">
+            <div class="gap-142"></div>
+            <text class="component-coursePresentations-text">上午第1节课</text>
+            <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+            <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+            <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      </scroll>
+      <scroll class="component-allCourses-list">
+        <div class="gap-36"></div>
+        <text class="component-allCourses-text">周五</text>
+
+        <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-content">
+            <div class="gap-142"></div>
+            <text class="component-coursePresentations-text">上午第1节课</text>
+            <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
+            <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
+            <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      </scroll>
+  
+    </scroll>
+  </div>
 </template>
 
 <script>
@@ -79,19 +100,33 @@ import router from "@system.router"
 export default {
   private: {
     title: "全部课程",
-    title_time: "",
+    time: "",
     timer: null,
     ChangeIntoList: false,
+
+    indicatorWidth: 0,
+    highlightWidth: 50,
+    scrollWidth:0,
+    indicatorHighlight_width:"10px",
+    indicatorHighlight_left:"0px",
 
     coursesName: "语文",
     coursesStartTime: "16:35 - 17:20",
     coursesClassroom: "101教室",
-    coursesTeacher: "张老师",
+    coursesTeacher: "张老师"
   },
-  
+
   onInit() {
-    this.updateTime() // 初始化时调用一次 updateTime
-    this.timer = setInterval(() => this.updateTime(), 60000) // 每秒调用一次 updateTime
+    this.updateTime()
+    this.timer = setInterval(() => this.updateTime(), 60000) // 每分调用一次 updateTime
+  },
+
+  onShow() {
+    this.HowWideScroll().then(() => {
+      this.createHighlightLength(5);
+    }).catch(err => {
+      console.error('Error in onShow:', err);
+    });
   },
 
   onDestroy() {
@@ -102,8 +137,7 @@ export default {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
-    this.title_time = `${hours}:${minutes}`
+    this.time = `${hours}:${minutes}`
   },
 
   exit() {
@@ -111,6 +145,51 @@ export default {
   },
   change() {
     this.ChangeIntoList = !this.ChangeIntoList
+  },
+
+  HowWideScroll() {
+    return new Promise((resolve, reject) => {
+      this.$element('scroll').getScrollRect({
+        success: ({ width, height }) => {
+          this.scrollWidth = width;
+          resolve();
+        },
+        fail: (err) => {
+          console.error('Failed to get scroll rect:', err);
+          reject(err);
+        }
+      });
+    });
+  },
+
+  createHighlightLength(howManyDays=5) {
+    return new Promise((resolve, reject) => {
+      // 获取元素
+      const indicator = this.$element('indicator');
+
+      indicator.getBoundingClientRect({
+        success: (data) => {
+          this.indicatorWidth = data.width;
+          this.highlightWidth = this.indicatorWidth / howManyDays * 2; // 修正变量作用域
+          this.indicatorHighlight_width = `${this.highlightWidth}px`; // 更新 indicatorHighlight_width 的值
+          resolve();
+        },
+        fail: (err) => {
+          console.error('Failed to get bounding rect:', err);
+          reject(err);
+        }
+      });
+    });
+  },
+
+  updateHighlightLength(event) {
+    const { scrollX, scrollY } = event;
+    this.indicatorHighlight_left =  `${(this.indicatorWidth-this.highlightWidth) * scrollX / (this.scrollWidth-324)}px`;
+    console.log("-----");
+    console.log(this.indicatorWidth-this.highlightWidth);
+    console.log(scrollX);
+    console.log(this.scrollWidth);
+    console.log(this.indicatorHighlight_left);
   }
 }
 </script>
@@ -118,58 +197,46 @@ export default {
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
-.component-nav-button_change{
-  left: 0px;
-  top: 0px;
-  width: 72px;
-  height: 72px;
-  opacity: 1;
-  border-radius: 36px;
-  background-color: rgba(13, 110, 255, 0.8);
-  border: 3px solid rgba(255, 255, 255, 0.06);
 
-  justify-content: center;
+/* 指示器 */
+.component-indicator{
   align-items: center;
-}
-.component-nav-List{
-  /* left: 25px;
-  top: 22px; */
-  width: 23px;
-  height: 29px;
+  width: 100px;
+  height: 10px;
   opacity: 1;
+  border-radius: 30px;
+  background-color: #262626;
 }
-.component-nav-Calendar{
-  /* left: 21px;
-  top: 20px; */
-  width: 31px;
-  height: 31px;
+.component-indicator-highlight{
+  height: 9px;
   opacity: 1;
+  border-radius: 30px;
+  background-color: #ffffff;
 }
-.component-allCourses-show{
+
+/* 列表展示 */
+.component-allCourses-show {
   width: 100%;
-  height: 390px;
+  height: 404.4px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  indicator-top: 0px;
-  indicator-color: rgba(255, 255, 255, 0.2);
-  indicator-selected-color: rgba(255, 255, 255, 1);
-  indicator-size: 5px;
+  scroll-snap-type: x cross;
+  scroll-snap-stop: always;
 }
-.component-allCourses-list{
+
+.component-allCourses-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 30px;
-  width: 330px;
-  height: 360px;
+  width: 324px;
+  height: 404.4px;
+  
+
+  scroll-snap-align: start 
 }
-.component-allCourses-text{
-  left: 0px;
-  top: 3.6px;
+
+.component-allCourses-text {
   width: 182px;
   height: 24px;
   opacity: 1;
@@ -182,12 +249,13 @@ export default {
   text-align: center;
   vertical-align: top;
 }
+
 .component-coursePresentations-border {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 324px;
+  width: 318px;
   height: 185px;
 }
 
@@ -196,10 +264,10 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  
+
   left: 0px;
   top: 0px;
-  width: 324px;
+  width: 318px;
   height: 177px;
   opacity: 1;
   border-radius: 36px;
@@ -217,6 +285,7 @@ export default {
   text-align: left;
   vertical-align: top;
 }
+
 .component-coursePresentations-courses {
   left: 19px;
   opacity: 1;
