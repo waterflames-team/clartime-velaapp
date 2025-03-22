@@ -13,7 +13,7 @@
       <text class="component-courseChange-text2">修改临时或永久性调课</text>
     </div>
     <div class="gap-80"></div>
-    <div class="component-courseChange-button" onclick="intoDayChange">
+    <div class="component-courseChange-button" onclick="jumpDayChange">
       <div class="gap-140"></div>
       <text class="component-courseChange-text1">调休</text>
       <text class="component-courseChange-text2">修改临时性调休</text>
@@ -59,7 +59,7 @@ export default {
     })
   },
 
-  intoDayChange() {
+  jumpDayChange() {
     router.push({
       uri: "pages/other/CourseChange/DayChange",
     })

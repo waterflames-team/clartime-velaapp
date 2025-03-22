@@ -1,86 +1,299 @@
 <template>
-    <div class="page">
-        
-      <div class="component-nav">
-        <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-        <text class="component-nav-title-time">{{ title_time }}</text>
-      </div>
-      <div class="gap-110"></div>
-  
+  <div class="page">
+    <div class="component-nav">
+      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+      <text class="component-nav-title-time">{{ title_time }}</text>
     </div>
-  </template>
+    <div class="gap-110"></div>
+    
+    <text class="component-classChange-text" if="{{ page === 1 }}">请选择被调节的课</text>
+    <text class="component-classChange-text" if="{{ page === 2 }}">请选择调节结果</text>
+
+    <!-- 调课-1 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 1 }}">
+      <div class="gap-36"></div>
+        <text class="component-classChange-card-weaknum">周一</text>
+
+        <div class="component-classChange-card-border">
+          <div class="component-classChange-card-content" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">上午第1节课</text>
+            <text class="component-classChange-card-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ coursesStartTime }}</text>
+            <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+            <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      <!-- </scroll>
+      <scroll class="component-allCourses-list"> -->
+        <div class="gap-36"></div>
+        <text class="component-classChange-card-weaknum">周二</text>
+
+        <div class="component-classChange-card-border">
+          <div class="component-classChange-card-content" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">上午第1节课</text>
+            <text class="component-classChange-card-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ coursesStartTime }}</text>
+            <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+            <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      <!-- </scroll>
+      <scroll class="component-allCourses-list"> -->
+        <div class="gap-36"></div>
+        <text class="component-classChange-card-weaknum">周三</text>
+
+        <div class="component-classChange-card-border">
+          <div class="component-classChange-card-content" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">上午第1节课</text>
+            <text class="component-classChange-card-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ coursesStartTime }}</text>
+            <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+            <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      <!-- </scroll>
+      <scroll class="component-allCourses-list"> -->
+        <div class="gap-36"></div>
+        <text class="component-classChange-card-weaknum">周四</text>
+
+        <div class="component-classChange-card-border">
+          <div class="component-classChange-card-content" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">上午第1节课</text>
+            <text class="component-classChange-card-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ coursesStartTime }}</text>
+            <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+            <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+      <!-- </scroll>
+      <scroll class="component-allCourses-list"> -->
+        <div class="gap-36"></div>
+        <text class="component-classChange-card-weaknum">周五</text>
+
+        <div class="component-classChange-card-border">
+          <div class="component-classChange-card-content" ontouchstart="selectCard(4)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">上午第1节课</text>
+            <text class="component-classChange-card-courses">{{ coursesName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ coursesStartTime }}</text>
+            <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+            <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+          </div>
+        </div>
+    </scroll>
+
+    <!-- 调课-2 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 2 }}">
+      <div class="gap-36"></div>
+
+      <div class="component-classChange-card-border-s">
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+          <div class="gap-142"></div>
+          <text class="component-classChange-card-courses">{{ coursesName }}</text>
+          <div class="gap-80"></div>
+          <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+          <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+          <div class="gap-142"></div>
+          <text class="component-classChange-card-courses">{{ coursesName }}</text>
+          <div class="gap-80"></div>
+          <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+          <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+        </div>
+      </div>
+      <div class="component-classChange-card-border-s">
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+          <div class="gap-142"></div>
+          <text class="component-classChange-card-courses">{{ coursesName }}</text>
+          <div class="gap-80"></div>
+          <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+          <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+          <div class="gap-142"></div>
+          <text class="component-classChange-card-courses">{{ coursesName }}</text>
+          <div class="gap-80"></div>
+          <text class="component-classChange-card-text">{{ coursesClassroom }}</text>
+          <text class="component-classChange-card-text">{{ coursesTeacher }}</text>
+        </div>
+      </div>
+
+    </scroll>
+  </div>
+</template>
+
+<script>
+import {title} from "@system.audio"
+import router from "@system.router"
+import app from "@system.app"
+
+export default {
+  private: {
+    title: "调课",
+    title_time: "",
+    timer: null,
+    selectedCard: -1,
+    page: 1,
+
+    coursesName: "语文",
+    coursesStartTime: "16:35 - 17:20",
+    coursesClassroom: "101教室",
+    coursesTeacher: "张老师"
+  },
+  onInit() {
+    this.updateTime() // 初始化时调用一次 updateTime
+    this.timer = setInterval(() => this.updateTime(), 60000) // 每秒调用一次 updateTime
+  },
+
+  onDestroy() {
+    clearInterval(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  updateTime() {
+    const now = new Date()
+    const hours = String(now.getHours()).padStart(2, "0")
+    const minutes = String(now.getMinutes()).padStart(2, "0")
+    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    this.title_time = `${hours}:${minutes}`
+  },
+
+  exit() {
+    router.back()
+  },
   
-  <script>
-  import {title} from "@system.audio"
-  import router from "@system.router"
-  import app from "@system.app"
+  selectCard(idx) {
+    this.selectedCard = idx
+  },
+
+  pageTurn() {
+    this.page += 1
+  },
   
-  export default {
-    private: {
-      title: "调课",
-      title_time: "",
-      timer: null,
-    },
-    onInit() {
-      this.updateTime() // 初始化时调用一次 updateTime
-      this.timer = setInterval(() => this.updateTime(), 60000) // 每秒调用一次 updateTime
-    },
+}
+</script>
+
+<style>
+@import "../../../../common/css/universal.css";
+@import "../../../../common/css/nav.css";
+
+.component-classChange-text {
+  width: 192px;
+  height: 32px;
+  opacity: 1;
+
+  font-size: 24px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 31.82px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+.component-classChange-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 324px;
+  height: 386px;
   
-    onDestroy() {
-      clearInterval(this.timer) // 清除定时器，防止内存泄漏
-    },
-  
-    updateTime() {
-      const now = new Date()
-      const hours = String(now.getHours()).padStart(2, "0")
-      const minutes = String(now.getMinutes()).padStart(2, "0")
-      // const Seconds = String(now.getSeconds()).padStart(2, "0")
-      this.title_time = `${hours}:${minutes}`
-    },
-  
-    exit() {
-      router.back()
-    },
-  
-  }
-  </script>
-  
-  <style>
-  @import "../../../../common/css/universal.css";
-  @import "../../../../common/css/nav.css";
-  
-  .component-classChange-button{
-    width: 100%;
-    height: 112px;
-    opacity: 1;
-    border-radius: 36px;
-    background-color: rgba(38, 38, 38, 1);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  
-  .component-classChange-text1{
-    left: 19px;
-    opacity: 1;
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: 0px;
-    line-height: 44.8px;
-    color: rgba(255, 255, 255, 1);
-    text-align: left;
-    vertical-align: top;
-  }
-  .component-classChange-text2{
-    left: 19px;
-    opacity: 1;
-    font-size: 28px;
-    font-weight: 500;
-    letter-spacing: 0px;
-    line-height: 39.2px;
-    color: rgba(255, 255, 255, 0.6);
-    text-align: left;
-    vertical-align: top;
-  }
-  </style>
+  scroll-snap-align: start 
+}
+
+.component-classChange-card-weaknum {
+  width: 182px;
+  height: 24px;
+  opacity: 1;
+
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 23.87px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  vertical-align: top;
+}
+
+.component-classChange-card-border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 318px;
+  height: 185px;
+}
+
+.component-classChange-card-border-s {
+  width: 324px;
+  height: 134px;
+}
+
+.component-classChange-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  left: 0px;
+  top: 0px;
+  width: 318px;
+  height: 177px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-content-s {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 158px;
+  height: 126px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-text {
+  left: 19px;
+  opacity: 1;
+  font-size: 20px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 26.52px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-card-courses {
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 42.43px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+</style>
