@@ -1,8 +1,236 @@
 <script>
+import courseDataReader from "./common/js/courseDataReader"
+
 export default {
+  processData() {
+    const basicInfo = courseDataReader.getBasicInfo()
+    const timetableInfo = courseDataReader.getTimetableInfo()
+    const mondaySchedule = timetableInfo.Monday
+    const coursesInfo = courseDataReader.getCoursesInfo()
+
+    if (!basicInfo || !timetableInfo || !coursesInfo) {
+      console.error("数据提取失败：部分数据获取失败")
+      return
+    }
+
+    // 提取课程数据
+    this.courseData = {
+      basic: basicInfo,
+      courses: coursesInfo,
+      timetable: timetableInfo
+    }
+
+    // 课程开始时间初始化
+    const courseBasicInfo = this.courseData.basic
+
+    // 数据校验
+    const requiredFields = [
+      "morningCourseStartTime",
+      "afternoonCourseStartTime",
+      "eveningCourseStartTime"
+    ]
+    requiredFields.forEach((field) => {
+      if (
+        !courseBasicInfo[field] ||
+        typeof courseBasicInfo[field] !== "string" ||
+        courseBasicInfo[field].length < 4
+      ) {
+        throw new Error(`缺失或无效的时间字段: ${field}`)
+      }
+    })
+
+    // 安全解析时间
+    const parseTime = (timeStr) => {
+      try {
+        return {
+          hour: timeStr.substring(0, 2),
+          minute: timeStr.substring(2, 4)
+        }
+      } catch (e) {
+        console.error(`时间解析错误: ${timeStr}`, e)
+        throw new Error(`无效的时间格式: ${timeStr}`)
+      }
+    }
+
+    const {hour: morningStartHour, minute: morningStartMinute} = parseTime(
+      courseBasicInfo.morningCourseStartTime
+    )
+    const {hour: afternoonStartHour, minute: afternoonStartMinute} = parseTime(
+      courseBasicInfo.afternoonCourseStartTime
+    )
+    const {hour: eveningStartHour, minute: eveningStartMinute} = parseTime(
+      courseBasicInfo.eveningCourseStartTime
+    )
+
+    // 课程节数初始化
+    const morningCourseCount = courseBasicInfo.morningCourseCount
+    const afternoonCourseCount = courseBasicInfo.afternoonCourseCount
+    const eveningCourseCount = courseBasicInfo.eveningCourseCount
+    let currentIndex = 0
+
+    // 时间表处理逻辑
+    const timeTableResult = []
+
+    // 初始化时间跟踪变量
+    let currentHour = parseInt(morningStartHour)
+    let currentMinute = parseInt(morningStartMinute)
+    let currentInterval = basicInfo.intervalTime
+    let currentPeriod = "morning"
+
+    // 重复的代码块已合并到上方
+
+    // 合并后的核心处理循环
+    let totalCourses = morningCourseCount + afternoonCourseCount + eveningCourseCount
+
+    for (let i = 0; i < totalCourses; i++) {
+      const item = mondaySchedule[i]
+
+      if (!item) break
+
+      if (item.type === "interval") {
+        currentInterval = item.intervalTime
+        totalCourses++
+        continue
+      }
+
+      // 时段切换检测
+      if (currentPeriod === "morning" && currentIndex >= morningCourseCount) {
+        currentPeriod = "afternoon"
+        currentHour = parseInt(afternoonStartHour)
+        currentMinute = parseInt(afternoonStartMinute)
+      } else if (
+        currentPeriod === "afternoon" &&
+        currentIndex >= morningCourseCount + afternoonCourseCount
+      ) {
+        currentPeriod = "evening"
+        currentHour = parseInt(eveningStartHour)
+        currentMinute = parseInt(eveningStartMinute)
+      }
+
+      // 安全访问课程时间信息
+      const timeInfo = item.courseTimeInfo?.[0]
+      if (!timeInfo) {
+        console.error(`第${i + 1}节课缺少课程时间信息`)
+        continue
+      }
+
+      // 处理课程时间
+      const courseInfo = coursesInfo[timeInfo?.courseId]
+      if (courseInfo) {
+        // 计算结束时间
+        const duration = timeInfo.duration || 45
+        let endHour = currentHour
+        let endMinute = currentMinute + duration
+
+        // 分钟进位计算：
+        // 示例：当前时间08:45 + 45分钟课程 → 结束时间09:30
+        // 若课程结束分钟数≥60，则向小时位进位
+        if (endMinute >= 60) {
+          endHour += Math.floor(endMinute / 60)
+          endMinute = endMinute % 60
+        }
+
+        // 构建结果对象
+        timeTableResult.push({
+          courseName: courseInfo.courseName,
+          teacher: courseInfo.teacher,
+          classroom: courseInfo.classroom,
+          timeHour: currentHour.toString().padStart(2, "0"),
+          timeMinute: currentMinute.toString().padStart(2, "0")
+        })
+
+        // 更新下节课开始时间（当前结束时间 + 课间时间）
+        currentMinute = endMinute + currentInterval
+        currentHour = endHour + Math.floor(currentMinute / 60)
+        currentMinute = currentMinute % 60
+
+        // 恢复默认课间时间
+        currentInterval = courseBasicInfo.intervalTime
+      }
+    }
+
+    console.log(JSON.stringify(timeTableResult, null, 2))
+    // 重复的代码块已合并到上方
+
+    // 处理三个时段的课程
+    const processPeriod = (period, startHour, startMinute, courseCount) => {
+      currentHour = parseInt(startHour)
+      currentMinute = parseInt(startMinute)
+
+      for (let i = 0; i < courseCount; currentIndex++) {
+        const item = mondaySchedule[currentIndex]
+        if (!item) break
+
+        // 处理间隔类型
+        if (item.type === "interval") {
+          currentInterval = item.intervalTime
+          continue
+        }
+
+        // 处理重复课程
+        const repeatTimes = item.repeatability > 1 ? item.repeatability : 1
+        for (let j = 0; j < repeatTimes; j++) {
+          const timeInfo = item.courseTimeInfo[j]
+          if (!timeInfo) {
+            console.error(`未找到第${j + 1}个课程时间信息`)
+            continue
+          }
+
+          const courseInfo = coursesInfo[timeInfo.courseId]
+          if (courseInfo) {
+            // 计算课程持续时间
+            const duration = timeInfo.duration || 45
+            let endHour = currentHour
+            let endMinute = currentMinute + duration
+
+            // 处理分钟进位
+            if (endMinute >= 60) {
+              endHour += Math.floor(endMinute / 60)
+              endMinute %= 60
+            }
+
+            // 记录课程信息
+            timeTableResult.push({
+              courseName: "courseName",
+              teacher: "teacher",
+              classroom: "classroom",
+              timeHour: "timeHour",
+              timeMinute: "timeMinute"
+            })
+
+            // 更新下节课开始时间
+            currentMinute = endMinute + currentInterval
+            currentHour = endHour + Math.floor(currentMinute / 60)
+            currentMinute %= 60
+            // 更新课程索引
+            currentIndex++
+            i++
+          }
+        }
+        currentInterval = courseBasicInfo.intervalTime
+      }
+    }
+
+    // 按顺序处理各个时段
+    processPeriod("morning", morningStartHour, morningStartMinute, morningCourseCount)
+    processPeriod("afternoon", afternoonStartHour, afternoonStartMinute, afternoonCourseCount)
+    processPeriod("evening", eveningStartHour, eveningStartMinute, eveningCourseCount)
+    // 重复的代码块已合并到上方
+
+    // console.log(JSON.stringify(timeTableResult, null, 2))
+    // // 重复的代码块已合并到上方
+  },
+
   onCreate() {
     console.log("app created")
+    try {
+      // 异步操作代码
+      this.processData()
+    } catch (error) {
+      console.error("processData 函数执行出错:", error)
+    }
   },
+
   onDestroy() {
     console.log("app destroyed")
   }
