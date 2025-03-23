@@ -135,21 +135,20 @@ export default {
         // 计算结束时间
         const duration = timeInfo.duration || 45
         let endHour = currentHour
+        // if (!isFirstCourse) {
+        //   // let endMinute = currentMinute + duration
+        //   let endMinute = currentMinute + duration + currentInterval
+        // }
         let endMinute = currentMinute + duration
+        if (isFirstCourse) {
+          endMinute = endMinute - duration
+        }
 
         // 分钟进位计算
-        let totalMinutes = currentMinute + duration
-        endHour = currentHour + Math.floor(totalMinutes / 60)
-        endMinute = totalMinutes % 60
+        endHour = currentHour + Math.floor(endMinute / 60)
+        endMinute = endMinute % 60
 
-        // 构建结果对象
-        timeTableResult.push({
-          courseName: courseInfo.courseName,
-          teacher: courseInfo.teacher,
-          classroom: courseInfo.classroom,
-          timeHour: currentHour.toString().padStart(2, "0"),
-          timeMinute: currentMinute.toString().padStart(2, "0")
-        })
+        
 
         // 统一更新时间计算（首项课程后开始应用课间）
         // 统一应用课间时间
@@ -160,6 +159,16 @@ export default {
         if (isFirstCourse) {
           isFirstCourse = false
         }
+
+        // 构建结果对象
+        timeTableResult.push({
+          courseName: courseInfo.courseName,
+          teacher: courseInfo.teacher,
+          classroom: courseInfo.classroom,
+          timeHour: currentHour.toString().padStart(2, "0"),
+          timeMinute: currentMinute.toString().padStart(2, "0")
+        })
+        // endMinute = endMinute + duration
 
         // 标记临时课间需要重置
         shouldResetInterval = tempInterval
