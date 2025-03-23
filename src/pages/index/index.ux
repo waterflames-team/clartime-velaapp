@@ -101,7 +101,7 @@
 
         <div class="component-nav">
           <text class="component-nav-title-text">{{ title_other }}</text>
-          <text class="component-nav-title-time">{{ time }}</text>``
+          <text class="component-nav-title-time">{{ time }}</text>
         </div>
 
         <div class="gap-110"></div>
