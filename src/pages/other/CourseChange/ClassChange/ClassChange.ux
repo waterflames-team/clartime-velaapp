@@ -192,7 +192,7 @@ export default {
     selectedCard: -1,
     page: 1,
     changeRseult: 1,
-    changeDate: [],
+    changeDate: ['ClassChange'],
 
     coursesName: "语文",
     coursesStartTime: "16:35 - 17:20",
@@ -221,6 +221,7 @@ export default {
       router.back()
     } else {
       this.page -= 1
+      this.changeDate.pop()
     }
   },
   
