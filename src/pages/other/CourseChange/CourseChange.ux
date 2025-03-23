@@ -7,13 +7,13 @@
     </div>
     <div class="gap-110"></div>
 
-    <div class="component-courseChange-button" if="{{changePattern === 0}}" onclick="setCourseChange">
+    <div class="component-courseChange-button" onclick="jumpClassChange">
       <div class="gap-140"></div>
       <text class="component-courseChange-text1">调课</text>
       <text class="component-courseChange-text2">修改临时或永久性调课</text>
     </div>
     <div class="gap-80"></div>
-    <div class="component-courseChange-button" if="{{changePattern === 0}}" onclick="setRestChange">
+    <div class="component-courseChange-button" onclick="jumpDayChange">
       <div class="gap-140"></div>
       <text class="component-courseChange-text1">调休</text>
       <text class="component-courseChange-text2">修改临时性调休</text>
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import {title} from "@system.audio"
 import router from "@system.router"
 import app from "@system.app"
 
@@ -32,7 +31,6 @@ export default {
     title: "课程调节",
     title_time: "",
     timer: null,
-    changePattern: 0, // 0: 主页 1: 调课 2: 调休
   },
   onInit() {
     this.updateTime() // 初始化时调用一次 updateTime
@@ -52,23 +50,20 @@ export default {
   },
 
   exit() {
-    if (this.changePattern === 0) {
-      router.back()
-    } else if (this.changePattern === 1 || this.changePattern === 2) {
-      this.changePattern = 0
-    }
+    router.back()
   },
 
-  // 调课页面
-  setCourseChange() {
-    this.changePattern = 1
+  jumpClassChange() {
+    router.push({
+      uri: "pages/other/CourseChange/ClassChange",
+    })
   },
 
-  // 调休页面
-  setRestChange() {
-    this.changePattern = 2
+  jumpDayChange() {
+    router.push({
+      uri: "pages/other/CourseChange/DayChange",
+    })
   },
-  
 }
 </script>
 
