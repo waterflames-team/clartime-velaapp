@@ -1,0 +1,44 @@
+[
+    {
+        "courseName": "courseName",
+        "teacher": "teacher",
+        "classroom": "classroom",
+        "timeHour": "timeHour",
+        "timeMinute": "timeMinute"
+    },
+    ...
+]
+
+
+[
+    "courseName\": \"语文\",
+    \"teacher\": \"无\",
+    "classroom\": \"本班\",
+    "timeHour\": \"08\",\n    
+    \"timeMinute\": \"00\"\n  
+    },\n  
+    {\n    
+    \"courseName\": \
+    "地理\",\n    \
+    "teacher\": \"无\",\n    
+    \"classroom\": \"本班\",\n    \
+    "timeHour\": \"08\",\n    \
+    "timeMinute\": \"55\"\n  },\n  {\n    \
+
+    "courseName\": \"英语\",\n    \
+    "teacher\": \"无\",\n    \
+    "classroom\": \"本班\",\n    \"
+    timeHour\": \"09\",\n    \
+    "timeMinute\": \"50\"\n  },\n  {\n    \
+    
+    "courseName\": \"数学\",\n    \"teacher\": \"无\",\n    \"classroom\": \"本班\",\n    
+    \"timeHour\": \"11\",\n    \"timeMinute\": \"00\"\n  },\n  {\n    
+    
+    \"courseName\": \"美术\",\n    \"teacher\": \"无\",\n    \"classroom\": \"走班\",\n    
+    \"timeHour\": \"11\",\n    \"timeMinute\": \"55\"\n  },\n  {\n    
+    \"courseName\": \"劳技\",\n    \"teacher\": \"无\",\n    \"classroom\": \"走班\",\n   
+     \"timeHour\": \"12\",\n    \"timeMinute\": \"50\"\n  },\n  {\n    
+     \"courseName\": \"生物\",\n    \"teacher\": \"无\",\n    \"classroom\": \"走班\",\n    
+     \"timeHour\": \"13\",\n    \"timeMinute\": \"50\"\n  },\n  {\n    
+     \"courseName\": \"校本\",\n    \"teacher\": \"无\",\n    \"classroom\": \"走班\",\n    
+     \"timeHour\": \"14\",\n    \"timeMinute\": \"45\"\n  }\n]
