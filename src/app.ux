@@ -84,6 +84,7 @@ export default {
     let currentMinute = parseInt(morningStartMinute)
     let currentInterval = basicInfo.intervalTime
     let currentPeriod = "morning"
+    let isFirstCourse = true
 
     // 总课程数
     let totalCourses = morningCourseCount + afternoonCourseCount + eveningCourseCount
@@ -95,11 +96,17 @@ export default {
 
       if (!item) break
 
+      // 监测临时课间逻辑
+      let tempInterval = false
       if (item.type === "interval") {
         currentInterval = item.intervalTime
+        tempInterval = true
         totalCourses++
         continue
       }
+
+      // 处理临时课间恢复逻辑
+      let shouldResetInterval = false
 
       // 时段切换检测
       if (currentPeriod === "morning" && currentIndex >= morningCourseCount) {
@@ -130,13 +137,10 @@ export default {
         let endHour = currentHour
         let endMinute = currentMinute + duration
 
-        // 分钟进位计算：
-        // 示例：当前时间08:45 + 45分钟课程 → 结束时间09:30
-        // 若课程结束分钟数≥60，则向小时位进位
-        if (endMinute >= 60) {
-          endHour += Math.floor(endMinute / 60)
-          endMinute = endMinute % 60
-        }
+        // 分钟进位计算
+        let totalMinutes = currentMinute + duration
+        endHour = currentHour + Math.floor(totalMinutes / 60)
+        endMinute = totalMinutes % 60
 
         // 构建结果对象
         timeTableResult.push({
@@ -147,13 +151,24 @@ export default {
           timeMinute: currentMinute.toString().padStart(2, "0")
         })
 
-        // 更新下节课开始时间（当前结束时间 + 课间时间）
-        currentMinute = endMinute + currentInterval
+        // 统一更新时间计算（首项课程后开始应用课间）
+        // 统一应用课间时间
+        currentMinute = endMinute + (isFirstCourse ? 0 : currentInterval)
         currentHour = endHour + Math.floor(currentMinute / 60)
         currentMinute = currentMinute % 60
 
-        // 恢复默认课间时间
-        currentInterval = courseBasicInfo.intervalTime
+        if (isFirstCourse) {
+          isFirstCourse = false
+        }
+
+        // 标记临时课间需要重置
+        shouldResetInterval = tempInterval
+
+        // 应用临时课间后立即恢复默认（仅当tempInterval为true）
+        if (shouldResetInterval) {
+          currentInterval = basicInfo.intervalTime
+          shouldResetInterval = false
+        }
       }
     }
 
