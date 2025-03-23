@@ -97,10 +97,8 @@ export default {
       if (!item) break
 
       // 监测临时课间逻辑
-      let tempInterval = false
       if (item.type === "interval") {
         currentInterval = item.intervalTime
-        tempInterval = true
         totalCourses++
         continue
       }
@@ -160,6 +158,9 @@ export default {
           isFirstCourse = false
         }
 
+        // 标记临时课间需要重置
+        currentInterval = basicInfo.intervalTime
+
         // 构建结果对象
         timeTableResult.push({
           courseName: courseInfo.courseName,
@@ -170,14 +171,6 @@ export default {
         })
         // endMinute = endMinute + duration
 
-        // 标记临时课间需要重置
-        shouldResetInterval = tempInterval
-
-        // 应用临时课间后立即恢复默认（仅当tempInterval为true）
-        if (shouldResetInterval) {
-          currentInterval = basicInfo.intervalTime
-          shouldResetInterval = false
-        }
       }
     }
 
