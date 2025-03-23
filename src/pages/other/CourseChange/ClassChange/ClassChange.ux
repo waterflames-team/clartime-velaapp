@@ -8,14 +8,15 @@
     
     <text class="component-classChange-text" if="{{ page === 1 }}">请选择被调节的课</text>
     <text class="component-classChange-text" if="{{ page === 2 }}">请选择调节结果</text>
+    <text class="component-classChange-text" if="{{ page === 3 }}">请选择调节范围</text>
 
     <!-- 调课-1 -->
     <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 1 }}">
       <div class="gap-36"></div>
         <text class="component-classChange-card-weaknum">周一</text>
 
-        <div class="component-classChange-card-border">
-          <div class="component-classChange-card-content" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-border-l">
+          <div class="component-classChange-card-content-l" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
             <div class="gap-142"></div>
             <text class="component-classChange-card-text">上午第1节课</text>
             <text class="component-classChange-card-courses">{{ coursesName }}</text>
@@ -30,8 +31,8 @@
         <div class="gap-36"></div>
         <text class="component-classChange-card-weaknum">周二</text>
 
-        <div class="component-classChange-card-border">
-          <div class="component-classChange-card-content" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-border-l">
+          <div class="component-classChange-card-content-l" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
             <div class="gap-142"></div>
             <text class="component-classChange-card-text">上午第1节课</text>
             <text class="component-classChange-card-courses">{{ coursesName }}</text>
@@ -46,8 +47,8 @@
         <div class="gap-36"></div>
         <text class="component-classChange-card-weaknum">周三</text>
 
-        <div class="component-classChange-card-border">
-          <div class="component-classChange-card-content" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-border-l">
+          <div class="component-classChange-card-content-l" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
             <div class="gap-142"></div>
             <text class="component-classChange-card-text">上午第1节课</text>
             <text class="component-classChange-card-courses">{{ coursesName }}</text>
@@ -62,8 +63,8 @@
         <div class="gap-36"></div>
         <text class="component-classChange-card-weaknum">周四</text>
 
-        <div class="component-classChange-card-border">
-          <div class="component-classChange-card-content" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-border-l">
+          <div class="component-classChange-card-content-l" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
             <div class="gap-142"></div>
             <text class="component-classChange-card-text">上午第1节课</text>
             <text class="component-classChange-card-courses">{{ coursesName }}</text>
@@ -78,8 +79,8 @@
         <div class="gap-36"></div>
         <text class="component-classChange-card-weaknum">周五</text>
 
-        <div class="component-classChange-card-border">
-          <div class="component-classChange-card-content" ontouchstart="selectCard(4)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-border-l">
+          <div class="component-classChange-card-content-l" ontouchstart="selectCard(4)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
             <div class="gap-142"></div>
             <text class="component-classChange-card-text">上午第1节课</text>
             <text class="component-classChange-card-courses">{{ coursesName }}</text>
@@ -106,7 +107,7 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-classChange-card-content-s" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
           <div class="gap-142"></div>
           <text class="component-classChange-card-courses">{{ coursesName }}</text>
           <div class="gap-80"></div>
@@ -115,7 +116,7 @@
         </div>
       </div>
       <div class="component-classChange-card-border-s">
-        <div class="component-classChange-card-content-s" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
           <div class="gap-142"></div>
           <text class="component-classChange-card-courses">{{ coursesName }}</text>
           <div class="gap-80"></div>
@@ -125,7 +126,7 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-classChange-card-content-s" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="component-classChange-card-content-s" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
           <div class="gap-142"></div>
           <text class="component-classChange-card-courses">{{ coursesName }}</text>
           <div class="gap-80"></div>
@@ -135,6 +136,45 @@
       </div>
 
     </scroll>
+
+    <!-- 调课-3 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 3 }}">
+      <div class="gap-36"></div>
+
+      <div class="component-classChange-card-content-m" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="gap-140"></div>
+        <text class="component-classChange-text1">仅本次</text>
+        <text class="component-classChange-text2">仅本次临时调课</text>
+      </div>
+      <div class="gap-80"></div>
+      <div class="component-classChange-card-content-m" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn()" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
+        <div class="gap-140"></div>
+        <text class="component-classChange-text1">本次及将来的课程</text>
+        <text class="component-classChange-text2">永久性调课</text>
+      </div>
+    </scroll>
+
+    <!-- 结束页 -->
+    <div class="component-classChange-resultPage" if="{{ page === 4 }}">
+      <div class="gap-36"></div>
+
+      <div class="component-classChange-result loading" if="{{changeRseult === -1}}">
+        <text class="component-classChange-result-icon">...</text>
+      </div>
+      <div class="component-classChange-result success" elif="{{changeRseult === 1}}">
+        <text class="component-classChange-result-icon">✓</text>
+      </div>
+      <div class="component-classChange-result failure" elif="{{changeRseult === 0}}">
+        <text class="component-classChange-result-icon">✕</text>
+      </div>
+
+      <div class="gap-240"></div>
+
+      <text class="component-classChange-result-text" if="{{changeRseult === -1}}">调整中</text>
+      <text class="component-classChange-result-text" elif="{{changeRseult === 1}}">调整完成</text>
+      <text class="component-classChange-result-text" elif="{{changeRseult === 0}}">调整失败</text>
+
+    </div>
   </div>
 </template>
 
@@ -150,6 +190,7 @@ export default {
     timer: null,
     selectedCard: -1,
     page: 1,
+    changeRseult: 1,
 
     coursesName: "语文",
     coursesStartTime: "16:35 - 17:20",
@@ -174,7 +215,11 @@ export default {
   },
 
   exit() {
-    router.back()
+    if ((this.page === 4 && this.changeRseult !== -1 ) || this.page === 1) {
+      router.back()
+    } else {
+      this.page -= 1
+    }
   },
   
   selectCard(idx) {
@@ -183,6 +228,7 @@ export default {
 
   pageTurn() {
     this.page += 1
+    this.selectedCard = -1
   },
   
 }
@@ -210,6 +256,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
   margin-bottom: 30px;
   width: 324px;
   height: 386px;
@@ -231,7 +278,7 @@ export default {
   vertical-align: top;
 }
 
-.component-classChange-card-border {
+.component-classChange-card-border-l {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -245,7 +292,7 @@ export default {
   height: 134px;
 }
 
-.component-classChange-card-content {
+.component-classChange-card-content-l {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -255,6 +302,19 @@ export default {
   top: 0px;
   width: 318px;
   height: 177px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-content-m {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 324px;
+  height: 112px;
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
@@ -273,6 +333,47 @@ export default {
   background-color: rgba(38, 38, 38, 1);
 }
 
+.component-classChange-resultPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 324px;
+  height: 386px;
+}
+
+.component-classChange-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 128px;
+  height: 128px;
+  opacity: 1;
+  border-radius: 39px;
+}
+.loading {
+  background-color: rgba(255, 195, 0, 1);
+}
+.failure {
+  background-color: rgba(255, 0, 0, 1);
+}
+.success {
+  background-color: rgba(14, 124, 59, 1);
+}
+
+.component-classChange-result-icon {
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 79.56px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: middle;
+}
+
 .component-classChange-card-text {
   left: 19px;
   opacity: 1;
@@ -280,6 +381,42 @@ export default {
   font-weight: 550;
   letter-spacing: 0px;
   line-height: 26.52px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-result-text {
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: top;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.component-classChange-text1 {
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-text2 {
+  left: 19px;
+  opacity: 1;
+  font-size: 28px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 39.2px;
   color: rgba(255, 255, 255, 0.6);
   text-align: left;
   vertical-align: top;
