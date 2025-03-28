@@ -3,8 +3,9 @@
 		"name": "高二下",
         "createTime": "250321210600",
         "updateTime": "250321210600",
-        "courseStart": "2503212",
-        "courseEnd": "2503212",
+        "courseStartbak": "250216",
+        "courseStart": "250201",
+        "courseEnd": "250711",
         "dataStructureVersion": "1.1"
 	},
 	"courses": [
