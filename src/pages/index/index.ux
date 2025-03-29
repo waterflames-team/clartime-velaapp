@@ -27,7 +27,7 @@
         <div class="gap-80"></div>
 
         <scroll class="component-coursePresentations" bounces="true" scroll-x="true">
-          <div class="component-coursePresentations-border">
+          <div class="component-coursePresentations-border" for="{{courseSchedule}}">
             <div
               class="component-coursePresentations-content"
               style="background-color: rgba(38, 38, 38, 1)"
@@ -44,58 +44,11 @@
                   上午第1节课
                 </text>
               </div>
-              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
+              <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
               <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-            </div>
-          </div>
-
-          <div class="component-coursePresentations-border">
-            <div class="component-coursePresentations-content">
-              <div class="gap-142"></div>
-              <div>
-                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
-                  当前课程
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
-                  现在是课间，下节课为
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
-                  上午第2节课
-                </text>
-              </div>
-              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-              <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
-            </div>
-          </div>
-
-          <div class="component-coursePresentations-border">
-            <div
-              class="component-coursePresentations-content"
-              style="background-color: rgba(38, 38, 38, 1)"
-            >
-              <div class="gap-142"></div>
-              <div>
-                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
-                  当前课程
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
-                  现在是课间，下节课为
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
-                  上午第3节课
-                </text>
-              </div>
-              <text class="component-coursePresentations-courses">{{ coursesName }}</text>
-              <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ coursesStartTime }}</text>
-              <text class="component-coursePresentations-text">{{ coursesClassroom }}</text>
-              <text class="component-coursePresentations-text">{{ coursesTeacher }}</text>
+              <text class="component-coursePresentations-text">{{ $item.courseName }}</text>
+              <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
+              <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
             </div>
           </div>
         </scroll>
@@ -139,6 +92,8 @@
           <div class="gap-100"></div>
           <text class="component-other-button_Text">关于</text>
         </div>
+
+        <text>{{ courseSchedule }}</text>
       </div>
     </scroll>
   </div>
@@ -156,25 +111,42 @@ export default {
     weekNum: "第亿周",
     remain: "还有 61 分钟下课",
 
+    courseSchedule: [],
     classStstus: 2,
     coursesName: "文语",
     coursesStartTime: "53:61 - 02:71",
-    coursesClassroom: "室教101",
+    coursesRoom: "室教101",
     coursesTeacher: "师老张",
 
     timer: null // 添加定时器变量
+  },
+
+  getCourses() {
+    const dayMap = {
+      周一: "Mon",
+      周二: "Tue",
+      周三: "Wed",
+      周四: "Thu",
+      周五: "Fri",
+      周六: "Sat",
+      周日: "Sun"
+    }
+    const whichDay = dayMap[this.dayNum]
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay, "1")
   },
 
   onInit() {
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
-    this.time = this.$app.$def.timeUpdate.updateTime().time,
-    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime)
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
       this.time = timeData.time
       this.fullTime = timeData.fullTime
     })
+
+    this.getCourses()
   },
 
   onDestroy() {

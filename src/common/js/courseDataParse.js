@@ -1,11 +1,11 @@
 import courseDataReader from "./courseDataReader"
 
 /**
-   * 获取课程安排
-   * @param {string} weekday - 星期几（如'星期一'）
-   * @returns {Array} 对应星期几的课程安排数据
-   */
-function getCourseSchedule(weekday) {
+ * 获取课程安排
+ * @param {string} weekday - 星期几（如'星期一'）
+ * @returns {Array} 对应星期几的课程安排数据
+ */
+function getCourseSchedule(weekday, type) {
   /**
    * 读取数据
    */
@@ -92,31 +92,36 @@ function getCourseSchedule(weekday) {
   // 3.拼接信息
   let courseCounter = 0
 
-  // 处理timetableData数组
-  const processedData = timetableData.map((item) => {
-    if (item.type === "course") {
-      const courseItem = daySchedule.courseList[courseCounter]
-      courseCounter++
-      const courseId = courseItem.courseId
-      const courseRepeatability = courseItem.courseRepeatability
-      const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
-      const courseData = coursesInfo[finalCourseId]
-      console.log("课程信息:", courseData)
-      /**
-       * 数据返回
-       */
-      return {
-        type: item.type,
-        courseName: courseData.courseName,
-        courseTeacher: courseData.courseTeacher,
-        courseRoom: courseData.courseRoom,
-        timeHour: item.timeHour,
-        timeMinute: item.timeMinute
+  if (type === "1") {
+    // type1：直接输出列表映射
+    // 处理timetableData数组
+    const processedData = timetableData.map((item) => {
+      if (item.type === "course") {
+        const courseItem = daySchedule.courseList[courseCounter]
+        courseCounter++
+        const courseId = courseItem.courseId
+        const courseRepeatability = courseItem.courseRepeatability
+        const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
+        const courseData = coursesInfo[finalCourseId]
+        console.log("课程信息:", courseData)
+        /**
+         * 数据返回
+         */
+        return {
+          type: item.type,
+          courseName: courseData.courseName,
+          courseTeacher: courseData.courseTeacher,
+          courseRoom: courseData.courseRoom,
+          timeHour: item.timeHour,
+          timeMinute: item.timeMinute
+        }
+      } else if (item.type === "interval" || item.type === "end" || item.type === "rest") {
+        return item
       }
-    } else if (item.type === "interval" || item.type === "end" || item.type === "rest") {
-      return item
-    }
-  })
+    })
+  } else if (type === "2") {
+    // type2：输出课程起止表
+  }
   console.log("处理后的timetableData:", processedData)
   return processedData
 }
