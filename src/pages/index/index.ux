@@ -33,9 +33,21 @@
           scroll-left="{{autoDistance}}"
         >
           <div class="component-coursePresentations-border" for="{{courseSchedule}}">
+            <div class="component-coursePresentations-content" if="{{indexNow === $idx}}">
+              <div class="gap-142"></div>
+              <div>
+                <text class="component-coursePresentations-text">{{ $item.description }}</text>
+              </div>
+              <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
+              <div class="gap-214"></div>
+              <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
+              <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
+              <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
+            </div>
             <div
               class="component-coursePresentations-content"
               style="background-color: rgba(38, 38, 38, 1)"
+              else
             >
               <div class="gap-142"></div>
               <div>
@@ -112,6 +124,7 @@ export default {
     coursesRoom: "室教101",
     coursesTeacher: "师老张",
     autoDistance: 0,
+    indexNow: 0,
 
     timer: null // 添加定时器变量
   },
@@ -128,6 +141,7 @@ export default {
     }
     const whichDay = dayMap[this.dayNum]
     this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    console.log(this.courseSchedule)
   },
 
   getCurrentCourseIndex() {
@@ -200,11 +214,8 @@ export default {
 
     this.autoDistance =
       this.getCurrentCourseIndex() * 308 + this.getCurrentCourseIndex() * 30 + "px"
-    console.log(this.autoDistance)
-    console.log(this.autoDistance)
-    console.log(this.autoDistance)
-    console.log(this.autoDistance)
-    console.log(this.autoDistance)
+
+    this.indexNow = this.getCurrentCourseIndex() - 1
   },
 
   onDestroy() {
