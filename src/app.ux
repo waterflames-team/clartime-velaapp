@@ -7,7 +7,6 @@ import dateUpdate from "./common/js/dateUpdate"
 export default {
   onCreate() {
     console.log("app created")
-    courseDataParse.getCourseSchedule("Mon")
   },
 
   onDestroy() {

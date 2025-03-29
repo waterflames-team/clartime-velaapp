@@ -1,11 +1,17 @@
 import courseDataReader from "./courseDataReader"
 
 /**
- * 获取课程安排
- * @param {string} weekday - 星期几（如'星期一'）
- * @returns {Array} 对应星期几的课程安排数据
+ * 获取指定星期几的课程安排数据
+ * @param {string} weekday - 星期几的英文缩写（如'Mon'表示星期一）
+ * @returns {Array} 返回对应星期几的课程安排数据数组，包含以下字段：
+ *   - type: 条目类型（'course'/'interval'/'end'/'rest'）
+ *   - courseName: 课程名称（仅type='course'时有）
+ *   - courseTeacher: 授课教师（仅type='course'时有）
+ *   - courseRoom: 教室（仅type='course'时有）
+ *   - timeHour: 小时（仅type='course'/'interval'时有）
+ *   - timeMinute: 分钟（仅type='course'/'interval'时有）
  */
-function getCourseSchedule(weekday, type) {
+function getCourseSchedule(weekday) {
   /**
    * 读取数据
    */
@@ -90,40 +96,102 @@ function getCourseSchedule(weekday, type) {
   const timetableData = timetableInfo[selectedTimetable]
   console.log("当前课程表信息:", timetableData)
   // 3.拼接信息
-  let courseCounter = 0
+  let courseCounter = 0 // 课程计数器
 
-  if (type === "1") {
-    // type1：直接输出列表映射
-    // 处理timetableData数组
-    const processedData = timetableData.map((item) => {
-      if (item.type === "course") {
+  // 处理timetableData数组
+  const processedData = timetableData.map((item) => {
+    if (item.type === "course") {
+      const courseItem = daySchedule.courseList[courseCounter] // 取出课程信息
+      courseCounter++
+      const courseId = courseItem.courseId
+      const courseRepeatability = courseItem.courseRepeatability
+      const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
+      const courseData = coursesInfo[finalCourseId]
+      console.log("课程信息:", courseData)
+
+      // 数据描述
+      let description;
+      if (item.timeHour <= 12) {
+        description = `早上第 ${courseCounter} 节课`;
+      } else if (item.timeHour < 18) {
+        description = `下午第 ${courseCounter} 节课`;
+      } else {
+        description = `晚上第 ${courseCounter} 节课`;
+      }
+
+
+
+      // 计算时间范围
+      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      const timeRange = nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined
+        ? `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")}`
+        : null
+
+      // 数据返回
+      return {
+        type: item.type,
+        description,
+        courseCounter: courseCounter,
+        courseName: courseData.courseName,
+        courseTeacher: courseData.teacher,
+        courseRoom: courseData.classroom,
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange
+      }
+    } else if (item.type === "interval" || item.type === "rest") {
+      // 获取下一节课信息
+      let nextCourseName = null
+      let nextCourseTeacher = null
+      let nextCourseRoom = null
+
+      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      if (nextItem && nextItem.type === "course") {
         const courseItem = daySchedule.courseList[courseCounter]
-        courseCounter++
         const courseId = courseItem.courseId
         const courseRepeatability = courseItem.courseRepeatability
         const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
         const courseData = coursesInfo[finalCourseId]
-        console.log("课程信息:", courseData)
-        /**
-         * 数据返回
-         */
-        return {
-          type: item.type,
-          courseName: courseData.courseName,
-          courseTeacher: courseData.courseTeacher,
-          courseRoom: courseData.courseRoom,
-          timeHour: item.timeHour,
-          timeMinute: item.timeMinute
-        }
-      } else if (item.type === "interval" || item.type === "end" || item.type === "rest") {
-        return item
+
+        nextCourseName = courseData.courseName
+        nextCourseTeacher = courseData.teacher
+        nextCourseRoom = courseData.classroom
       }
-    })
-  } else if (type === "2") {
-    // type2：输出课程起止表
-  }
+      //这里时间合成的是下节课的
+      const nextNextItem = timetableData[timetableData.indexOf(item) + 2]
+      const timeRange =
+        nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined &&
+          nextNextItem && nextNextItem.timeHour !== undefined && nextNextItem.timeMinute !== undefined
+          ? `${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")} - ${nextNextItem.timeHour
+          }:${String(nextNextItem.timeMinute).padStart(2, "0")}`
+          : null
+
+
+      // 数据描述
+      let description = "休息中，下一节课为"
+      if (item.type === "interval") {
+        description = "现在是课间，下一节课为"
+      } else if (item.timeHour > 12 && item.timeHour < 16) {
+        description = "午休中，下一节课为"
+      } else if (item.timeHour > 18) {
+        description = "晚休中，下一节课为"
+      }
+
+      // 数据返回
+      return {
+        type: item.type,
+        description,
+        courseName: nextCourseName,
+        courseTeacher: nextCourseTeacher,
+        courseRoom: nextCourseRoom,
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange,
+      }
+    }
+  })
   console.log("处理后的timetableData:", processedData)
-  return processedData
+  return processedData.slice(0, -1)
 }
 
 module.exports = {

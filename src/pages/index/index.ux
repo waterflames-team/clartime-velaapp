@@ -34,19 +34,11 @@
             >
               <div class="gap-142"></div>
               <div>
-                <text class="component-coursePresentations-text" if="{{ classStstus === 0 }}">
-                  当前课程
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 1 }}">
-                  现在是课间，下节课为
-                </text>
-                <text class="component-coursePresentations-text" elif="{{ classStstus === 2 }}">
-                  上午第1节课
-                </text>
+                <text class="component-coursePresentations-text">{{ $item.description }}</text>
               </div>
               <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
               <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ $item.courseName }}</text>
+              <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
               <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
               <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
             </div>
@@ -112,7 +104,6 @@ export default {
     remain: "还有 61 分钟下课",
 
     courseSchedule: [],
-    classStstus: 2,
     coursesName: "文语",
     coursesStartTime: "53:61 - 02:71",
     coursesRoom: "室教101",
@@ -132,7 +123,7 @@ export default {
       周日: "Sun"
     }
     const whichDay = dayMap[this.dayNum]
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay, "1")
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
   },
 
   onInit() {
