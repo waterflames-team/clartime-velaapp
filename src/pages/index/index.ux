@@ -270,7 +270,7 @@ export default {
   align-items: center;
   /* 在同一水平线上居中 */
 
-  height: 412px;
+  height: 480px;
 
   scroll-snap-align: start
 }
