@@ -5,45 +5,34 @@
       <text class="component-nav-title-time">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
-
-    
   </div>
-</div>
 </template>
 <script>
-import router from "@system.router"
-
 export default {
   private: {
     title: "rainbow",
-    title_time: "",
-    timer: null,
-  },
-  exit() {
-    router.back()
+    time: "",
+    timer: null
   },
   onInit() {
-    this.updateTime() // 初始化时调用一次 updateTime
-    this.timer = setInterval(() => this.updateTime(), 60000) // 每秒调用一次 updateTime
+    this.time = this.$app.$def.timeUpdate.updateTime().time,
+    this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+      this.time = timeData.time
+    })
+    // console.log("this.timer", this.time)
   },
 
   onDestroy() {
-    clearInterval(this.timer) // 清除定时器，防止内存泄漏
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
-  updateTime() {
-    const now = new Date()
-    const hours = String(now.getHours()).padStart(2, "0")
-    const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
-    this.title_time = `${hours}:${minutes}`
+  exit() {
+    this.$app.$def.router.back()
   },
 }
 </script>
-  
+
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
-
 </style>
-  
