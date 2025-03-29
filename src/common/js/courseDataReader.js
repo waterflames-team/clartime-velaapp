@@ -17,20 +17,6 @@ function getBasicInfo() {
 }
 
 /**
- * 获取课程表信息
- * @returns {Array} 课程表数组
- */
-function getTimetableInfo() {
-  try {
-    var courseData = require("../../common/data/courseData.json")
-    return courseData.timetable
-  } catch (error) {
-    console.error("读取课程表信息失败:", error)
-    return null
-  }
-}
-
-/**
  * 获取所有课程信息
  * @returns {Array} 课程信息数组
  */
@@ -44,8 +30,37 @@ function getCoursesInfo() {
   }
 }
 
+/**
+ * 获取时间表模板信息
+ * @returns {Array} 时间表模板数组
+ */
+function getTimetableTemplateInfo() {
+  try {
+    var courseData = require("../../common/data/courseData.json")
+    return courseData.timetableTemplate
+  } catch (error) {
+    console.error("读取时间表模板信息失败:", error)
+    return null
+  }
+}
+
+/**
+ * 获取课程次序信息
+ * @returns {Array} 课程次序数组
+ */
+function getCourseScheduleInfo() {
+  try {
+    var courseData = require("../../common/data/courseData.json")
+    return courseData.courseSchedule
+  } catch (error) {
+    console.error("读取课程次序信息失败:", error)
+    return null
+  }
+}
+
 module.exports = {
   getBasicInfo,
-  getTimetableInfo,
-  getCoursesInfo
+  getCoursesInfo,
+  getTimetableTemplateInfo,
+  getCourseScheduleInfo
 }
