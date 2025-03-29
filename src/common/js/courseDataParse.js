@@ -110,14 +110,15 @@ function getCourseSchedule(weekday) {
       // console.log("课程信息:", courseData)
 
       // 数据描述
-      let description;
-      if (item.timeHour <= 12) {
-        description = `早上第 ${courseCounter} 节课`;
-      } else if (item.timeHour < 18) {
-        description = `下午第 ${courseCounter} 节课`;
-      } else {
-        description = `晚上第 ${courseCounter} 节课`;
-      }
+      // let description;
+      // if (item.timeHour <= 12) {
+      //   description = `上午 · 第 ${courseCounter} 节课`;
+      // } else if (item.timeHour < 18) {
+      //   description = `下午 · 第 ${courseCounter} 节课`;
+      // } else {
+      //   description = `晚上 · 第 ${courseCounter} 节课`;
+      // }
+      let description = `第 ${courseCounter} 节课`;
 
       // 计算时间范围
       const nextItem = timetableData[timetableData.indexOf(item) + 1]

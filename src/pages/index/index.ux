@@ -141,7 +141,6 @@ export default {
     }
     const whichDay = dayMap[this.dayNum]
     this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
-    console.log(this.courseSchedule)
   },
 
   getCurrentCourseIndex() {
