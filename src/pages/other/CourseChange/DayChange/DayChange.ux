@@ -1,45 +1,74 @@
 <template>
-  <div class="page"> 
+  <div class="page">
     <div class="component-nav">
       <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ title_time }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
- 
+
     <text class="component-classChange-text" if="{{ page === 1 }}">请选择在本周几调休</text>
     <text class="component-classChange-text" if="{{ page === 2 }}">请选择调为周几的课</text>
 
     <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 1 || page === 2 }}">
       <div class="gap-36"></div>
-      
+
       <div class="component-classChange-card-border">
-        <div class="component-classChange-card-content" ontouchstart="selectCard(0)" ontouchend="selectCard(-1)" onclick="pageTurn(0)" style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
-        <text class="component-classChange-card-text">{{daynum}}</text>
+        <div
+          class="component-classChange-card-content"
+          ontouchstart="selectCard(0)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn(0)"
+          style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-classChange-card-text">{{ daynum }}</text>
         </div>
       </div>
       <div class="component-classChange-card-border">
-        <div class="component-classChange-card-content" ontouchstart="selectCard(1)" ontouchend="selectCard(-1)" onclick="pageTurn(1)" style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
-        <text class="component-classChange-card-text">{{daynum}}</text>
+        <div
+          class="component-classChange-card-content"
+          ontouchstart="selectCard(1)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn(1)"
+          style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-classChange-card-text">{{ daynum }}</text>
         </div>
       </div>
       <div class="component-classChange-card-border">
-        <div class="component-classChange-card-content" ontouchstart="selectCard(2)" ontouchend="selectCard(-1)" onclick="pageTurn(2)" style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
-        <text class="component-classChange-card-text">{{daynum}}</text>
+        <div
+          class="component-classChange-card-content"
+          ontouchstart="selectCard(2)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn(2)"
+          style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-classChange-card-text">{{ daynum }}</text>
         </div>
       </div>
       <div class="component-classChange-card-border">
-        <div class="component-classChange-card-content" ontouchstart="selectCard(3)" ontouchend="selectCard(-1)" onclick="pageTurn(3)" style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
-        <text class="component-classChange-card-text">{{daynum}}</text>
+        <div
+          class="component-classChange-card-content"
+          ontouchstart="selectCard(3)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn(3)"
+          style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-classChange-card-text">{{ daynum }}</text>
         </div>
       </div>
       <div class="component-classChange-card-border">
-        <div class="component-classChange-card-content" ontouchstart="selectCard(4)" ontouchend="selectCard(-1)" onclick="pageTurn(4)" style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}">
-        <text class="component-classChange-card-text">{{daynum}}</text>
+        <div
+          class="component-classChange-card-content"
+          ontouchstart="selectCard(4)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn(4)"
+          style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-classChange-card-text">{{ daynum }}</text>
         </div>
       </div>
-      
     </scroll>
-      
+
     <!-- 结束页 -->
     <div class="component-classChange-resultPage" if="{{ page === 3 }}">
       <div class="gap-36"></div>
@@ -60,35 +89,33 @@
       <text class="component-classChange-result-text" elif="{{changeRseult === 1}}">调整完成</text>
       <text class="component-classChange-result-text" elif="{{changeRseult === 0}}">调整失败</text>
 
-      <text class="component-classChange-result-text">{{changeDate}}</text>
+      <text class="component-classChange-result-text">{{ changeDate }}</text>
     </div>
-
   </div>
 </template>
-  
-<script>
-import {title} from "@system.audio"
-import router from "@system.router"
-import app from "@system.app"
 
+<script>
 export default {
   private: {
     title: "调休",
-    title_time: "",
+    time: "",
     timer: null,
     selectedCard: -1,
     page: 1,
     changeRseult: 1,
     daynum: "周一",
-    changeDate: ['DayChange'],
+    changeDate: ["DayChange"]
   },
   onInit() {
-    this.updateTime() // 初始化时调用一次 updateTime
-    this.timer = setInterval(() => this.updateTime(), 60000) // 每秒调用一次 updateTime
+    this.time = this.$app.$def.timeUpdate.updateTime().time,
+    this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+      this.time = timeData.time
+    })
+    // console.log("this.timer", this.time)
   },
 
   onDestroy() {
-    clearInterval(this.timer) // 清除定时器，防止内存泄漏
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
   updateTime() {
@@ -100,14 +127,14 @@ export default {
   },
 
   exit() {
-    if ((this.page === 3 && this.changeRseult !== -1 ) || this.page === 1) {
-      router.back()
+    if ((this.page === 3 && this.changeRseult !== -1) || this.page === 1) {
+      this.$app.$def.router.back()
     } else {
       this.page -= 1
       this.changeDate.pop()
     }
   },
-  
+
   selectCard(idx) {
     this.selectedCard = idx
   },
@@ -116,8 +143,7 @@ export default {
     this.page += 1
     this.changeDate.push(idx)
     this.selectedCard = -1
-  },
-
+  }
 }
 </script>
 
@@ -146,8 +172,8 @@ export default {
   margin-bottom: 30px;
   width: 324px;
   height: 386px;
-  
-  scroll-snap-align: start 
+
+  scroll-snap-align: start;
 }
 
 .component-classChange-card-border {
