@@ -4,6 +4,8 @@ function updateTime() {
   const minutes = String(now.getMinutes()).padStart(2, "0")
   const Seconds = String(now.getSeconds()).padStart(2, "0")
   return {
+    hours,
+    minutes,
     time: `${hours}:${minutes}`,
     fullTime: `${hours}:${minutes}:${Seconds}`
   }

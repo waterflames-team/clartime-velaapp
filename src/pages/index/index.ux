@@ -84,8 +84,6 @@
           <div class="gap-100"></div>
           <text class="component-other-button_Text">关于</text>
         </div>
-
-        <text>{{ courseSchedule }}</text>
       </div>
     </scroll>
   </div>
@@ -123,7 +121,82 @@ export default {
       周日: "Sun"
     }
     const whichDay = dayMap[this.dayNum]
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay).slice(0, -1)
+  },
+
+  getCurrentCourseIndex() { //寻找最近项目的索引
+    // 取元列表
+    const dayMap = {
+      周一: "Mon",
+      周二: "Tue",
+      周三: "Wed",
+      周四: "Thu",
+      周五: "Fri",
+      周六: "Sat",
+      周日: "Sun"
+    }
+    const whichDay = dayMap[this.dayNum]
+    const courseScheduleInall = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
+    const currentHours = currentTime.hours
+    const currentMinutes = currentTime.minutes
+
+    for (let i = 0; i < courseScheduleInall.length - 1; i++) {
+      const currentItem = courseScheduleInall[i]
+      const nextItem = courseScheduleInall[i + 1]
+      // console.log(currentItem.timeHour, currentItem.timeMinute)
+      // console.log("daduan")
+      // console.log(nextItem.timeHour, nextItem.timeMinute)
+
+      if (
+        (currentHours > currentItem.timeHour ||
+          (currentHours === currentItem.timeHour && currentMinutes >= currentItem.timeMinute)) &&
+        (currentHours < nextItem.timeHour ||
+          (currentHours === nextItem.timeHour && currentMinutes < nextItem.timeMinute))
+      ) {
+        return i + 1
+      }
+    }
+    return -1
+  },
+
+  getRemainingTime() {
+    // 取元列表
+    const dayMap = {
+      周一: "Mon",
+      周二: "Tue",
+      周三: "Wed",
+      周四: "Thu",
+      周五: "Fri",
+      周六: "Sat",
+      周日: "Sun"
+    }
+    const whichDay = dayMap[this.dayNum]
+    const courseScheduleInall = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+
+    const currentIndex = this.getCurrentCourseIndex()
+    if (currentIndex === -1 || currentIndex >= courseScheduleInall.length - 1) {
+      return "今日课程结束～"
+    }
+
+    const nextCourse = courseScheduleInall[currentIndex]
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
+
+    // 计算分钟差
+    const currentTotalMinutes = currentTime.hours * 60 + currentTime.minutes
+    const nextCourseTotalMinutes = nextCourse.timeHour * 60 + nextCourse.timeMinute
+    const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
+
+    if (nextCourse.type === "course") {
+      return "还有 " + remainingMinutes + " 分钟下课"
+    } else if (nextCourse.type === "interval" || nextCourse.type === "rest") {
+      return "还有 " + remainingMinutes + " 分钟上课"
+    } else if (nextCourse.type === "end") {
+      return "今日课程结束～"
+    }
+
+    return remainingMinutes
   },
 
   onInit() {
@@ -138,6 +211,8 @@ export default {
     })
 
     this.getCourses()
+    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+    this.remain = this.getRemainingTime()
   },
 
   onDestroy() {

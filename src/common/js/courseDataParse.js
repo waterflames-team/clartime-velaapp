@@ -46,7 +46,7 @@ function getCourseSchedule(weekday) {
     2,
     "0"
   )}-${String(nextMonday.getDate()).padStart(2, "0")}`
-  console.log("下一个周一的日期是：" + nextMondayDate)
+  // console.log("下一个周一的日期是：" + nextMondayDate)
 
   // 5.初始化开学周数
   const startWeekNumber = 1
@@ -57,7 +57,7 @@ function getCourseSchedule(weekday) {
   const timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
   const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
   const currentWeekNumber = startWeekNumber + weekDiff + 1
-  console.log("当前是第" + currentWeekNumber + "周")
+  // console.log("当前是第" + currentWeekNumber + "周")
 
   /**
    * 周数循环器函数
@@ -71,7 +71,7 @@ function getCourseSchedule(weekday) {
     return (remainder === 0 ? num : remainder) - 1
   }
 
-  console.log(calculateWeekRemainder(3))
+  // console.log(calculateWeekRemainder(3))
 
   /**
    * 信息拼接
@@ -88,13 +88,13 @@ function getCourseSchedule(weekday) {
   const daySchedule = scheduleInfo[WhichDay]
   // 2.计算时间样表选取
   const timetableRepeatability = daySchedule.timetableRepeatability
-  console.log("timetableRepeatability:", timetableRepeatability)
+  // console.log("timetableRepeatability:", timetableRepeatability)
   const timetableId = daySchedule.timetableId
   const timetableIndex = calculateWeekRemainder(timetableRepeatability)
   const selectedTimetable = timetableId[timetableIndex]
-  console.log("当前周对应的timetable:", selectedTimetable)
+  // console.log("当前周对应的timetable:", selectedTimetable)
   const timetableData = timetableInfo[selectedTimetable]
-  console.log("当前课程表信息:", timetableData)
+  // console.log("当前课程表信息:", timetableData)
   // 3.拼接信息
   let courseCounter = 0 // 课程计数器
 
@@ -107,7 +107,7 @@ function getCourseSchedule(weekday) {
       const courseRepeatability = courseItem.courseRepeatability
       const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
       const courseData = coursesInfo[finalCourseId]
-      console.log("课程信息:", courseData)
+      // console.log("课程信息:", courseData)
 
       // 数据描述
       let description;
@@ -139,7 +139,7 @@ function getCourseSchedule(weekday) {
         timeMinute: item.timeMinute,
         timeRange
       }
-    } else if (item.type === "interval" || item.type === "rest") {
+    } else if (item.type === "interval" || item.type === "rest" || item.type === "end") {
       // 获取下一节课信息
       let nextCourseName = null
       let nextCourseTeacher = null
@@ -190,10 +190,54 @@ function getCourseSchedule(weekday) {
       }
     }
   })
-  console.log("处理后的timetableData:", processedData)
-  return processedData.slice(0, -1)
+  // console.log("处理后的timetableData:", processedData)
+  return processedData
+}
+
+function getWeekNumber() {
+  const basicInfo = courseDataReader.getBasicInfo()
+  /**
+   * 周数计算
+   */
+  // 1.解析日期格式
+  const parseDate = (dateStr) => {
+    const year = "20" + dateStr.substring(0, 2)
+    const month = dateStr.substring(2, 4)
+    const day = dateStr.substring(4, 6)
+    return `${year}-${month}-${day}`
+  }
+
+  // 2.转换courseStart格式
+  const formattedStartDate = parseDate(basicInfo.courseStart)
+
+  // 3.计算开学日是星期几 (0-6, 0表示周日)
+  const startDate = new Date(formattedStartDate)
+  const startDayOfWeek = startDate.getDay()
+
+  // 4.计算下一个周一的具体日期
+  const nextMonday = new Date(startDate)
+  const daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  nextMonday.setDate(startDate.getDate() + daysUntilMonday)
+  const nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}-${String(nextMonday.getDate()).padStart(2, "0")}`
+  // console.log("下一个周一的日期是：" + nextMondayDate)
+
+  // 5.初始化开学周数
+  const startWeekNumber = 1
+
+  // 6.计算当前周数
+  const today = new Date()
+  const nextMondayDateInCalc = new Date(nextMondayDate)
+  const timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
+  const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
+  const currentWeekNumber = startWeekNumber + weekDiff + 1
+  // console.log("当前是第" + currentWeekNumber + "周")
+  return "第 " + currentWeekNumber + " 周"
 }
 
 module.exports = {
-  getCourseSchedule
+  getCourseSchedule,
+  getWeekNumber
 }
