@@ -26,7 +26,12 @@
 
         <div class="gap-80"></div>
 
-        <scroll class="component-coursePresentations" bounces="true" scroll-x="true">
+        <scroll
+          class="component-coursePresentations"
+          bounces="true"
+          scroll-x="true"
+          scroll-left="{{autoDistance}}"
+        >
           <div class="component-coursePresentations-border" for="{{courseSchedule}}">
             <div
               class="component-coursePresentations-content"
@@ -106,6 +111,7 @@ export default {
     coursesStartTime: "53:61 - 02:71",
     coursesRoom: "室教101",
     coursesTeacher: "师老张",
+    autoDistance: 0,
 
     timer: null // 添加定时器变量
   },
@@ -121,30 +127,19 @@ export default {
       周日: "Sun"
     }
     const whichDay = dayMap[this.dayNum]
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay).slice(0, -1)
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
   },
 
-  getCurrentCourseIndex() { //寻找最近项目的索引
-    // 取元列表
-    const dayMap = {
-      周一: "Mon",
-      周二: "Tue",
-      周三: "Wed",
-      周四: "Thu",
-      周五: "Fri",
-      周六: "Sat",
-      周日: "Sun"
-    }
-    const whichDay = dayMap[this.dayNum]
-    const courseScheduleInall = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+  getCurrentCourseIndex() {
+    //寻找最近项目的索引
 
     const currentTime = this.$app.$def.timeUpdate.updateTime()
     const currentHours = currentTime.hours
     const currentMinutes = currentTime.minutes
 
-    for (let i = 0; i < courseScheduleInall.length - 1; i++) {
-      const currentItem = courseScheduleInall[i]
-      const nextItem = courseScheduleInall[i + 1]
+    for (let i = 0; i < this.courseSchedule.length - 1; i++) {
+      const currentItem = this.courseSchedule[i]
+      const nextItem = this.courseSchedule[i + 1]
       // console.log(currentItem.timeHour, currentItem.timeMinute)
       // console.log("daduan")
       // console.log(nextItem.timeHour, nextItem.timeMinute)
@@ -158,29 +153,18 @@ export default {
         return i + 1
       }
     }
-    return -1
+    return this.courseSchedule.length
   },
 
   getRemainingTime() {
     // 取元列表
-    const dayMap = {
-      周一: "Mon",
-      周二: "Tue",
-      周三: "Wed",
-      周四: "Thu",
-      周五: "Fri",
-      周六: "Sat",
-      周日: "Sun"
-    }
-    const whichDay = dayMap[this.dayNum]
-    const courseScheduleInall = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
 
     const currentIndex = this.getCurrentCourseIndex()
-    if (currentIndex === -1 || currentIndex >= courseScheduleInall.length - 1) {
+    if (currentIndex === this.courseSchedule.length) {
       return "今日课程结束～"
     }
 
-    const nextCourse = courseScheduleInall[currentIndex]
+    const nextCourse = this.courseSchedule[currentIndex]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 计算分钟差
@@ -213,6 +197,14 @@ export default {
     this.getCourses()
     this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
     this.remain = this.getRemainingTime()
+
+    this.autoDistance =
+      this.getCurrentCourseIndex() * 308 + this.getCurrentCourseIndex() * 30 + "px"
+    console.log(this.autoDistance)
+    console.log(this.autoDistance)
+    console.log(this.autoDistance)
+    console.log(this.autoDistance)
+    console.log(this.autoDistance)
   },
 
   onDestroy() {
@@ -360,6 +352,7 @@ export default {
   height: 190px;
 
   scroll-snap-type: x cross;
+  scroll-snap-align: center;
   scroll-snap-stop: always;
 }
 
@@ -391,6 +384,7 @@ export default {
 
 .component-coursePresentations-text {
   left: 19px;
+  width: 260px;
   opacity: 1;
   font-size: 20px;
   font-weight: 550;

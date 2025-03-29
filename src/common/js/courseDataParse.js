@@ -119,8 +119,6 @@ function getCourseSchedule(weekday) {
         description = `晚上第 ${courseCounter} 节课`;
       }
 
-
-
       // 计算时间范围
       const nextItem = timetableData[timetableData.indexOf(item) + 1]
       const timeRange = nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined
@@ -139,7 +137,7 @@ function getCourseSchedule(weekday) {
         timeMinute: item.timeMinute,
         timeRange
       }
-    } else if (item.type === "interval" || item.type === "rest" || item.type === "end") {
+    } else if (item.type === "interval" || item.type === "rest") {
       // 获取下一节课信息
       let nextCourseName = null
       let nextCourseTeacher = null
@@ -187,6 +185,18 @@ function getCourseSchedule(weekday) {
         timeHour: item.timeHour,
         timeMinute: item.timeMinute,
         timeRange,
+      }
+    } else if (item.type === "end") {
+      // 数据返回
+      return {
+        type: item.type,
+        description: "今天的课结束啦",
+        courseName: "明天见",
+        courseTeacher: "",
+        courseRoom: "",
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange: "",
       }
     }
   })
