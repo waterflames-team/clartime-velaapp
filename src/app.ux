@@ -1,13 +1,10 @@
 <script>
+import router from "@system.router"
 import courseDataParse from "./common/js/courseDataParse"
+import timeUpdate from "./common/js/timeUpdate"
+import dateUpdate from "./common/js/dateUpdate"
 
 export default {
-  /**
-   * 获取课程安排
-   * @param {string} weekday - 星期几（如'星期一'）
-   * @returns {Array} 对应星期几的课程安排数据
-   */
-  
   onCreate() {
     console.log("app created")
     courseDataParse.getCourseSchedule("Mon")
@@ -15,6 +12,11 @@ export default {
 
   onDestroy() {
     console.log("app destroyed")
-  }
+  },
+
+  router,
+  courseDataParse,
+  timeUpdate,
+  dateUpdate
 }
 </script>

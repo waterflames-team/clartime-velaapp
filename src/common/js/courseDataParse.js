@@ -1,5 +1,10 @@
 import courseDataReader from "./courseDataReader"
 
+/**
+   * 获取课程安排
+   * @param {string} weekday - 星期几（如'星期一'）
+   * @returns {Array} 对应星期几的课程安排数据
+   */
 function getCourseSchedule(weekday) {
   /**
    * 读取数据
