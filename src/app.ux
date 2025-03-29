@@ -98,12 +98,18 @@ export default {
       if (item.type === "course") {
         const courseItem = daySchedule.courseList[courseCounter]
         courseCounter++
+        const courseId = courseItem.courseId
+        const courseRepeatability = courseItem.courseRepeatability
+        const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
+        const courseData = coursesInfo[finalCourseId]
+        console.log("课程信息:", courseData)
         return {
           type: item.type,
+          courseName: courseData.courseName,
+          courseTeacher: courseData.courseTeacher,
+          courseRoom: courseData.courseRoom,
           timeHour: item.timeHour,
           timeMinute: item.timeMinute,
-          courseId: courseItem.courseId,
-          courseRepeatability: courseItem.courseRepeatability
         }
       } else if (item.type === "interval" || item.type === "end" || item.type === "rest") {
         return item
