@@ -40,9 +40,11 @@
               </div>
               <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
               <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-              <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-              <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
+              <div class="component-coursePresentations-detail">
+                <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
+                <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
+                <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
+              </div>
             </div>
             <div
               class="component-coursePresentations-content"
@@ -54,10 +56,11 @@
                 <text class="component-coursePresentations-text">{{ $item.description }}</text>
               </div>
               <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-              <div class="gap-214"></div>
-              <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-              <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-              <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
+              <div class="component-coursePresentations-detail">
+                <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
+                <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
+                <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
+              </div>
             </div>
           </div>
         </scroll>
@@ -392,9 +395,18 @@ export default {
   background-color: rgba(13, 110, 255, 1);
 }
 
+.component-coursePresentations-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 13.8px;
+  width: 260px;
+}
+
 .component-coursePresentations-text {
   left: 19px;
-  width: 260px;
   opacity: 1;
   font-size: 20px;
   font-weight: 550;
