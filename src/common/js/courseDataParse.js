@@ -118,13 +118,16 @@ function getCourseSchedule(weekday) {
       // } else {
       //   description = `晚上 · 第 ${courseCounter} 节课`;
       // }
-      let description = `第 ${courseCounter} 节课`;
+      let description = `第 ${courseCounter} 节课`
 
       // 计算时间范围
       const nextItem = timetableData[timetableData.indexOf(item) + 1]
-      const timeRange = nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined
-        ? `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")}`
-        : null
+      let timeRange = null
+      if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
+        timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
+          nextItem.timeHour
+        }:${String(nextItem.timeMinute).padStart(2, "0")}`
+      }
 
       // 数据返回
       return {
@@ -158,13 +161,19 @@ function getCourseSchedule(weekday) {
       }
       //这里时间合成的是下节课的
       const nextNextItem = timetableData[timetableData.indexOf(item) + 2]
-      const timeRange =
-        nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined &&
-          nextNextItem && nextNextItem.timeHour !== undefined && nextNextItem.timeMinute !== undefined
-          ? `${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")} - ${nextNextItem.timeHour
-          }:${String(nextNextItem.timeMinute).padStart(2, "0")}`
-          : null
-
+      let timeRange = null
+      if (
+        nextItem &&
+        nextItem.timeHour !== undefined &&
+        nextItem.timeMinute !== undefined &&
+        nextNextItem &&
+        nextNextItem.timeHour !== undefined &&
+        nextNextItem.timeMinute !== undefined
+      ) {
+        timeRange = `${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")} - ${
+          nextNextItem.timeHour
+        }:${String(nextNextItem.timeMinute).padStart(2, "0")}`
+      }
 
       // 数据描述
       let description = "休息中，下一节课为"
@@ -185,7 +194,7 @@ function getCourseSchedule(weekday) {
         courseRoom: nextCourseRoom,
         timeHour: item.timeHour,
         timeMinute: item.timeMinute,
-        timeRange,
+        timeRange
       }
     } else if (item.type === "end") {
       // 数据返回
@@ -197,7 +206,7 @@ function getCourseSchedule(weekday) {
         courseRoom: "",
         timeHour: item.timeHour,
         timeMinute: item.timeMinute,
-        timeRange: "",
+        timeRange: ""
       }
     }
   })
