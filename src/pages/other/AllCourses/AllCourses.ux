@@ -10,37 +10,37 @@
       <div class="gap-36"></div>
 
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Mon)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Mon')">
           <text class="component-coursePresentations-text">周一</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Tue)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Tue')">
           <text class="component-coursePresentations-text">周二</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Wed)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Wed')">
           <text class="component-coursePresentations-text">周三</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Thu)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Thu')">
           <text class="component-coursePresentations-text">周四</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Fri)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Fri')">
           <text class="component-coursePresentations-text">周五</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Sat)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Sat')">
           <text class="component-coursePresentations-text">周六</text>
         </div>
       </div>
       <div class="component-coursePresentations-border">
-        <div class="component-coursePresentations-content" onclick="jumpToDay(Sun)">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Sun')">
           <text class="component-coursePresentations-text">周日</text>
         </div>
       </div>

@@ -9,8 +9,7 @@
     <scroll class="component-allCourses-list" scroll-y="true" bounces="true">
 
       <text class="component-coursePresentations-weekNumText">{{ weeknum }}</text>
-      <text class="component-coursePresentations-weekNumText">{{ dayNum }}</text>
-
+      
       <div for="{{courseSchedule}}">
         <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
           <div class="component-coursePresentations-content">
