@@ -1,14 +1,12 @@
 <template>
   <div class="page">
     <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+      <text class="component-nav-title-text" onclick="exit">< {{ weeknum }}</text>
       <text class="component-nav-title-time">{{ time }}</text>
     </div>
     <div class="gap-110"></div>
 
     <scroll class="component-allCourses-list" scroll-y="true" bounces="true">
-
-      <text class="component-coursePresentations-weekNumText">{{ weeknum }}</text>
       
       <div for="{{courseSchedule}}">
         <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
