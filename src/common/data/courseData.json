@@ -1,620 +1,620 @@
 {
-	"basic": {
-		"name": "高二下",
-        "createTime": "250321210600",
-        "updateTime": "250321210600",
-        "courseStartbak": "250216",
-        "courseStart": "250201",
-        "courseEnd": "250711",
-        "dataStructureVersion": "1.1"
-	},
-	"courses": [
-        {
-            "courseName": "语文",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "数学",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "英语",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "物理",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "地理",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "生物",
-            "teacher": "无",
-            "classroom": "走班"
-        },
-        {
-            "courseName": "美术",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "劳技",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-        {
-            "courseName": "校本",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-		{
-            "courseName": "体育",
-            "teacher": "无",
-            "classroom": "操场"
-        },
-		{
-            "courseName": "班会",
-            "teacher": "无",
-            "classroom": "本班"
-        },
-		{
-            "courseName": "数学",
-            "teacher": "无",
-            "classroom": "新东方"
-        },
-		{
-            "courseName": "物理",
-            "teacher": "无",
-            "classroom": "家教"
-        }
+  "basic": {
+    "name": "高二下",
+    "createTime": "250321210600",
+    "updateTime": "250321210600",
+    "courseStartbak": "250216",
+    "courseStart": "250201",
+    "courseEnd": "250711",
+    "dataStructureVersion": "1.1"
+  },
+  "courses": [
+    {
+      "courseName": "语文",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "数学",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "英语",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "物理",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "地理",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "生物",
+      "teacher": "无",
+      "classroom": "走班"
+    },
+    {
+      "courseName": "美术",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "劳技",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "校本",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "体育",
+      "teacher": "无",
+      "classroom": "操场"
+    },
+    {
+      "courseName": "班会",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "数学",
+      "teacher": "无",
+      "classroom": "新东方"
+    },
+    {
+      "courseName": "物理",
+      "teacher": "无",
+      "classroom": "家教"
+    }
+  ],
+  "timetableTemplate": [
+    [
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "08",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "55"
+      },
+      {
+        "type": "interval",
+        "timeHour": "09",
+        "timeMinute": "40"
+      },
+      {
+        "type": "course",
+        "timeHour": "10",
+        "timeMinute": "05"
+      },
+      {
+        "type": "interval",
+        "timeHour": "10",
+        "timeMinute": "50"
+      },
+      {
+        "type": "course",
+        "timeHour": "11",
+        "timeMinute": "00"
+      },
+      {
+        "type": "rest",
+        "timeHour": "11",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "14",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "14",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "15",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "55"
+      },
+      {
+        "type": "interval",
+        "timeHour": "16",
+        "timeMinute": "40"
+      },
+      {
+        "type": "course",
+        "timeHour": "16",
+        "timeMinute": "50"
+      },
+      {
+        "type": "rest",
+        "timeHour": "17",
+        "timeMinute": "35"
+      },
+      {
+        "type": "course",
+        "timeHour": "19",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "20",
+        "timeMinute": "10"
+      },
+      {
+        "type": "course",
+        "timeHour": "20",
+        "timeMinute": "20"
+      },
+      {
+        "type": "end",
+        "timeHour": "21",
+        "timeMinute": "30"
+      }
     ],
-	"timetableTemplate": [
-		[
-			{
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "08",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "55"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "09",
-				"timeMinute": "40"
-			},
-            {
-				"type":"course",
-				"timeHour": "10",
-				"timeMinute": "05"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "10",
-				"timeMinute": "50"
-			},
-            {
-				"type":"course",
-				"timeHour": "11",
-				"timeMinute": "00"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "11",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "14",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "14",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "15",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "55"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "16",
-				"timeMinute": "40"
-			},
-            {
-				"type":"course",
-				"timeHour": "16",
-				"timeMinute": "50"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "17",
-				"timeMinute": "35"
-			},
-            {
-				"type":"course",
-				"timeHour": "19",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "20",
-				"timeMinute": "10"
-			},
-            {
-				"type":"course",
-				"timeHour": "20",
-				"timeMinute": "20"
-			},
-			{
-				"type":"end",
-				"timeHour": "21",
-				"timeMinute": "30"
-			}
-		],
-		[
-			{
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "08",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "55"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "09",
-				"timeMinute": "40"
-			},
-            {
-				"type":"course",
-				"timeHour": "10",
-				"timeMinute": "05"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "10",
-				"timeMinute": "50"
-			},
-            {
-				"type":"course",
-				"timeHour": "11",
-				"timeMinute": "00"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "11",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "14",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "14",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "15",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "55"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "16",
-				"timeMinute": "40"
-			},
-            {
-				"type":"course",
-				"timeHour": "19",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "20",
-				"timeMinute": "10"
-			},
-            {
-				"type":"course",
-				"timeHour": "20",
-				"timeMinute": "20"
-			},
-			{
-				"type":"end",
-				"timeHour": "21",
-				"timeMinute": "30"
-			}
-		],
-		[
-			{
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "08",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "55"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "09",
-				"timeMinute": "40"
-			},
-            {
-				"type":"course",
-				"timeHour": "10",
-				"timeMinute": "05"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "10",
-				"timeMinute": "50"
-			},
-            {
-				"type":"course",
-				"timeHour": "11",
-				"timeMinute": "00"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "11",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "14",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "14",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "00"
-			},
-			{
-				"type":"interval", 
-				"timeHour": "15",
-				"timeMinute": "45"
-			},
-            {
-				"type":"course",
-				"timeHour": "15",
-				"timeMinute": "55"
-			},
-			{
-				"type":"end", 
-				"timeHour": "16",
-				"timeMinute": "40"
-			}
-		],
-		[
-			{
-				"type":"course",
-				"timeHour": "08",
-				"timeMinute": "00"
-			},
-			{
-				"type":"rest", 
-				"timeHour": "10",
-				"timeMinute": "00"
-			},
-            {
-				"type":"course",
-				"timeHour": "18",
-				"timeMinute": "00"
-			},
-			{
-				"type":"end",
-				"timeHour": "20",
-				"timeMinute": "00"
-			}
-		],
-		[
-            {
-				"type":"course",
-				"timeHour": "19",
-				"timeMinute": "00"
-			},
-			{
-				"type":"end",
-				"timeHour": "21",
-				"timeMinute": "30"
-			}
-		]
-	],
-	"courseSchedule":[
-		{
-			"timetableId":[0],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[6],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[7],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[8],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[1],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[3],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[9],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[0],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[3],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[9],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[10],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[0],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[3],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[8],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[2],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[1],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[4],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[8],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[2],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[3],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[0],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[5],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[3],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[11],
-					"courseRepeatability":1
-				},
-				{
-				    "courseId":[12],
-					"courseRepeatability":1
-				}
-			]
-		},
-		{
-			"timetableId":[4],
-			"timetableRepeatability": 1,
-			"courseList":[
-				{
-				    "courseId":[3],
-					"courseRepeatability":1
-				}
-			]
-		}
-	]
+    [
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "08",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "55"
+      },
+      {
+        "type": "interval",
+        "timeHour": "09",
+        "timeMinute": "40"
+      },
+      {
+        "type": "course",
+        "timeHour": "10",
+        "timeMinute": "05"
+      },
+      {
+        "type": "interval",
+        "timeHour": "10",
+        "timeMinute": "50"
+      },
+      {
+        "type": "course",
+        "timeHour": "11",
+        "timeMinute": "00"
+      },
+      {
+        "type": "rest",
+        "timeHour": "11",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "14",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "14",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "15",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "55"
+      },
+      {
+        "type": "rest",
+        "timeHour": "16",
+        "timeMinute": "40"
+      },
+      {
+        "type": "course",
+        "timeHour": "19",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "20",
+        "timeMinute": "10"
+      },
+      {
+        "type": "course",
+        "timeHour": "20",
+        "timeMinute": "20"
+      },
+      {
+        "type": "end",
+        "timeHour": "21",
+        "timeMinute": "30"
+      }
+    ],
+    [
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "08",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "55"
+      },
+      {
+        "type": "interval",
+        "timeHour": "09",
+        "timeMinute": "40"
+      },
+      {
+        "type": "course",
+        "timeHour": "10",
+        "timeMinute": "05"
+      },
+      {
+        "type": "interval",
+        "timeHour": "10",
+        "timeMinute": "50"
+      },
+      {
+        "type": "course",
+        "timeHour": "11",
+        "timeMinute": "00"
+      },
+      {
+        "type": "rest",
+        "timeHour": "11",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "14",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "14",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "15",
+        "timeMinute": "45"
+      },
+      {
+        "type": "course",
+        "timeHour": "15",
+        "timeMinute": "55"
+      },
+      {
+        "type": "end",
+        "timeHour": "16",
+        "timeMinute": "40"
+      }
+    ],
+    [
+      {
+        "type": "course",
+        "timeHour": "08",
+        "timeMinute": "00"
+      },
+      {
+        "type": "rest",
+        "timeHour": "10",
+        "timeMinute": "00"
+      },
+      {
+        "type": "course",
+        "timeHour": "18",
+        "timeMinute": "00"
+      },
+      {
+        "type": "end",
+        "timeHour": "20",
+        "timeMinute": "00"
+      }
+    ],
+    [
+      {
+        "type": "course",
+        "timeHour": "19",
+        "timeMinute": "00"
+      },
+      {
+        "type": "end",
+        "timeHour": "21",
+        "timeMinute": "30"
+      }
+    ]
+  ],
+  "courseSchedule": [
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [6],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [7],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [1],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [3],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [9],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [3],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [9],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [10],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [3],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [2],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [3],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [3],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [11],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [12],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [4],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    }
+  ]
 }
