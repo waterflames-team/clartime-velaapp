@@ -8,112 +8,43 @@
 
     <scroll class="component-allCourses-list" scroll-y="true" bounces="true">
       <div class="gap-36"></div>
-      <text class="component-allCourses-text">周一</text>
 
-      <div for="{{courseScheduleMon}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Mon')">
+          <text class="component-coursePresentations-text">周一</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Tue')">
+          <text class="component-coursePresentations-text">周二</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Wed')">
+          <text class="component-coursePresentations-text">周三</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Thu')">
+          <text class="component-coursePresentations-text">周四</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Fri')">
+          <text class="component-coursePresentations-text">周五</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Sat')">
+          <text class="component-coursePresentations-text">周六</text>
+        </div>
+      </div>
+      <div class="component-coursePresentations-border">
+        <div class="component-coursePresentations-content" onclick="jumpToDay('Sun')">
+          <text class="component-coursePresentations-text">周日</text>
         </div>
       </div>
 
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周二</text>
-      <div for="{{courseScheduleTue}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周三</text>
-      <div for="{{courseScheduleWed}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周四</text>
-      <div for="{{courseScheduleThu}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周五</text>
-      <div for="{{courseScheduleFri}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周六</text>
-      <div for="{{courseScheduleSat}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
-      <div class="gap-36"></div>
-      <text class="component-allCourses-text">周日</text>
-      <div for="{{courseScheduleSun}}">
-        <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-text">{{ $item.description }}</text>
-            <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-            <div class="gap-80"></div>
-            <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-            <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-          </div>
-        </div>
-      </div>
     </scroll>
 
   </div>
@@ -126,13 +57,13 @@ export default {
     time: "",
     timer: null,
 
-    courseScheduleMon: [],
-    courseScheduleTue: [],
-    courseScheduleWed: [],
-    courseScheduleThu: [],
-    courseScheduleFri: [],
-    courseScheduleSat: [],
-    courseScheduleSun: [],
+    // courseScheduleMon: [],
+    // courseScheduleTue: [],
+    // courseScheduleWed: [],
+    // courseScheduleThu: [],
+    // courseScheduleFri: [],
+    // courseScheduleSat: [],
+    // courseScheduleSun: [],
   },
 
   onInit() {
@@ -141,13 +72,13 @@ export default {
       this.time = timeData.time
     })
 
-    this.courseScheduleMon = this.$app.$def.courseDataParse.getCourseSchedule("Mon")
-    this.courseScheduleTue = this.$app.$def.courseDataParse.getCourseSchedule("Tue")
-    this.courseScheduleWed = this.$app.$def.courseDataParse.getCourseSchedule("Wed")
-    this.courseScheduleThu = this.$app.$def.courseDataParse.getCourseSchedule("Thu")
-    this.courseScheduleFri = this.$app.$def.courseDataParse.getCourseSchedule("Fri")
-    this.courseScheduleSat = this.$app.$def.courseDataParse.getCourseSchedule("Sat")
-    this.courseScheduleSun = this.$app.$def.courseDataParse.getCourseSchedule("Sun")
+    // this.courseScheduleMon = this.$app.$def.courseDataParse.getCourseSchedule("Mon")
+    // this.courseScheduleTue = this.$app.$def.courseDataParse.getCourseSchedule("Tue")
+    // this.courseScheduleWed = this.$app.$def.courseDataParse.getCourseSchedule("Wed")
+    // this.courseScheduleThu = this.$app.$def.courseDataParse.getCourseSchedule("Thu")
+    // this.courseScheduleFri = this.$app.$def.courseDataParse.getCourseSchedule("Fri")
+    // this.courseScheduleSat = this.$app.$def.courseDataParse.getCourseSchedule("Sat")
+    // this.courseScheduleSun = this.$app.$def.courseDataParse.getCourseSchedule("Sun")
   },
 
   onDestroy() {
@@ -156,6 +87,13 @@ export default {
 
   exit() {
     this.$app.$def.router.back()
+  },
+
+  jumpToDay(day) {
+    this.$app.$def.router.push({
+      uri: "pages/other/AllCourses/DayCourses",
+      params: { dayNum: day }
+    })
   }
 }
 </script>
@@ -201,27 +139,13 @@ export default {
   scroll-snap-align: start;
 }
 
-.component-allCourses-text {
-  width: 182px;
-  height: 24px;
-  opacity: 1;
-
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0px;
-  line-height: 23.87px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: center;
-  vertical-align: top;
-}
-
 .component-coursePresentations-border {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 318px;
-  height: 185px;
+  width: 324px;
+  height: 98px;
 }
 
 .component-coursePresentations-content {
@@ -232,32 +156,21 @@ export default {
 
   left: 0px;
   top: 0px;
-  width: 318px;
-  height: 177px;
+  width: 324px;
+  height: 90px;
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(38, 38, 38, 1);
 }
 
 .component-coursePresentations-text {
-  left: 19px;
-  opacity: 1;
-  font-size: 20px;
-  font-weight: 550;
-  letter-spacing: 0px;
-  line-height: 26.52px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: left;
-  vertical-align: top;
-}
-
-.component-coursePresentations-courses {
+  top: 23px;
   left: 19px;
   opacity: 1;
   font-size: 32px;
-  font-weight: 550;
+  font-weight: 500;
   letter-spacing: 0px;
-  line-height: 42.43px;
+  line-height: 44.8px;
   color: rgba(255, 255, 255, 1);
   text-align: left;
   vertical-align: top;
