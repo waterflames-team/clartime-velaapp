@@ -1,7 +1,7 @@
 {
   "package": "com.waterflames.timetable",
   "name": "澄序课程表",
-  "versionName": "0.1.1",
+  "versionName": "0.2.0",
   "versionCode": 2,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
@@ -23,6 +23,27 @@
     "pages": {
       "pages/index": {
         "component": "index"
+      },
+      "pages/other/AllCourses":{
+        "component": "AllCourses"
+      },
+      "pages/other/AllCourses/DayCourses":{
+        "component": "DayCourses"
+      },
+      "pages/other/CourseChange":{
+        "component": "CourseChange"
+      },
+      "pages/other/CourseChange/ClassChange":{
+        "component": "ClassChange"
+      },
+      "pages/other/CourseChange/DayChange":{
+        "component": "DayChange"
+      },
+      "pages/other/about":{
+        "component": "about"
+      },
+      "pages/other/EGG":{
+        "component": "EGG"
       }
     }
   },
