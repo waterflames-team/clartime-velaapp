@@ -129,7 +129,8 @@ export default {
     autoDistance: 0,
     indexNow: 0,
 
-    timer: null // 添加定时器变量
+    timer: null, // 添加定时器变量
+    updateTimer: null
   },
 
   getCourses() {
@@ -181,15 +182,16 @@ export default {
     }
 
     const nextCourse = this.courseSchedule[currentIndex]
-    const thisCourse = this.courseSchedule[currentIndex-1]
+    const thisCourse = this.courseSchedule[currentIndex - 1]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 计算分钟差
     const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
-    const nextCourseTotalMinutes = String(Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute))
+    const nextCourseTotalMinutes = String(
+      Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
+    )
 
     const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
-
 
     if (thisCourse.type === "course") {
       return "还有 " + remainingMinutes + " 分钟下课"
@@ -200,6 +202,17 @@ export default {
     }
 
     return remainingMinutes
+  },
+
+  courseRelatedUpadate() {
+    this.getCourses()
+    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+    this.remain = this.getRemainingTime()
+
+    this.autoDistance =
+      this.getCurrentCourseIndex() * 308 + this.getCurrentCourseIndex() * 30 + "px"
+
+    this.indexNow = this.getCurrentCourseIndex() - 1
   },
 
   onInit() {
@@ -213,18 +226,15 @@ export default {
       this.fullTime = timeData.fullTime
     })
 
-    this.getCourses()
-    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
-    this.remain = this.getRemainingTime()
-
-    this.autoDistance =
-      this.getCurrentCourseIndex() * 308 + this.getCurrentCourseIndex() * 30 + "px"
-
-    this.indexNow = this.getCurrentCourseIndex() - 1
+    this.courseRelatedUpadate()
+    this.updateTimer = this.$app.$def.timeUpdate.updateTimePersecond(() => {
+      this.courseRelatedUpadate()
+    })
   },
 
   onDestroy() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
 
   jumpAC() {
@@ -241,16 +251,6 @@ export default {
     this.$app.$def.router.push({
       uri: "pages/other/about"
     })
-  },
-
-  onVersionClick() {
-    this.eggClickCount++
-    if (this.eggClickCount === 7) {
-      this.$app.$def.router.push({
-        uri: "pages/other/EGG"
-      })
-      this.eggClickCount = 0
-    }
   }
 }
 </script>
