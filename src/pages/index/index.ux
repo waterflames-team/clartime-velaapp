@@ -129,7 +129,8 @@ export default {
     autoDistance: 0,
     indexNow: 0,
 
-    timer: null // 添加定时器变量
+    timer: null, // 添加定时器变量
+    updateTimer: null
   },
 
   getCourses() {
@@ -181,22 +182,38 @@ export default {
     }
 
     const nextCourse = this.courseSchedule[currentIndex]
+    const thisCourse = this.courseSchedule[currentIndex - 1]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 计算分钟差
-    const currentTotalMinutes = currentTime.hours * 60 + currentTime.minutes
-    const nextCourseTotalMinutes = nextCourse.timeHour * 60 + nextCourse.timeMinute
+    const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
+    const nextCourseTotalMinutes = String(
+      Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
+    )
+
     const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
-    if (nextCourse.type === "course") {
+    if (thisCourse.type === "course") {
       return "还有 " + remainingMinutes + " 分钟下课"
-    } else if (nextCourse.type === "interval" || nextCourse.type === "rest") {
+    } else if (thisCourse.type === "interval" || thisCourse.type === "rest") {
       return "还有 " + remainingMinutes + " 分钟上课"
-    } else if (nextCourse.type === "end") {
+    } else if (thisCourse.type === "end") {
       return "今日课程结束～"
     }
 
     return remainingMinutes
+  },
+
+  courseRelatedUpadate() {
+    this.getCourses()
+    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+    this.remain = this.getRemainingTime()
+
+    this.autoDistance = String(Number(this.getCurrentCourseIndex() - 1) * (308 + 30)) + "px"
+
+    // console.log(this.autoDistance)
+
+    this.indexNow = this.getCurrentCourseIndex() - 1
   },
 
   onInit() {
@@ -210,18 +227,15 @@ export default {
       this.fullTime = timeData.fullTime
     })
 
-    this.getCourses()
-    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
-    this.remain = this.getRemainingTime()
-
-    this.autoDistance =
-      this.getCurrentCourseIndex() * 308 + this.getCurrentCourseIndex() * 30 + "px"
-
-    this.indexNow = this.getCurrentCourseIndex() - 1
+    this.courseRelatedUpadate()
+    this.updateTimer = this.$app.$def.timeUpdate.updateTimePersecond(() => {
+      this.courseRelatedUpadate()
+    })
   },
 
   onDestroy() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
 
   jumpAC() {
@@ -238,16 +252,6 @@ export default {
     this.$app.$def.router.push({
       uri: "pages/other/about"
     })
-  },
-
-  onVersionClick() {
-    this.eggClickCount++
-    if (this.eggClickCount === 7) {
-      this.$app.$def.router.push({
-        uri: "pages/other/EGG"
-      })
-      this.eggClickCount = 0
-    }
   }
 }
 </script>
@@ -323,6 +327,7 @@ export default {
   font-size: 50px;
   font-weight: 900;
   line-height: 66.3px;
+  text-align: center;
   color: rgba(255, 255, 255, 1);
 }
 
@@ -339,7 +344,7 @@ export default {
   letter-spacing: 0px;
   line-height: 30px;
   color: rgba(255, 255, 255, 0.6);
-
+  text-align: center;
   white-space: pre-wrap;
 }
 
@@ -356,8 +361,8 @@ export default {
 /* 实时课程 */
 .component-coursePresentations {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   margin-bottom: 30px;
 
@@ -365,7 +370,7 @@ export default {
   height: 190px;
 
   scroll-snap-type: x cross;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
