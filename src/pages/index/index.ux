@@ -181,18 +181,21 @@ export default {
     }
 
     const nextCourse = this.courseSchedule[currentIndex]
+    const thisCourse = this.courseSchedule[currentIndex-1]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 计算分钟差
-    const currentTotalMinutes = currentTime.hours * 60 + currentTime.minutes
-    const nextCourseTotalMinutes = nextCourse.timeHour * 60 + nextCourse.timeMinute
+    const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
+    const nextCourseTotalMinutes = String(Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute))
+
     const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
-    if (nextCourse.type === "course") {
+
+    if (thisCourse.type === "course") {
       return "还有 " + remainingMinutes + " 分钟下课"
-    } else if (nextCourse.type === "interval" || nextCourse.type === "rest") {
+    } else if (thisCourse.type === "interval" || thisCourse.type === "rest") {
       return "还有 " + remainingMinutes + " 分钟上课"
-    } else if (nextCourse.type === "end") {
+    } else if (thisCourse.type === "end") {
       return "今日课程结束～"
     }
 
