@@ -1,0 +1,206 @@
+{
+  "basic": {
+    "name": "高二下",
+    "createTime": "250321210600",
+    "updateTime": "250321210600",
+    "courseStartbak": "250216",
+    "courseStart": "250201",
+    "courseEnd": "250711",
+    "dataStructureVersion": "1.1"
+  },
+  "courses": [
+    {
+      "courseName": "语文",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "数学",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "英语",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "物理",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "地理",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "生物",
+      "teacher": "无",
+      "classroom": "走班"
+    },
+    {
+      "courseName": "美术",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "劳技",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "校本",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "体育",
+      "teacher": "无",
+      "classroom": "操场"
+    },
+    {
+      "courseName": "班会",
+      "teacher": "无",
+      "classroom": "本班"
+    },
+    {
+      "courseName": "数学",
+      "teacher": "无",
+      "classroom": "新东方"
+    },
+    {
+      "courseName": "物理",
+      "teacher": "无",
+      "classroom": "家教"
+    }
+  ],
+  "timetableTemplate": [
+    [
+      {
+        "type": "start"
+      },
+      {
+        "type": "course",
+        "timeHour": "17",
+        "timeMinute": "05"
+      },
+      {
+        "type": "interval",
+        "timeHour": "17",
+        "timeMinute": "07"
+      },
+      {
+        "type": "course",
+        "timeHour": "20",
+        "timeMinute": "20"
+      },
+      {
+        "type": "end",
+        "timeHour": "21",
+        "timeMinute": "30"
+      }
+    ]
+  ],
+  "courseSchedule": [
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [0],
+          "courseRepeatability": 1
+        }
+      ]
+    }
+    
+  ]
+}

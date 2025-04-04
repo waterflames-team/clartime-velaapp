@@ -141,7 +141,7 @@ function getCourseSchedule(weekday) {
         timeMinute: item.timeMinute,
         timeRange
       }
-    } else if (item.type === "interval" || item.type === "rest") {
+    } else if (item.type === "interval" || item.type === "rest" || item.type === "start") {
       // 获取下一节课信息
       let nextCourseName = null
       let nextCourseTeacher = null
@@ -179,6 +179,8 @@ function getCourseSchedule(weekday) {
       let description = "休息中，下一节课为"
       if (item.type === "interval") {
         description = "现在是课间，下一节课为"
+      } else if (item.type === "start") {
+        description = "课程未开始，第一节课为"
       } else if (item.timeHour > 12 && item.timeHour < 16) {
         description = "午休中，下一节课为"
       } else if (item.timeHour > 18) {
