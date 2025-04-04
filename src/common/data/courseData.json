@@ -78,6 +78,9 @@
   "timetableTemplate": [
     [
       {
+        "type": "start"
+      },
+      {
         "type": "course",
         "timeHour": "08",
         "timeMinute": "00"
@@ -180,6 +183,9 @@
     ],
     [
       {
+        "type": "start"
+      },
+      {
         "type": "course",
         "timeHour": "08",
         "timeMinute": "00"
@@ -272,6 +278,9 @@
     ],
     [
       {
+        "type": "start"
+      },
+      {
         "type": "course",
         "timeHour": "08",
         "timeMinute": "00"
@@ -344,6 +353,9 @@
     ],
     [
       {
+        "type": "start"
+      },
+      {
         "type": "course",
         "timeHour": "08",
         "timeMinute": "00"
@@ -366,9 +378,22 @@
     ],
     [
       {
+        "type": "start"
+      },
+      {
         "type": "course",
         "timeHour": "19",
         "timeMinute": "00"
+      },
+      {
+        "type": "interval",
+        "timeHour": "20",
+        "timeMinute": "10"
+      },
+      {
+        "type": "course",
+        "timeHour": "20",
+        "timeMinute": "20"
       },
       {
         "type": "end",
