@@ -40,29 +40,13 @@ export default {
       {nameZh: "周六", nameEn: "Sat"},
       {nameZh: "周日", nameEn: "Sun"}
     ]
-
-    // courseScheduleMon: [],
-    // courseScheduleTue: [],
-    // courseScheduleWed: [],
-    // courseScheduleThu: [],
-    // courseScheduleFri: [],
-    // courseScheduleSat: [],
-    // courseScheduleSun: [],
   },
 
-  onInit() {
+  onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
-
-    // this.courseScheduleMon = this.$app.$def.courseDataParse.getCourseSchedule("Mon")
-    // this.courseScheduleTue = this.$app.$def.courseDataParse.getCourseSchedule("Tue")
-    // this.courseScheduleWed = this.$app.$def.courseDataParse.getCourseSchedule("Wed")
-    // this.courseScheduleThu = this.$app.$def.courseDataParse.getCourseSchedule("Thu")
-    // this.courseScheduleFri = this.$app.$def.courseDataParse.getCourseSchedule("Fri")
-    // this.courseScheduleSat = this.$app.$def.courseDataParse.getCourseSchedule("Sat")
-    // this.courseScheduleSun = this.$app.$def.courseDataParse.getCourseSchedule("Sun")
   },
 
   selectCard(idx) {
@@ -70,6 +54,9 @@ export default {
   },
 
   onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
