@@ -35,7 +35,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.2.1",
+    version: "0.2.2",
     timer: null,
     eggClickCount: 0
   },
