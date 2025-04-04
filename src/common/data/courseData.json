@@ -638,6 +638,9 @@
         {
           "courseId": [0],
           "courseRepeatability": 1
+        },{
+          "courseId": [0],
+          "courseRepeatability": 1
         }
       ]
     }

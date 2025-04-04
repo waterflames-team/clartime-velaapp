@@ -250,21 +250,20 @@ export default {
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
       this.time = timeData.time
       this.fullTime = timeData.fullTime
+      if (this.getCurrentCourseIndex() != this.indexNow) {
+        this.courseRelatedUpadate()
+      }
     })
-
-    this.updateTimer = setInterval(() => {
-      this.courseRelatedUpadate()
-    }, 10000)
   },
 
   onDestroy() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
-    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
 
   onHide() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
-    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
 
   jumpAC() {
