@@ -208,32 +208,45 @@ export default {
     this.getCourses()
     this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
     this.remain = this.getRemainingTime()
-
-    this.autoDistance = String(Number(this.getCurrentCourseIndex() - 1) * (308 + 30)) + "px"
-
-    // console.log(this.autoDistance)
-
+    this.autoDistance = String(Number(this.getCurrentCourseIndex() - 1) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex() - 1
   },
-
   onInit() {
+    // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
-    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
-      (this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime)
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.courseRelatedUpadate()
+  },
+
+  onShow() {
+    // 初始化数据
+    const dateData = this.$app.$def.dateUpdate.updateDate()
+    this.day = dateData.day
+    this.dayNum = dateData.dayNum
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.courseRelatedUpadate()
+
+    // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
       this.time = timeData.time
       this.fullTime = timeData.fullTime
     })
 
-    this.courseRelatedUpadate()
-    this.updateTimer = this.$app.$def.timeUpdate.updateTimePersecond(() => {
+    this.updateTimer = setInterval(() => {
       this.courseRelatedUpadate()
-    })
+    }, 10000)
   },
 
   onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+  },
+
+  onHide() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
     this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
