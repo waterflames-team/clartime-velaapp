@@ -154,12 +154,20 @@ export default {
     const currentHours = currentTime.hours
     const currentMinutes = currentTime.minutes
 
+    // 如果当前时间小于第一节课时间，返回0
+    if (
+      this.courseSchedule.length > 0 &&
+      (currentHours < this.courseSchedule[1].timeHour ||
+        (currentHours === this.courseSchedule[1].timeHour &&
+          currentMinutes < this.courseSchedule[1].timeMinute))
+    ) {
+      return 0
+    }
+
+    // 正常课程定位判断
     for (let i = 0; i < this.courseSchedule.length - 1; i++) {
       const currentItem = this.courseSchedule[i]
       const nextItem = this.courseSchedule[i + 1]
-      // console.log(currentItem.timeHour, currentItem.timeMinute)
-      // console.log("daduan")
-      // console.log(nextItem.timeHour, nextItem.timeMinute)
 
       if (
         (currentHours > currentItem.timeHour ||
@@ -167,10 +175,12 @@ export default {
         (currentHours < nextItem.timeHour ||
           (currentHours === nextItem.timeHour && currentMinutes < nextItem.timeMinute))
       ) {
-        return i + 1
+        return i
       }
     }
-    return this.courseSchedule.length
+
+    // 无法判断就返回最后一个
+    return this.courseSchedule.length - 1
   },
 
   getRemainingTime() {
@@ -181,24 +191,30 @@ export default {
       return "今日课程结束～"
     }
 
-    const nextCourse = this.courseSchedule[currentIndex]
-    const thisCourse = this.courseSchedule[currentIndex - 1]
+    const nextCourse = this.courseSchedule[currentIndex + 1]
+    const thisCourse = this.courseSchedule[currentIndex]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
+
+    // 提前判断结束，以防止下一项无法取到导致的出错
+    if (thisCourse.type === "end") {
+      return "今日课程结束～"
+    }
 
     // 计算分钟差
     const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
     const nextCourseTotalMinutes = String(
       Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
     )
-
     const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
     if (thisCourse.type === "course") {
       return "还有 " + remainingMinutes + " 分钟下课"
-    } else if (thisCourse.type === "interval" || thisCourse.type === "rest") {
+    } else if (
+      thisCourse.type === "interval" ||
+      thisCourse.type === "rest" ||
+      thisCourse.type === "start"
+    ) {
       return "还有 " + remainingMinutes + " 分钟上课"
-    } else if (thisCourse.type === "end") {
-      return "今日课程结束～"
     }
 
     return remainingMinutes
@@ -208,34 +224,46 @@ export default {
     this.getCourses()
     this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
     this.remain = this.getRemainingTime()
-
-    this.autoDistance = String(Number(this.getCurrentCourseIndex() - 1) * (308 + 30)) + "px"
-
-    // console.log(this.autoDistance)
-
-    this.indexNow = this.getCurrentCourseIndex() - 1
+    this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
+    this.indexNow = this.getCurrentCourseIndex()
   },
-
   onInit() {
+    // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
-    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
-      (this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime)
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.courseRelatedUpadate()
+  },
+
+  onShow() {
+    // 初始化数据
+    const dateData = this.$app.$def.dateUpdate.updateDate()
+    this.day = dateData.day
+    this.dayNum = dateData.dayNum
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.courseRelatedUpadate()
+
+    // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
       this.time = timeData.time
       this.fullTime = timeData.fullTime
-    })
-
-    this.courseRelatedUpadate()
-    this.updateTimer = this.$app.$def.timeUpdate.updateTimePersecond(() => {
-      this.courseRelatedUpadate()
+      if (this.getCurrentCourseIndex() != this.indexNow) {
+        this.courseRelatedUpadate()
+      }
     })
   },
 
   onDestroy() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
-    this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+  },
+
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
   },
 
   jumpAC() {
