@@ -6,7 +6,7 @@
     </div>
     <!-- <div class="gap-110"></div> -->
 
-    <text class="component-classChange-text" if="{{ page === 1 }}">请选择星期</text>
+    <text class="component-classChange-text" if="{{ page === 1 }}">请选择在星期几调课</text>
     <text class="component-classChange-text" if="{{ page === 2 }}">请选择被调节的课</text>
     <text class="component-classChange-text" if="{{ page === 3 }}">请选择调节结果</text>
     <text class="component-classChange-text" if="{{ page === 4 }}">请选择调节范围</text>
