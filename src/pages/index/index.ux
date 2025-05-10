@@ -1,141 +1,100 @@
 <template>
   <div class="page">
-    <scroll class="content horizontal-center" scroll-y="true" scroll-x="false">
-      <div class="content-home horizontal-center">
-        <div class="component-nav">
-          <text class="component-nav-title-text">{{ title_home }}</text>
-          <text class="component-nav-title-time">{{ time }}</text>
-        </div>
-
-        <!-- <div class="gap-110"></div> -->
-
-        <div style="display: flex; flex-direction: row">
-          <div class="component-indexCard screen-center">
-            <div class="screen-center">
+    <stack>
+      <scroll class="content horizontal-center" scroll-y="true" scroll-x="false">
+        <div class="content-home horizontal-center">
+          <div class="component-nav"></div>
+          <div style="display: flex; flex-direction: row">
+            <div class="component-indexCard screen-center">
               <div class="screen-center">
-                <text class="component-indexCard-timeHM">{{ time }}</text>
-                <div class="component-indexCard-timeSGroup screen-center">
-                  <text class="component-indexCard-timeS">{{ seconds }}</text>
+                <div class="screen-center">
+                  <text class="component-indexCard-timeHM">{{ time }}</text>
+                  <div class="component-indexCard-timeSGroup screen-center">
+                    <text class="component-indexCard-timeS">{{ seconds }}</text>
+                  </div>
+                </div>
+                <div class="gap-80"></div>
+                <div class="screen-center">
+                  <text class="component-coursePresentations-text">{{ day }}</text>
+                  <text class="component-coursePresentations-text">{{ dayNum }}</text>
+                  <text class="component-coursePresentations-text">{{ weekNum }}</text>
                 </div>
               </div>
-              <div class="gap-80"></div>
-              <div class="screen-center">
-                <text class="component-indexCard-dayText">{{ day }}</text>
-                <text class="component-indexCard-dayText">{{ dayNum }}</text>
-                <text class="component-indexCard-dayText">{{ weekNum }}</text>
+            </div>
+            <div class="gap-60"></div>
+            <div class="component-indexCard" style="display: flex; flex-direction: column">
+              <div class="component-coursePresentations-head vertical-left">
+                <text class="component-coursePresentations-text">当前课程</text>
+                <text class="component-coursePresentations-courses">语文</text>
+              </div>
+              <div class="component-coursePresentations-detail vertical-left">
+                <text class="component-coursePresentations-text">3</text>
+                <text class="component-coursePresentations-text">4</text>
+                <text class="component-coursePresentations-text">5</text>
               </div>
             </div>
           </div>
+
           <div class="gap-60"></div>
-          <div class="component-indexCard" style="display: flex; flex-direction: column">
-            <div class="component-coursePresentations-head vertical-left">
-              <text class="component-coursePresentations-text">当前课程</text>
-              <text class="component-coursePresentations-courses">语文</text>
+
+          <div class="component-remainingTimeCard screen-center">
+            <text class="component-remainingTimeCard-text">{{ remain }}</text>
+          </div>
+
+          <div class="gap-60"></div>
+
+          <div class="component-nextCourseCard horizontal-center">
+            <div class="component-nextCourseCard-head horizontal-center">
+              <text class="component-nextCourseCard-text">下一节</text>
+              <text class="component-nextCourseCard-course">语文</text>
             </div>
-            <div class="component-coursePresentations-detail vertical-left">
-              <text class="component-coursePresentations-text">3</text>
-              <text class="component-coursePresentations-text">4</text>
-              <text class="component-coursePresentations-text">5</text>
-            </div>
+            <text class="component-nextCourseCard-text component-nextCourseCard-bottom">信息</text>
           </div>
         </div>
 
-        <div class="gap-60"></div>
-
-        <div class="component-remainingTimeCard screen-center">
-          <text class="component-remainingTimeCard-text">{{ remain }}</text>
-        </div>
-
-        <div class="gap-60"></div>
-
-        <div class="component-nextCourseCard horizontal-center">
-          <div class="component-nextCourseCard-head horizontal-center">
-            <text class="component-nextCourseCard-text">下一节</text>
-            <text class="component-nextCourseCard-course">语文</text>
-          </div>
-          <text class="component-nextCourseCard-text component-nextCourseCard-bottom">信息</text>
-        </div>
-
-        <!-- <scroll
-          class="component-coursePresentations"
-          bounces="true"
-          scroll-x="true"
-          scroll-left="{{autoDistance}}"
-        >
-          <div class="component-coursePresentations-border" for="{{courseSchedule}}">
-            <div class="component-coursePresentations-content" if="{{indexNow === $idx}}">
-              <div class="gap-142"></div>
-              <div style="display: flex; flex-direction: row;">
-                <text class="component-coursePresentations-text">{{ $item.description }}</text>
-              </div>
-              <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-              <div class="gap-214"></div>
-              <div class="component-coursePresentations-detail">
-                <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-                <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-                <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-              </div>
+        <div class="content-other horizontal-center">
+          <div class="component-nav"></div>
+          <div style="display: flex; flex-direction: row">
+            <div class="component-other-button_q" onclick="jumpAC">
+              <image class="component-other-icon_q" src="/common/icon_AllCourses.png" />
+              <text class="component-other-button_qText">全部课程</text>
             </div>
-            <div
-              class="component-coursePresentations-content"
-              style="background-color: rgba(38, 38, 38, 1)"
-              else
-            >
-              <div class="gap-142"></div>
-              <div style="display: flex; flex-direction: row;">
-                <text class="component-coursePresentations-text">{{ $item.description }}</text>
-              </div>
-              <text class="component-coursePresentations-courses">{{ $item.courseName }}</text>
-              <div class="component-coursePresentations-detail">
-                <text class="component-coursePresentations-text">{{ $item.timeRange }}</text>
-                <text class="component-coursePresentations-text">{{ $item.courseRoom }}</text>
-                <text class="component-coursePresentations-text">{{ $item.courseTeacher }}</text>
-              </div>
+
+            <div class="gap-60"></div>
+
+            <div class="component-other-button_q" onclick="jumpCC">
+              <image class="component-other-icon_q" src="/common/icon_CourseChange.png" />
+              <text class="component-other-button_qText">课程调节</text>
             </div>
           </div>
-        </scroll> -->
+
+          <div class="gap-60"></div>
+
+          <div class="component-other-button_l" onclick="jumpAb">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">设置</text>
+              <text class="component-other-button_lDescribe">实验性设置</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/icon_Set.png" />
+          </div>
+
+          <div class="gap-60"></div>
+
+          <div class="component-other-button_l" onclick="jumpAb">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">关于</text>
+              <text class="component-other-button_lDescribe">澄序课程表</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/icon_About.png" />
+          </div>
+
+        </div>
+      </scroll>
+      <div class="component-nav">
+        <text class="component-nav-title-text">{{ title_home }}</text>
+        <!-- <text class="component-nav-title-time">{{ time }}</text> -->
       </div>
-
-      <!-- <div class="content-other horizontal-center">
-        <div class="component-nav">
-          <text class="component-nav-title-text">{{ title_other }}</text>
-          <text class="component-nav-title-time">{{ time }}</text>
-        </div>
-
-        <div class="gap-110"></div>
-
-        <div class="component-other-button_Background" onclick="jumpAC">
-          <div class="gap-190"></div>
-          <div class="component-other-button component-other-button_AC">
-            <image class="component-other-icon" src="/common/icon_AllCourses.png" />
-          </div>
-          <div class="gap-100"></div>
-          <text class="component-other-button_Text">全部课程</text>
-        </div>
-
-        <div class="gap-60"></div>
-
-        <div class="component-other-button_Background" onclick="jumpCC">
-          <div class="gap-190"></div>
-          <div class="component-other-button component-other-button_CC">
-            <image class="component-other-icon" src="/common/icon_CourseChange.png" />
-          </div>
-          <div class="gap-100"></div>
-          <text class="component-other-button_Text">课程调节</text>
-        </div>
-
-        <div class="gap-60"></div>
-
-        <div class="component-other-button_Background" onclick="jumpAb">
-          <div class="gap-190"></div>
-          <div class="component-other-button component-other-button_Ab">
-            <image class="component-other-icon" src="/common/icon_About.png" />
-          </div>
-          <div class="gap-100"></div>
-          <text class="component-other-button_Text">关于</text>
-        </div>
-      </div> -->
-    </scroll>
+    </stack>
   </div>
 </template>
 
@@ -321,7 +280,7 @@ export default {
 /* 界面布局 */
 .content {
   width: 100%;
-  height: 100%;
+  height: 480px;
 
   scroll-snap-type: y cross;
   scroll-snap-stop: always;
@@ -329,10 +288,12 @@ export default {
 
 .content-home {
   width: 100%;
+  height: 480px;
   scroll-snap-align: start;
 }
 
 .content-other {
+  width: 100%;
   height: 480px;
   scroll-snap-align: start;
 }
@@ -341,8 +302,8 @@ export default {
 .component-indexCard {
   width: 147px;
   height: 199px;
-  border-radius: 30px;
-  background-color: rgba(13, 110, 255, 1);
+  border-radius: 24px;
+  background-color: rgba(0, 136, 255, 1);
 }
 
 .component-indexCard-timeHM {
@@ -358,7 +319,7 @@ export default {
   width: 30px;
   height: 18px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -400,7 +361,7 @@ export default {
 }
 .component-coursePresentations-courses {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: 0px;
   line-height: 42.43px;
   color: rgba(255, 255, 255, 1);
@@ -412,7 +373,7 @@ export default {
   width: 300px;
   height: 68px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.1);
 }
 .component-remainingTimeCard-text {
@@ -424,13 +385,12 @@ export default {
   text-align: center;
 }
 
-
 /* 下节课卡片 */
 .component-nextCourseCard {
   width: 300px;
   height: 132px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.1);
 }
 .component-nextCourseCard-head {
@@ -456,6 +416,92 @@ export default {
 .component-nextCourseCard-bottom {
   position: absolute;
   bottom: 12px;
+}
+
+/* 更多卡片 - 方形部分 */
+
+.component-other-button_q {
+  width: 147px;
+  height: 147px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-other-button_qText {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 39.78px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-other-icon_q {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 60px;
+  height: 60px;
+
+  object-fit: contain;
+}
+.icon_AC {
+  box-shadow: 0px 0px 20px rgba(31, 136, 255, 0.5);
+  border-radius: 30px;
+}
+.icon_CC {
+  box-shadow: 0px 0px 20px rgba(255, 171, 31, 0.5);
+  border-radius: 30px;
+}
+
+/* 更多卡片 - 长方形部分 */
+.component-other-button_l {
+  width: 300px;
+  height: 126px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-other-button-head {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+.component-other-button_lText {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 39.78px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-other-button_lDescribe {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 23.87px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+.component-other-icon_l {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 12px;
+  bottom: 12px;
+
+  object-fit: contain;
+}
+.icon_ST{
+  box-shadow: 0px 0px 20px rgba(130, 130, 130, 0.5);
+  border-radius: 30px;
+}
+.icon_Ab{
+  box-shadow: 0px 0px 20px rgba(106, 31, 255, 0.5);
+  border-radius: 30px;
 }
 
 /* .component-indexCard-remainingTimeText {
@@ -565,7 +611,7 @@ other part
   width: 70px;
   height: 70px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
 }
 
 .component-other-button_AC {

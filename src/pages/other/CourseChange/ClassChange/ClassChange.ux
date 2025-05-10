@@ -365,7 +365,7 @@ export default {
   width: 318px;
   height: 177px;
   opacity: 1;
-  border-radius: 36px;
+  border-radius: 24px;
   background-color: rgba(38, 38, 38, 1);
 }
 
@@ -378,7 +378,7 @@ export default {
   width: 324px;
   height: 112px;
   opacity: 1;
-  border-radius: 36px;
+  border-radius: 24px;
   background-color: rgba(38, 38, 38, 1);
 }
 
@@ -391,7 +391,7 @@ export default {
   width: 158px;
   height: 126px;
   opacity: 1;
-  border-radius: 36px;
+  border-radius: 24px;
   background-color: rgba(38, 38, 38, 1);
 }
 
@@ -425,7 +425,7 @@ export default {
   width: 128px;
   height: 128px;
   opacity: 1;
-  border-radius: 39px;
+  border-radius: 24px;
 }
 .loading {
   background-color: rgba(255, 195, 0, 1);

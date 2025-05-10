@@ -83,13 +83,13 @@ export default {
   width: 100px;
   height: 10px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: #262626;
 }
 .component-indicator-highlight{
   height: 9px;
   opacity: 1;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: #ffffff;
 } */
 
@@ -134,7 +134,7 @@ export default {
   width: 324px;
   height: 90px;
   opacity: 1;
-  border-radius: 36px;
+  border-radius: 24px;
   background-color: rgba(38, 38, 38, 1);
 }
 

@@ -1,10 +1,20 @@
 /* nav 通用样式 */
 
 .component-nav {
-    top: 0px;
+    position: absolute; 
+    /* top: 0px; */
     width: 324px;
     height: 51px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('/common/nav-bg.png');
+    background-size: 324px 51px;
+    position: relative;
+}
+
+.component-nav-about {
+    position: absolute; 
+    /* top: 0px; */
+    width: 324px;
+    height: 51px;
     position: relative;
 }
 
