@@ -11,22 +11,26 @@
 
         <div class="component-index-courseCard-card">
           <div class="component-index-courseCard-cardContent">
-            <text class="component-index-courseCard-card-timeText">{{ fullTime }}</text>
-            <div class="gap-80"></div>
-            <div class="component-index-courseCard-card-dayDiv">
-              <text class="component-index-courseCard-card-dayText">
-                {{ day }}&nbsp;{{ dayNum }}
-              </text>
-              <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
+            <div class="component-index-courseCard-card-timeGroup">
+              <text class="component-index-courseCard-card-timeHM">{{ time }}</text>
+              <div class="component-index-courseCard-card-timeSGroup">
+                <text class="component-index-courseCard-card-timeS">{{ seconds }}</text>
+              </div>
             </div>
             <div class="gap-80"></div>
-            <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text>
+            <div class="component-index-courseCard-card-dayDiv">
+              <text class="component-index-courseCard-card-dayText">{{ day }}</text>
+              <text class="component-index-courseCard-card-dayText">{{ dayNum }}</text>
+              <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
+            </div>
+            <!-- <div class="gap-80"></div> -->
+            <!-- <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text> -->
           </div>
         </div>
 
-        <div class="gap-80"></div>
+        <!-- <div class="gap-80"></div> -->
 
-        <scroll
+        <!-- <scroll
           class="component-coursePresentations"
           bounces="true"
           scroll-x="true"
@@ -63,10 +67,10 @@
               </div>
             </div>
           </div>
-        </scroll>
+        </scroll> -->
       </div>
 
-      <div class="content-other">
+      <!-- <div class="content-other">
         <div class="component-nav">
           <text class="component-nav-title-text">{{ title_other }}</text>
           <text class="component-nav-title-time">{{ time }}</text>
@@ -104,7 +108,7 @@
           <div class="gap-100"></div>
           <text class="component-other-button_Text">关于</text>
         </div>
-      </div>
+      </div> -->
     </scroll>
   </div>
 </template>
@@ -115,7 +119,7 @@ export default {
     title_home: "课程表",
     title_other: "更多",
     time: "25:61",
-    fullTime: "25:61:61",
+    seconds: "61",
     day: "13月32日",
     dayNum: "星期八",
     weekNum: "第亿周",
@@ -233,7 +237,7 @@ export default {
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
-    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
   },
 
@@ -243,13 +247,13 @@ export default {
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
-    this.fullTime = this.$app.$def.timeUpdate.updateTime().fullTime
+    this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
       this.time = timeData.time
-      this.fullTime = timeData.fullTime
+      this.seconds = timeData.seconds
       if (this.getCurrentCourseIndex() != this.indexNow) {
         this.courseRelatedUpadate()
       }
@@ -335,13 +339,10 @@ export default {
   justify-content: center;
   align-items: center;
 
-  padding-top: 12px;
-  padding-bottom: 12px;
-  width: 324px;
-  /* height: 190px; */
-  height: 210px;
-  border-radius: 36px;
-  background-color: rgba(38, 38, 38, 1);
+  width: 147px;
+  height: 199px;
+  border-radius: 30px;
+  background-color: rgba(13, 110, 255, 1);
 }
 
 .component-index-courseCard-cardContent {
@@ -351,12 +352,41 @@ export default {
   align-items: center;
 }
 
-.component-index-courseCard-card-timeText {
-  font-size: 50px;
-  font-weight: 900;
-  line-height: 66.3px;
-  text-align: center;
+.component-index-courseCard-card-timeGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.component-index-courseCard-card-timeHM {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 55.69px;
   color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.component-index-courseCard-card-timeSGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 18px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.component-index-courseCard-card-timeS {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
 }
 
 .component-index-courseCard-card-dayDiv {
@@ -367,13 +397,12 @@ export default {
 }
 
 .component-index-courseCard-card-dayText {
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 700;
   letter-spacing: 0px;
-  line-height: 30px;
-  color: rgba(255, 255, 255, 0.6);
+  line-height: 31.82px;
+  color: rgba(255, 255, 255, 1);
   text-align: center;
-  white-space: pre-wrap;
 }
 
 .component-index-courseCard-card-remainingTimeText {

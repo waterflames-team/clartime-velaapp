@@ -256,7 +256,7 @@ function getWeekNumber() {
   const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
   const currentWeekNumber = startWeekNumber + weekDiff + 1
   // console.log("当前是第" + currentWeekNumber + "周")
-  return "第 " + currentWeekNumber + " 周"
+  return "第" + currentWeekNumber + "周"
 }
 
 module.exports = {
