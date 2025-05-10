@@ -1,32 +1,29 @@
 <template>
   <div class="page">
-    <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
-    </div>
-    <div class="gap-110"></div>
+    <stack>
+      <div class="aboutPage"></div>
+      <div class="content horizontal-center">
+        <div class="component-about-title screen-center">
+          <img src="/common/about_logo.png" class="component-about-titleLogo" />
+          <div class="gap-100"></div>
+          <text class="component-about-titleText">澄序课程表</text>
+          <text class="component-about-titleVersion" onclick="onVersionClick">v{{ version }}</text>
+        </div>
 
-    <div class="gap-60"></div>
-
-    <div class="component-about-card">
-      <div class="component-about-cardContent-container">
-        <text class="component-about-card-text">澄序课程表</text>
-        <text class="component-about-card-version" onclick="onVersionClick">{{ version }}</text>
+        <div class="component-about-textCard vertical-center">
+          <div class="component-about-textContent vertical-left">
+            <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
+            <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
+            <text class="component-about-textContent-text">@绫凌子Rinko</text>
+            <marquee class="component-about-textContent-textS" text-offset={{0}} scrollamount={{20}}>本应用灵感来源于米坛社区「环间课表」，感谢他们做出如此好用的环上应用&nbsp;｜&nbsp;UI设计参考来自@无源流沙，感谢(人´v`)&nbsp;｜&nbsp;感谢@过客是个铁憨憨 & @藻钠Zaona 为应用UI设计提出宝贵建议&nbsp;｜&nbsp;感谢你愿意来使用这个没啥意思的小应用，愿它可以陪伴你的学习生活～&nbsp;｜&nbsp;</marquee>
+          </div>
+        </div>
       </div>
-      <div class="component-about-cardLogo-container">
-        <image class="component-about-logo" src="/common/about_logo.png" />
+      <div class="component-nav-about">
+        <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+        <text class="component-nav-title-time">{{ time }}</text>
       </div>
-    </div>
-
-    <div class="gap-60"></div>
-    <div class="gap-60"></div>
-
-    <div class="component-about-textContent-container">
-      <text class="component-about-textContent-text1">参与开发的人员</text>
-      <text class="component-about-textContent-text2">@蠢鱼Yulimfish</text>
-      <text class="component-about-textContent-text2">@绫凌子Rinko</text>
-      <text class="component-about-textContent-text3">UI设计参考来自@无源流沙，感谢(人´v`)</text>
-    </div>
+    </stack>
   </div>
 </template>
 
@@ -35,7 +32,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.2.2",
+    version: "0.3.0",
     timer: null,
     eggClickCount: 0
   },
@@ -90,94 +87,86 @@ export default {
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
+scroll {
+  height: 200%;
+}
+.aboutPage {
+  width: 336px;
+  height: 480px;
+  background-image: url("/common/about_bg.png");
+  background-size: cover;
+}
+.content {
+  width: 336px;
+  height: 480px;
 
-.component-about-card {
-  width: 324px;
-  height: 194px;
-  opacity: 1;
-  border-radius: 36px;
-  background-color: #262626;
+  /* display: flex;  */
+  /* flex-direction: column; */
 
-  border: 3px solid rgba(255, 255, 255, 0.06);
-
-  padding-top: 16px;
-  padding-left: 19px;
-  padding-right: 13px;
-  padding-bottom: 13px;
-
-  flex-direction: column;
+  scroll-snap-type: y cross;
 }
 
-.component-about-cardContent-container {
-  flex-direction: column;
+/* 头部标题logo */
+.component-about-title {
+  position: absolute;
+  top: 61px;
 }
-
-.component-about-card-text {
-  opacity: 1;
-  /** 文本1 */
-  font-size: 36px;
-  font-weight: 550;
+.component-about-titleLogo {
+  width: 118px;
+  height: 118px;
+}
+.component-about-titleText {
+  font-size: 30px;
+  font-weight: 700;
   letter-spacing: 0px;
-  line-height: 50.4px;
+  line-height: 39.78px;
   color: rgba(255, 255, 255, 1);
-  text-align: left;
-  vertical-align: top;
+  text-align: center;
 }
-
-.component-about-card-version {
-  opacity: 1;
-  /** 文本1 */
-  font-size: 36px;
-  font-weight: 550;
+.component-about-titleVersion {
+  font-size: 18px;
+  font-weight: 400;
   letter-spacing: 0px;
-  line-height: 50.4px;
+  line-height: 23.87px;
   color: rgba(255, 255, 255, 0.6);
-  text-align: left;
-  vertical-align: top;
+  text-align: center;
 }
 
-.component-about-cardLogo-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.component-about-logo {
-  width: 82px;
-  height: 82px;
+/* 感谢描述 */
+.component-about-textCard {
+  width: 300px;
+  height: 190px;
   opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  position: absolute;
+  bottom: 18px;
 }
-
-.component-about-textContent-container {
-  width: 286px;
-  opacity: 1;
-
-  display: flex;
-  flex-direction: column;
+.component-about-textContent {
+  position: absolute;
+  left: 18px;
 }
-
-.component-about-textContent-text1 {
+.component-about-textContent-textSubTitle {
   font-size: 32px;
-  font-weight: 550;
+  font-weight: 500;
   letter-spacing: 0px;
   line-height: 44.8px;
   color: rgba(255, 255, 255, 0.6);
   text-align: left;
-  vertical-align: top;
 }
-
-.component-about-textContent-text2 {
+.component-about-textContent-text {
   font-size: 32px;
-  font-weight: 550;
+  font-weight: 500;
   letter-spacing: 0px;
   line-height: 44.8px;
   color: rgba(255, 255, 255, 1);
   text-align: left;
-  vertical-align: top;
 }
-
-.component-about-textContent-text3 {
+.component-about-textContent-textS {
+  width: 264px;
   font-size: 15px;
-  font-weight: 550;
+  font-weight: 500;
   letter-spacing: 0px;
   line-height: 21.72px;
   color: rgba(255, 255, 255, 0.6);
