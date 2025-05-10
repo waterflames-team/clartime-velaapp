@@ -7,32 +7,27 @@
           <text class="component-nav-title-time">{{ time }}</text>
         </div>
 
-        <div class="gap-110"></div>
+        <!-- <div class="gap-110"></div> -->
 
         <div style="display: flex; flex-direction: row">
-          <div class="component-index-courseCard-card screen-center">
+          <div class="component-indexCard screen-center">
             <div class="screen-center">
               <div class="screen-center">
-                <text class="component-index-courseCard-card-timeHM">{{ time }}</text>
-                <div class="component-index-courseCard-card-timeSGroup screen-center">
-                  <text class="component-index-courseCard-card-timeS">{{ seconds }}</text>
+                <text class="component-indexCard-timeHM">{{ time }}</text>
+                <div class="component-indexCard-timeSGroup screen-center">
+                  <text class="component-indexCard-timeS">{{ seconds }}</text>
                 </div>
               </div>
               <div class="gap-80"></div>
               <div class="screen-center">
-                <text class="component-index-courseCard-card-dayText">{{ day }}</text>
-                <text class="component-index-courseCard-card-dayText">{{ dayNum }}</text>
-                <text class="component-index-courseCard-card-dayText">{{ weekNum }}</text>
+                <text class="component-indexCard-dayText">{{ day }}</text>
+                <text class="component-indexCard-dayText">{{ dayNum }}</text>
+                <text class="component-indexCard-dayText">{{ weekNum }}</text>
               </div>
-              <!-- <div class="gap-80"></div> -->
-              <!-- <text class="component-index-courseCard-card-remainingTimeText">{{ remain }}</text> -->
             </div>
           </div>
           <div class="gap-60"></div>
-          <div
-            class="component-index-courseCard-card"
-            style="display: flex; flex-direction: column"
-          >
+          <div class="component-indexCard" style="display: flex; flex-direction: column">
             <div class="component-coursePresentations-head vertical-left">
               <text class="component-coursePresentations-text">当前课程</text>
               <text class="component-coursePresentations-courses">语文</text>
@@ -44,7 +39,22 @@
             </div>
           </div>
         </div>
-        <!-- <div class="gap-80"></div> -->
+
+        <div class="gap-60"></div>
+
+        <div class="component-remainingTimeCard screen-center">
+          <text class="component-remainingTimeCard-text">{{ remain }}</text>
+        </div>
+
+        <div class="gap-60"></div>
+
+        <div class="component-nextCourseCard horizontal-center">
+          <div class="component-nextCourseCard-head horizontal-center">
+            <text class="component-nextCourseCard-text">下一节</text>
+            <text class="component-nextCourseCard-course">语文</text>
+          </div>
+          <text class="component-nextCourseCard-text component-nextCourseCard-bottom">信息</text>
+        </div>
 
         <!-- <scroll
           class="component-coursePresentations"
@@ -307,8 +317,8 @@ export default {
 <style>
 @import "../../common/css/universal.css";
 @import "../../common/css/nav.css";
-/* 界面布局 */
 
+/* 界面布局 */
 .content {
   width: 100%;
   height: 100%;
@@ -327,15 +337,15 @@ export default {
   scroll-snap-align: start;
 }
 
-/* 头部卡片 1 */
-.component-index-courseCard-card {
+/* 时间卡片 */
+.component-indexCard {
   width: 147px;
   height: 199px;
   border-radius: 30px;
   background-color: rgba(13, 110, 255, 1);
 }
 
-.component-index-courseCard-card-timeHM {
+.component-indexCard-timeHM {
   font-size: 42px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -344,7 +354,7 @@ export default {
   text-align: center;
 }
 
-.component-index-courseCard-card-timeSGroup {
+.component-indexCard-timeSGroup {
   width: 30px;
   height: 18px;
   opacity: 1;
@@ -352,7 +362,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.component-index-courseCard-card-timeS {
+.component-indexCard-timeS {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -360,7 +370,7 @@ export default {
   text-align: center;
 }
 
-.component-index-courseCard-card-dayText {
+.component-indexCard-dayText {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -369,8 +379,9 @@ export default {
   text-align: center;
 }
 
-/* 头部卡片 2 */
+/* 课程卡片 */
 .component-coursePresentations-head {
+  position: absolute;
   left: 12px;
   top: 12px;
 }
@@ -395,9 +406,59 @@ export default {
   color: rgba(255, 255, 255, 1);
   text-align: left;
 }
-、
 
-/* .component-index-courseCard-card-remainingTimeText {
+/* 提示卡片 */
+.component-remainingTimeCard {
+  width: 300px;
+  height: 68px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-remainingTimeCard-text {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 31.82px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+
+/* 下节课卡片 */
+.component-nextCourseCard {
+  width: 300px;
+  height: 132px;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-nextCourseCard-head {
+  position: absolute;
+  top: 12px;
+}
+.component-nextCourseCard-text {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 26.52px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+.component-nextCourseCard-course {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 42.43px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-nextCourseCard-bottom {
+  position: absolute;
+  bottom: 12px;
+}
+
+/* .component-indexCard-remainingTimeText {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0px;
