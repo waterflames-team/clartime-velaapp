@@ -87,12 +87,11 @@ export default {
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
-scroll {
-  height: 200%;
-}
 .aboutPage {
-  width: 336px;
-  height: 480px;
+  /* width: 336px; */
+  width: 100%;
+  /* height: 480px; */
+  height: 100%;
   background-image: url("/common/about_bg.png");
   background-size: cover;
 }
