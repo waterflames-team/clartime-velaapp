@@ -24,13 +24,13 @@
             <div class="gap-60"></div>
             <div class="component-indexCard" style="display: flex; flex-direction: column">
               <div class="component-coursePresentations-head vertical-left">
-                <text class="component-coursePresentations-text">当前课程</text>
-                <text class="component-coursePresentations-courses">语文</text>
+                <text class="component-coursePresentations-text">{{courseSchedule[indexNow].description}}</text>
+                <text class="component-coursePresentations-courses">{{courseSchedule[indexNow].courseName}}</text>
               </div>
               <div class="component-coursePresentations-detail vertical-left">
-                <text class="component-coursePresentations-text">3</text>
-                <text class="component-coursePresentations-text">4</text>
-                <text class="component-coursePresentations-text">5</text>
+                <text class="component-coursePresentations-text">{{courseSchedule[indexNow].timeRange}}</text>
+                <text class="component-coursePresentations-text">{{courseSchedule[indexNow].courseRoom}}</text>
+                <text class="component-coursePresentations-text">{{courseSchedule[indexNow].courseTeacher}}</text>
               </div>
             </div>
           </div>
@@ -46,9 +46,9 @@
           <div class="component-nextCourseCard horizontal-center">
             <div class="component-nextCourseCard-head horizontal-center">
               <text class="component-nextCourseCard-text">下一节</text>
-              <text class="component-nextCourseCard-course">语文</text>
+              <text class="component-nextCourseCard-course">{{courseSchedule[indexNow+1].courseName}}</text>
             </div>
-            <text class="component-nextCourseCard-text component-nextCourseCard-bottom">信息</text>
+            <text class="component-nextCourseCard-text component-nextCourseCard-bottom">{{courseSchedule[indexNow+1].timeRange}}</text>
           </div>
         </div>
 
@@ -215,6 +215,7 @@ export default {
     this.remain = this.getRemainingTime()
     this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex()
+    
   },
   onInit() {
     // 初始化数据
@@ -224,6 +225,9 @@ export default {
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
+
+    console.log(this.courseSchedule)
+    console.log(this.indexNow)
   },
 
   onShow() {
@@ -300,7 +304,7 @@ export default {
 
 /* 时间卡片 */
 .component-indexCard {
-  width: 147px;
+  width: 157px;
   height: 199px;
   border-radius: 24px;
   background-color: rgba(0, 136, 255, 1);
@@ -370,7 +374,7 @@ export default {
 
 /* 提示卡片 */
 .component-remainingTimeCard {
-  width: 300px;
+  width: 320px;
   height: 68px;
   opacity: 1;
   border-radius: 24px;
@@ -378,7 +382,7 @@ export default {
 }
 .component-remainingTimeCard-text {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0px;
   line-height: 31.82px;
   color: rgba(255, 255, 255, 1);
@@ -387,7 +391,7 @@ export default {
 
 /* 下节课卡片 */
 .component-nextCourseCard {
-  width: 300px;
+  width: 320px;
   height: 132px;
   opacity: 1;
   border-radius: 24px;
@@ -407,7 +411,7 @@ export default {
 }
 .component-nextCourseCard-course {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0px;
   line-height: 42.43px;
   color: rgba(255, 255, 255, 1);
@@ -421,8 +425,8 @@ export default {
 /* 更多卡片 - 方形部分 */
 
 .component-other-button_q {
-  width: 147px;
-  height: 147px;
+  width: 157px;
+  height: 157px;
   opacity: 1;
   border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -433,7 +437,7 @@ export default {
   bottom: 12px;
 
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0px;
   line-height: 39.78px;
   color: rgba(255, 255, 255, 1);
@@ -459,8 +463,8 @@ export default {
 
 /* 更多卡片 - 长方形部分 */
 .component-other-button_l {
-  width: 300px;
-  height: 126px;
+  width: 320px;
+  height: 121px;
   opacity: 1;
   border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -472,7 +476,7 @@ export default {
 }
 .component-other-button_lText {
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0px;
   line-height: 39.78px;
   color: rgba(255, 255, 255, 1);
