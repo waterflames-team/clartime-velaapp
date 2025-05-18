@@ -15,11 +15,19 @@
             <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
             <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
             <text class="component-about-textContent-text">@绫凌子Rinko</text>
-            <marquee class="component-about-textContent-textS" text-offset={{0}} scrollamount={{20}}>本应用灵感来源于米坛社区「环间课表」，感谢他们做出如此好用的环上应用&nbsp;｜&nbsp;UI设计参考来自@无源流沙，感谢(人´v`)&nbsp;｜&nbsp;感谢@过客是个铁憨憨 & @藻钠Zaona 为应用UI设计提出宝贵建议&nbsp;｜&nbsp;感谢你愿意来使用这个没啥意思的小应用，愿它可以陪伴你的学习生活～&nbsp;｜&nbsp;</marquee>
+            <marquee
+              class="component-about-textContent-textS"
+              text-offset="{{0}}"
+              scrollamount="{{20}}"
+            >
+              本应用灵感来源于米坛社区「环间课表」，感谢他们做出如此好用的环上应用&nbsp;｜&nbsp;UI设计参考来自@无源流沙，感谢(人´v`)&nbsp;｜&nbsp;感谢@过客是个铁憨憨
+              & @藻钠Zaona
+              为应用UI设计提出宝贵建议&nbsp;｜&nbsp;感谢你愿意来使用这个没啥意思的小应用，愿它可以陪伴你的学习生活～&nbsp;｜&nbsp;
+            </marquee>
           </div>
         </div>
       </div>
-      <div class="component-nav-about">
+      <div class="component-nav-noback">
         <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
         <text class="component-nav-title-time">{{ time }}</text>
       </div>

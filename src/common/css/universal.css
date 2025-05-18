@@ -43,6 +43,13 @@ text {
   align-items: left;
 }
 
+.bg-white-10 {
+  background-color: rgba(255, 255, 255, 0.10);
+}
+.bg-white-20 {
+  background-color: rgba(255, 255, 255, 0.20);
+}
+
 .gap-20 {
   height: 2px;
   width: 2px;
@@ -51,6 +58,10 @@ text {
 .gap-36 {
   height: 3.6px;
   width: 3.6px;
+}
+.gap-40 {
+  height: 4px;
+  width: 4px;
 }
 .gap-60 {
   height: 6px;
@@ -70,6 +81,11 @@ text {
 .gap-110 {
   height: 11px;
   width: 11px;
+}
+
+.gap-120 {
+  height: 12px;
+  width: 12px;
 }
 
 .gap-140 {
