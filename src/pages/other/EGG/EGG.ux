@@ -6,15 +6,16 @@
     </div>
     <div class="gap-110"></div>
     <div class="component-about-textContent-container">
-      <text class="component-about-textContent-text">你是谁……</text>
-      <text class="component-about-textContent-text">怎么会发现这里……</text>
+      <text class="component-about-textContent-text">From: </text>
+      <text class="component-about-textContent-text">©WaterFlames 2019-2025.</text>
+      <text class="component-about-textContent-text">Made with love.</text>
     </div>
   </div>
 </template>
 <script>
 export default {
   private: {
-    title: "Rainbow",
+    title: "Egg",
     time: "",
     timer: null
   },
@@ -50,10 +51,9 @@ export default {
   flex-direction: column;
 }
 .component-about-textContent-text {
-  font-size: 32px;
-  font-weight: 550;
+  font-size: 24px;
+  font-weight: 350;
   letter-spacing: 0px;
-  line-height: 44.8px;
   color: rgba(255, 255, 255, 0.6);
   text-align: left;
   vertical-align: top;

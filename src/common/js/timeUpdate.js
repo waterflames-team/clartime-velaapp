@@ -7,6 +7,7 @@ function updateTime() {
     hours,
     minutes,
     time: `${hours}:${minutes}`,
+    seconds: Seconds,
     fullTime: `${hours}:${minutes}:${Seconds}`
   }
 }
