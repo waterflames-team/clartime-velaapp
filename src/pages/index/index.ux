@@ -276,7 +276,7 @@ export default {
     })
   },
   quit() {
-    app.terminate()
+    this.$app.$def.app.terminate()
   }
 }
 </script>
