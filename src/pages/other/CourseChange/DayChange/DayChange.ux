@@ -12,59 +12,15 @@
     <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 1 || page === 2 }}">
       <div class="gap-36"></div>
 
-      <div class="component-classChange-card-border">
+      <div class="component-classChange-card-border" for="{{weekDay}}">
         <div
           class="component-classChange-card-content"
-          ontouchstart="selectCard(0)"
+          ontouchstart="selectCard($idx)"
           ontouchend="selectCard(-1)"
-          onclick="pageTurn(0)"
-          style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+          onclick="pageTurn($idx)"
+          style="background-color: {{ selectedCard === $idx ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
         >
-          <text class="component-classChange-card-text">{{ daynum }}</text>
-        </div>
-      </div>
-      <div class="component-classChange-card-border">
-        <div
-          class="component-classChange-card-content"
-          ontouchstart="selectCard(1)"
-          ontouchend="selectCard(-1)"
-          onclick="pageTurn(1)"
-          style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
-        >
-          <text class="component-classChange-card-text">{{ daynum }}</text>
-        </div>
-      </div>
-      <div class="component-classChange-card-border">
-        <div
-          class="component-classChange-card-content"
-          ontouchstart="selectCard(2)"
-          ontouchend="selectCard(-1)"
-          onclick="pageTurn(2)"
-          style="background-color: {{ selectedCard === 2 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
-        >
-          <text class="component-classChange-card-text">{{ daynum }}</text>
-        </div>
-      </div>
-      <div class="component-classChange-card-border">
-        <div
-          class="component-classChange-card-content"
-          ontouchstart="selectCard(3)"
-          ontouchend="selectCard(-1)"
-          onclick="pageTurn(3)"
-          style="background-color: {{ selectedCard === 3 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
-        >
-          <text class="component-classChange-card-text">{{ daynum }}</text>
-        </div>
-      </div>
-      <div class="component-classChange-card-border">
-        <div
-          class="component-classChange-card-content"
-          ontouchstart="selectCard(4)"
-          ontouchend="selectCard(-1)"
-          onclick="pageTurn(4)"
-          style="background-color: {{ selectedCard === 4 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
-        >
-          <text class="component-classChange-card-text">{{ daynum }}</text>
+          <text class="component-classChange-card-text">{{ $item.nameZh }}</text>
         </div>
       </div>
     </scroll>
@@ -74,7 +30,7 @@
       <div class="gap-36"></div>
 
       <div class="component-classChange-result loading" if="{{changeRseult === -1}}">
-        <text class="component-classChange-result-icon">...</text>
+        <text class="component-classChange-result-icon">〇</text>
       </div>
       <div class="component-classChange-result success" elif="{{changeRseult === 1}}">
         <text class="component-classChange-result-icon">✓</text>
@@ -102,8 +58,16 @@ export default {
     timer: null,
     selectedCard: -1,
     page: 1,
-    changeRseult: 1,
-    daynum: "周一",
+    changeRseult: 0,
+    weekDay: [
+      {nameZh: "周一", nameEn: "Mon"},
+      {nameZh: "周二", nameEn: "Tue"},
+      {nameZh: "周三", nameEn: "Wed"},
+      {nameZh: "周四", nameEn: "Thu"},
+      {nameZh: "周五", nameEn: "Fri"},
+      {nameZh: "周六", nameEn: "Sat"},
+      {nameZh: "周日", nameEn: "Sun"}
+    ],
     changeDate: ["DayChange"]
   },
   onShow() {
@@ -111,7 +75,22 @@ export default {
     this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
       this.time = timeData.time
     })
-    // console.log("this.timer", this.time)
+    
+    // 获取当前星期几并重新排序weekDay数组
+    const today = new Date().getDay() || 7 // 0是周日，转换为7
+    this.weekDay = [
+      {nameZh: "周一", nameEn: "Mon"},
+      {nameZh: "周二", nameEn: "Tue"},
+      {nameZh: "周三", nameEn: "Wed"},
+      {nameZh: "周四", nameEn: "Thu"},
+      {nameZh: "周五", nameEn: "Fri"},
+      {nameZh: "周六", nameEn: "Sat"},
+      {nameZh: "周日", nameEn: "Sun"}
+    ].sort((a, b) => {
+      const aDay = a.nameEn === "Sun" ? 7 : parseInt(a.nameEn.slice(-1))
+      const bDay = b.nameEn === "Sun" ? 7 : parseInt(b.nameEn.slice(-1))
+      return (aDay - today + 7) % 7 - (bDay - today + 7) % 7
+    })
   },
 
   onDestroy() {
@@ -130,9 +109,13 @@ export default {
   },
 
   exit() {
-    if ((this.page === 3 && this.changeRseult !== -1) || this.page === 1) {
+    // 合并条件判断：如果正在调整中，则无响应；如果在结果页/第一页且不在调整中，则返回上级页面
+    if (this.page === 1 || (this.page === 3 && this.changeRseult !== -1)) {
       this.$app.$def.router.back()
+    } else if(this.page === 3 && this.changeRseult === -1){
+      return
     } else {
+      // 其他情况返回上一步
       this.page -= 1
       this.changeDate.pop()
     }
