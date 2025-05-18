@@ -1,5 +1,6 @@
 <script>
 import router from "@system.router"
+import app from '@system.app' 
 import courseDataParse from "./common/js/courseDataParse"
 import timeUpdate from "./common/js/timeUpdate"
 import dateUpdate from "./common/js/dateUpdate"
@@ -14,6 +15,7 @@ export default {
   },
 
   router,
+  app,
   courseDataParse,
   timeUpdate,
   dateUpdate
