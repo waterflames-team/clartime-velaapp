@@ -1,14 +1,12 @@
 {
   "package": "com.waterflames.timetable",
   "name": "澄序课程表",
-  "versionName": "0.2.2",
+  "versionName": "0.3.0",
   "versionCode": 2,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
   "icon": "/common/logo.png",
-  "deviceTypeList": [
-    "watch"
-  ],
+  "deviceTypeList": ["watch"],
   "features": [
     {
       "name": "system.router"
@@ -24,22 +22,22 @@
       "pages/index": {
         "component": "index"
       },
-      "pages/other/AllCourses":{
+      "pages/other/AllCourses": {
         "component": "AllCourses"
       },
       "pages/other/CourseChange":{
         "component": "CourseChange"
       },
-      "pages/other/CourseChange/ClassChange":{
+      "pages/other/CourseChange/ClassChange": {
         "component": "ClassChange"
       },
-      "pages/other/CourseChange/DayChange":{
+      "pages/other/CourseChange/DayChange": {
         "component": "DayChange"
       },
-      "pages/other/about":{
+      "pages/other/about": {
         "component": "about"
       },
-      "pages/other/EGG":{
+      "pages/other/EGG": {
         "component": "EGG"
       },
       "pages/other/Communication":{
