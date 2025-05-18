@@ -27,9 +27,6 @@
       "pages/other/AllCourses":{
         "component": "AllCourses"
       },
-      "pages/other/AllCourses/DayCourses":{
-        "component": "DayCourses"
-      },
       "pages/other/CourseChange":{
         "component": "CourseChange"
       },
@@ -44,6 +41,9 @@
       },
       "pages/other/EGG":{
         "component": "EGG"
+      },
+      "pages/other/Communication":{
+        "component": "Communication"
       }
     }
   },
