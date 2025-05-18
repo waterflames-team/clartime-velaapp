@@ -141,59 +141,19 @@ function getCourseSchedule(weekday) {
         timeMinute: item.timeMinute,
         timeRange
       }
-    } else if (item.type === "interval" || item.type === "rest" || item.type === "start") {
-      // 获取下一节课信息
-      let nextCourseName = null
-      let nextCourseTeacher = null
-      let nextCourseRoom = null
-
+    } else if (item.type === "interval" || item.type === "rest") {
       const nextItem = timetableData[timetableData.indexOf(item) + 1]
-      if (nextItem && nextItem.type === "course") {
-        const courseItem = daySchedule.courseList[courseCounter]
-        const courseId = courseItem.courseId
-        const courseRepeatability = courseItem.courseRepeatability
-        const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
-        const courseData = coursesInfo[finalCourseId]
-
-        nextCourseName = courseData.courseName
-        nextCourseTeacher = courseData.teacher
-        nextCourseRoom = courseData.classroom
-      }
-      //这里时间合成的是下节课的
-      const nextNextItem = timetableData[timetableData.indexOf(item) + 2]
       let timeRange = null
-      if (
-        nextItem &&
-        nextItem.timeHour !== undefined &&
-        nextItem.timeMinute !== undefined &&
-        nextNextItem &&
-        nextNextItem.timeHour !== undefined &&
-        nextNextItem.timeMinute !== undefined
-      ) {
-        timeRange = `${nextItem.timeHour}:${String(nextItem.timeMinute).padStart(2, "0")} - ${
-          nextNextItem.timeHour
-        }:${String(nextNextItem.timeMinute).padStart(2, "0")}`
-      }
-
-      // 数据描述
-      let description = "休息中，下一节课为"
-      if (item.type === "interval") {
-        description = "现在是课间，下一节课为"
-      } else if (item.type === "start") {
-        description = "课程未开始，第一节课为"
-      } else if (item.timeHour > 12 && item.timeHour < 16) {
-        description = "午休中，下一节课为"
-      } else if (item.timeHour > 18) {
-        description = "晚休中，下一节课为"
+      if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
+        timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
+          nextItem.timeHour
+        }:${String(nextItem.timeMinute).padStart(2, "0")}`
       }
 
       // 数据返回
       return {
         type: item.type,
-        description,
-        courseName: nextCourseName,
-        courseTeacher: nextCourseTeacher,
-        courseRoom: nextCourseRoom,
+        courseName: "课间休息",
         timeHour: item.timeHour,
         timeMinute: item.timeMinute,
         timeRange
@@ -202,8 +162,26 @@ function getCourseSchedule(weekday) {
       // 数据返回
       return {
         type: item.type,
-        description: "今天的课结束啦",
+        courseName: "今日课程结束",
+        courseTeacher: "",
+        courseRoom: "",
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange: ""
+      },{
+        type: item.type,
         courseName: "明天见",
+        courseTeacher: "",
+        courseRoom: "",
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange: ""
+      }
+    } else if (item.type === "start") {
+      // 数据返回
+      return {
+        type: item.type,
+        courseName: "今日课程还没开始噢",
         courseTeacher: "",
         courseRoom: "",
         timeHour: item.timeHour,
