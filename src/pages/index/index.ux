@@ -1,9 +1,9 @@
 <template>
   <div class="page">
-    <scroll class="content horizontal-center" scroll-x="true">
+    <scroll class="content horizontal-center" scroll-y="true">
       <div class="content-home horizontal-center">
         <div class="component-nav-noback">
-          <text class="component-nav-title-text" onclick="quit">< {{ title_home }}</text>
+          <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
           <!-- <text class="component-nav-title-time">{{ time }}</text> -->
         </div>
         <div class="component-indexCard">
@@ -292,9 +292,9 @@ export default {
   height: 480px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  scroll-snap-type: x cross;
+  scroll-snap-type: y cross;
   scroll-snap-stop: always;
 }
 
