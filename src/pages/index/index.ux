@@ -389,7 +389,8 @@ export default {
   width: 316px;
   height: 259px;
   border-radius: 38px;
-  top: 30px;
+  position: absolute;
+  bottom: 12px;
 }
 
 .component-courseCard-nowCourseContent{
