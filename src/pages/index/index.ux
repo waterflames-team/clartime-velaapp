@@ -93,7 +93,7 @@
 
         <div class="gap-60"></div>
 
-        <div class="component-other-button_l" onclick="jumpAb">
+        <div class="component-other-button_l" onclick="jumpSt">
           <div class="component-other-button-head vertical-left">
             <text class="component-other-button_lText">设置</text>
             <text class="component-other-button_lDescribe">实验性设置</text>
@@ -285,6 +285,11 @@ export default {
   jumpCC() {
     this.$app.$def.router.push({
       uri: "pages/other/CourseChange"
+    })
+  },
+  jumpSt() {
+    this.$app.$def.router.push({
+      uri: "pages/other/Settings"
     })
   },
   jumpAb() {
