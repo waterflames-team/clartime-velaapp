@@ -5,20 +5,20 @@
         <text class="component-nav-title-time">{{ time }}</text>
       </div>
       
-      <div class="gap-110"></div>
+      <!-- <div class="gap-110"></div> -->
 
-      <div if="{{!loding}}">
-        <text class="component-allCourses-title" onclick="dayDown"><</text>
+      <div if="{{!loding}}" class="component-allCourses-header">
+        <text class="component-allCourses-title" onclick="dayDown"><<<</text>
 
         <text class="component-allCourses-title">{{ weekNum }}</text>
 
-        <text class="component-allCourses-title" onclick="dayUp">></text>
+        <text class="component-allCourses-title" onclick="dayUp">>>></text>
       </div>
 
-      <div class="gap-80"></div>
+      <!-- <div class="gap-80"></div> -->
 
       <scroll class="component-allCourses-list" scroll-y="true" bounces="true">
-        <div if="{{loding}}">
+        <div if="{{loding}}" style="top : 120px">
           <text class="component-coursePresentations-courses">加载中....</text>
         </div>
 
@@ -130,6 +130,15 @@
   @import "../../../common/css/universal.css";
   @import "../../../common/css/nav.css";
   
+  .component-allCourses-header {
+    display: flex;
+    justify-content: space-around; /* 或者 space-between / space-evenly */
+    align-items: center; /* 垂直居中，可选 */
+    width: 100%; /* 宽度占满父容器，可选 */
+
+    height: 32px;
+  }
+
   .component-allCourses-list {
     display: flex;
     flex-direction: column;
@@ -137,7 +146,7 @@
     align-items: center;
     margin-bottom: 30px;
     width: 324px;
-    height: 404.4px;
+    height: 386px;
   
     scroll-snap-align: start;
   }
