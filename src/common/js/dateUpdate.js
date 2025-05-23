@@ -6,7 +6,7 @@ function updateDate() {
   const days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 
   return {
-    day: `${month}月${dayOfMonth}日`,
+    day: `${month}/${dayOfMonth}`,
     dayNum: days[dayOfWeek]
   }
 }
