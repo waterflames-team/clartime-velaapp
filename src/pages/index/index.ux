@@ -1,10 +1,10 @@
 <template>
   <div class="page">
-    <scroll class="content horizontal-center" scroll-x="true">
+    <scroll class="content horizontal-center" scroll-y="true">
       <div class="content-home horizontal-center">
         <div class="component-nav-noback">
-          <text class="component-nav-title-text" onclick="quit">< {{ title_home }}</text>
-          <text class="component-nav-title-time">{{ time }}</text>
+          <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
+          <!-- <text class="component-nav-title-time">{{ time }}</text> -->
         </div>
         <div class="component-indexCard">
           <div class="component-indexCard-left">
@@ -34,12 +34,16 @@
               </div>
             </div>
             <div class="gap-40"></div>
-            <div class="component-indexCard-timeHM screen-center bg-white-20">
-              <text class="component-indexCard-timeHM-text">{{ time }}</text>
+            <div class="component-indexCard-date screen-center bg-white-20">
+              <text class="component-indexCard-date-text">{{ day }}</text>
             </div>
           </div>
         </div>
-        <div class="component-courseCard bg-white-10 horizontal-center">
+        <div if="courseSchedule[indexNow].type === 'end'" class="component-courseCard bg-white-10 screen-center"><!-- 课程结束态 -->
+            <text class="component-courseCard-nowCourseContent-text1">课程结束</text>
+            <text class="component-courseCard-nowCourseContent-text2">明天见</text>
+        </div>
+        <div else class="component-courseCard bg-white-10 horizontal-center"><!-- 正常上课态 -->
           <div class="component-courseCard-nowCourseContent screen-center">
             <text class="component-courseCard-nowCourseContent-text1">当前</text>
             <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nowCourseContent-text2">{{courseSchedule[indexNow].courseName}}</marquee>
@@ -47,7 +51,19 @@
             <marquee if="courseSchedule[indexNow].type === 'course'" text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nowCourseContent-text3">{{courseSchedule[indexNow].timeRange}}｜{{courseSchedule[indexNow].courseRoom}}｜{{courseSchedule[indexNow].courseTeacher}}</marquee>
             <marquee if="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'" text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nowCourseContent-text3">{{courseSchedule[indexNow].timeRange}}</marquee>
           </div>
-          <div class="component-courseCard-nextCourseContent screen-center bg-white-10">
+          <div if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'" class="component-courseCard-nextCourseContent screen-center bg-white-10"><!-- 上课情况 -->
+            <text class="component-courseCard-nextCourseContent-text1">下一节</text>
+            <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nextCourseContent-text2">{{courseSchedule[indexNow+2].courseName}}</marquee>
+            <div class="gap-120"></div>
+            <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nextCourseContent-text3">{{courseSchedule[indexNow+2].timeRange}}｜{{courseSchedule[indexNow+2].courseRoom}}｜{{courseSchedule[indexNow+2].courseTeacher}}</marquee>
+          </div>
+          <div elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'" class="component-courseCard-nextCourseContent screen-center bg-white-10"><!-- 最后一节课情况 -->
+            <text class="component-courseCard-nextCourseContent-text1">下一节</text>
+            <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nextCourseContent-text2">没课了</marquee>
+            <div class="gap-120"></div>
+            <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nextCourseContent-text3">今天的课马上要结束哩～</marquee>
+          </div>
+          <div else class="component-courseCard-nextCourseContent screen-center bg-white-10"><!-- 课间情况 -->
             <text class="component-courseCard-nextCourseContent-text1">下一节</text>
             <marquee text-offset="{{8}}" scrollamount="{{20}}" class="component-courseCard-nextCourseContent-text2">{{courseSchedule[indexNow+1].courseName}}</marquee>
             <div class="gap-120"></div>
@@ -180,7 +196,7 @@ export default {
 
     const currentIndex = this.getCurrentCourseIndex()
     if (currentIndex === this.courseSchedule.length) {
-      return "今日课程结束～"
+      return "---"
     }
 
     const nextCourse = this.courseSchedule[currentIndex + 1]
@@ -189,7 +205,7 @@ export default {
 
     // 提前判断结束，以防止下一项无法取到导致的出错
     if (thisCourse.type === "end") {
-      return "今日课程结束～"
+      return "---"
     }
 
     // 计算分钟差
@@ -297,9 +313,9 @@ export default {
   height: 480px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  scroll-snap-type: x cross;
+  scroll-snap-type: y cross;
   scroll-snap-stop: always;
 }
 
@@ -378,13 +394,24 @@ export default {
   font-size: 24px;
   font-weight: 500;
 }
+.component-indexCard-date {
+  width: 144px;
+  height: 68px;
+  border-radius: 24px;
+}
+.component-indexCard-date-text {
+  color: rgba(255, 255, 255, 1);
+  font-size: 42px;
+  font-weight: 700;
+}
 
 
 .component-courseCard {
   width: 316px;
   height: 259px;
   border-radius: 38px;
-  top: 30px;
+  position: absolute;
+  bottom: 12px;
 }
 
 .component-courseCard-nowCourseContent{
