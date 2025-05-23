@@ -40,8 +40,8 @@
       "pages/other/EGG": {
         "component": "EGG"
       },
-      "pages/other/Communication":{
-        "component": "Communication"
+      "pages/other/Settings":{
+        "component": "Settings"
       }
     }
   },

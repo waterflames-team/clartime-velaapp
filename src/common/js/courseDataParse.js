@@ -141,7 +141,24 @@ function getCourseSchedule(weekday) {
         timeMinute: item.timeMinute,
         timeRange
       }
-    } else if (item.type === "interval" || item.type === "rest") {
+    } else if (item.type === "rest") {
+      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      let timeRange = null
+      if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
+        timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
+          nextItem.timeHour
+        }:${String(nextItem.timeMinute).padStart(2, "0")}`
+      }
+
+      // 数据返回
+      return {
+        type: item.type,
+        courseName: "休息中",
+        timeHour: item.timeHour,
+        timeMinute: item.timeMinute,
+        timeRange
+      }
+    } else if (item.type === "interval") {
       const nextItem = timetableData[timetableData.indexOf(item) + 1]
       let timeRange = null
       if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
