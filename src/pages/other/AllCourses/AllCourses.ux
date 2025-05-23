@@ -4,25 +4,23 @@
         <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
         <text class="component-nav-title-time">{{ time }}</text>
       </div>
-      
-      <!-- <div class="gap-110"></div> -->
 
       <div if="{{!loding}}" class="component-allCourses-header">
         <text class="component-allCourses-title" onclick="dayDown"><<<</text>
-
         <text class="component-allCourses-title">{{ weekNum }}</text>
-
         <text class="component-allCourses-title" onclick="dayUp">>>></text>
       </div>
 
-      <!-- <div class="gap-80"></div> -->
+      <div if="{{loding}}" style="top : 120px">
+        <text class="component-coursePresentations-promptText">加载中....</text>
+      </div>
+      
+      <div if="{{ (!courseSchedule || courseSchedule.length === 0) && !loding}}" style="top : 120px">
+        <text class="component-coursePresentations-promptText">当日无课</text>
+      </div>
 
-      <scroll class="component-allCourses-list" scroll-y="true" bounces="true">
-        <div if="{{loding}}" style="top : 120px">
-          <text class="component-coursePresentations-courses">加载中....</text>
-        </div>
-
-        <div if="{{!loding}}" for="{{courseSchedule}}">
+      <scroll class="component-allCourses-list" scroll-y="true" bounces="true" if="{{!loding}}">
+        <div for="{{courseSchedule}}">
             <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
               <div class="component-coursePresentations-content">
               <div class="gap-142"></div>
@@ -35,13 +33,6 @@
             </div>
           </div>
         </div>
-        <div class="component-coursePresentations-border" if="{{ (!courseSchedule || courseSchedule.length === 0) && !loding}}">
-          <div class="component-coursePresentations-content">
-            <div class="gap-142"></div>
-            <text class="component-coursePresentations-courses">无课程数据</text>
-          </div>
-        </div>
-        
       </scroll>
 
     </div>
@@ -210,6 +201,17 @@
   
   .component-coursePresentations-courses {
     left: 19px;
+    opacity: 1;
+    font-size: 32px;
+    font-weight: 550;
+    letter-spacing: 0px;
+    line-height: 42.43px;
+    color: rgba(255, 255, 255, 1);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .component-coursePresentations-promptText {
     opacity: 1;
     font-size: 32px;
     font-weight: 550;
