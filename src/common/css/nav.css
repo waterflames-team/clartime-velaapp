@@ -4,9 +4,9 @@
   position: absolute;
   /* top: 0px; */
   width: 336px;
-  height: 51px;
+  height: 56px;
   background-image: url("/common/nav-bg.png");
-  background-size: 336px 51px;
+  background-size: 336px 56px;
   position: relative;
 }
 
@@ -14,25 +14,26 @@
   position: absolute;
   /* top: 0px; */
   width: 336px;
-  height: 51px;
+  height: 56px;
   position: relative;
-}
-
-.component-nav-title-time {
-  position: absolute;
-  color: #ffffff;
-  right: 14.5px;
-  top: 3.5px;
-  font-size: 33.55px;
-  line-height: 44px;
 }
 
 .component-nav-title-text {
   position: absolute;
   color: #ffffff;
-  left: 14.5px;
-  top: 3.5px;
-  font-size: 33.55px;
-  line-height: 44px;
-  vertical-align: middle;
+  width: 202px;
+  left: 16px;
+  top: 7px;
+  font-size: 32px;
 }
+
+
+.component-nav-title-time {
+  position: absolute;
+  color: #ffffff;
+  right: 16px;
+  top: 7px;
+  font-size: 32px;
+  text-align: right;
+}
+
