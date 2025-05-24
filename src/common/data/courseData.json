@@ -3,8 +3,7 @@
     "name": "高二下",
     "createTime": "250321210600",
     "updateTime": "250321210600",
-    "courseStartbak": "250216",
-    "courseStart": "250201",
+    "courseStart": "250216",
     "courseEnd": "250711",
     "dataStructureVersion": "1.1"
   },
@@ -357,23 +356,23 @@
       },
       {
         "type": "course",
-        "timeHour": "21",
+        "timeHour": "08",
         "timeMinute": "00"
       },
       {
         "type": "rest",
-        "timeHour": "22",
+        "timeHour": "10",
         "timeMinute": "00"
       },
       {
         "type": "course",
-        "timeHour": "23",
+        "timeHour": "19",
         "timeMinute": "00"
       },
       {
         "type": "end",
-        "timeHour": "23",
-        "timeMinute": "30"
+        "timeHour": "20",
+        "timeMinute": "00"
       }
     ],
     [

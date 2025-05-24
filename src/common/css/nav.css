@@ -18,6 +18,19 @@
   position: relative;
 }
 
+.component-nav-backGroup {
+  top: 7px;
+  left: 16px;
+  width: 202px;
+  /* display: flex;
+  flex-direction: row */
+}
+
+.component-nav-backButton {
+  height: 42px;
+  object-fit: contain;
+}
+
 .component-nav-title-text {
   position: absolute;
   color: #ffffff;
@@ -27,6 +40,12 @@
   font-size: 32px;
 }
 
+.component-nav-title-text-backb{
+  position: absolute;
+  left: 26px;
+  color: #ffffff;
+  font-size: 32px;
+}
 
 .component-nav-title-time {
   position: absolute;
