@@ -85,7 +85,7 @@
     },
   
     dayDown() {
-      console.log(!this.loding);
+      // console.log(!this.loding);
       const currentIndex = this.dayMap.findIndex(item => item.en === this.dayNum);
       const prevIndex = (currentIndex - 1 + 7) % 7;
       this.dayNum = this.dayMap[prevIndex].en;
