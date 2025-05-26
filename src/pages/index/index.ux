@@ -44,40 +44,41 @@
             if="courseSchedule[indexNow].type === 'end'"
             class="component-courseCard bg-white-10 screen-center"
           >
-            <!-- 课程结束态 -->
+            <!-- 课程结束卡片 -->
             <text class="component-courseCard-nowCourseContent-text1">课程结束</text>
             <text class="component-courseCard-nowCourseContent-text2">明天见</text>
           </div>
           <div else class="component-courseCard bg-white-10 horizontal-center">
-            <!-- 正常上课态 -->
-            <div class="component-courseCard-nowCourseContent horizontal-center">
-              <text class="component-courseCard-nowCourseContent-text1">当前</text>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nowCourseContent-text2"
-              >
-                {{ courseSchedule[indexNow].courseName }}
-              </marquee>
-              <marquee
-                if="courseSchedule[indexNow].type === 'course'"
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nowCourseContent-text3"
-              >
-                {{ courseSchedule[indexNow].timeRange }}｜{{
-                  courseSchedule[indexNow].courseRoom
-                }}｜{{ courseSchedule[indexNow].courseTeacher }}
-              </marquee>
-              <marquee
-                elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nowCourseContent-text3"
-              >
-                {{ courseSchedule[indexNow].timeRange }}
-              </marquee>
-            </div>
+            <!-- 上课期间卡片 -->
+            <text class="component-courseCard-nowCourseContent-text1" style="top: 12px;">当前</text>
+            <marquee
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="component-courseCard-nowCourseContent-text2"
+              style="top: 14px;"
+            >
+              {{ courseSchedule[indexNow].courseName }}
+            </marquee>
+            <marquee
+              if="courseSchedule[indexNow].type === 'course'"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="component-courseCard-nowCourseContent-text3"
+              style="top: 24px;"
+            >
+              {{ courseSchedule[indexNow].timeRange }}｜{{
+                courseSchedule[indexNow].courseRoom
+              }}｜{{ courseSchedule[indexNow].courseTeacher }}
+            </marquee>
+            <marquee
+              elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="component-courseCard-nowCourseContent-text3"
+              style="top: 24px;"
+            >
+              {{ courseSchedule[indexNow].timeRange }}
+            </marquee>
             <div
               if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
               class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
@@ -528,12 +529,8 @@ export default {
   bottom: 12px;
 }
 
-.component-courseCard-nowCourseContent {
-  position: absolute;
-  top: 12px;
-  height: auto;
-  overflow: visible;
-}
+
+
 .component-courseCard-nowCourseContent-text1 {
   color: rgba(255, 255, 255, 0.6);
   font-size: 20px;
