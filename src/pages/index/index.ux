@@ -2,149 +2,154 @@
   <div class="page">
     <stack>
       <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
-        <div class="content-home horizontal-center {{backgroundColor}}">
-          <div class="component-nav-noback">
-            <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
-            <!-- <text class="component-nav-title-time">{{ time }}</text> -->
-          </div>
-          <div class="component-indexCard">
-            <div class="component-indexCard-left">
-              <div class="component-indexCard-timeHM screen-center bg-white-20">
-                <text class="component-indexCard-timeHM-text">{{ time }}</text>
-              </div>
-              <div class="gap-40"></div>
-              <div style="display: flex; flex-direction: row">
-                <div class="component-indexCard-Week screen-center bg-white-10">
-                  <text class="component-indexCard-Week-text">{{ weekNum }}</text>
-                </div>
-                <div class="gap-40"></div>
-                <div class="component-indexCard-dayN screen-center bg-white-10">
-                  <text class="component-indexCard-dayN-text">{{ dayNum }}</text>
-                </div>
-              </div>
+        <stack class="content-home">
+          <div if="backgroundColor === 'home-back_1'" class="content-home horizontal-center home-back_1"></div>
+          <div elif="backgroundColor === 'home-back_2'" class="content-home horizontal-center home-back_2"></div>
+          <div elif="backgroundColor === 'home-back_3'" class="content-home horizontal-center home-back_3"></div>
+          <div class="content-home horizontal-center">
+            <div class="component-nav-noback">
+              <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
+              <!-- <text class="component-nav-title-time">{{ time }}</text> -->
             </div>
-            <div class="gap-40"></div>
-            <div class="component-indexCard-right">
-              <div style="display: flex; flex-direction: row">
-                <div class="component-indexCard-timeS screen-center bg-white-10">
-                  <text class="component-indexCard-timeS-text">{{ seconds }}</text>
+            <div class="component-indexCard">
+              <div class="component-indexCard-left">
+                <div class="component-indexCard-timeHM screen-center bg-white-20">
+                  <text class="component-indexCard-timeHM-text">{{ time }}</text>
                 </div>
                 <div class="gap-40"></div>
-                <div class="component-indexCard-remainingTime screen-center bg-white-10">
-                  <text class="component-indexCard-remainingTime-text">{{ remain }}</text>
+                <div style="display: flex; flex-direction: row">
+                  <div class="component-indexCard-Week screen-center bg-white-10">
+                    <text class="component-indexCard-Week-text">{{ weekNum }}</text>
+                  </div>
+                  <div class="gap-40"></div>
+                  <div class="component-indexCard-dayN screen-center bg-white-10">
+                    <text class="component-indexCard-dayN-text">{{ dayNum }}</text>
+                  </div>
                 </div>
               </div>
               <div class="gap-40"></div>
-              <div class="component-indexCard-date screen-center bg-white-20">
-                <text class="component-indexCard-date-text">{{ day }}</text>
+              <div class="component-indexCard-right">
+                <div style="display: flex; flex-direction: row">
+                  <div class="component-indexCard-timeS screen-center bg-white-10">
+                    <text class="component-indexCard-timeS-text">{{ seconds }}</text>
+                  </div>
+                  <div class="gap-40"></div>
+                  <div class="component-indexCard-remainingTime screen-center bg-white-10">
+                    <text class="component-indexCard-remainingTime-text">{{ remain }}</text>
+                  </div>
+                </div>
+                <div class="gap-40"></div>
+                <div class="component-indexCard-date screen-center bg-white-20">
+                  <text class="component-indexCard-date-text">{{ day }}</text>
+                </div>
+              </div>
+            </div>
+            <div
+              if="courseSchedule[indexNow].type === 'end'"
+              class="component-courseCard bg-white-10 screen-center"
+            >
+              <!-- 课程结束卡片 -->
+              <text class="component-courseCard-nowCourseContent-text1">课程结束</text>
+              <text class="component-courseCard-nowCourseContent-text2">明天见</text>
+            </div>
+            <div else class="component-courseCard bg-white-10 horizontal-center">
+              <!-- 上课期间卡片 -->
+              <text class="component-courseCard-nowCourseContent-text1" style="top: 12px;">当前</text>
+              <marquee
+                text-offset="{{8}}"
+                scrollamount="{{20}}"
+                class="component-courseCard-nowCourseContent-text2"
+                style="top: 14px;"
+              >
+                {{ courseSchedule[indexNow].courseName }}
+              </marquee>
+              <marquee
+                if="courseSchedule[indexNow].type === 'course'"
+                text-offset="{{8}}"
+                scrollamount="{{20}}"
+                class="component-courseCard-nowCourseContent-text3"
+                style="top: 24px;"
+              >
+                {{ courseSchedule[indexNow].timeRange }}｜{{
+                  courseSchedule[indexNow].courseRoom
+                }}｜{{ courseSchedule[indexNow].courseTeacher }}
+              </marquee>
+              <marquee
+                elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+                text-offset="{{8}}"
+                scrollamount="{{20}}"
+                class="component-courseCard-nowCourseContent-text3"
+                style="top: 24px;"
+              >
+                {{ courseSchedule[indexNow].timeRange }}
+              </marquee>
+              <div
+                if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
+                class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
+              >
+                <!-- 上课情况 -->
+                <text class="component-courseCard-nextCourseContent-text1">下一节</text>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text2"
+                >
+                  {{ courseSchedule[indexNow + 2].courseName }}
+                </marquee>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text3"
+                >
+                  {{ courseSchedule[indexNow + 2].timeRange }}｜{{
+                    courseSchedule[indexNow + 2].courseRoom
+                  }}｜{{ courseSchedule[indexNow + 2].courseTeacher }}
+                </marquee>
+              </div>
+              <div
+                elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
+                class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
+              >
+                <!-- 最后一节课情况 -->
+                <text class="component-courseCard-nextCourseContent-text1">下一节</text>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text2"
+                >
+                  没课了
+                </marquee>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text3"
+                >
+                  今天的课马上要结束哩～
+                </marquee>
+              </div>
+              <div else class="component-courseCard-nextCourseContent horizontal-center bg-white-10">
+                <!-- 课间情况 -->
+                <text class="component-courseCard-nextCourseContent-text1">下一节</text>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text2"
+                >
+                  {{ courseSchedule[indexNow + 1].courseName }}
+                </marquee>
+                <marquee
+                  text-offset="{{8}}"
+                  scrollamount="{{20}}"
+                  class="component-courseCard-nextCourseContent-text3"
+                >
+                  {{ courseSchedule[indexNow + 1].timeRange }}｜{{
+                    courseSchedule[indexNow + 1].courseRoom
+                  }}｜{{ courseSchedule[indexNow + 1].courseTeacher }}
+                </marquee>
               </div>
             </div>
           </div>
-          <div
-            if="courseSchedule[indexNow].type === 'end'"
-            class="component-courseCard bg-white-10 screen-center"
-          >
-            <!-- 课程结束卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1">课程结束</text>
-            <text class="component-courseCard-nowCourseContent-text2">明天见</text>
-          </div>
-          <div else class="component-courseCard bg-white-10 horizontal-center">
-            <!-- 上课期间卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1" style="top: 12px;">当前</text>
-            <marquee
-              text-offset="{{8}}"
-              scrollamount="{{20}}"
-              class="component-courseCard-nowCourseContent-text2"
-              style="top: 14px;"
-            >
-              {{ courseSchedule[indexNow].courseName }}
-            </marquee>
-            <marquee
-              if="courseSchedule[indexNow].type === 'course'"
-              text-offset="{{8}}"
-              scrollamount="{{20}}"
-              class="component-courseCard-nowCourseContent-text3"
-              style="top: 24px;"
-            >
-              {{ courseSchedule[indexNow].timeRange }}｜{{
-                courseSchedule[indexNow].courseRoom
-              }}｜{{ courseSchedule[indexNow].courseTeacher }}
-            </marquee>
-            <marquee
-              elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
-              text-offset="{{8}}"
-              scrollamount="{{20}}"
-              class="component-courseCard-nowCourseContent-text3"
-              style="top: 24px;"
-            >
-              {{ courseSchedule[indexNow].timeRange }}
-            </marquee>
-            <div
-              if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
-              class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
-            >
-              <!-- 上课情况 -->
-              <text class="component-courseCard-nextCourseContent-text1">下一节</text>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text2"
-              >
-                {{ courseSchedule[indexNow + 2].courseName }}
-              </marquee>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text3"
-              >
-                {{ courseSchedule[indexNow + 2].timeRange }}｜{{
-                  courseSchedule[indexNow + 2].courseRoom
-                }}｜{{ courseSchedule[indexNow + 2].courseTeacher }}
-              </marquee>
-            </div>
-            <div
-              elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
-              class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
-            >
-              <!-- 最后一节课情况 -->
-              <text class="component-courseCard-nextCourseContent-text1">下一节</text>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text2"
-              >
-                没课了
-              </marquee>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text3"
-              >
-                今天的课马上要结束哩～
-              </marquee>
-            </div>
-            <div else class="component-courseCard-nextCourseContent horizontal-center bg-white-10">
-              <!-- 课间情况 -->
-              <text class="component-courseCard-nextCourseContent-text1">下一节</text>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text2"
-              >
-                {{ courseSchedule[indexNow + 1].courseName }}
-              </marquee>
-              <marquee
-                text-offset="{{8}}"
-                scrollamount="{{20}}"
-                class="component-courseCard-nextCourseContent-text3"
-              >
-                {{ courseSchedule[indexNow + 1].timeRange }}｜{{
-                  courseSchedule[indexNow + 1].courseRoom
-                }}｜{{ courseSchedule[indexNow + 1].courseTeacher }}
-              </marquee>
-            </div>
-          </div>
-        </div>
+        </stack>
 
         <div class="content-other horizontal-center">
           <div class="component-nav-noback">
@@ -186,7 +191,7 @@
           </div>
         </div>
       </scroll>
-      <div class="component-indicator horizontal-center"><div class="component-indicator-highlight" style="top: {{indicatorTop}}px"></div></div>
+      <!-- <div class="component-indicator horizontal-center"><div class="component-indicator-highlight" style="top: {{indicatorTop}}px"></div></div> -->
     </stack>
   </div>
 </template>
