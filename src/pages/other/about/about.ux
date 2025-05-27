@@ -115,7 +115,10 @@ export default {
 
   exit() {
     this.$app.$def.router.push({
-      uri: 'pages/index'
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
     })
   },
 
@@ -127,6 +130,16 @@ export default {
       })
       this.eggClickCount = 0
     }
+  },
+
+  onBackPress () {
+    this.$app.$def.router.push({
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
+    })
+    return true
   }
 }
 </script>

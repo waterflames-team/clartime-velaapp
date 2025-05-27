@@ -414,6 +414,10 @@ export default {
   },
   quit() {
     this.$app.$def.app.terminate()
+  },
+  onBackPress () {
+    this.$app.$def.app.terminate()
+    return true
   }
 }
 </script>
