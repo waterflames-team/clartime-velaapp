@@ -114,22 +114,8 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.back()
-  },
-
-  jumpAC() {
     this.$app.$def.router.push({
-      uri: "pages/other/AllCourses"
-    })
-  },
-  jumpCC() {
-    this.$app.$def.router.push({
-      // uri: "pages/other/CourseChange",
-    })
-  },
-  jumpAb() {
-    this.$app.$def.router.push({
-      // uri: "pages/other/About",
+      uri: 'pages/index'
     })
   },
 

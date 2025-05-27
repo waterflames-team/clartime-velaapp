@@ -51,7 +51,9 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.back()
+    this.$app.$def.router.push({
+      uri: 'pages/index'
+    })
   },
 
   jumpClassChange() {

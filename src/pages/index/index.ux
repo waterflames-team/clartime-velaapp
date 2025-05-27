@@ -382,22 +382,34 @@ export default {
 
   jumpAC() {
     this.$app.$def.router.push({
-      uri: "pages/other/AllCourses"
+      uri: "pages/other/AllCourses",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
     })
   },
   jumpCC() {
     this.$app.$def.router.push({
-      uri: "pages/other/CourseChange"
+      uri: "pages/other/CourseChange",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
     })
   },
   jumpSt() {
     this.$app.$def.router.push({
-      uri: "pages/other/Settings"
+      uri: "pages/other/Settings",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
     })
   },
   jumpAb() {
     this.$app.$def.router.push({
-      uri: "pages/other/about"
+      uri: "pages/other/about",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
     })
   },
   quit() {

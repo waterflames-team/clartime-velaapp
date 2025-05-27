@@ -30,9 +30,11 @@ export default {
   onHide() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
-  
+
   exit() {
-    this.$app.$def.router.back()
+    this.$app.$def.router.push({
+      uri: 'pages/index'
+    })
   }
 }
   </script>
