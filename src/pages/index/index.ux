@@ -1,17 +1,12 @@
 <template>
   <div class="page">
     <stack>
-      <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
-        <stack class="content-home">
+      <stack class="content-home">
           <div class="content-home horizontal-center">
             <image class="home-back" src="/common/home_back_1.png" if="backgroundColor === 'home-back_1'"/>
             <image class="home-back" src="/common/home_back_2.png" elif="backgroundColor === 'home-back_2'"/>
             <image class="home-back" src="/common/home_back_3.png" elif="backgroundColor === 'home-back_3'"/>
           </div>
-          <!-- <div if="backgroundColor === 'home-back_1'" class="content-home horizontal-center home-back_1"></div>
-          <div elif="backgroundColor === 'home-back_2'" class="content-home horizontal-center home-back_2"></div>
-          <div elif="backgroundColor === 'home-back_3'" class="content-home horizontal-center home-back_3"></div>
-           -->
           <div class="content-home horizontal-center">
             <div class="component-nav-noback">
               <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
@@ -155,7 +150,9 @@
               </div>
             </div>
           </div>
-        </stack>
+      </stack>
+      <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
+        <div class="content-home"></div>
 
         <div class="content-other horizontal-center">
           <div class="component-nav-noback">
@@ -197,7 +194,6 @@
           </div>
         </div>
       </scroll>
-      <!-- <div class="component-indicator horizontal-center"><div class="component-indicator-highlight" style="top: {{indicatorTop}}px"></div></div> -->
     </stack>
   </div>
 </template>
@@ -456,6 +452,8 @@ export default {
   width: 100%;
   height: 480px;
   scroll-snap-align: start;
+
+  background-color: rgba(0, 0, 0);
 }
 
 /* 指示器 */
