@@ -103,7 +103,6 @@ export default {
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
-    // console.log("this.timer", this.time)
   },
 
   onDestroy() {
