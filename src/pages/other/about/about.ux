@@ -123,7 +123,7 @@ export default {
 
   onVersionClick() {
     this.eggClickCount++
-    if (this.eggClickCount === 7) {
+    if (this.eggClickCount === 3) {
       this.$app.$def.router.push({
         uri: "pages/other/EGG"
       })

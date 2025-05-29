@@ -1,29 +1,38 @@
 <template>
   <div class="page">
-    <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
-    </div>
-    <div class="gap-110"></div>
-    <div class="component-about-textContent-container">
-      <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
-      <text class="component-about-textContent-textS">Lucent Project</text>
-      <div class="gap-240"></div>
-      <text class="component-about-textContent-text">构建时间</text>
-      <text class="component-about-textContent-textS">{{timeStamp}}</text>
-      <div class="gap-120"></div>
-      <text class="component-about-textContent-text">构建工具版本</text>
-      <text class="component-about-textContent-textS">toolkit - v{{toolkit}}</text>
-      <div class="gap-120"></div>
-      <text class="component-about-textContent-text">构建Node版本</text>
-      <text class="component-about-textContent-textS">{{nodev}}</text>
-      <div class="gap-120"></div>
-      <text class="component-about-textContent-text">构建平台</text>
-      <text class="component-about-textContent-textS">{{platform}}</text>
-      <div class="gap-120"></div>
-      <text class="component-about-textContent-text">构建平台架构</text>
-      <text class="component-about-textContent-textS">{{arch}}</text>
-    </div>
+    <stack>
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="gap-110"></div>
+        <div class="component-about-textContent-container">
+          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS">Lucent Project</text>
+          <div class="gap-240"></div>
+          <text class="component-about-textContent-text">构建时间</text>
+          <text class="component-about-textContent-textS">{{timeStamp}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建工具版本</text>
+          <text class="component-about-textContent-textS">toolkit - v{{toolkit}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建Node版本</text>
+          <text class="component-about-textContent-textS">{{nodev}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台</text>
+          <text class="component-about-textContent-textS">{{platform}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台架构</text>
+          <text class="component-about-textContent-textS">{{arch}}</text>
+        </div>
+      </scroll>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
+    
   </div>
 </template>
 <script>
@@ -79,6 +88,10 @@ export default {
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
+.content {
+  width: 336px;
+  height: 480px;
+}
 
 .component-about-textContent-container {
   opacity: 1;
