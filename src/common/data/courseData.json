@@ -161,22 +161,22 @@
       },
       {
         "type": "course",
-        "timeHour": "19",
+        "timeHour": "21",
         "timeMinute": "00"
       },
       {
         "type": "interval",
-        "timeHour": "20",
+        "timeHour": "21",
         "timeMinute": "10"
       },
       {
         "type": "course",
-        "timeHour": "20",
+        "timeHour": "22",
         "timeMinute": "20"
       },
       {
         "type": "end",
-        "timeHour": "21",
+        "timeHour": "23",
         "timeMinute": "30"
       }
     ],
@@ -449,7 +449,7 @@
       ]
     },
     {
-      "timetableId": [1],
+      "timetableId": [0],
       "timetableRepeatability": 1,
       "courseList": [
         {
@@ -457,19 +457,7 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [3],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [5],
-          "courseRepeatability": 1
-        },
-        {
           "courseId": [4],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [1],
           "courseRepeatability": 1
         },
         {
@@ -477,15 +465,31 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [9],
-          "courseRepeatability": 1
-        },
-        {
           "courseId": [1],
           "courseRepeatability": 1
         },
         {
-          "courseId": [1],
+          "courseId": [6],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [7],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
           "courseRepeatability": 1
         }
       ]
@@ -495,7 +499,11 @@
       "timetableRepeatability": 1,
       "courseList": [
         {
-          "courseId": [3],
+          "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
           "courseRepeatability": 1
         },
         {
@@ -507,11 +515,11 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [1],
+          "courseId": [6],
           "courseRepeatability": 1
         },
         {
-          "courseId": [9],
+          "courseId": [7],
           "courseRepeatability": 1
         },
         {
@@ -519,19 +527,15 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [0],
+          "courseId": [8],
           "courseRepeatability": 1
         },
         {
-          "courseId": [10],
+          "courseId": [5],
           "courseRepeatability": 1
         },
         {
-          "courseId": [2],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [2],
+          "courseId": [5],
           "courseRepeatability": 1
         }
       ]
@@ -541,19 +545,15 @@
       "timetableRepeatability": 1,
       "courseList": [
         {
-          "courseId": [2],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [2],
-          "courseRepeatability": 1
-        },
-        {
           "courseId": [0],
           "courseRepeatability": 1
         },
         {
-          "courseId": [0],
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
           "courseRepeatability": 1
         },
         {
@@ -561,37 +561,15 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [4],
+          "courseId": [6],
           "courseRepeatability": 1
         },
         {
-          "courseId": [3],
+          "courseId": [7],
           "courseRepeatability": 1
         },
         {
-          "courseId": [8],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [4],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [4],
-          "courseRepeatability": 1
-        }
-      ]
-    },
-    {
-      "timetableId": [2],
-      "timetableRepeatability": 1,
-      "courseList": [
-        {
-          "courseId": [1],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [4],
+          "courseId": [5],
           "courseRepeatability": 1
         },
         {
@@ -599,15 +577,7 @@
           "courseRepeatability": 1
         },
         {
-          "courseId": [2],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [3],
-          "courseRepeatability": 1
-        },
-        {
-          "courseId": [0],
+          "courseId": [5],
           "courseRepeatability": 1
         },
         {
@@ -617,28 +587,139 @@
       ]
     },
     {
-      "timetableId": [3],
+      "timetableId": [0],
       "timetableRepeatability": 1,
       "courseList": [
         {
-          "courseId": [11],
+          "courseId": [0],
           "courseRepeatability": 1
         },
         {
-          "courseId": [12],
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [6],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [7],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
           "courseRepeatability": 1
         }
       ]
     },
     {
-      "timetableId": [4],
+      "timetableId": [0],
       "timetableRepeatability": 1,
       "courseList": [
         {
           "courseId": [0],
           "courseRepeatability": 1
-        },{
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [6],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [7],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        }
+      ]
+    },
+    {
+      "timetableId": [0],
+      "timetableRepeatability": 1,
+      "courseList": [
+        {
           "courseId": [0],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [4],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [2],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [1],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [6],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [7],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [8],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
+          "courseRepeatability": 1
+        },
+        {
+          "courseId": [5],
           "courseRepeatability": 1
         }
       ]
