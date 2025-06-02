@@ -1,30 +1,75 @@
 <template>
   <div class="page">
-    <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
-    </div>
-    <div class="gap-110"></div>
-    <div class="component-about-textContent-container">
-      <text class="component-about-textContent-text">From: </text>
-      <text class="component-about-textContent-text">©WaterFlames 2019-2025.</text>
-      <text class="component-about-textContent-text">Made with love.</text>
-    </div>
+    <stack>
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="gap-110"></div>
+        <div class="component-about-textContent-container">
+          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS">Lucent Project</text>
+          <div class="gap-240"></div>
+          <text class="component-about-textContent-text">构建时间</text>
+          <text class="component-about-textContent-textS">{{timeStamp}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建工具版本</text>
+          <text class="component-about-textContent-textS">toolkit - v{{toolkit}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建Node版本</text>
+          <text class="component-about-textContent-textS">{{nodev}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台</text>
+          <text class="component-about-textContent-textS">{{platform}}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台架构</text>
+          <text class="component-about-textContent-textS">{{arch}}</text>
+        </div>
+      </scroll>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
+    
   </div>
 </template>
 <script>
+import file from '@system.file' 
+
 export default {
   private: {
-    title: "Egg",
+    title: "详细信息",
     time: "",
-    timer: null
+    timer: null,
+
+    timeStamp: "",
+    toolkit: "",
+    nodev: "",
+    platform: "",
+    arch: ""
   },
   onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
-    // console.log("this.timer", this.time)
+      file.readText({
+      uri: '/META-INF/build.txt',
+      success: (data) => {
+        const buildDataList = data.text.split('\n');
+        console.log('text list: ', buildDataList[0]);
+        this.timeStamp = buildDataList[2].split('=')[1];
+        this.toolkit = buildDataList[1].split('=')[1];
+        this.nodev = buildDataList[3].split('=')[1];
+        this.platform = buildDataList[4].split('=')[1];
+        this.arch = buildDataList[5].split('=')[1];
+      },
+      fail: function(data, code) {
+        console.log(`handling fail, code = ${code}`);
+      }
+    })
   },
 
   onDestroy() {
@@ -43,19 +88,45 @@ export default {
 <style>
 @import "../../../common/css/universal.css";
 @import "../../../common/css/nav.css";
+.content {
+  width: 336px;
+  height: 480px;
+}
 
 .component-about-textContent-container {
   opacity: 1;
 
   display: flex;
   flex-direction: column;
+  padding: 12px;
+
+  width: 312px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
-.component-about-textContent-text {
-  font-size: 24px;
-  font-weight: 350;
+.component-about-textContent-textSubTitle {
+  font-size: 32px;
+  font-weight: 500;
   letter-spacing: 0px;
+  line-height: 44.8px;
   color: rgba(255, 255, 255, 0.6);
   text-align: left;
-  vertical-align: top;
 }
+.component-about-textContent-text {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-about-textContent-textS {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: pre-line;
+  flex-wrap: wrap; 
+}
+
 </style>

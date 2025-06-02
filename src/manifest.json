@@ -10,6 +10,9 @@
   "features": [
     {
       "name": "system.router"
+    },
+    {
+      "name": "system.file"
     }
   ],
   "config": {
