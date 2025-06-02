@@ -2,27 +2,12 @@
   <div class="page">
     <stack if="ThemeName === 'Horizon'">
       <stack class="content-home">
-        <div class="content-home horizontal-center">
-          <image
-            class="home-back"
-            src="/common/home_back_1.png"
-            if="backgroundColor === 'home-back_1'"
-          />
-          <image
-            class="home-back"
-            src="/common/home_back_2.png"
-            elif="backgroundColor === 'home-back_2'"
-          />
-          <image
-            class="home-back"
-            src="/common/home_back_3.png"
-            elif="backgroundColor === 'home-back_3'"
-          />
-        </div>
-        <div class="content-home horizontal-center">
-          <div class="component-nav-noback">
-            <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
-            <!-- <text class="component-nav-title-time">{{ time }}</text> -->
+          <div class="content-home horizontal-center">
+            <image class="home-back" src="/common/home_back_3.png" if="courseSchedule[indexNow].type === 'course'"/>
+            <image class="home-back" src="/common/home_back_2.png" elif="courseSchedule[indexNow].type === 'interval'"/>
+            <image class="home-back" src="/common/home_back_1.png" else/>
+            
+            
           </div>
           <div class="component-indexCard">
             <div class="component-indexCard-left">
@@ -374,7 +359,6 @@ export default {
     coursesTeacher: "师老张",
     autoDistance: 0,
     indexNow: 0,
-    backgroundColor: "home-back_1",
     indicatorTop: 1,
 
     timer: null, // 添加定时器变量
@@ -483,13 +467,6 @@ export default {
     this.remain = this.getRemainingTime()
     this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex()
-    if (this.courseSchedule[this.indexNow].type === "course") {
-      this.backgroundColor = "home-back_3"
-    } else if (this.courseSchedule[this.indexNow].type === "interval") {
-      this.backgroundColor = "home-back_2"
-    } else {
-      this.backgroundColor = "home-back_1"
-    }
   },
   onInit() {
     // 初始化数据
