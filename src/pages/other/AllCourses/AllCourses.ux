@@ -85,7 +85,7 @@
     },
   
     dayDown() {
-      console.log(!this.loding);
+      // console.log(!this.loding);
       const currentIndex = this.dayMap.findIndex(item => item.en === this.dayNum);
       const prevIndex = (currentIndex - 1 + 7) % 7;
       this.dayNum = this.dayMap[prevIndex].en;
@@ -112,7 +112,22 @@
     // },
 
     exit() {
-      this.$app.$def.router.back()
+      this.$app.$def.router.push({
+        uri: 'pages/index',
+        params: {
+          ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        }
+      })
+    },
+
+    onBackPress () {
+      this.$app.$def.router.push({
+        uri: 'pages/index',
+        params: {
+          ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        }
+      })
+      return true
     }
   }
   </script>
