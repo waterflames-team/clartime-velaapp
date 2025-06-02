@@ -51,7 +51,12 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.back()
+    this.$app.$def.router.push({
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
+    })
   },
 
   jumpClassChange() {
@@ -64,6 +69,16 @@ export default {
     this.$app.$def.router.push({
       uri: "pages/other/CourseChange/DayChange"
     })
+  },
+
+  onBackPress () {
+    this.$app.$def.router.push({
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
+    })
+    return true
   }
 }
 </script>

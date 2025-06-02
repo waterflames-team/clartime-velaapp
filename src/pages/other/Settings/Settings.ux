@@ -1,10 +1,14 @@
 <template>
   <div class="page">
-    <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
-    </div>
-    <div class="gap-110"></div>
+    <stack>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
 
 
   </div>
@@ -30,9 +34,24 @@ export default {
   onHide() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
-  
+
   exit() {
-    this.$app.$def.router.back()
+    this.$app.$def.router.push({
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
+    })
+  },
+
+  onBackPress () {
+    this.$app.$def.router.push({
+      uri: 'pages/index',
+      params: {
+        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+      }
+    })
+    return true
   }
 }
   </script>
