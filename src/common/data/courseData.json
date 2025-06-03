@@ -186,13 +186,13 @@
       },
       {
         "type": "course",
-        "timeHour": "00",
+        "timeHour": "08",
         "timeMinute": "00"
       },
       {
         "type": "interval",
-        "timeHour": "00",
-        "timeMinute": "08"
+        "timeHour": "08",
+        "timeMinute": "45"
       },
       {
         "type": "course",
