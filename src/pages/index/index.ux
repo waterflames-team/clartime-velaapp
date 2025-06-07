@@ -747,7 +747,7 @@ export default {
 }
 .nucleus-NowCourse-text1 {
   top: 8px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   font-size: 24px;
   font-weight: 500;
@@ -762,7 +762,7 @@ export default {
 }
 .nucleus-NowCourse-text3 {
   top: 20px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   font-size: 28px;
   font-weight: 500;
@@ -770,14 +770,14 @@ export default {
 }
 
 .nucleus-NextCourseCard {
-  width: 140px;
-  height: 140px;
-  border-radius: 24px;
+  width: 152px;
+  height: 152px;
+  border-radius: 36px;
   background-color: rgba(255, 255, 255, 0.1);
 
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  bottom: 12px;
+  left: 12px;
 
   display: flex;
   flex-direction: column;
@@ -786,7 +786,7 @@ export default {
 .nucleus-NextCourseCard-text1 {
   top: 12px;
   left: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
   font-weight: 500;
 }
@@ -802,7 +802,7 @@ export default {
   position: absolute;
   bottom: 36px;
   left: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
   font-weight: 500;
   width: 116px;
@@ -811,20 +811,20 @@ export default {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
   font-weight: 500;
   width: 116px;
 }
 .nucleus-RemainCard {
-  width: 140px;
-  height: 140px;
-  border-radius: 24px;
+  width: 152px;
+  height: 152px;
+  border-radius: 36px;
   background-color: #1070FF;
 
   position: absolute;
-  bottom: 24px;
-  right: 24px;
+  bottom: 12px;
+  right: 12px;
 
   display: flex;
   flex-direction: column;
@@ -833,7 +833,7 @@ export default {
 .nucleus-RemainCard-text1 {
   top: 12px;
   left: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
   font-weight: 500;
 }
@@ -848,15 +848,14 @@ export default {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
   font-weight: 500;
 }
 .nucleus-ClassOver-text {
-  color: rgba(255, 255, 255, 0.40);
+  color: rgba(255, 255, 255, 0.6);
 
   text-align: center;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.10);
   font-size: 24px;
   font-weight: 500;
 
