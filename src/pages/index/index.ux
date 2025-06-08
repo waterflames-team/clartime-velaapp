@@ -394,7 +394,7 @@
 <script>
 export default {
   private: {
-    ThemeName: "Nucleus", // Horizon Or Nucleus
+    ThemeName: "Horizon", // Horizon Or Nucleus
 
     title_home: "课程表",
     title_other: "更多",
@@ -532,6 +532,20 @@ export default {
 
     // console.log(this.courseSchedule)
     // console.log(this.indexNow)
+
+    this.$app.$def.storage.get({
+      key: "themeName",
+      default: "Horizon", // 无数据时，默认使用Horizon主题
+      success: function(data) {
+        console.log('handling success')
+        this.ThemeName = data
+      },
+      fail: function(code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+
+    console.log(this.ThemeName)
   },
 
   onShow() {

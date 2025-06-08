@@ -13,6 +13,9 @@
     },
     {
       "name": "system.file"
+    },
+    { 
+      "name": "system.storage" 
     }
   ],
   "config": {
