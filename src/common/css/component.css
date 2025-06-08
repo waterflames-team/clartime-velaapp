@@ -57,3 +57,24 @@
   text-align: right;
 }
 
+/* button 样式 */
+
+.component-button {
+  display: flex;
+  width: 312px;
+  height: 112px;
+  padding: 16px 12px;
+  align-items: center;
+
+  border-radius: 24px;
+  background-color: #222;
+}
+
+.component-text {
+  color: #FFF;
+  font-family: MiSans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
