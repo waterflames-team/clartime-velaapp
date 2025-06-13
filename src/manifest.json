@@ -48,6 +48,12 @@
       },
       "pages/other/Settings":{
         "component": "Settings"
+      },
+      "pages/other/Settings/dynamicEffects": {
+        "component": "dynamicEffects"
+      },
+      "pages/other/Settings/theme": {
+        "component": "theme"
       }
     }
   },

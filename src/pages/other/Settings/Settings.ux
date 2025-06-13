@@ -2,49 +2,21 @@
   <div class="page">
     <stack>
       <!-- 主页 -->
-      <scroll class="content horizontal-center" scroll-y="true" bounces="true"
-        if=" settingItems === 'index' "
-      >
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
         <div class="component-nav"></div>
-        <div class="component-button" onclick="setSettingItems('theme')">
+        <div class="component-button" onclick="settingItems('theme')">
           <text class="component-text">主题选择</text>
         </div>
 
         <div class="gap-80"></div>
 
-        <div class="component-button" onclick="setSettingItems('dynamicEffects')">
+        <div class="component-button" onclick="settingItems('dynamicEffects')">
           <text class="component-text">动态效果</text>
         </div>
 
-        <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text>
+        <!-- <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text> -->
       </scroll>
 
-      <!-- 主题选择 -->
-      <div class="content horizontal-center" if=" settingItems === 'theme' ">
-        <div class="component-button card">
-          <text class="component-text">Horizon</text>
-          <input 
-          class="radio" type="radio" name="ThemeName" 
-          value="Horizon" checked="{{this.ThemeName  === 'Horizon'}}" 
-          @change="onThemeNameChange" />
-        </div>
-        <div class="component-button card">
-          <text class="component-text">Nucleus</text>
-          <input 
-          class="radio" type="radio" name="ThemeName" 
-          value="Nucleus" checked="{{this.ThemeName  === 'Nucleus'}}" 
-          @change="onThemeNameChange" />
-        </div>
-
-        <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text>
-      </div>
-
-      <!-- 动态效果 -->
-      <div class="content horizontal-center" if=" settingItems === 'dynamicEffects' ">
-
-
-        <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text>
-      </div>
       
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
@@ -62,8 +34,6 @@ export default {
     title: "设置",
     time: "",
     timer: null,
-    settingItems: 'index',
-    ThemeName: 'Horizon',
   },
 
   onInit() {
@@ -86,7 +56,6 @@ export default {
         this.time = timeData.time
       }))
     // console.log("this.timer", this.time)
-    this.settingItems = 'index'
   },
 
   onDestroy() {
@@ -97,21 +66,26 @@ export default {
   },
 
   exit() {
-    if (this.settingItems === 'index') {
       this.$app.$def.router.push({
         uri: "pages/index",
         params: {
           ___PARAM_LAUNCH_FLAG___: "clearTask"
         }
       })
-    } else {
-      this.settingItems = 'index'
-    }
   },
 
-  setSettingItems(item) {
+  settingItems(item) {
     this.settingItems = item
-    // console.log("setSettingItems: item")
+    if (item === 'theme') {
+      this.$app.$def.router.push({
+        uri: "pages/other/Settings/theme",
+
+      })
+    } else if (item === 'dynamicEffects') {
+      this.$app.$def.router.push({
+        uri: "pages/other/Settings/dynamicEffects",
+      })
+    }
   },
 
   onBackPress() {
@@ -122,24 +96,8 @@ export default {
       }
     })
     return true
-  },
-
-  onThemeNameChange(e) {
-    this.ThemeName = e.value
-
-    this.$app.$def.storage.set({
-      key: "themeName",
-      value: this.ThemeName,
-      success: function() {
-        console.log('handling success')
-      },
-      fail: function(code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
-
-    console.log(`ThemeName = ${this.ThemeName}`)
   }
+
 }
 </script>
 
