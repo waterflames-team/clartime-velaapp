@@ -28,10 +28,10 @@ export default {
     timer: null
   },
   onShow() {
-    this.time = this.$app.$def.timeUpdate.updateTime().time,
-    this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
-      this.time = timeData.time
-    })
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
     // console.log("this.timer", this.time)
   },
 
@@ -52,9 +52,9 @@ export default {
 
   exit() {
     this.$app.$def.router.push({
-      uri: 'pages/index',
+      uri: "pages/index",
       params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
     })
   },
@@ -71,11 +71,11 @@ export default {
     })
   },
 
-  onBackPress () {
+  onBackPress() {
     this.$app.$def.router.push({
-      uri: 'pages/index',
+      uri: "pages/index",
       params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
     })
     return true
@@ -85,7 +85,7 @@ export default {
 
 <style>
 @import "../../../common/css/universal.css";
-@import "../../../common/css/nav.css";
+@import "../../../common/css/component.css";
 
 .component-courseChange-button {
   width: 100%;
