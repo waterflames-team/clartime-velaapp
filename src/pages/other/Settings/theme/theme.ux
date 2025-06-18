@@ -1,41 +1,41 @@
 <template>
-    <div class="page">
-        <stack>
-            <!-- 主题选择 -->
-            <div class="content horizontal-center">
-                <div class="component-button card">
-                    <text class="component-text">Horizon</text>
-                    <input
-                        class="radio"
-                        type="radio"
-                        name="ThemeName"
-                        value="Horizon"
-                        checked="{{this.ThemeName === 'Horizon'}}"
-                        @change="onThemeNameChange"
-                    />
-                </div>
-                <div class="component-button card">
-                    <text class="component-text">Nucleus</text>
-                    <input
-                        class="radio"
-                        type="radio"
-                        name="ThemeName"
-                        value="Nucleus"
-                        checked="{{this.ThemeName === 'Nucleus'}}"
-                        @change="onThemeNameChange"
-                    />
-                </div>
+  <div class="page">
+    <stack>
+      <!-- 主题选择 -->
+      <div class="content horizontal-center">
+        <div class="component-button card">
+          <text class="component-text">Horizon</text>
+          <input
+            class="radio"
+            type="radio"
+            name="ThemeName"
+            value="Horizon"
+            checked="{{this.ThemeName === 'Horizon'}}"
+            @change="onThemeNameChange"
+          />
+        </div>
+        <div class="component-button card">
+          <text class="component-text">Nucleus</text>
+          <input
+            class="radio"
+            type="radio"
+            name="ThemeName"
+            value="Nucleus"
+            checked="{{this.ThemeName === 'Nucleus'}}"
+            @change="onThemeNameChange"
+          />
+        </div>
 
-                <div class="component-nav">
-                    <div class="component-nav-backGroup" onclick="exit">
-                        <img src="/common/back_button.png" class="component-nav-backButton" />
-                        <text class="component-nav-title-text-backb">{{ title }}</text>
-                    </div>
-                    <text class="component-nav-title-time">{{ time }}</text>
-                </div>
-            </div>
-        </stack>
-    </div>
+        <div class="component-nav">
+          <div class="component-nav-backGroup" onclick="exit">
+            <img src="/common/back_button.png" class="component-nav-backButton" />
+            <text class="component-nav-title-text-backb">{{ title }}</text>
+          </div>
+          <text class="component-nav-title-time">{{ time }}</text>
+        </div>
+      </div>
+    </stack>
+  </div>
 </template>
 <script>
 export default {
@@ -43,19 +43,19 @@ export default {
     title: "主题选择",
     time: "",
     timer: null,
-    settingItems: 'index',
-    ThemeName: 'Horizon',
+    settingItems: "index",
+    ThemeName: "Horizon"
   },
 
   onInit() {
     this.$app.$def.storage.get({
       key: "themeName",
       default: "Horizon", // 无数据时，默认使用Horizon主题
-      success: function(data) {
-        console.log('handling success')
+      success: function (data) {
+        console.log("handling success")
         this.ThemeName = data
       },
-      fail: function(code) {
+      fail: function (code) {
         console.log(`handling fail, code = ${code}`)
       }
     })
@@ -67,7 +67,7 @@ export default {
         this.time = timeData.time
       }))
     // console.log("this.timer", this.time)
-    this.settingItems = 'index'
+    this.settingItems = "index"
   },
 
   onDestroy() {
@@ -78,12 +78,22 @@ export default {
   },
 
   exit() {
-      this.$app.$def.router.push({
-        uri: "pages/other/Settings",
-        params: {
-          ___PARAM_LAUNCH_FLAG___: "clearTask"
-        }
-      })
+    this.$app.$def.router.push({
+      uri: "pages/other/Settings",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+
+  onBackPress() {
+    this.$app.$def.router.push({
+      uri: "pages/other/Settings",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+    return true
   },
 
   setSettingItems(item) {
@@ -97,19 +107,17 @@ export default {
     this.$app.$def.storage.set({
       key: "themeName",
       value: this.ThemeName,
-      success: function() {
-        console.log('handling success')
+      success: function () {
+        console.log("handling success")
       },
-      fail: function(code) {
+      fail: function (code) {
         console.log(`handling fail, code = ${code}`)
       }
     })
 
     console.log(`ThemeName = ${this.ThemeName}`)
-  },
-
+  }
 }
-</script>
 </script>
 
 <style>

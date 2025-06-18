@@ -17,7 +17,6 @@
         <!-- <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text> -->
       </scroll>
 
-      
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
           <img src="/common/back_button.png" class="component-nav-backButton" />
@@ -33,18 +32,18 @@ export default {
   private: {
     title: "设置",
     time: "",
-    timer: null,
+    timer: null
   },
 
   onInit() {
     this.$app.$def.storage.get({
       key: "themeName",
       default: "Horizon", // 无数据时，默认使用Horizon主题
-      success: function(data) {
-        console.log('handling success')
+      success: function (data) {
+        console.log("handling success")
         this.ThemeName = data
       },
-      fail: function(code) {
+      fail: function (code) {
         console.log(`handling fail, code = ${code}`)
       }
     })
@@ -66,24 +65,23 @@ export default {
   },
 
   exit() {
-      this.$app.$def.router.push({
-        uri: "pages/index",
-        params: {
-          ___PARAM_LAUNCH_FLAG___: "clearTask"
-        }
-      })
+    this.$app.$def.router.push({
+      uri: "pages/index",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
   },
 
   settingItems(item) {
     this.settingItems = item
-    if (item === 'theme') {
+    if (item === "theme") {
       this.$app.$def.router.push({
-        uri: "pages/other/Settings/theme",
-
+        uri: "pages/other/Settings/theme"
       })
-    } else if (item === 'dynamicEffects') {
+    } else if (item === "dynamicEffects") {
       this.$app.$def.router.push({
-        uri: "pages/other/Settings/dynamicEffects",
+        uri: "pages/other/Settings/dynamicEffects"
       })
     }
   },
@@ -97,7 +95,6 @@ export default {
     })
     return true
   }
-
 }
 </script>
 
