@@ -1,38 +1,19 @@
 <template>
   <div class="page">
     <stack>
+      <div class="component-nav"></div>
       <!-- 主题选择 -->
       <div class="content horizontal-center">
-        <div class="component-button card">
-          <text class="component-text">Horizon</text>
-          <input
-            class="radio"
-            type="radio"
-            name="ThemeName"
-            value="Horizon"
-            checked="{{this.ThemeName === 'Horizon'}}"
-            @change="onThemeNameChange"
-          />
+        <div class="choose-button screen-center">
+          <img src="/common/choose_button.png" class="choose-button-icon" />
         </div>
-        <div class="component-button card">
-          <text class="component-text">Nucleus</text>
-          <input
-            class="radio"
-            type="radio"
-            name="ThemeName"
-            value="Nucleus"
-            checked="{{this.ThemeName === 'Nucleus'}}"
-            @change="onThemeNameChange"
-          />
+      </div>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
         </div>
-
-        <div class="component-nav">
-          <div class="component-nav-backGroup" onclick="exit">
-            <img src="/common/back_button.png" class="component-nav-backButton" />
-            <text class="component-nav-title-text-backb">{{ title }}</text>
-          </div>
-          <text class="component-nav-title-time">{{ time }}</text>
-        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
       </div>
     </stack>
   </div>
@@ -120,9 +101,20 @@ export default {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  height: 424px;
+}
+
+.choose-button{
+  position: absolute;
+  bottom: 4px;
+  width: 160px;
+  height: 80px;
+
+  border-radius: 40px;
+  background-color: #0D84FF;
+}
+.choose-button-icon{ 
+  height: 48px;
+  object-fit: contain;
 }
 </style>
