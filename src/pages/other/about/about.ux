@@ -2,40 +2,45 @@
   <div class="page">
     <stack>
       <div class="aboutPage" style="opacity:{{backgOpacity}}"></div>
-      <scroll class="content horizontal-center" scroll-y="true" bounces="true" @scroll="updateHighlightLength">
-        
+      <scroll
+        class="content horizontal-center"
+        scroll-y="true"
+        bounces="true"
+        @scroll="updateHighlightLength"
+      >
         <div class="component-about-title">
-          <div style="top:88px;height: 191px;" class="screen-center">
+          <div style="top: 88px; height: 191px" class="screen-center">
             <img src="/common/about_logo.png" class="component-about-titleLogo" />
             <div class="gap-100"></div>
             <text class="component-about-titleText">澄序课程表</text>
-            <text class="component-about-titleVersion" onclick="onVersionClick">v{{ version }}</text>
+            <text class="component-about-titleVersion" onclick="onVersionClick">
+              v{{ version }}
+            </text>
           </div>
         </div>
 
         <div class="component-about-textCard vertical-left">
-            <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
-            <div class="gap-20"></div>
-            <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
-            <text class="component-about-textContent-text">@绫凌子Rinko</text>
-            <div class="gap-240"></div>
-            <text class="component-about-textContent-textS">本应用灵感来源于</text>
-            <text class="component-about-textContent-textS">米坛社区「环间课表」,</text>
-            <text class="component-about-textContent-textS">感谢他们做出</text>
-            <text class="component-about-textContent-textS">如此好用的环上应用</text>
-            <div class="gap-120"></div>
-            <text class="component-about-textContent-textS">UI设计参考来自@无源流沙，</text>
-            <text class="component-about-textContent-textS">感谢(人´v`)</text>
-            <div class="gap-120"></div>
-            <text class="component-about-textContent-textS">感谢</text>
-            <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
-            <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
-            <div class="gap-120"></div>
-            <text class="component-about-textContent-textS">感谢你愿意来使用</text>
-            <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
-            <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
+          <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
+          <div class="gap-20"></div>
+          <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
+          <text class="component-about-textContent-text">@绫凌子Rinko</text>
+          <div class="gap-240"></div>
+          <text class="component-about-textContent-textS">本应用灵感来源于</text>
+          <text class="component-about-textContent-textS">米坛社区「环间课表」,</text>
+          <text class="component-about-textContent-textS">感谢他们做出</text>
+          <text class="component-about-textContent-textS">如此好用的环上应用</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">UI设计参考来自@无源流沙，</text>
+          <text class="component-about-textContent-textS">感谢(人´v`)</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢</text>
+          <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
+          <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢你愿意来使用</text>
+          <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
+          <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
         </div>
-
       </scroll>
       <img src="/common/nav-bg.png" style="opacity:{{navOpacity}}" />
       <div class="component-nav-noback">
@@ -58,11 +63,11 @@ export default {
     timer: null,
     eggClickCount: 0,
     backgOpacity: 1,
-    navOpacity: 0,
+    navOpacity: 0
   },
 
   updateHighlightLength(event) {
-    const { scrollX, scrollY } = event;
+    const {scrollX, scrollY} = event
     if (scrollY < 270 && scrollY > 0) {
       if (this.navOpacity !== 0) {
         this.navOpacity = 0
@@ -112,9 +117,9 @@ export default {
 
   exit() {
     this.$app.$def.router.push({
-      uri: 'pages/index',
+      uri: "pages/index",
       params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
     })
   },
@@ -129,11 +134,11 @@ export default {
     }
   },
 
-  onBackPress () {
+  onBackPress() {
     this.$app.$def.router.push({
-      uri: 'pages/index',
+      uri: "pages/index",
       params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
     })
     return true
@@ -143,7 +148,7 @@ export default {
 
 <style>
 @import "../../../common/css/universal.css";
-@import "../../../common/css/nav.css";
+@import "../../../common/css/component.css";
 .aboutPage {
   /* width: 336px; */
   width: 100%;
@@ -156,7 +161,7 @@ export default {
   width: 336px;
   height: 480px;
 
-  display: flex; 
+  display: flex;
   flex-direction: column;
 
   scroll-snap-type: y cross;
@@ -222,6 +227,6 @@ export default {
   letter-spacing: 0px;
   color: rgba(255, 255, 255, 0.6);
   white-space: pre-line;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 </style>

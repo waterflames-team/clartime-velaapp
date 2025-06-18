@@ -13,6 +13,9 @@
     },
     {
       "name": "system.file"
+    },
+    { 
+      "name": "system.storage" 
     }
   ],
   "config": {
@@ -45,6 +48,12 @@
       },
       "pages/other/Settings":{
         "component": "Settings"
+      },
+      "pages/other/Settings/dynamicEffects": {
+        "component": "dynamicEffects"
+      },
+      "pages/other/Settings/theme": {
+        "component": "theme"
       }
     }
   },

@@ -1,6 +1,23 @@
 <template>
   <div class="page">
     <stack>
+      <!-- 主页 -->
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="component-button" onclick="settingItems('theme')">
+          <text class="component-text">主题选择</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-button" onclick="settingItems('dynamicEffects')">
+          <text class="component-text">动态效果</text>
+        </div>
+
+        <!-- <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text> -->
+      </scroll>
+
+      
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
           <img src="/common/back_button.png" class="component-nav-backButton" />
@@ -9,8 +26,6 @@
         <text class="component-nav-title-time">{{ time }}</text>
       </div>
     </stack>
-
-
   </div>
 </template>
 <script>
@@ -18,16 +33,31 @@ export default {
   private: {
     title: "设置",
     time: "",
-    timer: null
+    timer: null,
   },
+
+  onInit() {
+    this.$app.$def.storage.get({
+      key: "themeName",
+      default: "Horizon", // 无数据时，默认使用Horizon主题
+      success: function(data) {
+        console.log('handling success')
+        this.ThemeName = data
+      },
+      fail: function(code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+
   onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
-    (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
     // console.log("this.timer", this.time)
   },
-  
+
   onDestroy() {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
@@ -36,30 +66,59 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.push({
-      uri: 'pages/index',
-      params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
-      }
-    })
+      this.$app.$def.router.push({
+        uri: "pages/index",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
   },
 
-  onBackPress () {
+  settingItems(item) {
+    this.settingItems = item
+    if (item === 'theme') {
+      this.$app.$def.router.push({
+        uri: "pages/other/Settings/theme",
+
+      })
+    } else if (item === 'dynamicEffects') {
+      this.$app.$def.router.push({
+        uri: "pages/other/Settings/dynamicEffects",
+      })
+    }
+  },
+
+  onBackPress() {
     this.$app.$def.router.push({
-      uri: 'pages/index',
+      uri: "pages/index",
       params: {
-        ___PARAM_LAUNCH_FLAG___: 'clearTask'
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
     })
     return true
   }
-}
-  </script>
-  
-  <style>
-  @import "../../../common/css/universal.css";
-  @import "../../../common/css/nav.css";
-  
 
-  </style>
-  
+}
+</script>
+
+<style>
+@import "../../../common/css/universal.css";
+@import "../../../common/css/component.css";
+
+.content {
+  width: 336px;
+  height: 480px;
+
+  display: flex;
+  flex-direction: column;
+
+  scroll-snap-type: y cross;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+</style>

@@ -71,11 +71,11 @@ export default {
     changeDate: ["DayChange"]
   },
   onShow() {
-    this.time = this.$app.$def.timeUpdate.updateTime().time,
-    this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
-      this.time = timeData.time
-    })
-    
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+
     // 获取当前星期几并重新排序weekDay数组
     const today = new Date().getDay() || 7 // 0是周日，转换为7
     this.weekDay = [
@@ -89,7 +89,7 @@ export default {
     ].sort((a, b) => {
       const aDay = a.nameEn === "Sun" ? 7 : parseInt(a.nameEn.slice(-1))
       const bDay = b.nameEn === "Sun" ? 7 : parseInt(b.nameEn.slice(-1))
-      return (aDay - today + 7) % 7 - (bDay - today + 7) % 7
+      return ((aDay - today + 7) % 7) - ((bDay - today + 7) % 7)
     })
   },
 
@@ -112,7 +112,7 @@ export default {
     // 合并条件判断：如果正在调整中，则无响应；如果在结果页/第一页且不在调整中，则返回上级页面
     if (this.page === 1 || (this.page === 3 && this.changeRseult !== -1)) {
       this.$app.$def.router.back()
-    } else if(this.page === 3 && this.changeRseult === -1){
+    } else if (this.page === 3 && this.changeRseult === -1) {
       return
     } else {
       // 其他情况返回上一步
@@ -135,7 +135,7 @@ export default {
 
 <style>
 @import "../../../../common/css/universal.css";
-@import "../../../../common/css/nav.css";
+@import "../../../../common/css/component.css";
 
 .component-classChange-text {
   height: 32px;
