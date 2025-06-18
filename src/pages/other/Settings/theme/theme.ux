@@ -78,22 +78,7 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.push({
-      uri: "pages/other/Settings",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
-  },
-
-  onBackPress() {
-    this.$app.$def.router.push({
-      uri: "pages/other/Settings",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
-    return true
+    this.$app.$def.router.back()
   },
 
   setSettingItems(item) {

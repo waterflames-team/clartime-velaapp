@@ -575,6 +575,8 @@ export default {
   },
 
   onShow() {
+    this.$app.$def.router.clear()
+    
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
