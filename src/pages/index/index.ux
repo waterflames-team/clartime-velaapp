@@ -550,7 +550,7 @@ export default {
 
     this.$app.$def.storage.get({
       key: "ThemeName",
-      default: "Horizon", // 无数据时，默认使用 Horizon 主题 / Nucleus
+      default: "Nucleus", // 无数据时，默认使用 Horizon 主题 / Nucleus
       success: function(data) {
         console.log("[数据]服务启动，成功获取themeName")
         OuterThis.ThemeName = data
@@ -938,6 +938,7 @@ export default {
 .nucleus-RemainCard-text2 {
   top: 12px;
   left: 12px;
+  width: 102px;
   color: rgba(255, 255, 255);
   font-size: 40px;
   font-weight: 700;
