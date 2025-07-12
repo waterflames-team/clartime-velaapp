@@ -13,8 +13,7 @@
         <div class="component-button" onclick="toDynamicEffects()">
           <text class="component-text">动态效果</text>
         </div>
-
-        <!-- <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text> -->
+        
       </scroll>
 
       <div class="component-nav">
