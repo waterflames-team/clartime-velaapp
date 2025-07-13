@@ -25,17 +25,17 @@ export default {
   },
 
   onInit() {
-    this.$app.$def.storage.get({
-      key: "themeName",
-      default: "Horizon", // 无数据时，默认使用Horizon主题
-      success: function (data) {
-        console.log("handling success")
-        this.ThemeName = data
-      },
-      fail: function (code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
+    // this.$app.$def.storage.get({
+    //   key: "themeName",
+    //   default: "Horizon", // 无数据时，默认使用Horizon主题
+    //   success: function (data) {
+    //     console.log("handling success")
+    //     this.ThemeName = data
+    //   },
+    //   fail: function (code) {
+    //     console.log(`handling fail, code = ${code}`)
+    //   }
+    // })
   },
 
   onShow() {

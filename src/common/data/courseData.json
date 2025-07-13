@@ -1,11 +1,11 @@
 {
   "basic": {
+    "dataStructureVersion": "1.1",
     "name": "高二下",
     "createTime": "250321210600",
     "updateTime": "250321210600",
     "courseStart": "250216",
-    "courseEnd": "250711",
-    "dataStructureVersion": "1.1"
+    "courseEnd": "250711"
   },
   "courses": [
     {
