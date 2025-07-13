@@ -4,24 +4,35 @@
       <div class="component-nav"></div>
       <!-- 主题选择 -->
       <div class="content horizontal-center">
-        <scroll class="theme-content" style="display: flex; flex-direction: row" scroll-x="true" bounces="true">
-          <!-- <div style="width: 39px;scroll-snap-align: center"></div> -->
-          <div class="theme-card horizontal-center" style="margin-left: 66px;margin-right: 27px;">
+        <scroll
+          class="theme-content"
+          style="display: flex; flex-direction: row"
+          scroll-x="true"
+          bounces="true"
+        >
+          <div
+            class="theme-card horizontal-center"
+            style="margin-left: 66px; margin-right: 27px"
+            onclick="setHorizon()"
+          >
             <text class="theme-name">紧凑</text>
             <div class="gap-80"></div>
             <image class="theme-preview" src="/common/setting_Horizon_Preview.png" />
-          </div>
-          <div class="theme-card horizontal-center" style="margin-left: 27px;margin-right: 66px;">
-            <text class="theme-name">紧凑</text>
             <div class="gap-80"></div>
-            <image class="theme-preview" src="/common/setting_Horizon_Preview.png" />
+            <img src="/common/more_button.png" class="choose-button-icon" />
           </div>
-          <!-- <div style="width: 39px;scroll-snap-align: center"></div> -->
+          <div
+            class="theme-card horizontal-center"
+            style="margin-left: 27px; margin-right: 66px"
+            onclick="setNucleus()"
+          >
+            <text class="theme-name">聚焦</text>
+            <div class="gap-80"></div>
+            <image class="theme-preview" src="/common/setting_Nucleus_Preview.png" />
+            <div class="gap-80"></div>
+            <img src="/common/more_button.png" class="choose-button-icon" />
+          </div>
         </scroll>
-
-        <div class="choose-button screen-center">
-          <img src="/common/choose_button.png" class="choose-button-icon" />
-        </div>
       </div>
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
@@ -77,26 +88,12 @@ export default {
     this.$app.$def.router.back()
   },
 
-  setSettingItems(item) {
-    this.settingItems = item
-    // console.log("setSettingItems: item")
+  setHorizon() {
+    console.log("setHorizon")
   },
 
-  onThemeNameChange(e) {
-    this.ThemeName = e.value
-
-    this.$app.$def.storage.set({
-      key: "themeName",
-      value: this.ThemeName,
-      success: function () {
-        console.log("handling success")
-      },
-      fail: function (code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
-
-    console.log(`ThemeName = ${this.ThemeName}`)
+  setNucleus() {
+    console.log("setNucleus")
   }
 }
 </script>
@@ -113,7 +110,7 @@ export default {
 .theme-content {
   width: 100%;
   height: 480px;
-  top: 56px;
+  top: 66px;
 
   display: flex;
   flex-direction: column;
@@ -129,7 +126,7 @@ export default {
 .theme-name {
   color: #ffffff;
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
 }
 
