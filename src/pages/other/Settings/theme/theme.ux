@@ -120,15 +120,29 @@ export default {
 
   setHorizon() {
     this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
-    console.log(this.$app.$def.dataManage.getUserSetting())
-    console.log("setHorizon")
+    setTimeout(() => {
+        this.$app.$def.router.push({
+            uri: "pages/index",
+            params: {
+                ___PARAM_LAUNCH_FLAG___: "clearTask"
+            }
+        });
+    }, 100);
   },
 
   setNucleus() {
     this.$app.$def.dataManage.changeUserSetting("themeName", "Nucleus")
-    console.log(this.$app.$def.dataManage.getUserSetting())
-    console.log("setNucleus")
-  }
+    
+    // 添加 0.1 秒等待
+    setTimeout(() => {
+        this.$app.$def.router.push({
+            uri: "pages/index",
+            params: {
+                ___PARAM_LAUNCH_FLAG___: "clearTask"
+            }
+        });
+    }, 100); // 等待 0.1 秒的数据加载完毕
+}
 }
 </script>
 
