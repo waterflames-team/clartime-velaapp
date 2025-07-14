@@ -77,36 +77,29 @@ function getUserSetting() {
 }
 
 function changeUserSetting(item, value) {
-    var settingText = file.readText({
+    file.readText({
         uri: userSettingPath,
-        success: function (data) {
-            // console.log('text: ' + data.text)
-            try {
-                resolve(JSON.parse(data.text).setting);
-            } catch (e) {
-                reject(new Error('JSON 解析失败: ' + e));
-            }
+        success: function(data) {
+            // 获取完整的设置对象
+            let settings = JSON.parse(data.text);
+            // 修改指定项的值
+            settings.setting[item] = value;
+            file.writeText({
+                uri: userSettingPath,
+                text: JSON.stringify(settings),
+                success: function () {
+                    // console.log(`write success`)
+                },
+                fail: function (data, code) {
+                    console.log(`write fail, code = ${code}`)
+                }
+            })
         },
-        fail: function (data, code) {
+        fail: function(data, code) {
             console.log(`handling fail, code = ${code}`)
-            reject(new Error(`读取文件失败，错误码: ${code}`));
         }
     })
-
-    console.log(JSON.stringify({ ...settingText, [item]: value }))
-
-    // file.writeText({
-    //     uri: userSettingPath,
-    //     text: JSON.stringify({ ...settingText, [item]: value }),
-    //     success: function () {
-    //         // console.log(`write success`)
-    //     },
-    //     fail: function (data, code) {
-    //         console.log(`write fail, code = ${code}`)
-    //     }
-    // })
 }
-
 
 module.exports = {
     initData,

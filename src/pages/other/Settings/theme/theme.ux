@@ -115,10 +115,14 @@ export default {
   },
 
   setHorizon() {
+    this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
+    console.log(this.$app.$def.dataManage.getUserSetting())
     console.log("setHorizon")
   },
 
   setNucleus() {
+    this.$app.$def.dataManage.changeUserSetting("themeName", "Nucleus")
+    console.log(this.$app.$def.dataManage.getUserSetting())
     console.log("setNucleus")
   }
 }
