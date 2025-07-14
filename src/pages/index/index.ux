@@ -398,19 +398,18 @@
 </template>
 
 <script>
-import file from "@system.file"
 export default {
   private: {
     ThemeName: "", // Horizon Or Nucleus
 
     title_home: "课程表",
     title_other: "更多",
-    time: "25:61",
-    seconds: "61",
-    day: "13月32日",
-    dayNum: "星期八",
-    weekNum: "第亿周",
-    remain: "还有 61 分钟下课",
+    time: "",
+    seconds: "",
+    day: "",
+    dayNum: "",
+    weekNum: "",
+    remain: "",
 
     courseSchedule: [],
     coursesName: "文语",
@@ -529,6 +528,15 @@ export default {
     this.indexNow = this.getCurrentCourseIndex()
   },
 
+  async userSettingGet() {
+    try {
+      const userSetting = await this.$app.$def.dataManage.getUserSetting();// TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      this.ThemeName = userSetting.setting.themeName
+    } catch (e) {
+      console.error('获取用户设置失败:', e);
+    }
+  },
+
   onInit() {
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate();
@@ -540,46 +548,9 @@ export default {
     this.courseRelatedUpadate()
 
     this.$app.$def.dataManage.initData()
-
-    
-
-    // 这里清除数据到时候移动到彩蛋
-    // this.$app.$def.storage.clear({
-    //   success: function(data) {
-    //     console.log('handling clear success')
-    //   },
-    //   fail: function(data, code) {
-    //     console.log(`handling fail, code = ${code}`)
-    //   }
-    // })
-
-    // this.$app.$def.storage.get({
-    //   key: "ThemeName",
-    //   default: "Nucleus", // 无数据时，默认使用 Horizon 主题 / Nucleus
-    //   success: function(data) {
-    //     console.log("[数据]服务启动，成功获取themeName")
-    //     OuterThis.ThemeName = data
-    //     console.log("[数据]获取数据并修改为")
-    //     console.log(OuterThis.ThemeName)
-    //   },
-    //   fail: function(code) {
-    //     console.log(`[数据]服务启动，获取themeName失败, code = ${code}`)
-    //   }
-    // })
-
-    // this.$app.$def.storage.set({ // 二次覆盖检查，用于初次进入场景
-    //   key: 'themeName',
-    //   value: OuterThis.ThemeName,
-    //   success: function(data) {
-    //     console.log("[数据]获取themeName并覆盖检查完成")
-    //   },
-    //   fail: function(data, code) {
-    //     console.log(`[数据]获取themeName并覆盖检查失败, code = ${code}`)
-    //   }
-    // })
   },
 
-  async onShow() {
+  onShow() {
     this.$app.$def.router.clear()
     
     // 初始化数据
@@ -589,13 +560,7 @@ export default {
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
-    // this.ThemeName = this.$app.$def.dataManage.getUserSetting().setting.themeName
-    try {
-      const userSetting = await this.$app.$def.dataManage.getUserSetting();// TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
-      this.ThemeName = userSetting.setting.themeName
-    } catch (e) {
-      console.error('获取用户设置失败:', e);
-    }
+    this.userSettingGet()
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
