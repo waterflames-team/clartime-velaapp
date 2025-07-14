@@ -9,22 +9,23 @@ const userSettingPath = "internal://files/data/userSetting.json"
  */
 function initData() {
     
-    console.log(`init data`)
-    file.delete({
-        uri: userSettingPath,
-        success: function(data) {
-            console.log('handling success')
-        },
-        fail: function(data, code) {
-            console.log(`handling fail, code = ${code}`)
-        }
-    })
+    // console.log(`init data`)
+
+    // file.delete({
+    //     uri: userSettingPath,
+    //     success: function(data) {
+    //         console.log('handling success')
+    //     },
+    //     fail: function(data, code) {
+    //         console.log(`handling fail, code = ${code}`)
+    //     }
+    // })
 
     
     file.access({
         uri: userSettingPath,
         success: function (data) {
-            console.log(`init data already！`)
+            // console.log(`init data already！`)
         },
         fail: function (data, code) {
             file.writeText({
@@ -34,12 +35,12 @@ function initData() {
                     "createTime": "",
                     "lastUpdateTime": "",
                     "setting": {
-                        "themeName": "1",
+                        "themeName": "Nucleus",
                         "dynamicEffects": true,
                     }
                 }),
                 success: function () {
-                    console.log(`write success`)
+                    // console.log(`write success`)
                 },
                 fail: function (data, code) {
                     console.log(`write fail, code = ${code}`)
@@ -56,16 +57,23 @@ function initData() {
  * @returns {Object} 类似 JSON 的字典对象
  */
 function getUserSetting() {
-    file.readText({
-        uri: userSettingPath,
-        success: function(data) {
-            console.log('text: ' + data.text)
-            return data.text
-        },
-        fail: function(data, code) {
-            console.log(`handling fail, code = ${code}`)
-        }
-    })
+    return new Promise((resolve, reject) => {
+        file.readText({
+            uri: userSettingPath,
+            success: function(data) {
+                // console.log('text: ' + data.text)
+                try {
+                    resolve(JSON.parse(data.text));
+                } catch (e) {
+                    reject(new Error('JSON 解析失败: ' + e));
+                }
+            },
+            fail: function(data, code) {
+                console.log(`handling fail, code = ${code}`)
+                reject(new Error(`读取文件失败，错误码: ${code}`));
+            }
+        })
+    });
 }
 
 

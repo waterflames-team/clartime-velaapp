@@ -541,7 +541,7 @@ export default {
 
     this.$app.$def.dataManage.initData()
 
-    OuterThis.ThemeName = "Nucleus"
+    
 
     // 这里清除数据到时候移动到彩蛋
     // this.$app.$def.storage.clear({
@@ -579,7 +579,7 @@ export default {
     // })
   },
 
-  onShow() {
+  async onShow() {
     this.$app.$def.router.clear()
     
     // 初始化数据
@@ -589,6 +589,13 @@ export default {
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
+    // this.ThemeName = this.$app.$def.dataManage.getUserSetting().setting.themeName
+    try {
+      const userSetting = await this.$app.$def.dataManage.getUserSetting();// TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      this.ThemeName = userSetting.setting.themeName
+    } catch (e) {
+      console.error('获取用户设置失败:', e);
+    }
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
@@ -627,7 +634,6 @@ export default {
     })
   },
   jumpSt() {
-    console.log(this.$app.$def.dataManage.getUserSetting())
     this.$app.$def.router.push({
       uri: "pages/other/Settings",
       params: {
