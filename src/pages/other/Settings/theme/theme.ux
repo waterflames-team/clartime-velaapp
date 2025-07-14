@@ -6,9 +6,11 @@
       <div class="content horizontal-center">
         <scroll
           class="theme-content"
+          id="theme-list"
           style="display: flex; flex-direction: row"
           scroll-x="true"
           bounces="true"
+          @scroll="updateHighlightLength"
         >
           <div
             class="theme-card horizontal-center"
@@ -54,6 +56,11 @@ export default {
     ThemeName: "Horizon"
   },
 
+  updateHighlightLength(event) {
+    const {scrollX, scrollY} = event
+    console.log("scrollX:", scrollX, "scrollY:", scrollY)
+  },
+
   onInit() {
     // this.$app.$def.storage.get({
     //   key: "themeName",
@@ -68,13 +75,32 @@ export default {
     // })
   },
 
-  onShow() {
+  async onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
     // console.log("this.timer", this.time)
     this.settingItems = "index"
+
+    try {
+      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      this.ThemeName = userSetting.setting.themeName
+      console.log("this.ThemeName", this.ThemeName)
+      if (this.ThemeName === "Horizon") {
+        this.$element("theme-list").scrollTo({
+          left: 0,
+          behavior: "smooth"
+        })
+      } else if (this.ThemeName === "Nucleus") {
+        this.$element("theme-list").scrollBy({
+          left: 258,
+          behavior: "smooth"
+        })
+      }
+    } catch (e) {
+      console.error("获取用户设置失败:", e)
+    }
   },
 
   onDestroy() {
