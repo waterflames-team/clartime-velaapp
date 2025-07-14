@@ -61,13 +61,13 @@ export default {
 
   jumpClassChange() {
     this.$app.$def.router.push({
-      uri: "pages/other/CourseChange/ClassChange"
+      uri: "pages/CourseChange/ClassChange"
     })
   },
 
   jumpDayChange() {
     this.$app.$def.router.push({
-      uri: "pages/other/CourseChange/DayChange"
+      uri: "pages/CourseChange/DayChange"
     })
   },
 

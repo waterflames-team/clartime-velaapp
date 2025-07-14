@@ -128,7 +128,7 @@ export default {
     this.eggClickCount++
     if (this.eggClickCount === 3) {
       this.$app.$def.router.push({
-        uri: "pages/other/EGG"
+        uri: "pages/EGG"
       })
       this.eggClickCount = 0
     }

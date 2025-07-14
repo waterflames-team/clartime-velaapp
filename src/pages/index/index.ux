@@ -584,7 +584,7 @@ export default {
 
   jumpAC() {
     this.$app.$def.router.push({
-      uri: "pages/other/AllCourses",
+      uri: "pages/AllCourses",
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
@@ -592,7 +592,7 @@ export default {
   },
   jumpCC() {
     this.$app.$def.router.push({
-      uri: "pages/other/CourseChange",
+      uri: "pages/CourseChange",
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
@@ -600,7 +600,7 @@ export default {
   },
   jumpSt() {
     this.$app.$def.router.push({
-      uri: "pages/other/Settings",
+      uri: "pages/Settings",
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
@@ -608,7 +608,7 @@ export default {
   },
   jumpAb() {
     this.$app.$def.router.push({
-      uri: "pages/other/about",
+      uri: "pages/about",
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }

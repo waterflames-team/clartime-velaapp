@@ -61,12 +61,12 @@ export default {
 
   toTheme() {
     this.$app.$def.router.push({
-      uri: "pages/other/Settings/theme"
+      uri: "pages/Settings/theme"
     })
   },
   toDynamicEffects() {
     this.$app.$def.router.push({
-      uri: "pages/other/Settings/dynamicEffects"
+      uri: "pages/Settings/dynamicEffects"
     })
   },
 

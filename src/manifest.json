@@ -25,31 +25,31 @@
       "pages/index": {
         "component": "index"
       },
-      "pages/other/AllCourses": {
+      "pages/AllCourses": {
         "component": "AllCourses"
       },
-      "pages/other/CourseChange":{
+      "pages/CourseChange":{
         "component": "CourseChange"
       },
-      "pages/other/CourseChange/ClassChange": {
+      "pages/CourseChange/ClassChange": {
         "component": "ClassChange"
       },
-      "pages/other/CourseChange/DayChange": {
+      "pages/CourseChange/DayChange": {
         "component": "DayChange"
       },
-      "pages/other/about": {
+      "pages/about": {
         "component": "about"
       },
-      "pages/other/EGG": {
+      "pages/EGG": {
         "component": "EGG"
       },
-      "pages/other/Settings":{
+      "pages/Settings":{
         "component": "Settings"
       },
-      "pages/other/Settings/dynamicEffects": {
+      "pages/Settings/dynamicEffects": {
         "component": "dynamicEffects"
       },
-      "pages/other/Settings/theme": {
+      "pages/Settings/theme": {
         "component": "theme"
       }
     }
