@@ -400,16 +400,16 @@
 <script>
 export default {
   private: {
-    ThemeName: "Horizon", // Horizon Or Nucleus
+    ThemeName: "", // Horizon Or Nucleus
 
     title_home: "课程表",
     title_other: "更多",
-    time: "25:61",
-    seconds: "61",
-    day: "13月32日",
-    dayNum: "星期八",
-    weekNum: "第亿周",
-    remain: "还有 61 分钟下课",
+    time: "",
+    seconds: "",
+    day: "",
+    dayNum: "",
+    weekNum: "",
+    remain: "",
 
     courseSchedule: [],
     coursesName: "文语",
@@ -527,34 +527,32 @@ export default {
     this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex()
   },
+
+  async userSettingGet() {
+    try {
+      const userSetting = await this.$app.$def.dataManage.getUserSetting();// TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      this.ThemeName = userSetting.setting.themeName
+    } catch (e) {
+      console.error('获取用户设置失败:', e);
+    }
+  },
+
   onInit() {
     // 初始化数据
-    const dateData = this.$app.$def.dateUpdate.updateDate()
+    const dateData = this.$app.$def.dateUpdate.updateDate();
+    var OuterThis = this
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
 
-    // console.log(this.courseSchedule)
-    // console.log(this.indexNow)
-
-    this.$app.$def.storage.get({
-      key: "themeName",
-      default: "Horizon", // 无数据时，默认使用Horizon主题
-      success: function(data) {
-        console.log('handling success')
-        this.ThemeName = data
-      },
-      fail: function(code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
-
-    console.log(this.ThemeName)
+    this.$app.$def.dataManage.initData()
   },
 
   onShow() {
+    this.$app.$def.router.clear()
+    
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
@@ -562,6 +560,7 @@ export default {
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     this.courseRelatedUpadate()
+    this.userSettingGet()
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
@@ -618,7 +617,7 @@ export default {
   quit() {
     this.$app.$def.app.terminate()
   },
-  onBackPress() {
+  onBackPress() { // 手动返回事件
     this.$app.$def.app.terminate()
     return true
   }
@@ -916,6 +915,7 @@ export default {
 .nucleus-RemainCard-text2 {
   top: 12px;
   left: 12px;
+  width: 102px;
   color: rgba(255, 255, 255);
   font-size: 40px;
   font-weight: 700;
