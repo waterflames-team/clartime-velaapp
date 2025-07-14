@@ -10,9 +10,9 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-button" style="opacity: 0.6;">
+        <!-- <div class="component-button" style="opacity: 0.6;">
           <text class="component-text">预留按钮</text>
-        </div>
+        </div> -->
         
       </scroll>
 
