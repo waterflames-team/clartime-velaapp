@@ -1,10 +1,10 @@
 <script>
 import router from "@system.router"
-import storage from '@system.storage' 
 import app from '@system.app' 
 import courseDataParse from "./common/js/courseDataParse"
 import timeUpdate from "./common/js/timeUpdate"
 import dateUpdate from "./common/js/dateUpdate"
+import dataManage from "./common/js/dataManage"
 
 export default {
   onCreate() {
@@ -20,6 +20,6 @@ export default {
   courseDataParse,
   timeUpdate,
   dateUpdate,
-  storage
+  dataManage
 }
 </script>

@@ -4,20 +4,18 @@
       <!-- 主页 -->
       <scroll class="content horizontal-center" scroll-y="true" bounces="true">
         <div class="component-nav"></div>
-        <div class="component-button" onclick="settingItems('theme')">
+        <div class="component-button" onclick="toTheme()">
           <text class="component-text">主题选择</text>
         </div>
 
         <div class="gap-80"></div>
 
-        <div class="component-button" onclick="settingItems('dynamicEffects')">
-          <text class="component-text">动态效果</text>
-        </div>
-
-        <!-- <text onclick="exit">aaaaaaaaaaaaaaaaaaaaaaaaaaa</text> -->
+        <!-- <div class="component-button" style="opacity: 0.6;">
+          <text class="component-text">预留按钮</text>
+        </div> -->
+        
       </scroll>
 
-      
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
           <img src="/common/back_button.png" class="component-nav-backButton" />
@@ -33,24 +31,11 @@ export default {
   private: {
     title: "设置",
     time: "",
-    timer: null,
-  },
-
-  onInit() {
-    this.$app.$def.storage.get({
-      key: "themeName",
-      default: "Horizon", // 无数据时，默认使用Horizon主题
-      success: function(data) {
-        console.log('handling success')
-        this.ThemeName = data
-      },
-      fail: function(code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
+    timer: null
   },
 
   onShow() {
+    this.$app.$def.router.clear()
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
@@ -66,26 +51,23 @@ export default {
   },
 
   exit() {
-      this.$app.$def.router.push({
-        uri: "pages/index",
-        params: {
-          ___PARAM_LAUNCH_FLAG___: "clearTask"
-        }
-      })
+    this.$app.$def.router.push({
+      uri: "pages/index",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
   },
 
-  settingItems(item) {
-    this.settingItems = item
-    if (item === 'theme') {
-      this.$app.$def.router.push({
-        uri: "pages/other/Settings/theme",
-
-      })
-    } else if (item === 'dynamicEffects') {
-      this.$app.$def.router.push({
-        uri: "pages/other/Settings/dynamicEffects",
-      })
-    }
+  toTheme() {
+    this.$app.$def.router.push({
+      uri: "pages/other/Settings/theme"
+    })
+  },
+  toDynamicEffects() {
+    this.$app.$def.router.push({
+      uri: "pages/other/Settings/dynamicEffects"
+    })
   },
 
   onBackPress() {
@@ -97,7 +79,6 @@ export default {
     })
     return true
   }
-
 }
 </script>
 
