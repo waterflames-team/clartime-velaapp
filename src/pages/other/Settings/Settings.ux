@@ -10,8 +10,8 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-button" onclick="toDynamicEffects()">
-          <text class="component-text">动态效果</text>
+        <div class="component-button" style="opacity: 0.6;">
+          <text class="component-text">预留按钮</text>
         </div>
         
       </scroll>
