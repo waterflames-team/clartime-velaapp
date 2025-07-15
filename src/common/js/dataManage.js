@@ -95,6 +95,7 @@ function changeUserSetting(item, value) {
             let settings = JSON.parse(data.text);
             // 修改指定项的值
             settings.setting[item] = value;
+            console.log(settings);
             file.writeText({
                 uri: userSettingPath,
                 text: JSON.stringify(settings),
