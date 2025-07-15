@@ -1,0 +1,82 @@
+<template>
+  <div class="page">
+    <stack>
+      <!-- 主页 -->
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="component-button" onclick="test()">
+          <text class="component-text">创建</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <!-- <div class="component-button" style="opacity: 0.6;">
+          <text class="component-text">预留按钮</text>
+        </div> -->
+        
+      </scroll>
+
+      <div class="component-nav-noback">
+          <text class="component-nav-title-text">{{ title }}</text>
+          <text class="component-nav-title-time">{{ time }}</text>
+        </div>
+    </stack>
+  </div>
+</template>
+<script>
+export default {
+  private: {
+    title: "欢迎",
+    time: "",
+    timer: null
+  },
+
+  test() {
+    console.log("test")
+    this.$app.$def.dataManage.initData()
+  },
+
+  onShow() {
+    this.$app.$def.router.clear()
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+    // console.log("this.timer", this.time)
+  },
+
+  onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  onBackPress() {
+    app.terminate();
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../common/css/universal.css";
+@import "../../../common/css/component.css";
+
+.content {
+  width: 336px;
+  height: 480px;
+
+  display: flex;
+  flex-direction: column;
+
+  scroll-snap-type: y cross;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+</style>

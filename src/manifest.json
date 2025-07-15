@@ -20,10 +20,19 @@
     "designWidth": 336
   },
   "router": {
-    "entry": "pages/index",
+    "entry": "pages/entries",
     "pages": {
-      "pages/index": {
-        "component": "index"
+      "pages/entries": {
+        "component": "entries"
+      },
+      "pages/entries/guide": {
+        "component": "guide"
+      },
+      "pages/entries/Horizon": {
+        "component": "Horizon"
+      },
+      "pages/entries/Nucleus": {
+        "component": "Nucleus"
       },
       "pages/AllCourses": {
         "component": "AllCourses"

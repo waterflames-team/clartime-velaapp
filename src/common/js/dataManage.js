@@ -3,53 +3,64 @@
  */
 import file from "@system.file"
 const userSettingPath = "internal://files/data/userSetting.json"
+
+/**
+ * 检测是否存在用户数据
+ * @returns {boolean}
+ */
+function isDataExist() { 
+    file.access({
+        uri: userSettingPath,
+        success: function (data) {
+            console.log(`access success`)
+            return true
+        },
+        fail: function (data, code) {
+            console.log(`access fail, code = ${code}`)
+            return false
+        }
+    })
+}
+
 /**
  * 对用户设置数据部分进行初始化
  * @returns {void}
  */
 function initData() {
-
-    // console.log(`init data`)
-
-    // file.delete({
-    //     uri: userSettingPath,
-    //     success: function(data) {
-    //         console.log('handling success')
-    //     },
-    //     fail: function(data, code) {
-    //         console.log(`handling fail, code = ${code}`)
-    //     }
-    // })
-
-
-    file.access({
+    file.writeText({
         uri: userSettingPath,
-        success: function (data) {
-            // console.log(`init data already！`)
+        text: JSON.stringify({
+            "dataStructureVersion": "1.1",
+            "createTime": "",
+            "lastUpdateTime": "",
+            "setting": {
+                "themeName": "Nucleus",
+                "dynamicEffects": true,
+            }
+        }),
+        success: function () {
+            // console.log(`write success`)
         },
         fail: function (data, code) {
-            file.writeText({
-                uri: userSettingPath,
-                text: JSON.stringify({
-                    "dataStructureVersion": "1.1",
-                    "createTime": "",
-                    "lastUpdateTime": "",
-                    "setting": {
-                        "themeName": "Nucleus",
-                        "dynamicEffects": true,
-                    }
-                }),
-                success: function () {
-                    // console.log(`write success`)
-                },
-                fail: function (data, code) {
-                    console.log(`write fail, code = ${code}`)
-                }
-            })
+            console.log(`write fail, code = ${code}`)
         }
     })
+}
 
-    // 之后初始化工具需要在这里走一些数据
+/**
+ * 清空数据（用于测试）
+ * @returns {boolean}
+ */
+function clearData() {
+    file.delete({
+        uri: userSettingPath,
+        success: function(data) {
+            return true
+        },
+        fail: function(data, code) {
+            return false
+        }
+    })
 }
 
 /**
@@ -102,7 +113,9 @@ function changeUserSetting(item, value) {
 }
 
 module.exports = {
+    isDataExist,
     initData,
+    clearData,
     getUserSetting,
     changeUserSetting
 }
