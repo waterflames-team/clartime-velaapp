@@ -122,12 +122,13 @@ export default {
     this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
     setTimeout(() => {
         this.$app.$def.router.push({
-            uri: "pages/index",
+            uri: "pages/entries",
             params: {
                 ___PARAM_LAUNCH_FLAG___: "clearTask"
             }
         });
-    }, 100);
+
+    }, 1000);
   },
 
   setNucleus() {
@@ -136,12 +137,12 @@ export default {
     // 添加 0.1 秒等待
     setTimeout(() => {
         this.$app.$def.router.push({
-            uri: "pages/index",
+            uri: "pages/entries",
             params: {
                 ___PARAM_LAUNCH_FLAG___: "clearTask"
             }
         });
-    }, 100); // 等待 0.1 秒的数据加载完毕
+    }, 1000); // 等待 0.1 秒的数据加载完毕
 }
 }
 </script>
