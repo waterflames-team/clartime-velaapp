@@ -134,8 +134,8 @@ export default {
 </script>
 
 <style>
-@import "../../../../common/css/universal.css";
-@import "../../../../common/css/component.css";
+@import "../../../common/css/universal.css";
+@import "../../../common/css/component.css";
 
 .component-classChange-text {
   height: 32px;
