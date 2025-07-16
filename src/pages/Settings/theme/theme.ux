@@ -19,9 +19,9 @@
           >
             <text class="theme-name">紧凑</text>
             <div class="gap-80"></div>
-            <image class="theme-preview" src="/common/setting_Horizon_Preview.png" />
+            <image class="theme-preview" src="/common/assets/setting_Horizon_Preview.png" />
             <div class="gap-80"></div>
-            <img src="/common/more_button.png" class="choose-button-icon" />
+            <img src="/common/assets/more_button.png" class="choose-button-icon" />
           </div>
           <div
             class="theme-card horizontal-center"
@@ -30,9 +30,9 @@
           >
             <text class="theme-name">聚焦</text>
             <div class="gap-80"></div>
-            <image class="theme-preview" src="/common/setting_Nucleus_Preview.png" />
+            <image class="theme-preview" src="/common/assets/setting_Nucleus_Preview.png" />
             <div class="gap-80"></div>
-            <img src="/common/more_button.png" class="choose-button-icon" />
+            <img src="/common/assets/more_button.png" class="choose-button-icon" />
           </div>
         </scroll>
         <div class="indicator vertical-center" id="indicator">
@@ -45,7 +45,7 @@
       </div>
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
-          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <img src="/common/assets/back_button.png" class="component-nav-backButton" />
           <text class="component-nav-title-text-backb">{{ title }}</text>
         </div>
         <text class="component-nav-title-time">{{ time }}</text>
@@ -148,8 +148,8 @@ export default {
 </script>
 
 <style>
-@import "../../../common/css/universal.css";
-@import "../../../common/css/component.css";
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
 
 .content {
   width: 336px;

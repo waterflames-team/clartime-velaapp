@@ -5,7 +5,7 @@
   /* top: 0px; */
   width: 336px;
   height: 56px;
-  background-image: url("/common/nav-bg.png");
+  background-image: url("/common/assets/nav-bg.png");
   background-size: 336px 56px;
   position: relative;
 }

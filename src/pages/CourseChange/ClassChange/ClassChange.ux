@@ -159,7 +159,7 @@ export default {
 
     // 初始化课程数据
     initCoursesData() {
-      const courseDataReader = require("../../../common/js/courseDataReader")
+      const courseDataReader = require("../../../common/utils/courseDataReader")
       const allCourses = courseDataReader.getCoursesInfo()
       this.availableCourses = allCourses.map((course) => ({
         name: course.courseName,
@@ -241,8 +241,8 @@ export default {
 </script>
 
 <style>
-@import "../../../common/css/universal.css";
-@import "../../../common/css/component.css";
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
 
 .component-classChange-text {
   height: 32px;

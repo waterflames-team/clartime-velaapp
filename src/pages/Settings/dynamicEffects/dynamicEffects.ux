@@ -8,7 +8,7 @@
 
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
-          <img src="/common/back_button.png" class="component-nav-backButton" />
+          <img src="/common/assets/back_button.png" class="component-nav-backButton" />
           <text class="component-nav-title-text-backb">{{ title }}</text>
         </div>
         <text class="component-nav-title-time">{{ time }}</text>
@@ -60,8 +60,8 @@ export default {
 </script>
 
 <style>
-@import "../../../common/css/universal.css";
-@import "../../../common/css/component.css";
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
 
 .content {
   width: 336px;
