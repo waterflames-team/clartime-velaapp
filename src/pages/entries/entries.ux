@@ -23,7 +23,7 @@ export default {
 
   onShow() {
     var OuterThis = this
-    this.$app.$def.dataManage.clearData()
+    // this.$app.$def.dataManage.clearData()
     file.access({
       uri: userSettingPath,
       success: function (data) {

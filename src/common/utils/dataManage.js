@@ -34,7 +34,7 @@ function initData() {
             "createTime": "",
             "lastUpdateTime": "",
             "setting": {
-                "themeName": "Nucleus",
+                "themeName": "Horizon",
                 "dynamicEffects": true,
             }
         }),
