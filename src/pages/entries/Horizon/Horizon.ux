@@ -348,8 +348,8 @@ export default {
     try {
       const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
       this.ThemeName = userSetting.setting.themeName
-      console.log("2")
-      console.log(this.ThemeName)
+      // console.log("2")
+      // console.log(this.ThemeName)
     } catch (e) {
       console.error("获取用户设置失败:", e)
     }

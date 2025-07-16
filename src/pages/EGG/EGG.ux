@@ -39,21 +39,6 @@ export default {
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
-    file.readText({
-      uri: "/META-INF/build.txt",
-      success: (data) => {
-        const buildDataList = data.text.split("\n")
-        console.log("text list: ", buildDataList[0])
-        this.timeStamp = buildDataList[2].split("=")[1]
-        this.toolkit = buildDataList[1].split("=")[1]
-        this.nodev = buildDataList[3].split("=")[1]
-        this.platform = buildDataList[4].split("=")[1]
-        this.arch = buildDataList[5].split("=")[1]
-      },
-      fail: function (data, code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
   },
 
   onDestroy() {

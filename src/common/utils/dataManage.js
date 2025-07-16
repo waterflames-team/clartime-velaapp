@@ -12,7 +12,7 @@ function isDataExist() {
     file.access({
         uri: userSettingPath,
         success: function (data) {
-            console.log(`access success`)
+            // console.log(`access success`)
             return true
         },
         fail: function (data, code) {
@@ -95,7 +95,7 @@ function changeUserSetting(item, value) {
             let settings = JSON.parse(data.text);
             // 修改指定项的值
             settings.setting[item] = value;
-            console.log(settings);
+            // console.log(settings);
             file.writeText({
                 uri: userSettingPath,
                 text: JSON.stringify(settings),

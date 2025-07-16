@@ -29,7 +29,7 @@ export default {
       success: function (data) {
         OuterThis.userSettingGet().then(function (userthemeName) { 
           if (userthemeName === "Horizon") {
-            console.log("经过入口的Horizon")
+            // console.log("经过入口的Horizon")
             OuterThis.$app.$def.router.push({
               uri: "pages/entries/Horizon",
               params: {
@@ -37,7 +37,7 @@ export default {
               }
             })
           } else if (userthemeName === "Nucleus") {
-            console.log("经过入口的Nucleus")
+            // console.log("经过入口的Nucleus")
             OuterThis.$app.$def.router.push({
               uri: "pages/entries/Nucleus",
               params: {

@@ -32,7 +32,7 @@ export default {
   },
 
   test() {
-    console.log("test")
+    // console.log("test")
     this.$app.$def.dataManage.initData()
   },
 
