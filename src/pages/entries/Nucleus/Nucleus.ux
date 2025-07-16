@@ -1,10 +1,6 @@
 <template>
   <div class="page">
-    <scroll
-      class="content horizontal-center"
-      scroll-y="true"
-      @scroll="updateHighlightLength"
-    >
+    <stack>
       <div class="content-home nucleus-NowCourse horizontal-center">
         <div class="component-nav-noback">
           <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
@@ -150,46 +146,57 @@
         </text>
       </div>
 
-      <div class="content-other horizontal-center">
-        <div class="component-nav-noback">
-          <text class="component-nav-title-text">{{ title_home }}</text>
-          <text class="component-nav-title-time">{{ time }}</text>
-        </div>
-        <div style="display: flex; flex-direction: row">
-          <div class="component-other-button_q" onclick="jumpAC">
-            <image class="component-other-icon_q" src="/common/icon_AllCourses.png" />
-            <text class="component-other-button_qText">1全部课程</text>
+      <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
+        <div class="content-home"></div>
+
+        <div class="content-other horizontal-center">
+          <div
+            style="
+              position: absolute;
+              top: 8px;
+              width: 60px;
+              height: 8px;
+              border-radius: 4px;
+              background-color: rgba(255, 255, 255, 0.5);
+            "
+          ></div>
+          <div class="gap-240"></div>
+          <div style="display: flex; flex-direction: row">
+            <div class="component-other-button_q" onclick="jumpAC">
+              <image class="component-other-icon_q" src="/common/icon_AllCourses.png" />
+              <text class="component-other-button_qText">全部课程</text>
+            </div>
+
+            <div class="gap-80"></div>
+
+            <div class="component-other-button_q" onclick="jumpCC">
+              <image class="component-other-icon_q" src="/common/icon_CourseChange.png" />
+              <text class="component-other-button_qText">课程调节</text>
+            </div>
           </div>
 
-          <div class="gap-80"></div>
+          <div class="gap-60"></div>
 
-          <div class="component-other-button_q" onclick="jumpCC">
-            <image class="component-other-icon_q" src="/common/icon_CourseChange.png" />
-            <text class="component-other-button_qText">课程调节</text>
+          <div class="component-other-button_l" onclick="jumpSt">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">设置</text>
+              <text class="component-other-button_lDescribe">实验性设置</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/icon_Set.png" />
+          </div>
+
+          <div class="gap-60"></div>
+
+          <div class="component-other-button_l" onclick="jumpAb">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">关于</text>
+              <text class="component-other-button_lDescribe">澄序课程表</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/icon_About.png" />
           </div>
         </div>
-
-        <div class="gap-60"></div>
-
-        <div class="component-other-button_l" onclick="jumpSt">
-          <div class="component-other-button-head vertical-left">
-            <text class="component-other-button_lText">设置</text>
-            <text class="component-other-button_lDescribe">实验性设置</text>
-          </div>
-          <image class="component-other-icon_l" src="/common/icon_Set.png" />
-        </div>
-
-        <div class="gap-60"></div>
-
-        <div class="component-other-button_l" onclick="jumpAb">
-          <div class="component-other-button-head vertical-left">
-            <text class="component-other-button_lText">关于</text>
-            <text class="component-other-button_lDescribe">澄序课程表</text>
-          </div>
-          <image class="component-other-icon_l" src="/common/icon_About.png" />
-        </div>
-      </div>
-    </scroll>
+      </scroll>
+    </stack>
   </div>
 </template>
 
@@ -326,18 +333,18 @@ export default {
 
   async userSettingGet() {
     try {
-      const userSetting = await this.$app.$def.dataManage.getUserSetting();// TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
       this.ThemeName = userSetting.setting.themeName
       console.log("1")
       console.log(this.ThemeName)
     } catch (e) {
-      console.error('获取用户设置失败:', e);
+      console.error("获取用户设置失败:", e)
     }
   },
 
   onInit() {
     // 初始化数据
-    const dateData = this.$app.$def.dateUpdate.updateDate();
+    const dateData = this.$app.$def.dateUpdate.updateDate()
     var OuterThis = this
     this.day = dateData.day
     this.dayNum = dateData.dayNum
@@ -348,7 +355,7 @@ export default {
 
   onShow() {
     this.$app.$def.router.clear()
-    
+
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
@@ -413,7 +420,8 @@ export default {
   quit() {
     this.$app.$def.app.terminate()
   },
-  onBackPress() { // 手动返回事件
+  onBackPress() {
+    // 手动返回事件
     this.$app.$def.app.terminate()
     return true
   }
@@ -645,7 +653,7 @@ export default {
 /* 更多卡片 - 长方形部分 */
 .component-other-button_l {
   width: 312px;
-  height: 122px;
+  height: 138px;
   opacity: 1;
   border-radius: 36px;
   background-color: rgba(255, 255, 255, 0.1);
