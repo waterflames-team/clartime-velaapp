@@ -4,15 +4,20 @@
       <!-- 主页 -->
       <scroll class="content horizontal-center" scroll-y="true" bounces="true">
         <div class="component-nav"></div>
-        <div class="component-button" onclick="test()">
-          <text class="component-text">创建</text>
+        <div class="component-about-textContent-container">
+          <text class="component-about-textContent-textS">内测成员你好！</text>
+          <text class="component-about-textContent-textS">这是一个 UI 预览版本</text>
+          <text class="component-about-textContent-textS">这个版本的连接功能未完成</text>
+          <text class="component-about-textContent-textS">所以核心功能暂时不可用</text>
+          <text class="component-about-textContent-textS">仅对外测试 UI 完善程度</text>
+          <div class="gap-80"></div>
+          <text class="component-about-textContent-textS">如果有发现的任何问题，</text>
+          <text class="component-about-textContent-textS">欢迎向我反馈</text>
         </div>
-
         <div class="gap-80"></div>
-
-        <!-- <div class="component-button" style="opacity: 0.6;">
-          <text class="component-text">预留按钮</text>
-        </div> -->
+        <div class="component-button" onclick="test()">
+          <text class="component-text">开始测试</text>
+        </div>
         
       </scroll>
 
@@ -26,7 +31,7 @@
 <script>
 export default {
   private: {
-    title: "欢迎",
+    title: "欢迎您",
     time: "",
     timer: null
   },
@@ -34,6 +39,12 @@ export default {
   test() {
     // console.log("test")
     this.$app.$def.dataManage.initData()
+    this.$app.$def.router.push({
+      uri: "pages/entries",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
   },
 
   onShow() {
@@ -73,10 +84,23 @@ export default {
   scroll-snap-type: y cross;
 }
 
-.card {
+.component-about-textContent-container {
+  opacity: 1;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  padding: 12px;
+
+  width: 312px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-about-textContent-textS {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: pre-line;
+  flex-wrap: wrap;
 }
 </style>

@@ -71,7 +71,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.3.0",
+    version: "0.3.0 - UIPreview",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
