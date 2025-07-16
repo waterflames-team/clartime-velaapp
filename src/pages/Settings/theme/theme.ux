@@ -128,7 +128,7 @@ export default {
             }
         });
 
-    }, 1000);
+    }, 100);
   },
 
   setNucleus() {
@@ -142,7 +142,7 @@ export default {
                 ___PARAM_LAUNCH_FLAG___: "clearTask"
             }
         });
-    }, 1000); // 等待 0.1 秒的数据加载完毕
+    }, 100); // 等待 0.1 秒的数据加载完毕
 }
 }
 </script>
