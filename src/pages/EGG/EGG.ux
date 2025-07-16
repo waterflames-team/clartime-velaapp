@@ -1,0 +1,100 @@
+<template>
+  <div class="page">
+    <stack>
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="gap-110"></div>
+        <div class="component-about-textContent-container">
+          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS">Lucent Project</text>
+        </div>
+      </scroll>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/assets/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
+  </div>
+</template>
+<script>
+import file from "@system.file"
+
+export default {
+  private: {
+    title: "彩蛋",
+    time: "",
+    timer: null,
+
+    timeStamp: "",
+    toolkit: "",
+    nodev: "",
+    platform: "",
+    arch: ""
+  },
+  onShow() {
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+  },
+
+  onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  exit() {
+    this.$app.$def.router.back()
+  }
+}
+</script>
+
+<style>
+@import "../../common/style/universal.css";
+@import "../../common/style/component.css";
+.content {
+  width: 336px;
+  height: 480px;
+}
+
+.component-about-textContent-container {
+  opacity: 1;
+
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+
+  width: 312px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-about-textContent-textSubTitle {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+.component-about-textContent-text {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-about-textContent-textS {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: pre-line;
+  flex-wrap: wrap;
+}
+</style>

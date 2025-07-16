@@ -1,8 +1,10 @@
 <script>
 import router from "@system.router"
-import courseDataParse from "./common/js/courseDataParse"
-import timeUpdate from "./common/js/timeUpdate"
-import dateUpdate from "./common/js/dateUpdate"
+import app from '@system.app' 
+import courseDataParse from "./common/utils/courseDataParse"
+import timeUpdate from "./common/utils/timeUpdate"
+import dateUpdate from "./common/utils/dateUpdate"
+import dataManage from "./common/utils/dataManage"
 
 export default {
   onCreate() {
@@ -14,8 +16,10 @@ export default {
   },
 
   router,
+  app,
   courseDataParse,
   timeUpdate,
-  dateUpdate
+  dateUpdate,
+  dataManage
 }
 </script>

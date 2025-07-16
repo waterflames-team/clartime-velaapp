@@ -1,17 +1,18 @@
 {
-  "package": "com.waterflames.timetable",
+  "package": "com.waterflames.clartime",
   "name": "澄序课程表",
-  "versionName": "0.2.2",
+  "versionName": "0.3.0",
   "versionCode": 2,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
-  "icon": "/common/logo.png",
-  "deviceTypeList": [
-    "watch"
-  ],
+  "icon": "/common/assets/logo.png",
+  "deviceTypeList": ["watch"],
   "features": [
     {
       "name": "system.router"
+    },
+    {
+      "name": "system.file"
     }
   ],
   "config": {
@@ -19,31 +20,52 @@
     "designWidth": 336
   },
   "router": {
-    "entry": "pages/index",
+    "entry": "pages/entries",
     "pages": {
-      "pages/index": {
-        "component": "index"
+      "pages/entries": {
+        "component": "entries"
       },
-      "pages/other/AllCourses":{
+      "pages/entries/guide": {
+        "component": "guide"
+      },
+      "pages/entries/Horizon": {
+        "component": "Horizon"
+      },
+      "pages/entries/Nucleus": {
+        "component": "Nucleus"
+      },
+      "pages/AllCourses": {
         "component": "AllCourses"
       },
-      "pages/other/AllCourses/DayCourses":{
-        "component": "DayCourses"
-      },
-      "pages/other/CourseChange":{
+      "pages/CourseChange":{
         "component": "CourseChange"
       },
-      "pages/other/CourseChange/ClassChange":{
+      "pages/CourseChange/ClassChange": {
         "component": "ClassChange"
       },
-      "pages/other/CourseChange/DayChange":{
+      "pages/CourseChange/DayChange": {
         "component": "DayChange"
       },
-      "pages/other/about":{
+      "pages/about": {
         "component": "about"
       },
-      "pages/other/EGG":{
+      "pages/about/afd": {
+        "component": "afd"
+      },
+      "pages/about/details": {
+        "component": "details"
+      },
+      "pages/EGG": {
         "component": "EGG"
+      },
+      "pages/Settings":{
+        "component": "Settings"
+      },
+      "pages/Settings/dynamicEffects": {
+        "component": "dynamicEffects"
+      },
+      "pages/Settings/theme": {
+        "component": "theme"
       }
     }
   },
