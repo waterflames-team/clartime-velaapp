@@ -1,0 +1,124 @@
+<template>
+  <div class="page">
+    <div class="component-nav">
+      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
+    </div>
+    <div class="gap-110"></div>
+
+    <div class="component-courseChange-button" onclick="jumpClassChange">
+      <div class="gap-140"></div>
+      <text class="component-courseChange-text1">调课</text>
+      <text class="component-courseChange-text2">修改临时或永久性调课</text>
+    </div>
+    <div class="gap-80"></div>
+    <div class="component-courseChange-button" onclick="jumpDayChange">
+      <div class="gap-140"></div>
+      <text class="component-courseChange-text1">调休</text>
+      <text class="component-courseChange-text2">修改临时性调休</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    title: "课程调节",
+    time: "",
+    timer: null
+  },
+  onShow() {
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+    // console.log("this.timer", this.time)
+  },
+
+  onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  updateTime() {
+    const now = new Date()
+    const hours = String(now.getHours()).padStart(2, "0")
+    const minutes = String(now.getMinutes()).padStart(2, "0")
+    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    this.title_time = `${hours}:${minutes}`
+  },
+
+  exit() {
+    this.$app.$def.router.push({
+      uri: "pages/entries",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+
+  jumpClassChange() {
+    this.$app.$def.router.push({
+      uri: "pages/CourseChange/ClassChange"
+    })
+  },
+
+  jumpDayChange() {
+    this.$app.$def.router.push({
+      uri: "pages/CourseChange/DayChange"
+    })
+  },
+
+  onBackPress() {
+    this.$app.$def.router.push({
+      uri: "pages/entries",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../common/style/universal.css";
+@import "../../common/style/component.css";
+
+.component-courseChange-button {
+  width: 100%;
+  height: 112px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(38, 38, 38, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.component-courseChange-text1 {
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+.component-courseChange-text2 {
+  left: 19px;
+  opacity: 1;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+</style>

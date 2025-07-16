@@ -5,7 +5,7 @@
   "versionCode": 2,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
-  "icon": "/common/logo.png",
+  "icon": "/common/assets/logo.png",
   "deviceTypeList": ["watch"],
   "features": [
     {
@@ -20,36 +20,51 @@
     "designWidth": 336
   },
   "router": {
-    "entry": "pages/index",
+    "entry": "pages/entries",
     "pages": {
-      "pages/index": {
-        "component": "index"
+      "pages/entries": {
+        "component": "entries"
       },
-      "pages/other/AllCourses": {
+      "pages/entries/guide": {
+        "component": "guide"
+      },
+      "pages/entries/Horizon": {
+        "component": "Horizon"
+      },
+      "pages/entries/Nucleus": {
+        "component": "Nucleus"
+      },
+      "pages/AllCourses": {
         "component": "AllCourses"
       },
-      "pages/other/CourseChange":{
+      "pages/CourseChange":{
         "component": "CourseChange"
       },
-      "pages/other/CourseChange/ClassChange": {
+      "pages/CourseChange/ClassChange": {
         "component": "ClassChange"
       },
-      "pages/other/CourseChange/DayChange": {
+      "pages/CourseChange/DayChange": {
         "component": "DayChange"
       },
-      "pages/other/about": {
+      "pages/about": {
         "component": "about"
       },
-      "pages/other/EGG": {
+      "pages/about/afd": {
+        "component": "afd"
+      },
+      "pages/about/details": {
+        "component": "details"
+      },
+      "pages/EGG": {
         "component": "EGG"
       },
-      "pages/other/Settings":{
+      "pages/Settings":{
         "component": "Settings"
       },
-      "pages/other/Settings/dynamicEffects": {
+      "pages/Settings/dynamicEffects": {
         "component": "dynamicEffects"
       },
-      "pages/other/Settings/theme": {
+      "pages/Settings/theme": {
         "component": "theme"
       }
     }
