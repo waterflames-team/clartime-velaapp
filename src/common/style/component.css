@@ -1,0 +1,83 @@
+/* nav 通用样式 */
+
+.component-nav {
+  position: absolute;
+  /* top: 0px; */
+  width: 336px;
+  height: 56px;
+  background-image: url("/common/assets/nav-bg.png");
+  background-size: 336px 56px;
+  position: relative;
+}
+
+.component-nav-noback {
+  position: absolute;
+  /* top: 0px; */
+  width: 336px;
+  height: 56px;
+  position: relative;
+  
+}
+
+.component-nav-backGroup {
+  top: 7px;
+  left: 16px;
+  width: 202px;
+  /* display: flex;
+  flex-direction: row */
+}
+
+.component-nav-backButton {
+  height: 42px;
+  object-fit: contain;
+}
+
+.component-nav-title-text {
+  position: absolute;
+  color: #ffffff;
+  width: 202px;
+  left: 16px;
+  top: 7px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.component-nav-title-text-backb{
+  position: absolute;
+  left: 26px;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.component-nav-title-time {
+  position: absolute;
+  color: #ffffff;
+  right: 16px;
+  top: 7px;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* button 样式 */
+
+.component-button {
+  display: flex;
+  width: 312px;
+  height: 112px;
+  padding: 16px 12px;
+  align-items: center;
+
+  border-radius: 24px;
+  background-color: #222;
+}
+
+.component-text {
+  color: #FFF;
+  font-family: MiSans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

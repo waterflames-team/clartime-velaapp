@@ -1,0 +1,469 @@
+<template>
+  <div class="page">
+    <div class="component-nav">
+      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
+      <text class="component-nav-title-time">{{ time }}</text>
+    </div>
+    <!-- <div class="gap-110"></div> -->
+
+    <text class="component-classChange-text" if="{{ page === 1 }}">请选择在星期几调课</text>
+    <text class="component-classChange-text" if="{{ page === 2 }}">请选择被调节的课</text>
+    <text class="component-classChange-text" if="{{ page === 3 }}">请选择调节结果</text>
+    <text class="component-classChange-text" if="{{ page === 4 }}">请选择调节范围</text>
+
+    <!-- 选择星期-1 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 1 }}">
+      <div class="gap-36"></div>
+      <div class="component-coursePresentations-border" for="{{weekDay}}">
+        <div
+          class="component-coursePresentations-content"
+          ontouchstart="selectCard($idx)"
+          ontouchend="selectCard(-1)"
+          onclick="selectWeekDay($item.nameEn)"
+          style="background-color: {{ selectedCard === $idx ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <text class="component-coursePresentations-text">{{ $item.nameZh }}</text>
+        </div>
+      </div>
+    </scroll>
+
+    <!-- 调课-2 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 2 }}">
+      <div class="gap-36"></div>
+      <text class="component-classChange-card-weaknum">{{ weeknum }}</text>
+
+      <div for="{{courseSchedule}}">
+        <div class="component-classChange-card-border-l" if="{{$item.type === 'course'}}">
+          <div
+            class="component-classChange-card-content-l"
+            ontouchstart="selectCard($idx)"
+            ontouchend="selectCard(-1)"
+            onclick="pageTurn($idx)"
+            style="background-color: {{ selectedCard === $idx ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+          >
+            <div class="gap-142"></div>
+            <text class="component-classChange-card-text">{{ $item.description }}</text>
+            <text class="component-classChange-card-courses">{{ $item.courseName }}</text>
+            <div class="gap-80"></div>
+            <text class="component-classChange-card-text">{{ $item.timeRange }}</text>
+            <text class="component-classChange-card-text">{{ $item.courseRoom }}</text>
+            <text class="component-classChange-card-text">{{ $item.courseTeacher }}</text>
+          </div>
+        </div>
+        <div class="gap-80"></div>
+      </div>
+    </scroll>
+
+    <!-- 调课-3 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 3 }}">
+      <div class="gap-36"></div>
+
+      <div class="component-classChange-card-border-s" for="{{availableCourses}}">
+        <div
+          class="component-classChange-card-content-s"
+          ontouchstart="selectCard($idx)"
+          ontouchend="selectCard(-1)"
+          onclick="pageTurn($idx)"
+          style="background-color: {{ selectedCard === $idx ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+        >
+          <div class="gap-142"></div>
+          <text class="component-classChange-card-courses">{{ $item.name }}</text>
+          <div class="gap-80"></div>
+          <text class="component-classChange-card-text">{{ $item.classroom }}</text>
+          <text class="component-classChange-card-text">{{ $item.teacher }}</text>
+        </div>
+      </div>
+    </scroll>
+
+    <!-- 调课-4 -->
+    <scroll class="component-classChange-list" scroll-y="true" if="{{ page === 4 }}">
+      <div class="gap-36"></div>
+
+      <div
+        class="component-classChange-card-content-m"
+        ontouchstart="selectCard(0)"
+        ontouchend="selectCard(-1)"
+        onclick="pageTurn('once')"
+        style="background-color: {{ selectedCard === 0 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+      >
+        <div class="gap-140"></div>
+        <text class="component-classChange-text1">仅本次</text>
+        <text class="component-classChange-text2">仅本次临时调课</text>
+      </div>
+      <div class="gap-80"></div>
+      <div
+        class="component-classChange-card-content-m"
+        ontouchstart="selectCard(1)"
+        ontouchend="selectCard(-1)"
+        onclick="pageTurn('all')"
+        style="background-color: {{ selectedCard === 1 ? 'rgba(13, 110, 255, 1)' : 'rgba(38, 38, 38, 1)' }}"
+      >
+        <div class="gap-140"></div>
+        <text class="component-classChange-text1">本次及将来的课程</text>
+        <text class="component-classChange-text2">永久性调课</text>
+      </div>
+    </scroll>
+
+    <!-- 结束页 -->
+    <div class="component-classChange-resultPage" if="{{ page === 5 }}">
+      <div class="gap-36"></div>
+
+      <div class="component-classChange-result loading" if="{{changeRseult === -1}}">
+        <text class="component-classChange-result-icon">〇</text>
+      </div>
+      <div class="component-classChange-result success" elif="{{changeRseult === 1}}">
+        <text class="component-classChange-result-icon">✓</text>
+      </div>
+      <div class="component-classChange-result failure" elif="{{changeRseult === 0}}">
+        <text class="component-classChange-result-icon">✕</text>
+      </div>
+
+      <div class="gap-240"></div>
+
+      <text class="component-classChange-result-text" if="{{changeRseult === -1}}">调整中</text>
+      <text class="component-classChange-result-text" elif="{{changeRseult === 1}}">调整完成</text>
+      <text class="component-classChange-result-text" elif="{{changeRseult === 0}}">调整失败</text>
+
+      <text class="component-classChange-result-text">{{ changeDate }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    title: "调课",
+    time: "",
+    timer: null,
+    selectedCard: -1,
+    page: 1,
+    changeRseult: 0,
+    changeDate: ["ClassChange"],
+    dayNum: "", // 选择的星期英文代码
+    weeknum: "", // 选择的星期中文名称
+    courseSchedule: [], // 课程数据
+
+    // 星期数据
+    weekDay: [
+      {nameZh: "周一", nameEn: "Mon"},
+      {nameZh: "周二", nameEn: "Tue"},
+      {nameZh: "周三", nameEn: "Wed"},
+      {nameZh: "周四", nameEn: "Thu"},
+      {nameZh: "周五", nameEn: "Fri"},
+      {nameZh: "周六", nameEn: "Sat"},
+      {nameZh: "周日", nameEn: "Sun"}
+    ],
+
+    // 备选课程数据
+    availableCourses: [],
+
+    // 初始化课程数据
+    initCoursesData() {
+      const courseDataReader = require("../../../common/utils/courseDataReader")
+      const allCourses = courseDataReader.getCoursesInfo()
+      this.availableCourses = allCourses.map((course) => ({
+        name: course.courseName,
+        classroom: course.classroom,
+        teacher: course.teacher
+      }))
+
+      // console.log(this.availableCourses)
+    }
+  },
+  onShow() {
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+    this.initCoursesData()
+  },
+
+  onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  exit() {
+    // 合并条件判断：如果正在调整中，则无响应；如果在结果页/第一页且不在调整中，则返回上级页面
+    if (this.page === 1 || (this.page === 5 && this.changeRseult !== -1)) {
+      this.$app.$def.router.back()
+    } else if (this.page === 5 && this.changeRseult === -1) {
+      return
+    } else {
+      // 其他情况返回上一步
+      this.page -= 1
+      this.changeDate.pop()
+    }
+  },
+
+  selectCard(idx) {
+    this.selectedCard = idx
+  },
+
+  // 选择星期
+  selectWeekDay(dayEn) {
+    this.dayNum = dayEn
+
+    // 获取对应星期的课程数据
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+
+    // 设置星期中文名称
+    const dayMap = {
+      Mon: "周一",
+      Tue: "周二",
+      Wed: "周三",
+      Thu: "周四",
+      Fri: "周五",
+      Sat: "周六",
+      Sun: "周日"
+    }
+    this.weeknum = dayMap[this.dayNum]
+
+    // 进入下一页
+    this.page += 1
+    this.changeDate.push(dayEn)
+    this.selectedCard = -1
+
+    // console.log(this.courseSchedule)
+  },
+
+  pageTurn(idx) {
+    this.page += 1
+    this.changeDate.push(idx)
+    this.selectedCard = -1
+    // // 重置课程数据数组
+    // this.courseSchedule = []
+    // this.availableCourses = []
+  }
+}
+</script>
+
+<style>
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
+
+.component-classChange-text {
+  height: 32px;
+  opacity: 1;
+
+  font-size: 24px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 31.82px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+.component-classChange-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 30px;
+  width: 324px;
+  height: 386px;
+
+  scroll-snap-align: start;
+}
+
+.component-classChange-card-weaknum {
+  width: 182px;
+  height: 24px;
+  opacity: 1;
+
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  line-height: 23.87px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  vertical-align: top;
+}
+
+.component-coursePresentations-border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 324px;
+  height: 98px;
+}
+
+.component-coursePresentations-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  left: 0px;
+  top: 0px;
+  width: 324px;
+  height: 90px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-coursePresentations-text {
+  top: 23px;
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-card-border-s {
+  width: 324px;
+  height: 134px;
+}
+
+.component-classChange-card-content-l {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  left: 0px;
+  top: 0px;
+  width: 318px;
+  height: 177px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-content-m {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 324px;
+  height: 112px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-content-s {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  /* width: 158px; */
+  width: 318px;
+  height: 126px;
+  opacity: 1;
+  border-radius: 24px;
+  background-color: rgba(38, 38, 38, 1);
+}
+
+.component-classChange-card-text {
+  left: 19px;
+  opacity: 1;
+  font-size: 20px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 26.52px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+.component-classChange-resultPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 324px;
+  height: 386px;
+}
+
+.component-classChange-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 128px;
+  height: 128px;
+  opacity: 1;
+  border-radius: 24px;
+}
+.loading {
+  background-color: rgba(255, 195, 0, 1);
+}
+.failure {
+  background-color: rgba(255, 0, 0, 1);
+}
+.success {
+  background-color: rgba(14, 124, 59, 1);
+}
+
+.component-classChange-result-icon {
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 79.56px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.component-classChange-result-text {
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  vertical-align: top;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.component-classChange-text1 {
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 44.8px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-text2 {
+  left: 19px;
+  opacity: 1;
+  font-size: 28px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 39.2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  vertical-align: top;
+}
+
+.component-classChange-card-courses {
+  left: 19px;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: 550;
+  letter-spacing: 0px;
+  line-height: 42.43px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+}
+</style>

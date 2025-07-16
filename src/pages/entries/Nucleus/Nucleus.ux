@@ -1,0 +1,720 @@
+<template>
+  <div class="page">
+    <stack>
+      <div class="content-home nucleus-NowCourse horizontal-center">
+        <div class="component-nav-noback">
+          <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
+          <text class="component-nav-title-time">{{ time }}</text>
+        </div>
+
+        <!-- 以下为当前态的展示 -->
+        <text
+          class="nucleus-NowCourse-text1"
+          if="courseSchedule[indexNow].type === 'end'"
+          style="top: 60px"
+        >
+          今日
+        </text>
+        <text
+          class="nucleus-NowCourse-text1"
+          elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+          style="top: 36px"
+        >
+          当前
+        </text>
+        <text class="nucleus-NowCourse-text1" else>当前</text>
+
+        <text
+          class="nucleus-NowCourse-text2"
+          if="courseSchedule[indexNow].type === 'end'"
+          style="top: 60px"
+        >
+          课程结束
+        </text>
+        <marquee
+          text-offset="{{8}}"
+          scrollamount="{{20}}"
+          class="nucleus-NowCourse-text2"
+          elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+          style="top: 36px"
+        >
+          {{ courseSchedule[indexNow].courseName }}
+        </marquee>
+        <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NowCourse-text2" else>
+          {{ courseSchedule[indexNow].courseName }}
+        </marquee>
+
+        <marquee
+          if="courseSchedule[indexNow].timeRange !== '' && courseSchedule[indexNow].type === 'course'"
+          text-offset="{{8}}"
+          scrollamount="{{20}}"
+          class="nucleus-NowCourse-text3"
+        >
+          {{ courseSchedule[indexNow].timeRange }}
+        </marquee>
+        <marquee
+          if="courseSchedule[indexNow].timeRange !== '' && (courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest')"
+          text-offset="{{8}}"
+          scrollamount="{{20}}"
+          class="nucleus-NowCourse-text3"
+          style="top: 48px"
+        >
+          {{ courseSchedule[indexNow].timeRange }}
+        </marquee>
+        <marquee
+          if="courseSchedule[indexNow].courseRoom !== '' && courseSchedule[indexNow].type === 'course'"
+          text-offset="{{8}}"
+          scrollamount="{{20}}"
+          class="nucleus-NowCourse-text3"
+        >
+          {{ courseSchedule[indexNow].courseRoom }}
+        </marquee>
+        <marquee
+          if="courseSchedule[indexNow].courseTeacher !== '' && courseSchedule[indexNow].type === 'course'"
+          text-offset="{{8}}"
+          scrollamount="{{20}}"
+          class="nucleus-NowCourse-text3"
+        >
+          {{ courseSchedule[indexNow].courseTeacher }}
+        </marquee>
+        <text
+          class="nucleus-NowCourse-text3"
+          if="courseSchedule[indexNow].type === 'end'"
+          style="top: 72px"
+        >
+          明天见
+        </text>
+        <!-- 以上为当前态的展示 -->
+
+        <!-- 以下为下一节课的展示 -->
+        <div
+          class="nucleus-NextCourseCard"
+          if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
+        ><!-- 正常课时 -->
+          <text class="nucleus-NextCourseCard-text1">下一节</text>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
+            {{ courseSchedule[indexNow + 2].courseName }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text3">
+            {{ courseSchedule[indexNow + 2].timeRange }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text4">
+            {{ courseSchedule[indexNow + 2].courseRoom }}｜{{
+              courseSchedule[indexNow + 2].courseTeacher
+            }}
+          </marquee>
+        </div>
+        <div
+          class="nucleus-NextCourseCard"
+          elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+        ><!-- 第一节课时 -->
+          <text class="nucleus-NextCourseCard-text1">下一节</text>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
+            {{ courseSchedule[indexNow + 1].courseName }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text3">
+            {{ courseSchedule[indexNow + 1].timeRange }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text4">
+            {{ courseSchedule[indexNow + 1].courseRoom }}｜{{
+              courseSchedule[indexNow + 1].courseTeacher
+            }}
+          </marquee>
+        </div>
+        <div
+          class="nucleus-NextCourseCard"
+          elif="courseSchedule[indexNow].type === 'start'"
+        ><!-- 课间时 -->
+          <text class="nucleus-NextCourseCard-text1">第一节</text>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
+            {{ courseSchedule[indexNow + 1].courseName }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text3">
+            {{ courseSchedule[indexNow + 1].timeRange }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text4">
+            {{ courseSchedule[indexNow + 1].courseRoom }}｜{{
+              courseSchedule[indexNow + 1].courseTeacher
+            }}
+          </marquee>
+        </div>
+        <div
+          class="nucleus-NextCourseCard"
+          elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
+        ><!-- 最后一节课时 -->
+          <text class="nucleus-NextCourseCard-text1">下一节</text>
+          <text class="nucleus-NextCourseCard-text2">没课了～</text>
+          <text class="nucleus-NextCourseCard-text4">今天的课马上要结束哩～</text>
+        </div>
+        <!-- 以上为下一节课的展示 -->
+
+        <!-- 以下为上下课时间的展示 -->
+        <div class="nucleus-RemainCard" if="courseSchedule[indexNow].type !== 'end'">
+          <text class="nucleus-RemainCard-text1">还有</text>
+          <text class="nucleus-RemainCard-text2">{{ remain }}</text>
+          <text class="nucleus-RemainCard-text3" if="courseSchedule[indexNow].type === 'course'">
+            下课
+          </text>
+          <text
+            class="nucleus-RemainCard-text3"
+            elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest' || courseSchedule[indexNow].type === 'start'"
+          >
+            上课
+          </text>
+        </div>
+
+        <text class="nucleus-ClassOver-text" if="courseSchedule[indexNow].type === 'end'">
+          / {{ day }} {{ dayNum }} => Over ! /
+        </text>
+        <!-- 以上为上下课时间的展示 -->
+      </div>
+
+      <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
+        <div class="content-home"></div>
+
+        <div class="content-other horizontal-center">
+          <div
+            style="
+              position: absolute;
+              top: 8px;
+              width: 60px;
+              height: 8px;
+              border-radius: 4px;
+              background-color: rgba(255, 255, 255, 0.5);
+            "
+          ></div>
+          <div class="gap-240"></div>
+          <div style="display: flex; flex-direction: row">
+            <div class="component-other-button_q" onclick="jumpAC">
+              <image class="component-other-icon_q" src="/common/assets/icon_AllCourses.png" />
+              <text class="component-other-button_qText">全部课程</text>
+            </div>
+
+            <div class="gap-80"></div>
+
+            <div class="component-other-button_q" onclick="jumpCC">
+              <image class="component-other-icon_q" src="/common/assets/icon_CourseChange.png" />
+              <text class="component-other-button_qText">课程调节</text>
+            </div>
+          </div>
+
+          <div class="gap-60"></div>
+
+          <div class="component-other-button_l" onclick="jumpSt">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">设置</text>
+              <text class="component-other-button_lDescribe">实验性设置</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/assets/icon_Set.png" />
+          </div>
+
+          <div class="gap-60"></div>
+
+          <div class="component-other-button_l" onclick="jumpAb">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">关于</text>
+              <text class="component-other-button_lDescribe">澄序课程表</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/assets/icon_About.png" />
+          </div>
+        </div>
+      </scroll>
+    </stack>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    ThemeName: "", // Horizon Or Nucleus
+
+    title_home: "课程表",
+    title_other: "更多",
+    time: "",
+    seconds: "",
+    day: "",
+    dayNum: "",
+    weekNum: "",
+    remain: "",
+
+    courseSchedule: [],
+    coursesName: "文语",
+    coursesStartTime: "53:61 - 02:71",
+    coursesRoom: "室教101",
+    coursesTeacher: "师老张",
+    autoDistance: 0,
+    indexNow: 0,
+    indicatorTop: 1,
+
+    timer: null, // 添加定时器变量
+    updateTimer: null
+  },
+
+  updateHighlightLength(event) {
+    const {scrollX, scrollY} = event
+    if (scrollY == 0) {
+      this.indicatorTop = 1
+    } else if (scrollY == 480) {
+      this.indicatorTop = 25
+    }
+  },
+
+  getCourses() {
+    const dayMap = {
+      周一: "Mon",
+      周二: "Tue",
+      周三: "Wed",
+      周四: "Thu",
+      周五: "Fri",
+      周六: "Sat",
+      周日: "Sun"
+    }
+    const whichDay = dayMap[this.dayNum]
+    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+  },
+
+  getCurrentCourseIndex() {
+    //寻找最近项目的索引
+
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
+    const currentHours = currentTime.hours
+    const currentMinutes = currentTime.minutes
+
+    // 如果当前时间小于第一节课时间，返回0
+    if (
+      this.courseSchedule.length > 0 &&
+      (currentHours < this.courseSchedule[1].timeHour ||
+        (currentHours === this.courseSchedule[1].timeHour &&
+          currentMinutes < this.courseSchedule[1].timeMinute))
+    ) {
+      return 0
+    }
+
+    // 正常课程定位判断
+    for (let i = 0; i < this.courseSchedule.length - 1; i++) {
+      const currentItem = this.courseSchedule[i]
+      const nextItem = this.courseSchedule[i + 1]
+
+      if (
+        (currentHours > currentItem.timeHour ||
+          (currentHours === currentItem.timeHour && currentMinutes >= currentItem.timeMinute)) &&
+        (currentHours < nextItem.timeHour ||
+          (currentHours === nextItem.timeHour && currentMinutes < nextItem.timeMinute))
+      ) {
+        return i
+      }
+    }
+
+    // 无法判断就返回最后一个
+    return this.courseSchedule.length - 1
+  },
+
+  getRemainingTime() {
+    // 取元列表
+
+    const currentIndex = this.getCurrentCourseIndex()
+    if (currentIndex === this.courseSchedule.length) {
+      return "---"
+    }
+
+    const nextCourse = this.courseSchedule[currentIndex + 1]
+    const thisCourse = this.courseSchedule[currentIndex]
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
+
+    // 提前判断结束，以防止下一项无法取到导致的出错
+    if (thisCourse.type === "end") {
+      return "---"
+    }
+
+    // 计算分钟差
+    const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
+    const nextCourseTotalMinutes = String(
+      Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
+    )
+    const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
+
+    if (thisCourse.type === "course") {
+      return remainingMinutes + "'"
+    } else if (
+      thisCourse.type === "interval" ||
+      thisCourse.type === "rest" ||
+      thisCourse.type === "start"
+    ) {
+      return remainingMinutes + "'"
+    }
+
+    return remainingMinutes
+  },
+
+  courseRelatedUpadate() {
+    this.getCourses()
+    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+    this.remain = this.getRemainingTime()
+    this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
+    this.indexNow = this.getCurrentCourseIndex()
+  },
+
+  async userSettingGet() {
+    try {
+      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      this.ThemeName = userSetting.setting.themeName
+      // console.log("1")
+      // console.log(this.ThemeName)
+    } catch (e) {
+      console.error("获取用户设置失败:", e)
+    }
+  },
+
+  onInit() {
+    // 初始化数据
+    const dateData = this.$app.$def.dateUpdate.updateDate()
+    var OuterThis = this
+    this.day = dateData.day
+    this.dayNum = dateData.dayNum
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
+    this.courseRelatedUpadate()
+  },
+
+  onShow() {
+    this.$app.$def.router.clear()
+
+    // 初始化数据
+    const dateData = this.$app.$def.dateUpdate.updateDate()
+    this.day = dateData.day
+    this.dayNum = dateData.dayNum
+    this.time = this.$app.$def.timeUpdate.updateTime().time
+    this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
+    this.courseRelatedUpadate()
+    this.userSettingGet()
+
+    // 启动定时器，每秒更新
+    this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
+      this.time = timeData.time
+      this.seconds = timeData.seconds
+      if (this.getCurrentCourseIndex() != this.indexNow) {
+        this.courseRelatedUpadate()
+      }
+    })
+  },
+
+  onDestroy() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+  },
+
+  onHide() {
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+    // this.$app.$def.timeUpdate.stopTimer(this.updateTimer)
+  },
+
+  jumpAC() {
+    this.$app.$def.router.push({
+      uri: "pages/AllCourses",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  jumpCC() {
+    this.$app.$def.router.push({
+      uri: "pages/CourseChange",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  jumpSt() {
+    this.$app.$def.router.push({
+      uri: "pages/Settings",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  jumpAb() {
+    this.$app.$def.router.push({
+      uri: "pages/about",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  quit() {
+    this.$app.$def.app.terminate()
+  },
+  onBackPress() {
+    // 手动返回事件
+    this.$app.$def.app.terminate()
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
+
+/* 界面布局 */
+.content {
+  width: 100%;
+  height: 480px;
+
+  display: flex;
+  flex-direction: column;
+
+  scroll-snap-type: y cross;
+  scroll-snap-stop: always;
+}
+
+.content-home {
+  width: 100%;
+  height: 480px;
+  scroll-snap-align: start;
+}
+
+.home-back {
+  width: 100%;
+  height: 480px;
+  scroll-snap-align: start;
+  object-fit: cover;
+
+  opacity: 1;
+}
+.content-other {
+  width: 100%;
+  height: 480px;
+  scroll-snap-align: start;
+
+  background-color: rgba(0, 0, 0);
+}
+
+/* 指示器 */
+.component-indicator {
+  position: absolute;
+  top: 185px;
+  right: 3px;
+
+  align-items: center;
+  width: 6px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.component-indicator-highlight {
+  width: 4px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+/* ----------简单版主题---------- */
+.nucleus-NowCourse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nucleus-NowCourse-text1 {
+  top: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+.nucleus-NowCourse-text2 {
+  top: 8px;
+  color: #fff;
+  text-align: center;
+  font-size: 56px;
+  font-weight: 700;
+  width: 250px;
+}
+.nucleus-NowCourse-text3 {
+  top: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  width: 280px;
+}
+
+.nucleus-NextCourseCard {
+  width: 152px;
+  height: 152px;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.nucleus-NextCourseCard-text1 {
+  top: 12px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+}
+.nucleus-NextCourseCard-text2 {
+  top: 12px;
+  left: 12px;
+  color: rgba(255, 255, 255);
+  font-size: 24px;
+  font-weight: 700;
+  width: 116px;
+}
+.nucleus-NextCourseCard-text3 {
+  position: absolute;
+  bottom: 36px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+  width: 116px;
+}
+.nucleus-NextCourseCard-text4 {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+  width: 116px;
+}
+.nucleus-RemainCard {
+  width: 152px;
+  height: 152px;
+  border-radius: 36px;
+  background-color: #1070ff;
+
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.nucleus-RemainCard-text1 {
+  top: 12px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+}
+.nucleus-RemainCard-text2 {
+  top: 12px;
+  left: 12px;
+  width: 102px;
+  color: rgba(255, 255, 255);
+  font-size: 40px;
+  font-weight: 700;
+}
+.nucleus-RemainCard-text3 {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+}
+.nucleus-ClassOver-text {
+  color: rgba(255, 255, 255, 0.6);
+
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+
+  position: absolute;
+  bottom: 12px;
+}
+/* ----------简单版主题---------- */
+
+/* 更多卡片 - 方形部分 */
+
+.component-other-button_q {
+  width: 152px;
+  height: 152px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-other-button_qText {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 39.78px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-other-icon_q {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 60px;
+  height: 60px;
+
+  object-fit: contain;
+}
+.icon_AC {
+  box-shadow: 0px 0px 20px rgba(31, 136, 255, 0.5);
+  border-radius: 30px;
+}
+.icon_CC {
+  box-shadow: 0px 0px 20px rgba(255, 171, 31, 0.5);
+  border-radius: 30px;
+}
+
+/* 更多卡片 - 长方形部分 */
+.component-other-button_l {
+  width: 312px;
+  height: 138px;
+  opacity: 1;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.component-other-button-head {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+.component-other-button_lText {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+.component-other-button_lDescribe {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+.component-other-icon_l {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 12px;
+  bottom: 12px;
+
+  object-fit: contain;
+}
+.icon_ST {
+  box-shadow: 0px 0px 20px rgba(130, 130, 130, 0.5);
+  border-radius: 30px;
+}
+.icon_Ab {
+  box-shadow: 0px 0px 20px rgba(106, 31, 255, 0.5);
+  border-radius: 30px;
+}
+</style>
