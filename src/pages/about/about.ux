@@ -197,7 +197,6 @@ export default {
 .component-about-textCard {
   top: 327px;
   width: 312px;
-  height: 546px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.1);
