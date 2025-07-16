@@ -49,6 +49,12 @@
       "pages/about": {
         "component": "about"
       },
+      "pages/about/afd": {
+        "component": "afd"
+      },
+      "pages/about/details": {
+        "component": "details"
+      },
       "pages/EGG": {
         "component": "EGG"
       },

@@ -1,8 +1,9 @@
 <template>
-  <div class="page" style="padding-bottom: 12px;">
+  <div class="page">
     <stack>
       <scroll
         class="content horizontal-center"
+        style="padding-bottom: 12px;"
         scroll-y="true"
         bounces="true"
         @scroll="updateHighlightLength"
@@ -14,6 +15,8 @@
             v{{ version }}
           </text>
         </div>
+
+        <div class="gap-480"></div>
 
         <div class="component-about-textCard vertical-left">
           <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
@@ -36,6 +39,18 @@
           <text class="component-about-textContent-textS">感谢你愿意来使用</text>
           <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
           <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-button" onclick="toAfd()">
+          <text class="component-text">赞助支持</text>
+        </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-button" onclick="toDetail()">
+          <text class="component-text">版本详情</text>
         </div>
         
       </scroll>
@@ -94,9 +109,21 @@ export default {
     })
   },
 
+  toAfd() {
+    this.$app.$def.router.push({
+      uri: "pages/about/afd"
+    })
+  },
+
+  toDetail() {
+    this.$app.$def.router.push({
+      uri: "pages/about/details"
+    })
+  },
+
   onVersionClick() {
     this.eggClickCount++
-    if (this.eggClickCount === 3) {
+    if (this.eggClickCount === 5) {
       this.$app.$def.router.push({
         uri: "pages/EGG"
       })
@@ -164,7 +191,6 @@ export default {
 
 /* 感谢描述 */
 .component-about-textCard {
-  top: 48px;
   width: 312px;
   opacity: 1;
   border-radius: 30px;

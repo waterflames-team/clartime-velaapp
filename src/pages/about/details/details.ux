@@ -5,8 +5,20 @@
         <div class="component-nav"></div>
         <div class="gap-110"></div>
         <div class="component-about-textContent-container">
-          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
-          <text class="component-about-textContent-textS">Lucent Project</text>
+          <text class="component-about-textContent-text">构建时间</text>
+          <text class="component-about-textContent-textS">{{ timeStamp }}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建工具版本</text>
+          <text class="component-about-textContent-textS">toolkit - v{{ toolkit }}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建Node版本</text>
+          <text class="component-about-textContent-textS">{{ nodev }}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台</text>
+          <text class="component-about-textContent-textS">{{ platform }}</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-text">构建平台架构</text>
+          <text class="component-about-textContent-textS">{{ arch }}</text>
         </div>
       </scroll>
       <div class="component-nav">
@@ -24,7 +36,7 @@ import file from "@system.file"
 
 export default {
   private: {
-    title: "彩蛋",
+    title: "版本详情",
     time: "",
     timer: null,
 
@@ -70,8 +82,8 @@ export default {
 </script>
 
 <style>
-@import "../../common/style/universal.css";
-@import "../../common/style/component.css";
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
 .content {
   width: 336px;
   height: 480px;

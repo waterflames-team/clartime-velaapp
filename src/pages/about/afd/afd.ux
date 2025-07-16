@@ -5,8 +5,17 @@
         <div class="component-nav"></div>
         <div class="gap-110"></div>
         <div class="component-about-textContent-container">
-          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
-          <text class="component-about-textContent-textS">Lucent Project</text>
+          <text class="component-about-textContent-textS">你好！我是澄序课程表的作者！</text>
+          <text class="component-about-textContent-textS">这是一个免费、开源的课程表，</text>
+          <text class="component-about-textContent-textS">耗时几个月制作，</text>
+          <text class="component-about-textContent-textS">希望给大家一个美观、简洁的</text>
+          <text class="component-about-textContent-textS">课程查看体验！</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">如果你觉得做的还不错</text>
+          <text class="component-about-textContent-textS">欢迎给我一些赞助支持！</text>
+          <div class="gap-120"></div>
+          <qrcode value="https://afdian.com/a/yulimfish" style="color: #946CE6;"></qrcode>
+
         </div>
       </scroll>
       <div class="component-nav">
@@ -24,7 +33,7 @@ import file from "@system.file"
 
 export default {
   private: {
-    title: "彩蛋",
+    title: "赞助支持",
     time: "",
     timer: null,
 
@@ -39,21 +48,6 @@ export default {
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
-    file.readText({
-      uri: "/META-INF/build.txt",
-      success: (data) => {
-        const buildDataList = data.text.split("\n")
-        console.log("text list: ", buildDataList[0])
-        this.timeStamp = buildDataList[2].split("=")[1]
-        this.toolkit = buildDataList[1].split("=")[1]
-        this.nodev = buildDataList[3].split("=")[1]
-        this.platform = buildDataList[4].split("=")[1]
-        this.arch = buildDataList[5].split("=")[1]
-      },
-      fail: function (data, code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
   },
 
   onDestroy() {
@@ -70,8 +64,8 @@ export default {
 </script>
 
 <style>
-@import "../../common/style/universal.css";
-@import "../../common/style/component.css";
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
 .content {
   width: 336px;
   height: 480px;
