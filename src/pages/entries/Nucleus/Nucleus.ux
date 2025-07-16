@@ -7,6 +7,7 @@
           <text class="component-nav-title-time">{{ time }}</text>
         </div>
 
+        <!-- 以下为当前态的展示 -->
         <text
           class="nucleus-NowCourse-text1"
           if="courseSchedule[indexNow].type === 'end'"
@@ -83,11 +84,13 @@
         >
           明天见
         </text>
+        <!-- 以上为当前态的展示 -->
 
+        <!-- 以下为下一节课的展示 -->
         <div
           class="nucleus-NextCourseCard"
           if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
-        >
+        ><!-- 正常课时 -->
           <text class="nucleus-NextCourseCard-text1">下一节</text>
           <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
             {{ courseSchedule[indexNow + 2].courseName }}
@@ -103,16 +106,8 @@
         </div>
         <div
           class="nucleus-NextCourseCard"
-          elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
-        >
-          <text class="nucleus-NextCourseCard-text1">下一节</text>
-          <text class="nucleus-NextCourseCard-text2">没课了～</text>
-          <text class="nucleus-NextCourseCard-text4">今天的课马上要结束哩～</text>
-        </div>
-        <div
-          class="nucleus-NextCourseCard"
           elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
-        >
+        ><!-- 第一节课时 -->
           <text class="nucleus-NextCourseCard-text1">下一节</text>
           <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
             {{ courseSchedule[indexNow + 1].courseName }}
@@ -126,7 +121,34 @@
             }}
           </marquee>
         </div>
+        <div
+          class="nucleus-NextCourseCard"
+          elif="courseSchedule[indexNow].type === 'start'"
+        ><!-- 课间时 -->
+          <text class="nucleus-NextCourseCard-text1">第一节</text>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text2">
+            {{ courseSchedule[indexNow + 1].courseName }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text3">
+            {{ courseSchedule[indexNow + 1].timeRange }}
+          </marquee>
+          <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NextCourseCard-text4">
+            {{ courseSchedule[indexNow + 1].courseRoom }}｜{{
+              courseSchedule[indexNow + 1].courseTeacher
+            }}
+          </marquee>
+        </div>
+        <div
+          class="nucleus-NextCourseCard"
+          elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
+        ><!-- 最后一节课时 -->
+          <text class="nucleus-NextCourseCard-text1">下一节</text>
+          <text class="nucleus-NextCourseCard-text2">没课了～</text>
+          <text class="nucleus-NextCourseCard-text4">今天的课马上要结束哩～</text>
+        </div>
+        <!-- 以上为下一节课的展示 -->
 
+        <!-- 以下为上下课时间的展示 -->
         <div class="nucleus-RemainCard" if="courseSchedule[indexNow].type !== 'end'">
           <text class="nucleus-RemainCard-text1">还有</text>
           <text class="nucleus-RemainCard-text2">{{ remain }}</text>
@@ -135,7 +157,7 @@
           </text>
           <text
             class="nucleus-RemainCard-text3"
-            elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
+            elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest' || courseSchedule[indexNow].type === 'start'"
           >
             上课
           </text>
@@ -144,6 +166,7 @@
         <text class="nucleus-ClassOver-text" if="courseSchedule[indexNow].type === 'end'">
           / {{ day }} {{ dayNum }} => Over ! /
         </text>
+        <!-- 以上为上下课时间的展示 -->
       </div>
 
       <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
