@@ -1,9 +1,9 @@
 function updateDate() {
-  const date = new Date()
-  const month = date.getMonth() + 1
-  const dayOfMonth = date.getDate()
-  const dayOfWeek = date.getDay()
-  const days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+  let date = new Date()
+  let month = date.getMonth() + 1
+  let dayOfMonth = date.getDate()
+  let dayOfWeek = date.getDay()
+  let days = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 
   return {
     day: `${month}/${dayOfMonth}`,

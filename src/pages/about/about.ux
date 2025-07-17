@@ -78,7 +78,7 @@ export default {
   },
 
   updateHighlightLength(event) {
-    const {scrollY} = event
+    let {scrollY} = event
     if (scrollY >= 270 && scrollY > 0) {
       this.navOpacity = 1
     } else {

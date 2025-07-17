@@ -15,48 +15,48 @@ function getCourseSchedule(weekday) {
   /**
    * 读取数据
    */
-  const basicInfo = courseDataReader.getBasicInfo()
-  const coursesInfo = courseDataReader.getCoursesInfo()
-  const timetableInfo = courseDataReader.getTimetableTemplateInfo()
-  const scheduleInfo = courseDataReader.getCourseScheduleInfo()
+  let basicInfo = courseDataReader.getBasicInfo()
+  let coursesInfo = courseDataReader.getCoursesInfo()
+  let timetableInfo = courseDataReader.getTimetableTemplateInfo()
+  let scheduleInfo = courseDataReader.getCourseScheduleInfo()
 
   /**
    * 周数计算
    */
   // 1.解析日期格式
-  const parseDate = (dateStr) => {
-    const year = "20" + dateStr.substring(0, 2)
-    const month = dateStr.substring(2, 4)
-    const day = dateStr.substring(4, 6)
+  let parseDate = (dateStr) => {
+    let year = "20" + dateStr.substring(0, 2)
+    let month = dateStr.substring(2, 4)
+    let day = dateStr.substring(4, 6)
     return `${year}-${month}-${day}`
   }
 
   // 2.转换courseStart格式
-  const formattedStartDate = parseDate(basicInfo.courseStart)
+  let formattedStartDate = parseDate(basicInfo.courseStart)
 
   // 3.计算开学日是星期几 (0-6, 0表示周日)
-  const startDate = new Date(formattedStartDate)
-  const startDayOfWeek = startDate.getDay()
+  let startDate = new Date(formattedStartDate)
+  let startDayOfWeek = startDate.getDay()
 
   // 4.计算下一个周一的具体日期
-  const nextMonday = new Date(startDate)
-  const daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  let nextMonday = new Date(startDate)
+  let daysUntilMonday = (7 - startDayOfWeek + 1) % 7
   nextMonday.setDate(startDate.getDate() + daysUntilMonday)
-  const nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
+  let nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
     2,
     "0"
   )}-${String(nextMonday.getDate()).padStart(2, "0")}`
   // console.log("下一个周一的日期是：" + nextMondayDate)
 
   // 5.初始化开学周数
-  const startWeekNumber = 1
+  let startWeekNumber = 1
 
   // 6.计算当前周数
-  const today = new Date()
-  const nextMondayDateInCalc = new Date(nextMondayDate)
-  const timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
-  const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
-  const currentWeekNumber = startWeekNumber + weekDiff + 1
+  let today = new Date()
+  let nextMondayDateInCalc = new Date(nextMondayDate)
+  let timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
+  let weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
+  let currentWeekNumber = startWeekNumber + weekDiff + 1
   // console.log("当前是第" + currentWeekNumber + "周")
 
   /**
@@ -66,8 +66,8 @@ function getCourseSchedule(weekday) {
    * @example
    * calculateWeekRemainder(3) // 如果当前周数是1，返回0；如果当前周数是2，返回1；如果当前周数是3，返回2；如果当前周数是4，返回0
    */
-  const calculateWeekRemainder = (num) => {
-    const remainder = currentWeekNumber % num
+  let calculateWeekRemainder = (num) => {
+    let remainder = currentWeekNumber % num
     return (remainder === 0 ? num : remainder) - 1
   }
 
@@ -85,28 +85,28 @@ function getCourseSchedule(weekday) {
   else if (weekday === "Fri") WhichDay = 4
   else if (weekday === "Sat") WhichDay = 5
   else if (weekday === "Sun") WhichDay = 6
-  const daySchedule = scheduleInfo[WhichDay]
+  let daySchedule = scheduleInfo[WhichDay]
   // 2.计算时间样表选取
-  const timetableRepeatability = daySchedule.timetableRepeatability
+  let timetableRepeatability = daySchedule.timetableRepeatability
   // console.log("timetableRepeatability:", timetableRepeatability)
-  const timetableId = daySchedule.timetableId
-  const timetableIndex = calculateWeekRemainder(timetableRepeatability)
-  const selectedTimetable = timetableId[timetableIndex]
+  let timetableId = daySchedule.timetableId
+  let timetableIndex = calculateWeekRemainder(timetableRepeatability)
+  let selectedTimetable = timetableId[timetableIndex]
   // console.log("当前周对应的timetable:", selectedTimetable)
-  const timetableData = timetableInfo[selectedTimetable]
+  let timetableData = timetableInfo[selectedTimetable]
   // console.log("当前课程表信息:", timetableData)
   // 3.拼接信息
   let courseCounter = 0 // 课程计数器
 
   // 处理timetableData数组
-  const processedData = timetableData.map((item) => {
+  let processedData = timetableData.map((item) => {
     if (item.type === "course") {
-      const courseItem = daySchedule.courseList[courseCounter] // 取出课程信息
+      let courseItem = daySchedule.courseList[courseCounter] // 取出课程信息
       courseCounter++
-      const courseId = courseItem.courseId
-      const courseRepeatability = courseItem.courseRepeatability
-      const finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
-      const courseData = coursesInfo[finalCourseId]
+      let courseId = courseItem.courseId
+      let courseRepeatability = courseItem.courseRepeatability
+      let finalCourseId = courseId[calculateWeekRemainder(courseRepeatability)]
+      let courseData = coursesInfo[finalCourseId]
       // console.log("课程信息:", courseData)
 
       // 数据描述
@@ -121,7 +121,7 @@ function getCourseSchedule(weekday) {
       let description = `第 ${courseCounter} 节课`
 
       // 计算时间范围
-      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      let nextItem = timetableData[timetableData.indexOf(item) + 1]
       let timeRange = null
       if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
         timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
@@ -142,7 +142,7 @@ function getCourseSchedule(weekday) {
         timeRange
       }
     } else if (item.type === "rest") {
-      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      let nextItem = timetableData[timetableData.indexOf(item) + 1]
       let timeRange = null
       if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
         timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
@@ -159,7 +159,7 @@ function getCourseSchedule(weekday) {
         timeRange
       }
     } else if (item.type === "interval") {
-      const nextItem = timetableData[timetableData.indexOf(item) + 1]
+      let nextItem = timetableData[timetableData.indexOf(item) + 1]
       let timeRange = null
       if (nextItem && nextItem.timeHour !== undefined && nextItem.timeMinute !== undefined) {
         timeRange = `${item.timeHour}:${String(item.timeMinute).padStart(2, "0")} - ${
@@ -212,44 +212,44 @@ function getCourseSchedule(weekday) {
 }
 
 function getWeekNumber() {
-  const basicInfo = courseDataReader.getBasicInfo()
+  let basicInfo = courseDataReader.getBasicInfo()
   /**
    * 周数计算
    */
   // 1.解析日期格式
-  const parseDate = (dateStr) => {
-    const year = "20" + dateStr.substring(0, 2)
-    const month = dateStr.substring(2, 4)
-    const day = dateStr.substring(4, 6)
+  let parseDate = (dateStr) => {
+    let year = "20" + dateStr.substring(0, 2)
+    let month = dateStr.substring(2, 4)
+    let day = dateStr.substring(4, 6)
     return `${year}-${month}-${day}`
   }
 
   // 2.转换courseStart格式
-  const formattedStartDate = parseDate(basicInfo.courseStart)
+  let formattedStartDate = parseDate(basicInfo.courseStart)
 
   // 3.计算开学日是星期几 (0-6, 0表示周日)
-  const startDate = new Date(formattedStartDate)
-  const startDayOfWeek = startDate.getDay()
+  let startDate = new Date(formattedStartDate)
+  let startDayOfWeek = startDate.getDay()
 
   // 4.计算下一个周一的具体日期
-  const nextMonday = new Date(startDate)
-  const daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  let nextMonday = new Date(startDate)
+  let daysUntilMonday = (7 - startDayOfWeek + 1) % 7
   nextMonday.setDate(startDate.getDate() + daysUntilMonday)
-  const nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
+  let nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
     2,
     "0"
   )}-${String(nextMonday.getDate()).padStart(2, "0")}`
   // console.log("下一个周一的日期是：" + nextMondayDate)
 
   // 5.初始化开学周数
-  const startWeekNumber = 1
+  let startWeekNumber = 1
 
   // 6.计算当前周数
-  const today = new Date()
-  const nextMondayDateInCalc = new Date(nextMondayDate)
-  const timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
-  const weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
-  const currentWeekNumber = startWeekNumber + weekDiff + 1
+  let today = new Date()
+  let nextMondayDateInCalc = new Date(nextMondayDate)
+  let timeDiff = today.getTime() - nextMondayDateInCalc.getTime()
+  let weekDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
+  let currentWeekNumber = startWeekNumber + weekDiff + 1
   // console.log("当前是第" + currentWeekNumber + "周")
   return "第" + currentWeekNumber + "周"
 }

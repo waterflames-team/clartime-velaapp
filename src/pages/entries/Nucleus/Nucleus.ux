@@ -251,7 +251,7 @@ export default {
   },
 
   updateHighlightLength(event) {
-    const {scrollX, scrollY} = event
+    let {scrollX, scrollY} = event
     if (scrollY == 0) {
       this.indicatorTop = 1
     } else if (scrollY == 480) {
@@ -260,7 +260,7 @@ export default {
   },
 
   getCourses() {
-    const dayMap = {
+    let dayMap = {
       周一: "Mon",
       周二: "Tue",
       周三: "Wed",
@@ -269,16 +269,16 @@ export default {
       周六: "Sat",
       周日: "Sun"
     }
-    const whichDay = dayMap[this.dayNum]
+    let whichDay = dayMap[this.dayNum]
     this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
   },
 
   getCurrentCourseIndex() {
     //寻找最近项目的索引
 
-    const currentTime = this.$app.$def.timeUpdate.updateTime()
-    const currentHours = currentTime.hours
-    const currentMinutes = currentTime.minutes
+    let currentTime = this.$app.$def.timeUpdate.updateTime()
+    let currentHours = currentTime.hours
+    let currentMinutes = currentTime.minutes
 
     // 如果当前时间小于第一节课时间，返回0
     if (
@@ -292,8 +292,8 @@ export default {
 
     // 正常课程定位判断
     for (let i = 0; i < this.courseSchedule.length - 1; i++) {
-      const currentItem = this.courseSchedule[i]
-      const nextItem = this.courseSchedule[i + 1]
+      let currentItem = this.courseSchedule[i]
+      let nextItem = this.courseSchedule[i + 1]
 
       if (
         (currentHours > currentItem.timeHour ||
@@ -312,14 +312,14 @@ export default {
   getRemainingTime() {
     // 取元列表
 
-    const currentIndex = this.getCurrentCourseIndex()
+    let currentIndex = this.getCurrentCourseIndex()
     if (currentIndex === this.courseSchedule.length) {
       return "---"
     }
 
-    const nextCourse = this.courseSchedule[currentIndex + 1]
-    const thisCourse = this.courseSchedule[currentIndex]
-    const currentTime = this.$app.$def.timeUpdate.updateTime()
+    let nextCourse = this.courseSchedule[currentIndex + 1]
+    let thisCourse = this.courseSchedule[currentIndex]
+    let currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 提前判断结束，以防止下一项无法取到导致的出错
     if (thisCourse.type === "end") {
@@ -327,11 +327,11 @@ export default {
     }
 
     // 计算分钟差
-    const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
-    const nextCourseTotalMinutes = String(
+    let currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
+    let nextCourseTotalMinutes = String(
       Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
     )
-    const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
+    let remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
     if (thisCourse.type === "course") {
       return remainingMinutes + "'"
@@ -356,7 +356,7 @@ export default {
 
   async userSettingGet() {
     try {
-      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      let userSetting = await this.$app.$def.dataManage.getUserSetting()
       this.ThemeName = userSetting.setting.themeName
       // console.log("1")
       // console.log(this.ThemeName)
@@ -367,7 +367,7 @@ export default {
 
   onInit() {
     // 初始化数据
-    const dateData = this.$app.$def.dateUpdate.updateDate()
+    let dateData = this.$app.$def.dateUpdate.updateDate()
     var OuterThis = this
     this.day = dateData.day
     this.dayNum = dateData.dayNum
@@ -380,7 +380,7 @@ export default {
     this.$app.$def.router.clear()
 
     // 初始化数据
-    const dateData = this.$app.$def.dateUpdate.updateDate()
+    let dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
