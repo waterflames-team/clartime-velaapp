@@ -23,7 +23,6 @@
 </template>
 <script>
 import brightness from "@system.brightness"
-
 import interconnect from "@system.interconnect";
 
 export default {
@@ -44,12 +43,6 @@ export default {
     this.timer = setInterval(() => {
       this.updateTime()
     }, 1000)
-
-    // const onmessage = (data) => {
-    //     this.CourseData = data;
-    // }
-
-    // globalThis.conn.addListener("CourseData",onmessage)
   },
 
   onShow() {
