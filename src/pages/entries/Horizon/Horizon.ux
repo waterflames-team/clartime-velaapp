@@ -249,7 +249,7 @@ export default {
     }
   },
 
-  getCourses() {
+  async getCourses() {
     let dayMap = {
       周一: "Mon",
       周二: "Tue",
@@ -260,15 +260,17 @@ export default {
       周日: "Sun"
     }
     let whichDay = dayMap[this.dayNum]
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    // console.log("首页课程数据表")
+    // console.log(this.courseSchedule)
   },
 
   getCurrentCourseIndex() {
     //寻找最近项目的索引
 
-    let currentTime = this.$app.$def.timeUpdate.updateTime()
-    let currentHours = currentTime.hours
-    let currentMinutes = currentTime.minutes
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
+    const currentHours = currentTime.hours
+    const currentMinutes = currentTime.minutes
 
     // 如果当前时间小于第一节课时间，返回0
     if (
@@ -282,8 +284,8 @@ export default {
 
     // 正常课程定位判断
     for (let i = 0; i < this.courseSchedule.length - 1; i++) {
-      let currentItem = this.courseSchedule[i]
-      let nextItem = this.courseSchedule[i + 1]
+      const currentItem = this.courseSchedule[i]
+      const nextItem = this.courseSchedule[i + 1]
 
       if (
         (currentHours > currentItem.timeHour ||
@@ -302,14 +304,14 @@ export default {
   getRemainingTime() {
     // 取元列表
 
-    let currentIndex = this.getCurrentCourseIndex()
+    const currentIndex = this.getCurrentCourseIndex()
     if (currentIndex === this.courseSchedule.length) {
       return "---"
     }
 
-    let nextCourse = this.courseSchedule[currentIndex + 1]
-    let thisCourse = this.courseSchedule[currentIndex]
-    let currentTime = this.$app.$def.timeUpdate.updateTime()
+    const nextCourse = this.courseSchedule[currentIndex + 1]
+    const thisCourse = this.courseSchedule[currentIndex]
+    const currentTime = this.$app.$def.timeUpdate.updateTime()
 
     // 提前判断结束，以防止下一项无法取到导致的出错
     if (thisCourse.type === "end") {
@@ -317,11 +319,11 @@ export default {
     }
 
     // 计算分钟差
-    let currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
-    let nextCourseTotalMinutes = String(
+    const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
+    const nextCourseTotalMinutes = String(
       Number(nextCourse.timeHour) * 60 + Number(nextCourse.timeMinute)
     )
-    let remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
+    const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
     if (thisCourse.type === "course") {
       return remainingMinutes + "'"
@@ -336,9 +338,11 @@ export default {
     return remainingMinutes
   },
 
-  courseRelatedUpadate() {
-    this.getCourses()
-    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+  async courseRelatedUpadate() {
+    // console.log("课程更新1")
+    await this.getCourses()
+    // console.log("课程更新2")
+    this.weekNum = await this.$app.$def.courseDataParse.getWeekNumber()
     this.remain = this.getRemainingTime()
     this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex()
@@ -346,7 +350,7 @@ export default {
 
   async userSettingGet() {
     try {
-      let userSetting = await this.$app.$def.dataManage.getUserSetting()
+      const userSetting = await this.$app.$def.dataManage.getUserSetting()
       this.ThemeName = userSetting.setting.themeName
       // console.log("2")
       // console.log(this.ThemeName)
@@ -357,16 +361,16 @@ export default {
 
   onInit() {
     // 初始化数据
-    let dateData = this.$app.$def.dateUpdate.updateDate()
-    var OuterThis = this
+    const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
+    // console.log("首页初始化")
     this.courseRelatedUpadate()
   },
 
-  onShow() {
+  async showHandler () {
     this.$app.$def.router.clear()
 
     // 初始化数据
@@ -375,8 +379,8 @@ export default {
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
-    this.courseRelatedUpadate()
-    this.userSettingGet()
+    await this.courseRelatedUpadate()
+    await this.userSettingGet()
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
@@ -386,6 +390,10 @@ export default {
         this.courseRelatedUpadate()
       }
     })
+  },
+
+  onShow() {
+    this.showHandler()
   },
 
   onDestroy() {

@@ -39,6 +39,7 @@ export default {
   test() {
     // console.log("test")
     this.$app.$def.dataManage.initData()
+    this.$app.$def.dataManage.changeCourseData("system")
     this.$app.$def.router.push({
       uri: "pages/entries",
       params: {

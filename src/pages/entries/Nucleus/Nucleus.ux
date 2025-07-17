@@ -368,7 +368,7 @@ export default {
   onInit() {
     // 初始化数据
     let dateData = this.$app.$def.dateUpdate.updateDate()
-    var OuterThis = this
+    let OuterThis = this
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time

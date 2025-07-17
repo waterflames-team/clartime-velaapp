@@ -60,7 +60,7 @@ export default {
     loding: true
   },
 
-  onShow() {
+  async dataUpadate () {
     let dayIndex = new Date().getDay()
     this.dayNum = this.dayMap[dayIndex].en
     this.weekNum = this.dayMap[dayIndex].zh
@@ -70,8 +70,12 @@ export default {
       }))
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
+  },
+
+  onShow() {
+    this.dataUpadate()
   },
 
   onDestroy() {
@@ -81,7 +85,7 @@ export default {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
-  dayDown() {
+  async dayDown() {
     // console.log(!this.loding);
     let currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
     let prevIndex = (currentIndex - 1 + 7) % 7
@@ -89,17 +93,17 @@ export default {
     this.weekNum = this.dayMap[prevIndex].zh
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
   },
-  dayUp() {
+  async dayUp() {
     let currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
     let nextIndex = (currentIndex + 1) % 7
     this.dayNum = this.dayMap[nextIndex].en
     this.weekNum = this.dayMap[nextIndex].zh
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
   },
 
