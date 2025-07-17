@@ -1,6 +1,13 @@
 <script>
+// 系统接口
 import router from "@system.router"
 import app from '@system.app' 
+
+// 连接类 From @leset0ng
+import interconn from "./common/utils/interconn"
+globalThis.conn = new interconn();
+
+// 内置函数提取
 import courseDataParse from "./common/utils/courseDataParse"
 import timeUpdate from "./common/utils/timeUpdate"
 import dateUpdate from "./common/utils/dateUpdate"

@@ -13,6 +13,12 @@
     },
     {
       "name": "system.file"
+    },
+    {
+      "name": "system.interconnect"
+    },
+    {
+      "name": "system.brightness"
     }
   ],
   "config": {
@@ -63,6 +69,9 @@
       },
       "pages/Settings/dynamicEffects": {
         "component": "dynamicEffects"
+      },
+      "pages/Settings/dataInterconnect": {
+        "component": "dataInterconnect"
       },
       "pages/Settings/theme": {
         "component": "theme"
