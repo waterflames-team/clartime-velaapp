@@ -7,7 +7,8 @@
         <div class="component-about-textContent-container">
           <text class="component-about-textContent-textS">传输数据测试</text>
           <div class="gap-80"></div>
-          <text class="component-about-textContent-textS">{{CourseData}}</text>
+          <!-- <text class="component-about-textContent-textS">1.{{CourseData}}</text> -->
+          <text class="component-about-textContent-textS" style="height: 1000px;">2.{{CourseData2}}</text>
         </div>
       </scroll>
 
@@ -30,13 +31,15 @@ export default {
     title: "数据同步",
     time: "",
     timer: null,
-    CourseData: ""
+    CourseData: "",
+    CourseData2: ""
   },
 
   onInit() {
     let conn = interconnect.instance()
     conn.onmessage = (data) => {
       this.CourseData = data.data
+      this.$app.$def.dataManage.changeCourseData("user", data.data)
     }
 
 

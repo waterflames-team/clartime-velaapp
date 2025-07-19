@@ -2,6 +2,7 @@
  * 课程数据读取工具
  */
 import dataManage from './dataManage'
+// dataManage.changeCourseData("system")
 
 /**
  * 读取课程基本信息
