@@ -12,7 +12,7 @@ function getBasicInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(courseData.basic)
+        resolve(JSON.parse(courseData).basic)
       }).catch(error => {
         console.error("读取课程基本信息失败:", error)
         reject(null)
@@ -32,7 +32,7 @@ function getCoursesInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(courseData.courses)
+        resolve(JSON.parse(courseData).courses)
       }).catch(error => {
         console.error("读取课程信息失败:", error)
         reject(null)
@@ -52,7 +52,7 @@ function getTimetableTemplateInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(courseData.timetableTemplate)
+        resolve(JSON.parse(courseData).timetableTemplate)
       }).catch(error => {
         console.error("读取时间表模板信息失败:", error)
         reject(null)
@@ -72,7 +72,7 @@ function getCourseScheduleInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(courseData.courseSchedule)
+        resolve(JSON.parse(courseData).courseSchedule)
       }).catch(error => {
         console.error("读取课程次序信息失败:", error)
         reject(null)

@@ -178,7 +178,7 @@ function changeCourseData(type, value = {}) { //之后要保留本地调课信�
     } else if (type === "user") {
         file.writeText({
             uri: courseDataPath,
-            text: JSON.stringify(value),
+            text: JSON.stringify(value.replace(/\n/g, '')),
             success: function () {
                 // console.log(`write success`)
             },
