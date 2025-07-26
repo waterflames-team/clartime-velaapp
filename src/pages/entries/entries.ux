@@ -22,6 +22,7 @@ export default {
   },
 
   onShow() {
+    this.$app.$def.dataManage.clearData()
     let OuterThis = this
     file.access({
       uri: userSettingPath,
@@ -48,7 +49,7 @@ export default {
       },
       fail: function (data, code) {
         OuterThis.$app.$def.router.push({
-          uri: "pages/entries/guide",
+          uri: "pages/entries/guide/1",
           params: {
             ___PARAM_LAUNCH_FLAG___: "clearTask"
           }

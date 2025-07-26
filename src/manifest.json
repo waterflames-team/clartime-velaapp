@@ -31,8 +31,23 @@
       "pages/entries": {
         "component": "entries"
       },
-      "pages/entries/guide": {
-        "component": "guide"
+      "pages/entries/guide/1": {
+        "component": "guide1"
+      },
+      "pages/entries/guide/2": {
+        "component": "guide2"
+      },
+      "pages/entries/guide/3-1": {
+        "component": "guide3-1"
+      },
+      "pages/entries/guide/3-2": {
+        "component": "guide3-2"
+      },
+      "pages/entries/guide/4": {
+        "component": "guide4"
+      },
+      "pages/entries/guide/x": {
+        "component": "guidex"
       },
       "pages/entries/Horizon": {
         "component": "Horizon"
