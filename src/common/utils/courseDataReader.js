@@ -4,6 +4,7 @@
 import dataManage from './dataManage'
 // dataManage.changeCourseData("system")
 
+
 /**
  * 读取课程基本信息
  * @returns {Object} 包含课程基本信息的对象
@@ -12,14 +13,19 @@ function getBasicInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(JSON.parse(courseData).basic)
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.basic);
+        } else {
+          resolve(JSON.parse(courseData).basic);
+        }
       }).catch(error => {
-        console.error("读取课程基本信息失败:", error)
-        reject(null)
-      })
+        console.error("读取课程基本信息失败:", error);
+        reject(null);
+      });
     } catch (error) {
-      console.error("读取课程基本信息失败:", error)
-      reject(null)
+      console.error("读取课程基本信息失败:", error);
+      reject(null);
     }
   })
 }
@@ -32,14 +38,19 @@ function getCoursesInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(JSON.parse(courseData).courses)
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.courses);
+        } else {
+          resolve(JSON.parse(courseData).courses);
+        }
       }).catch(error => {
-        console.error("读取课程信息失败:", error)
-        reject(null)
-      })
+        console.error("读取课程信息失败:", error);
+        reject(null);
+      });
     } catch (error) {
-      console.error("读取课程信息失败:", error)
-      reject(null)
+      console.error("读取课程信息失败:", error);
+      reject(null);
     }
   })
 }
@@ -52,14 +63,19 @@ function getTimetableTemplateInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(JSON.parse(courseData).timetableTemplate)
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.timetableTemplate);
+        } else {
+          resolve(JSON.parse(courseData).timetableTemplate);
+        }
       }).catch(error => {
-        console.error("读取时间表模板信息失败:", error)
-        reject(null)
-      })
+        console.error("读取时间表模板信息失败:", error);
+        reject(null);
+      });
     } catch (error) {
-      console.error("读取时间表模板信息失败:", error)
-      reject(null)
+      console.error("读取时间表模板信息失败:", error);
+      reject(null);
     }
   })
 }
@@ -72,14 +88,19 @@ function getCourseScheduleInfo() {
   return new Promise((resolve, reject) => {
     try {
       dataManage.getCourseData().then(courseData => {
-        resolve(JSON.parse(courseData).courseSchedule)
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.courseSchedule);
+        } else {
+          resolve(JSON.parse(courseData).courseSchedule);
+        }
       }).catch(error => {
-        console.error("读取课程次序信息失败:", error)
-        reject(null)
-      })
+        console.error("读取课程次序信息失败:", error);
+        reject(null);
+      });
     } catch (error) {
-      console.error("读取课程次序信息失败:", error)
-      reject(null)
+      console.error("读取课程次序信息失败:", error);
+      reject(null);
     }
   })
 }
