@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import brightness from "@system.brightness"
+import brightness from '@system.brightness' 
 import interconnect from "@system.interconnect";
 
 export default {
@@ -33,6 +33,9 @@ export default {
   },
 
   onInit() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: true,
+    })
     let conn = interconnect.instance()
     conn.onmessage = async (data) => {
       this.$app.$def.dataManage.changeCourseData("user", data.data)
@@ -54,14 +57,30 @@ export default {
   },
 
   onDestroy() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
   onHide() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
   exit() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
     this.$app.$def.router.back()
+  },
+  onBackPress() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    this.$app.$def.router.back()
+    return true
   }
 }
 </script>

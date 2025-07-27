@@ -12,12 +12,20 @@ export default {
   private: {},
 
   next() {
-    this.$app.$def.router.push({
-      uri: "pages/entries/guide/4",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
+    setTimeout(() => {
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/4",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_step", "3-1")
+    }, 300)
   },
 
   onBackPress() {

@@ -31,20 +31,32 @@ export default {
   private: {},
 
   next_1() {
-    this.$app.$def.router.push({
-      uri: "pages/entries/guide/3-1",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/3-1",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
   },
   next_2() {
-    this.$app.$def.router.push({
-      uri: "pages/entries/guide/3-2",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeUserSetting("themeName", "Nucleus")
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/3-2",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_step", "2")
+    }, 300)
   },
 
   onBackPress() {

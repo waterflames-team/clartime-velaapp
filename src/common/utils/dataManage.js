@@ -58,8 +58,12 @@ function initData() {
             "createTime": "",
             "lastUpdateTime": "",
             "setting": {
-                "themeName": "Horizon",
+                "themeName": "",
                 "dynamicEffects": true,
+            },
+            "guide": {
+                "guide_state": "ready",
+                "guide_step": "",
             }
         }),
         success: function () {
@@ -113,6 +117,38 @@ function changeUserSetting(item, value) {
             // 修改指定项的值
             settings.setting[item] = value;
             // console.log(settings);
+            file.writeText({
+                uri: userSettingPath,
+                text: JSON.stringify(settings),
+                success: function () {
+                    // console.log(`write success`)
+                },
+                fail: function (data, code) {
+                    console.log(`write fail, code = ${code}`)
+                }
+            })
+        },
+        fail: function (data, code) {
+            console.log(`handling fail, code = ${code}`)
+        }
+    })
+}
+
+/**
+ * 改变向导 json
+ * @param {string} item 要修改的设置项
+ * @param {any} value 要设置的值
+ * @returns {void}
+ */
+function changeGuideSetting(item, value) {
+    file.readText({
+        uri: userSettingPath,
+        success: function (data) {
+            // 获取完整的设置对象
+            let settings = JSON.parse(data.text);
+            // 修改指定项的值
+            settings.guide[item] = value;
+            console.log(settings);
             file.writeText({
                 uri: userSettingPath,
                 text: JSON.stringify(settings),
@@ -195,6 +231,7 @@ module.exports = {
     clearData,
     getUserSetting,
     changeUserSetting,
+    changeGuideSetting,
     getCourseData,
     changeCourseData
 }

@@ -12,14 +12,28 @@ export default {
   private: {
 
   },
+  
 
   next() {
-    this.$app.$def.router.push({
-      uri: "pages/entries/guide/2",
-      params: {
-        ___PARAM_LAUNCH_FLAG___: "clearTask"
-      }
-    })
+    setTimeout(() => {
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/2",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    this.$app.$def.dataManage.initData()
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_state", "doing").then(() => {
+        setTimeout(() => {
+          this.$app.$def.dataManage.changeGuideSetting("guide_step", "1")
+        }, 300)
+      })
+    }, 300)
   },
 
   onBackPress() {

@@ -46,6 +46,18 @@
       "pages/entries/guide/4": {
         "component": "guide4"
       },
+      "pages/entries/guide/5": {
+        "component": "guide5"
+      },
+      "pages/entries/guide/6": {
+        "component": "guide6"
+      },
+      "pages/entries/guide/7": {
+        "component": "guide7"
+      },
+      "pages/entries/guide/8": {
+        "component": "guide8"
+      },
       "pages/entries/guide/x": {
         "component": "guidex"
       },
