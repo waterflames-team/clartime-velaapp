@@ -159,8 +159,8 @@ export default {
 
     // 初始化课程数据
     initCoursesData() {
-      const courseDataReader = require("../../../common/utils/courseDataReader")
-      const allCourses = courseDataReader.getCoursesInfo()
+      let courseDataReader = require("../../../common/utils/courseDataReader")
+      let allCourses = courseDataReader.getCoursesInfo()
       this.availableCourses = allCourses.map((course) => ({
         name: course.courseName,
         classroom: course.classroom,
@@ -210,7 +210,7 @@ export default {
     this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
 
     // 设置星期中文名称
-    const dayMap = {
+    let dayMap = {
       Mon: "周一",
       Tue: "周二",
       Wed: "周三",

@@ -1,0 +1,60 @@
+<template>
+  <div class="page">
+    <stack style="width: 100%; height: 100%" class="horizontal-center">
+      <img src="/common/assets/guide_7.png" if="Status === 1" />
+      <img src="/common/assets/guide_8.png" if="Status === 2" />
+      <!-- 载入完成 -->
+       <!-- 这里比较复杂 要写if -->
+      <div style="position: absolute;width: 324px;height: 80px;bottom:6px" onclick="next()" if="Status === 2"></div>
+    </stack>
+  </div>
+</template>
+<script>
+import brightness from '@system.brightness' 
+import interconnect from "@system.interconnect";
+
+export default {
+  private: {
+    Status: 1
+  },
+
+  next() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    setTimeout(() => {
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/8",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: true,
+    })
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_step", "7")
+    }, 300)
+    let conn = interconnect.instance()
+    conn.onmessage = async (data) => {
+      this.$app.$def.dataManage.changeCourseData("user", data.data)
+      this.Status = 2
+      this.$app.$def.dataManage.changeGuideSetting("guide_state", "done")
+    }
+  },
+
+  onBackPress() {
+    this.$app.$def.app.terminate()
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../../common/style/universal.css";
+@import "../../../../common/style/component.css";
+</style>

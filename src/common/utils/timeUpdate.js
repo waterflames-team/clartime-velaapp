@@ -1,8 +1,8 @@
 function updateTime() {
-  const now = new Date()
-  const hours = String(now.getHours()).padStart(2, "0")
-  const minutes = String(now.getMinutes()).padStart(2, "0")
-  const Seconds = String(now.getSeconds()).padStart(2, "0")
+  let now = new Date()
+  let hours = String(now.getHours()).padStart(2, "0")
+  let minutes = String(now.getMinutes()).padStart(2, "0")
+  let Seconds = String(now.getSeconds()).padStart(2, "0")
   return {
     hours,
     minutes,
@@ -13,15 +13,15 @@ function updateTime() {
 }
 
 function updateTimePersecond(callback) {
-  const timer = setInterval(() => {
-    const timeData = updateTime()
+  let timer = setInterval(() => {
+    let timeData = updateTime()
     callback(timeData)
   }, 1000)
   return timer
 }
 function updateTimePerminute(callback) {
-    const timer = setInterval(() => {
-      const timeData = updateTime()
+    let timer = setInterval(() => {
+      let timeData = updateTime()
       callback(timeData)
     }, 60000)
     return timer

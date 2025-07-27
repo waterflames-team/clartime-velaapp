@@ -43,10 +43,10 @@ export default {
   },
 
   updateTime() {
-    const now = new Date()
-    const hours = String(now.getHours()).padStart(2, "0")
-    const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    let now = new Date()
+    let hours = String(now.getHours()).padStart(2, "0")
+    let minutes = String(now.getMinutes()).padStart(2, "0")
+    // let Seconds = String(now.getSeconds()).padStart(2, "0")
     this.title_time = `${hours}:${minutes}`
   },
 

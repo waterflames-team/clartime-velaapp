@@ -1,0 +1,109 @@
+<template>
+  <div class="page">
+    <stack>
+      
+      <div class="content horizontal-center">
+        <img src="/common/assets/conn-in.png" class="icon" if="Status === 1" />
+        <img src="/common/assets/conn-done.png" class="icon" if="Status === 2" />
+        <text class="text" if="Status === 1">等待数据发送</text>
+        <text class="text" if="Status === 2">数据已接收</text>
+        <text class="text" if="Status === 2">{{CourseData}}</text>
+      </div>
+
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/assets/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
+  </div>
+</template>
+<script>
+import brightness from '@system.brightness' 
+import interconnect from "@system.interconnect";
+
+export default {
+  private: {
+    title: "数据同步",
+    time: "",
+    timer: null,
+    Status: 1
+  },
+
+  onInit() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: true,
+    })
+    let conn = interconnect.instance()
+    conn.onmessage = async (data) => {
+      this.$app.$def.dataManage.changeCourseData("user", data.data)
+      this.Status = 2
+    }
+  },
+
+  onShow() {
+  },
+
+  onHide() {
+  },
+
+  onShow() {
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+  },
+
+  onDestroy() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+  onHide() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
+  },
+
+  exit() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    this.$app.$def.router.back()
+  },
+  onBackPress() {
+    brightness.setKeepScreenOn({
+      keepScreenOn: false,
+    })
+    this.$app.$def.router.back()
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../common/style/universal.css";
+@import "../../../common/style/component.css";
+
+.content {
+  width: 336px;
+  height: 480px;
+
+  display: flex;
+  flex-direction: column;
+
+  scroll-snap-type: y cross;
+}
+.icon {
+  position: absolute;
+  top: 146px;
+}
+.text {
+  position: absolute;
+  bottom: 146px;
+}
+</style>
