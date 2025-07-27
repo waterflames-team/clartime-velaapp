@@ -19,9 +19,10 @@
         <div class="gap-480"></div>
 
         <div class="component-about-textCard vertical-left">
-          <text class="component-about-textContent-textSubTitle">参与开发的人员</text>
+          <text class="component-about-textContent-textSubTitle">主要参与开发的人员</text>
           <div class="gap-20"></div>
           <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
+          <text class="component-about-textContent-text">@NEORUAA</text>
           <text class="component-about-textContent-text">@绫凌子Rinko</text>
           <div class="gap-240"></div>
           <text class="component-about-textContent-textS">本应用灵感来源于</text>
@@ -35,6 +36,10 @@
           <text class="component-about-textContent-textS">感谢</text>
           <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
           <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢</text>
+          <text class="component-about-textContent-textS">@乐色桶 帮助我解决通信问题</text>
+          <text class="component-about-textContent-textS">@冬灰条 帮助我解决异步问题</text>
           <div class="gap-120"></div>
           <text class="component-about-textContent-textS">感谢你愿意来使用</text>
           <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
@@ -71,14 +76,14 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.3.0 - UIPreview",
+    version: "0.4.0 - Beta",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
   },
 
   updateHighlightLength(event) {
-    const {scrollY} = event
+    let {scrollY} = event
     if (scrollY >= 270 && scrollY > 0) {
       this.navOpacity = 1
     } else {

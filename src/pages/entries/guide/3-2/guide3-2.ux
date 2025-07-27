@@ -1,0 +1,41 @@
+<template>
+  <div class="page">
+    <stack style="width: 100%; height: 100%" class="horizontal-center">
+      <img src="/common/assets/guide_3-2.png" alt="" />
+      <!-- 主题说明 B -->
+      <div style="position: absolute;width: 324px;height: 80px;bottom:6px" onclick="next()"></div>
+    </stack>
+  </div>
+</template>
+<script>
+export default {
+  private: {},
+
+  next() {
+    setTimeout(() => {
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/4",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_step", "3-2")
+    }, 300)
+  },
+
+  onBackPress() {
+    this.$app.$def.app.terminate()
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../../common/style/universal.css";
+@import "../../../../common/style/component.css";
+</style>

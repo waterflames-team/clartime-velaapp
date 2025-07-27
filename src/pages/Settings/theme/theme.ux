@@ -66,7 +66,7 @@ export default {
   },
 
   updateHighlightLength(event) {
-    const {scrollX, scrollY} = event
+    let {scrollX, scrollY} = event
     // console.log("scrollX:", scrollX, "scrollY:", scrollY)
     if (scrollX === 336) {
       this.indicatorHighlight_left = "69px"
@@ -88,7 +88,7 @@ export default {
 
     try {
       // 主题定位
-      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      let userSetting = await this.$app.$def.dataManage.getUserSetting()
       this.ThemeName = userSetting.setting.themeName
       // console.log("this.ThemeName", this.ThemeName)
       if (this.ThemeName === "Horizon") {

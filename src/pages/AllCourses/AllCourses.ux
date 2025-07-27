@@ -60,8 +60,8 @@ export default {
     loding: true
   },
 
-  onShow() {
-    const dayIndex = new Date().getDay()
+  async dataUpadate () {
+    let dayIndex = new Date().getDay()
     this.dayNum = this.dayMap[dayIndex].en
     this.weekNum = this.dayMap[dayIndex].zh
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
@@ -70,8 +70,12 @@ export default {
       }))
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
+  },
+
+  onShow() {
+    this.dataUpadate()
   },
 
   onDestroy() {
@@ -81,25 +85,25 @@ export default {
     this.$app.$def.timeUpdate.stopTimer(this.timer) // 清除定时器，防止内存泄漏
   },
 
-  dayDown() {
+  async dayDown() {
     // console.log(!this.loding);
-    const currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
-    const prevIndex = (currentIndex - 1 + 7) % 7
+    let currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
+    let prevIndex = (currentIndex - 1 + 7) % 7
     this.dayNum = this.dayMap[prevIndex].en
     this.weekNum = this.dayMap[prevIndex].zh
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
   },
-  dayUp() {
-    const currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
-    const nextIndex = (currentIndex + 1) % 7
+  async dayUp() {
+    let currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
+    let nextIndex = (currentIndex + 1) % 7
     this.dayNum = this.dayMap[nextIndex].en
     this.weekNum = this.dayMap[nextIndex].zh
 
     this.loding = true
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
     this.loding = false
   },
 

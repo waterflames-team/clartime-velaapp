@@ -251,7 +251,7 @@ export default {
   },
 
   updateHighlightLength(event) {
-    const {scrollX, scrollY} = event
+    let {scrollX, scrollY} = event
     if (scrollY == 0) {
       this.indicatorTop = 1
     } else if (scrollY == 480) {
@@ -259,8 +259,8 @@ export default {
     }
   },
 
-  getCourses() {
-    const dayMap = {
+  async getCourses() {
+    let dayMap = {
       周一: "Mon",
       周二: "Tue",
       周三: "Wed",
@@ -269,8 +269,10 @@ export default {
       周六: "Sat",
       周日: "Sun"
     }
-    const whichDay = dayMap[this.dayNum]
-    this.courseSchedule = this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    let whichDay = dayMap[this.dayNum]
+    this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
+    // console.log("首页课程数据表")
+    // console.log(this.courseSchedule)
   },
 
   getCurrentCourseIndex() {
@@ -346,9 +348,11 @@ export default {
     return remainingMinutes
   },
 
-  courseRelatedUpadate() {
-    this.getCourses()
-    this.weekNum = this.$app.$def.courseDataParse.getWeekNumber()
+  async courseRelatedUpadate() {
+    // console.log("课程更新1")
+    await this.getCourses()
+    // console.log("课程更新2")
+    this.weekNum = await this.$app.$def.courseDataParse.getWeekNumber()
     this.remain = this.getRemainingTime()
     this.autoDistance = String(Number(this.getCurrentCourseIndex()) * 308) + "px"
     this.indexNow = this.getCurrentCourseIndex()
@@ -356,9 +360,9 @@ export default {
 
   async userSettingGet() {
     try {
-      const userSetting = await this.$app.$def.dataManage.getUserSetting() // TODO 原先已初始化的时候可以读取到，没有初始化就读不到，之后分离一下
+      const userSetting = await this.$app.$def.dataManage.getUserSetting()
       this.ThemeName = userSetting.setting.themeName
-      // console.log("1")
+      // console.log("2")
       // console.log(this.ThemeName)
     } catch (e) {
       console.error("获取用户设置失败:", e)
@@ -368,25 +372,25 @@ export default {
   onInit() {
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
-    var OuterThis = this
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
+    // console.log("首页初始化")
     this.courseRelatedUpadate()
   },
 
-  onShow() {
+  async showHandler () {
     this.$app.$def.router.clear()
 
     // 初始化数据
-    const dateData = this.$app.$def.dateUpdate.updateDate()
+    let dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
-    this.courseRelatedUpadate()
-    this.userSettingGet()
+    await this.courseRelatedUpadate()
+    await this.userSettingGet()
 
     // 启动定时器，每秒更新
     this.timer = this.$app.$def.timeUpdate.updateTimePersecond((timeData) => {
@@ -396,6 +400,10 @@ export default {
         this.courseRelatedUpadate()
       }
     })
+  },
+
+  onShow() {
+    this.showHandler()
   },
 
   onDestroy() {
