@@ -77,7 +77,7 @@ export default {
       }))
 
     // 获取当前星期几并重新排序weekDay数组
-    const today = new Date().getDay() || 7 // 0是周日，转换为7
+    let today = new Date().getDay() || 7 // 0是周日，转换为7
     this.weekDay = [
       {nameZh: "周一", nameEn: "Mon"},
       {nameZh: "周二", nameEn: "Tue"},
@@ -87,8 +87,8 @@ export default {
       {nameZh: "周六", nameEn: "Sat"},
       {nameZh: "周日", nameEn: "Sun"}
     ].sort((a, b) => {
-      const aDay = a.nameEn === "Sun" ? 7 : parseInt(a.nameEn.slice(-1))
-      const bDay = b.nameEn === "Sun" ? 7 : parseInt(b.nameEn.slice(-1))
+      let aDay = a.nameEn === "Sun" ? 7 : parseInt(a.nameEn.slice(-1))
+      let bDay = b.nameEn === "Sun" ? 7 : parseInt(b.nameEn.slice(-1))
       return ((aDay - today + 7) % 7) - ((bDay - today + 7) % 7)
     })
   },
@@ -101,10 +101,10 @@ export default {
   },
 
   updateTime() {
-    const now = new Date()
-    const hours = String(now.getHours()).padStart(2, "0")
-    const minutes = String(now.getMinutes()).padStart(2, "0")
-    // const Seconds = String(now.getSeconds()).padStart(2, "0")
+    let now = new Date()
+    let hours = String(now.getHours()).padStart(2, "0")
+    let minutes = String(now.getMinutes()).padStart(2, "0")
+    // let Seconds = String(now.getSeconds()).padStart(2, "0")
     this.title_time = `${hours}:${minutes}`
   },
 

@@ -1,0 +1,72 @@
+<template>
+  <div class="page">
+    <stack style="width: 100%; height: 100%" class="horizontal-center">
+      <img src="/common/assets/guide_2.png" alt="" />
+      <!-- 选择主题 -->
+      <div
+        style="
+          position: absolute;
+          width: 164px;
+          height: 305px;
+          top: 175px;
+          left: 0px;
+        "
+        onclick="next_1()"
+      ></div>
+      <div
+        style="
+          position: absolute;
+          width: 161px;
+          height: 267px;
+          top: 213px;
+          right: 0px;
+        "
+        onclick="next_2()"
+      ></div>
+    </stack>
+  </div>
+</template>
+<script>
+export default {
+  private: {},
+
+  next_1() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/3-1",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+  next_2() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeUserSetting("themeName", "Nucleus")
+      this.$app.$def.router.push({
+        uri: "pages/entries/guide/3-2",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  onShow() {
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_step", "2")
+    }, 300)
+  },
+
+  onBackPress() {
+    this.$app.$def.app.terminate()
+    return true
+  }
+}
+</script>
+
+<style>
+@import "../../../../common/style/universal.css";
+@import "../../../../common/style/component.css";
+</style>

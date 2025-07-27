@@ -1,7 +1,7 @@
 {
   "package": "com.waterflames.clartime",
   "name": "澄序课程表",
-  "versionName": "0.3.0",
+  "versionName": "0.4.0",
   "versionCode": 2,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
@@ -13,6 +13,12 @@
     },
     {
       "name": "system.file"
+    },
+    {
+      "name": "system.interconnect"
+    },
+    {
+      "name": "system.brightness"
     }
   ],
   "config": {
@@ -25,8 +31,35 @@
       "pages/entries": {
         "component": "entries"
       },
-      "pages/entries/guide": {
-        "component": "guide"
+      "pages/entries/guide/1": {
+        "component": "guide1"
+      },
+      "pages/entries/guide/2": {
+        "component": "guide2"
+      },
+      "pages/entries/guide/3-1": {
+        "component": "guide3-1"
+      },
+      "pages/entries/guide/3-2": {
+        "component": "guide3-2"
+      },
+      "pages/entries/guide/4": {
+        "component": "guide4"
+      },
+      "pages/entries/guide/5": {
+        "component": "guide5"
+      },
+      "pages/entries/guide/6": {
+        "component": "guide6"
+      },
+      "pages/entries/guide/7": {
+        "component": "guide7"
+      },
+      "pages/entries/guide/8": {
+        "component": "guide8"
+      },
+      "pages/entries/guide/x": {
+        "component": "guidex"
       },
       "pages/entries/Horizon": {
         "component": "Horizon"
@@ -63,6 +96,9 @@
       },
       "pages/Settings/dynamicEffects": {
         "component": "dynamicEffects"
+      },
+      "pages/Settings/dataInterconnect": {
+        "component": "dataInterconnect"
       },
       "pages/Settings/theme": {
         "component": "theme"
