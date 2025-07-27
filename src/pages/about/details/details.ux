@@ -54,7 +54,7 @@ export default {
     file.readText({
       uri: "/META-INF/build.txt",
       success: (data) => {
-        const buildDataList = data.text.split("\n")
+        let buildDataList = data.text.split("\n")
         // console.log("text list: ", buildDataList[0])
         this.timeStamp = buildDataList[2].split("=")[1]
         this.toolkit = buildDataList[1].split("=")[1]

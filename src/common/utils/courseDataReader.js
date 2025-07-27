@@ -1,19 +1,33 @@
 /**
  * 课程数据读取工具
  */
+import dataManage from './dataManage'
+// dataManage.changeCourseData("system")
+
 
 /**
  * 读取课程基本信息
  * @returns {Object} 包含课程基本信息的对象
  */
 function getBasicInfo() {
-  try {
-    var courseData = require("../../common/data/courseData.json")
-    return courseData.basic
-  } catch (error) {
-    console.error("读取课程基本信息失败:", error)
-    return null
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      dataManage.getCourseData().then(courseData => {
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.basic);
+        } else {
+          resolve(JSON.parse(courseData).basic);
+        }
+      }).catch(error => {
+        console.error("读取课程基本信息失败:", error);
+        reject(null);
+      });
+    } catch (error) {
+      console.error("读取课程基本信息失败:", error);
+      reject(null);
+    }
+  })
 }
 
 /**
@@ -21,13 +35,24 @@ function getBasicInfo() {
  * @returns {Array} 课程信息数组
  */
 function getCoursesInfo() {
-  try {
-    var courseData = require("../../common/data/courseData.json")
-    return courseData.courses
-  } catch (error) {
-    console.error("读取课程信息失败:", error)
-    return null
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      dataManage.getCourseData().then(courseData => {
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.courses);
+        } else {
+          resolve(JSON.parse(courseData).courses);
+        }
+      }).catch(error => {
+        console.error("读取课程信息失败:", error);
+        reject(null);
+      });
+    } catch (error) {
+      console.error("读取课程信息失败:", error);
+      reject(null);
+    }
+  })
 }
 
 /**
@@ -35,13 +60,24 @@ function getCoursesInfo() {
  * @returns {Array} 时间表模板数组
  */
 function getTimetableTemplateInfo() {
-  try {
-    var courseData = require("../../common/data/courseData.json")
-    return courseData.timetableTemplate
-  } catch (error) {
-    console.error("读取时间表模板信息失败:", error)
-    return null
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      dataManage.getCourseData().then(courseData => {
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.timetableTemplate);
+        } else {
+          resolve(JSON.parse(courseData).timetableTemplate);
+        }
+      }).catch(error => {
+        console.error("读取时间表模板信息失败:", error);
+        reject(null);
+      });
+    } catch (error) {
+      console.error("读取时间表模板信息失败:", error);
+      reject(null);
+    }
+  })
 }
 
 /**
@@ -49,13 +85,24 @@ function getTimetableTemplateInfo() {
  * @returns {Array} 课程次序数组
  */
 function getCourseScheduleInfo() {
-  try {
-    var courseData = require("../../common/data/courseData.json")
-    return courseData.courseSchedule
-  } catch (error) {
-    console.error("读取课程次序信息失败:", error)
-    return null
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      dataManage.getCourseData().then(courseData => {
+        // 检查 courseData 是否已经是对象
+        if (typeof courseData === 'object') {
+          resolve(courseData.courseSchedule);
+        } else {
+          resolve(JSON.parse(courseData).courseSchedule);
+        }
+      }).catch(error => {
+        console.error("读取课程次序信息失败:", error);
+        reject(null);
+      });
+    } catch (error) {
+      console.error("读取课程次序信息失败:", error);
+      reject(null);
+    }
+  })
 }
 
 module.exports = {

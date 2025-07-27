@@ -11,14 +11,16 @@ import courseDataReader from "./courseDataReader"
  *   - timeHour: 小时（仅type='course'/'interval'时有）
  *   - timeMinute: 分钟（仅type='course'/'interval'时有）
  */
-function getCourseSchedule(weekday) {
+async function getCourseSchedule(weekday) {
   /**
    * 读取数据
    */
-  const basicInfo = courseDataReader.getBasicInfo()
-  const coursesInfo = courseDataReader.getCoursesInfo()
-  const timetableInfo = courseDataReader.getTimetableTemplateInfo()
-  const scheduleInfo = courseDataReader.getCourseScheduleInfo()
+
+  const basicInfo = await courseDataReader.getBasicInfo()
+  const coursesInfo = await courseDataReader.getCoursesInfo()
+  const timetableInfo = await courseDataReader.getTimetableTemplateInfo()
+  const scheduleInfo = await courseDataReader.getCourseScheduleInfo()
+
 
   /**
    * 周数计算
@@ -211,8 +213,8 @@ function getCourseSchedule(weekday) {
   return processedData
 }
 
-function getWeekNumber() {
-  const basicInfo = courseDataReader.getBasicInfo()
+async function getWeekNumber() {
+  const basicInfo = await courseDataReader.getBasicInfo()
   /**
    * 周数计算
    */
