@@ -174,7 +174,7 @@
             "
           ></div>
           <div class="gap-240"></div>
-          <div style="display: flex; flex-direction: row">
+          <!-- <div style="display: flex; flex-direction: row">
             <div class="component-other-button_q" onclick="jumpAC">
               <image class="component-other-icon_q" src="/common/assets/icon_AllCourses.png" />
               <text class="component-other-button_qText">全部课程</text>
@@ -186,6 +186,14 @@
               <image class="component-other-icon_q" src="/common/assets/icon_CourseChange.png" />
               <text class="component-other-button_qText">课程调节</text>
             </div>
+          </div> -->
+
+          <div class="component-other-button_l" onclick="jumpAC">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">全部课程</text>
+              <text class="component-other-button_lDescribe">一览所有课程数据</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/assets/icon_AllCourses.png" />
           </div>
 
           <div class="gap-60"></div>
