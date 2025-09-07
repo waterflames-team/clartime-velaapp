@@ -118,6 +118,11 @@ text {
   width: 24px;
 }
 
+.gap-300 {
+  height: 30px;
+  width: 30px;
+}
+
 .gap-480 {
   height: 48px;
   width: 48px;

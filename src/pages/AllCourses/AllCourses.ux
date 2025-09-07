@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <stack>
-      <scroll class="component-allCourses-list" scroll-y="true" bounces="true" if="{{!loding && haveClass}}">
+      <scroll class="component-allCourses-list horizontal-center" scroll-y="true" bounces="true" if="{{!loding && haveClass}}">
         <div class="component-nav-noback"></div>
         <div class="component-allCourses-header"></div>
         <div for="{{courseSchedule}}">
@@ -17,6 +17,7 @@
             </div>
           </div>
         </div>
+        <div class="gap-300"></div>
       </scroll>
 
       <div class="horizontal-center">
@@ -169,14 +170,10 @@ export default {
 }
 
 .component-allCourses-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 30px;
-  width: 324px;
-  height: 100%;
-  /* height: 386px; */
+  /* margin-bottom: 30px; */
+  width: 336px;
+  height: 480px;
+
 
   scroll-snap-align: start;
 }
