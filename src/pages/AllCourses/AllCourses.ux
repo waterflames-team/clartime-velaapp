@@ -1,10 +1,29 @@
 <template>
   <div class="page">
     <stack>
-      <scroll class="component-allCourses-list horizontal-center" scroll-y="true" bounces="true" if="{{!loding && haveClass}}">
+      <div class="horizontal-center">
+        <div class="component-nav"></div>
+        <div class="component-allCourses-header"></div>
+        <div class="gap-480"></div>
+        <div class="gap-480"></div>
+        <div class="gap-480"></div>
+        <div if="{{loding}}" class="horizontal-center">
+          <text class="component-coursePresentations-promptText">
+            加载中....
+          </text>
+          <text class="component-coursePresentations-promptText">
+            无响应时请检查数据
+          </text>
+        </div>
+        <div if="{{!haveClass && !loding}}">
+          <text class="component-coursePresentations-promptText">当日无课</text>
+        </div>
+      </div>
+
+      <scroll class="component-allCourses-list horizontal-center" scroll-y="true" bounces="true">
         <div class="component-nav-noback"></div>
         <div class="component-allCourses-header"></div>
-        <div for="{{courseSchedule}}">
+        <div for="{{courseSchedule}}" if="{{!loding && haveClass}}">
           <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
             <div class="component-coursePresentations-content">
               <div class="gap-142"></div>
@@ -20,29 +39,15 @@
         <div class="gap-300"></div>
       </scroll>
 
-      <div class="horizontal-center">
+      <div class="horizontal-center" style="height: 88px;">
         <div class="component-nav"></div>
         <div if="{{!loding}}" class="component-allCourses-header">
           <text class="component-allCourses-title" onclick="dayDown"><<<</text>
           <text class="component-allCourses-title">{{ weekNum }}</text>
           <text class="component-allCourses-title" onclick="dayUp">>>></text>
         </div>
-        <div class="gap-480"></div>
-        <div class="gap-480"></div>
-        <div class="gap-480"></div>
-        <div if="{{loding}}" class="horizontal-center">
-          <text class="component-coursePresentations-promptText">
-            加载中....
-          </text>
-          <text class="component-coursePresentations-promptText">
-            无响应时请检查数据
-          </text>
-        </div>
-        <div if="{{!haveClass && !loding}}">
-          <text class="component-coursePresentations-promptText">当日无课</text>
-        </div>
-
       </div>
+
       <div class="component-nav">
         <div class="component-nav-backGroup" onclick="exit">
           <img src="/common/assets/back_button.png" class="component-nav-backButton" />
@@ -117,6 +122,11 @@ export default {
 
     this.loding = true
     this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    if (this.courseSchedule === -1) {
+      this.haveClass = false
+    } else {
+      this.haveClass = true
+    }
     this.loding = false
   },
   async dayUp() {
@@ -127,6 +137,11 @@ export default {
 
     this.loding = true
     this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    if (this.courseSchedule === -1) {
+      this.haveClass = false
+    } else {
+      this.haveClass = true
+    }
     this.loding = false
   },
 
