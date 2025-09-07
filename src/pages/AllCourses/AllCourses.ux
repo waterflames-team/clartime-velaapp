@@ -1,9 +1,24 @@
 <template>
   <div class="page">
-    <div class="component-nav">
-      <text class="component-nav-title-text" onclick="exit">< {{ title }}</text>
-      <text class="component-nav-title-time">{{ time }}</text>
-    </div>
+
+
+    <stack>
+      <scroll class="content horizontal-center" scroll-y="true" bounces="true">
+        <div class="component-nav"></div>
+        <div class="gap-110"></div>
+        <div class="component-about-textContent-container">
+      
+        </div>
+      </scroll>
+      <div class="component-nav">
+        <div class="component-nav-backGroup" onclick="exit">
+          <img src="/common/assets/back_button.png" class="component-nav-backButton" />
+          <text class="component-nav-title-text-backb">{{ title }}</text>
+        </div>
+        <text class="component-nav-title-time">{{ time }}</text>
+      </div>
+    </stack>
+
 
     <div if="{{!loding}}" class="component-allCourses-header">
       <text class="component-allCourses-title" onclick="dayDown"><<<</text>
@@ -12,14 +27,14 @@
     </div>
 
     <div if="{{loding}}" style="top: 120px">
-      <text class="component-coursePresentations-promptText">加载中....</text>
+      <text class="component-coursePresentations-promptText">加载中....若长时间无响应，请检查数据</text>
     </div>
 
-    <div if="{{ (!courseSchedule || courseSchedule.length === 0) && !loding}}" style="top: 120px">
+    <div if="{{!haveClass && !loding}}" style="top: 120px">
       <text class="component-coursePresentations-promptText">当日无课</text>
     </div>
 
-    <scroll class="component-allCourses-list" scroll-y="true" bounces="true" if="{{!loding}}">
+    <scroll class="component-allCourses-list" scroll-y="true" bounces="true" if="{{!loding && haveClass}}">
       <div for="{{courseSchedule}}">
         <div class="component-coursePresentations-border" if="{{$item.type === 'course'}}">
           <div class="component-coursePresentations-content">
@@ -57,6 +72,7 @@ export default {
     timer: null,
 
     courseSchedule: [],
+    haveClass: true,
     loding: true
   },
 
@@ -71,6 +87,11 @@ export default {
 
     this.loding = true
     this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(this.dayNum)
+    if (this.courseSchedule === -1) {
+      this.haveClass = false
+    } else {
+      this.haveClass = true
+    }
     this.loding = false
   },
 

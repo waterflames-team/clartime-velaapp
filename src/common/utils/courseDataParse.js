@@ -90,6 +90,9 @@ async function getCourseSchedule(weekday) {
   else if (weekday === "Sun") WhichDay = 6
   const daySchedule = scheduleInfo[WhichDay]
   // 2.计算时间样表选取
+  if (daySchedule.timetableId[0] === -1) { //在开始读取课程前先识别当天无课状态并返回
+    return -1
+  }
   const timetableRepeatability = daySchedule.timetableRepeatability
   // console.log("timetableRepeatability:", timetableRepeatability)
   const timetableId = daySchedule.timetableId
