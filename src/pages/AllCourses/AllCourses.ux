@@ -6,7 +6,7 @@
         <div class="component-allCourses-header"></div>
         <div class="gap-480"></div>
         <div class="gap-480"></div>
-        <div class="gap-480"></div>
+        <div class="gap-480" if="{{!loding}}"></div>
         <div if="{{loding}}" class="horizontal-center">
           <text class="component-coursePresentations-promptText">
             加载中....
