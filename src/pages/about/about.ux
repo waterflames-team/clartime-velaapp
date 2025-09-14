@@ -23,6 +23,7 @@
           <div class="gap-20"></div>
           <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
           <text class="component-about-textContent-text">@NEORUAA</text>
+          <text class="component-about-textContent-text">@Eason chen</text>
           <text class="component-about-textContent-text">@绫凌子Rinko</text>
           <div class="gap-240"></div>
           <text class="component-about-textContent-textS">本应用灵感来源于</text>
@@ -76,7 +77,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.4.0 - Beta",
+    version: "0.4.1 - Beta",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
