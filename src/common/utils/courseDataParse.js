@@ -42,8 +42,13 @@ async function getCourseSchedule(weekday) {
 
   // 4.计算下一个周一的具体日期
   const nextMonday = new Date(startDate)
-  // 如果开学日是周一，则下一个周一是7天后；否则按正常逻辑计算
-  const daysUntilMonday = startDayOfWeek === 1 ? 7 : (7 - startDayOfWeek + 1) % 7
+  // 如果开学日是周一，则下一个周一是当天；否则按正常逻辑计算
+  let daysUntilMonday
+  if (startDayOfWeek === 1) {
+    daysUntilMonday = -1
+  } else {
+    daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  }
   nextMonday.setDate(startDate.getDate() + daysUntilMonday)
   const nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
     2,
@@ -239,7 +244,13 @@ async function getWeekNumber() {
 
   // 4.计算下一个周一的具体日期
   const nextMonday = new Date(startDate)
-  const daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  // 如果开学日是周一，则下一个周一是当天；否则按正常逻辑计算
+  let daysUntilMonday
+  if (startDayOfWeek === 1) {
+    daysUntilMonday = 7
+  } else {
+    daysUntilMonday = (7 - startDayOfWeek + 1) % 7
+  }
   nextMonday.setDate(startDate.getDate() + daysUntilMonday)
   const nextMondayDate = `${nextMonday.getFullYear()}-${String(nextMonday.getMonth() + 1).padStart(
     2,
