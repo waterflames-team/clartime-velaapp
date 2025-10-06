@@ -5,8 +5,13 @@
         <div class="content-home horizontal-center">
           <image
             class="home-back"
+            src="/common/assets/home_back_1.png"
+            if="courseSchedule === -1"
+          />
+          <image
+            class="home-back"
             src="/common/assets/home_back_3.png"
-            if="courseSchedule[indexNow].type === 'course'"
+            elif="courseSchedule[indexNow].type === 'course'"
           />
           <image
             class="home-back"
@@ -44,7 +49,9 @@
                 </div>
                 <div class="gap-40"></div>
                 <div class="component-indexCard-remainingTime screen-center bg-white-10">
-                  <text class="component-indexCard-remainingTime-text">{{ remain }}</text>
+                  <text class="component-indexCard-remainingTime-text" if="courseSchedule === -1">---</text>
+                  <text class="component-indexCard-remainingTime-text" if="courseSchedule[indexNow].type === 'end'">---</text>
+                  <text class="component-indexCard-remainingTime-text" else>{{ remain }}</text>
                 </div>
               </div>
               <div class="gap-40"></div>
@@ -54,7 +61,15 @@
             </div>
           </div>
           <div
-            if="courseSchedule[indexNow].type === 'end'"
+            if="courseSchedule === -1"
+            class="component-courseCard bg-white-10 screen-center"
+          >
+            <!-- 课程结束卡片 -->
+            <text class="component-courseCard-nowCourseContent-text1">今日暂无课程</text>
+            <text class="component-courseCard-nowCourseContent-text2" style="width: 300px;">好好休息，明天见</text>
+          </div>
+          <div
+            elif="courseSchedule[indexNow].type === 'end'"
             class="component-courseCard bg-white-10 screen-center"
           >
             <!-- 课程结束卡片 -->
@@ -174,7 +189,7 @@
             "
           ></div>
           <div class="gap-240"></div>
-          <div style="display: flex; flex-direction: row">
+          <!-- <div style="display: flex; flex-direction: row">
             <div class="component-other-button_q" onclick="jumpAC">
               <image class="component-other-icon_q" src="/common/assets/icon_AllCourses.png" />
               <text class="component-other-button_qText">全部课程</text>
@@ -186,6 +201,14 @@
               <image class="component-other-icon_q" src="/common/assets/icon_CourseChange.png" />
               <text class="component-other-button_qText">课程调节</text>
             </div>
+          </div> -->
+
+          <div class="component-other-button_l" onclick="jumpAC">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">全部课程</text>
+              <text class="component-other-button_lDescribe">一览课程数据</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/assets/icon_AllCourses.png" />
           </div>
 
           <div class="gap-60"></div>
@@ -193,7 +216,7 @@
           <div class="component-other-button_l" onclick="jumpSt">
             <div class="component-other-button-head vertical-left">
               <text class="component-other-button_lText">设置</text>
-              <text class="component-other-button_lDescribe">实验性设置</text>
+              <text class="component-other-button_lDescribe">应用相关设置</text>
             </div>
             <image class="component-other-icon_l" src="/common/assets/icon_Set.png" />
           </div>
@@ -203,7 +226,7 @@
           <div class="component-other-button_l" onclick="jumpAb">
             <div class="component-other-button-head vertical-left">
               <text class="component-other-button_lText">关于</text>
-              <text class="component-other-button_lDescribe">澄序课程表</text>
+              <text class="component-other-button_lDescribe">课程表相关信息</text>
             </div>
             <image class="component-other-icon_l" src="/common/assets/icon_About.png" />
           </div>
@@ -313,7 +336,11 @@ export default {
     const thisCourse = this.courseSchedule[currentIndex]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
-    // 提前判断结束，以防止下一项无法取到导致的出错
+    // 提前判断结束或无课，以防止下一项无法取到导致的出错，这个主题好像不影响
+    if (thisCourse === -1) {
+      return "---"
+    }
+
     if (thisCourse.type === "end") {
       return "---"
     }
