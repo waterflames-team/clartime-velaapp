@@ -8,9 +8,16 @@
         </div>
 
         <!-- 以下为当前态的展示 -->
+         <text
+          class="nucleus-NowCourse-text1"
+          style="top: 60px"
+          if="courseSchedule === -1"
+        >
+          今日
+        </text>
         <text
           class="nucleus-NowCourse-text1"
-          if="courseSchedule[indexNow].type === 'end'"
+          elif="courseSchedule[indexNow].type === 'end'"
           style="top: 60px"
         >
           今日
@@ -26,7 +33,14 @@
 
         <text
           class="nucleus-NowCourse-text2"
-          if="courseSchedule[indexNow].type === 'end'"
+          if="courseSchedule === -1"
+          style="top: 60px"
+        >
+          暂无课程
+        </text>
+        <text
+          class="nucleus-NowCourse-text2"
+          elif="courseSchedule[indexNow].type === 'end'"
           style="top: 60px"
         >
           课程结束
@@ -79,7 +93,14 @@
         </marquee>
         <text
           class="nucleus-NowCourse-text3"
-          if="courseSchedule[indexNow].type === 'end'"
+          if="courseSchedule === -1"
+          style="top: 72px"
+        >
+          好好休息，明天见
+        </text>
+        <text
+          class="nucleus-NowCourse-text3"
+          elif="courseSchedule[indexNow].type === 'end'"
           style="top: 72px"
         >
           明天见
@@ -163,7 +184,10 @@
           </text>
         </div>
 
-        <text class="nucleus-ClassOver-text" if="courseSchedule[indexNow].type === 'end'">
+        <text class="nucleus-ClassOver-text" if="courseSchedule === -1">
+          / {{ day }} {{ dayNum }} => Free ! /
+        </text>
+        <text class="nucleus-ClassOver-text" elif="courseSchedule[indexNow].type === 'end'">
           / {{ day }} {{ dayNum }} => Over ! /
         </text>
         <!-- 以上为上下课时间的展示 -->
@@ -184,7 +208,7 @@
             "
           ></div>
           <div class="gap-240"></div>
-          <div style="display: flex; flex-direction: row">
+          <!-- <div style="display: flex; flex-direction: row">
             <div class="component-other-button_q" onclick="jumpAC">
               <image class="component-other-icon_q" src="/common/assets/icon_AllCourses.png" />
               <text class="component-other-button_qText">全部课程</text>
@@ -196,6 +220,14 @@
               <image class="component-other-icon_q" src="/common/assets/icon_CourseChange.png" />
               <text class="component-other-button_qText">课程调节</text>
             </div>
+          </div> -->
+
+          <div class="component-other-button_l" onclick="jumpAC">
+            <div class="component-other-button-head vertical-left">
+              <text class="component-other-button_lText">全部课程</text>
+              <text class="component-other-button_lDescribe">一览课程数据</text>
+            </div>
+            <image class="component-other-icon_l" src="/common/assets/icon_AllCourses.png" />
           </div>
 
           <div class="gap-60"></div>
@@ -203,7 +235,7 @@
           <div class="component-other-button_l" onclick="jumpSt">
             <div class="component-other-button-head vertical-left">
               <text class="component-other-button_lText">设置</text>
-              <text class="component-other-button_lDescribe">实验性设置</text>
+              <text class="component-other-button_lDescribe">应用相关设置</text>
             </div>
             <image class="component-other-icon_l" src="/common/assets/icon_Set.png" />
           </div>
@@ -213,7 +245,7 @@
           <div class="component-other-button_l" onclick="jumpAb">
             <div class="component-other-button-head vertical-left">
               <text class="component-other-button_lText">关于</text>
-              <text class="component-other-button_lDescribe">澄序课程表</text>
+              <text class="component-other-button_lDescribe">课程表相关信息</text>
             </div>
             <image class="component-other-icon_l" src="/common/assets/icon_About.png" />
           </div>
@@ -271,8 +303,8 @@ export default {
     }
     let whichDay = dayMap[this.dayNum]
     this.courseSchedule = await this.$app.$def.courseDataParse.getCourseSchedule(whichDay)
-    // console.log("首页课程数据表")
-    // console.log(this.courseSchedule)
+    console.log("首页课程数据表")
+    console.log(this.courseSchedule)
   },
 
   getCurrentCourseIndex() {
@@ -323,11 +355,14 @@ export default {
     const thisCourse = this.courseSchedule[currentIndex]
     const currentTime = this.$app.$def.timeUpdate.updateTime()
 
-    // 提前判断结束，以防止下一项无法取到导致的出错
-    if (thisCourse.type === "end") {
+    // 提前判断结束或无课，以防止下一项无法取到导致的出错，这个主题好像不影响
+    if (thisCourse === -1) {
       return "---"
     }
 
+    if (thisCourse.type === "end") {
+      return "---"
+    }
     // 计算分钟差
     const currentTotalMinutes = String(Number(currentTime.hours) * 60 + Number(currentTime.minutes))
     const nextCourseTotalMinutes = String(

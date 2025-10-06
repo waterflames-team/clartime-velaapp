@@ -112,7 +112,7 @@ export default {
               })
             } else if (guideSetting.guideStep === "7") {
               OuterThis.$app.$def.router.push({
-                uri: "pages/entries/guide/7",
+                uri: "pages/entries/guide/5",
                 params: {
                   ___PARAM_LAUNCH_FLAG___: "clearTask"
                 }

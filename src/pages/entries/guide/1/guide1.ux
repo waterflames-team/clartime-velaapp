@@ -1,7 +1,8 @@
 <template>
   <div class="page">
     <stack style="width: 100%;height: 100%;" class="horizontal-center">
-      <img src="/common/assets/guide_1.png" alt="" />
+      <img src="/common/assets/guide_1.png" alt=""/>
+      <!-- <img src="/common/assets/guide_1.png" alt="" onclick="skip()"/> -->
       <!-- 欢迎 -->
       <div style="position: absolute;width: 324px;height: 80px;bottom:6px" onclick="next()"></div>
     </stack>
@@ -18,6 +19,21 @@ export default {
     setTimeout(() => {
       this.$app.$def.router.push({
         uri: "pages/entries/guide/2",
+        params: {
+          ___PARAM_LAUNCH_FLAG___: "clearTask"
+        }
+      })
+    }, 300)
+  },
+
+  skip() {
+    this.$app.$def.dataManage.changeUserSetting("themeName", "Horizon")
+    setTimeout(() => {
+      this.$app.$def.dataManage.changeGuideSetting("guide_state", "done")
+    }, 300)
+    setTimeout(() => {
+      this.$app.$def.router.push({
+        uri: "pages/entries/Horizon",
         params: {
           ___PARAM_LAUNCH_FLAG___: "clearTask"
         }

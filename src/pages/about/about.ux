@@ -23,6 +23,7 @@
           <div class="gap-20"></div>
           <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
           <text class="component-about-textContent-text">@NEORUAA</text>
+          <text class="component-about-textContent-text">@Eason chen</text>
           <text class="component-about-textContent-text">@绫凌子Rinko</text>
           <div class="gap-240"></div>
           <text class="component-about-textContent-textS">本应用灵感来源于</text>
@@ -57,6 +58,13 @@
         <div class="component-button" onclick="toDetail()">
           <text class="component-text">版本详情</text>
         </div>
+
+        <div class="gap-80"></div>
+
+        <div class="component-about-textContent-container">
+          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS">Lucent Project</text>
+        </div>
         
       </scroll>
       <img src="/common/assets/nav-bg.png" style="opacity:{{navOpacity}}" />
@@ -76,7 +84,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.4.0 - Beta",
+    version: "0.4.1 - Beta",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
@@ -227,5 +235,17 @@ export default {
   color: rgba(255, 255, 255, 0.6);
   white-space: pre-line;
   flex-wrap: wrap;
+}
+
+.component-about-textContent-container {
+  opacity: 1;
+
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+
+  width: 312px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 </style>
