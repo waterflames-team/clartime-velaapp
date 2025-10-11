@@ -5,28 +5,54 @@
         <div class="content-home horizontal-center">
           <image
             class="home-back"
-            src="/common/assets/home_back_1.png"
+            src="/common/assets/Horizon_back_1.png"
             if="courseSchedule === -1"
           />
           <image
             class="home-back"
-            src="/common/assets/home_back_3.png"
+            src="/common/assets/Horizon_back_3.png"
             elif="courseSchedule[indexNow].type === 'course'"
           />
           <image
             class="home-back"
-            src="/common/assets/home_back_2.png"
+            src="/common/assets/Horizon_back_2.png"
             elif="courseSchedule[indexNow].type === 'interval'"
           />
-          <image class="home-back" src="/common/assets/home_back_1.png" else />
+          <image class="home-back" src="/common/assets/Horizon_back_1.png" else />
         </div>
         <div class="content-home horizontal-center">
-          <div class="component-nav-noback">
-            <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
-            <!-- <text class="component-nav-title-time">{{ time }}</text> -->
-          </div>
+
+          
           <div class="component-indexCard">
-            <div class="component-indexCard-left">
+            <div class="component-indexCard-timeHM screen-center">
+              <text class="component-indexCard-timeHM-text">{{ time }}</text>
+            </div>
+
+            <div class="component-indexCard-timeS screen-center">
+              <text class="component-indexCard-timeS-text">{{ seconds }}</text>
+            </div>
+
+            <div class="component-indexCard-remainingTime screen-center">
+              <text class="component-indexCard-remainingTime-text" if="courseSchedule === -1">---</text>
+              <text class="component-indexCard-remainingTime-text" if="courseSchedule[indexNow].type === 'end'">---</text>
+              <text class="component-indexCard-remainingTime-text" else>{{ remain }}</text>
+            </div>
+
+            <div class="component-indexCard-Week screen-center">
+              <text class="component-indexCard-Week-text">{{ weekNum }}</text>
+            </div>
+
+            <div class="component-indexCard-dayN screen-center">
+              <text class="component-indexCard-dayN-text">{{ dayNum }}</text>
+            </div>
+
+            <div class="component-indexCard-date screen-center">
+              <text class="component-indexCard-date-text">{{ day }}</text>
+            </div>
+
+
+
+            <!-- <div class="component-indexCard-left">
               <div class="component-indexCard-timeHM screen-center bg-white-20">
                 <text class="component-indexCard-timeHM-text">{{ time }}</text>
               </div>
@@ -58,7 +84,7 @@
               <div class="component-indexCard-date screen-center bg-white-20">
                 <text class="component-indexCard-date-text">{{ day }}</text>
               </div>
-            </div>
+            </div> -->
           </div>
           <div
             if="courseSchedule === -1"
@@ -172,6 +198,7 @@
               </marquee>
             </div>
           </div>
+        
         </div>
       </stack>
       <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
@@ -480,6 +507,12 @@ export default {
 @import "../../../common/style/universal.css";
 @import "../../../common/style/component.css";
 
+/* 自定义字体定义 */
+@font-face {
+  font-family: 'MiSansRounded-Medium-colon';
+  src: url('../../../common/assets/MiSansRounded-Medium_colon.otf');
+}
+
 /* 界面布局 */
 .content {
   width: 100%;
@@ -493,13 +526,13 @@ export default {
 }
 
 .content-home {
-  width: 100%;
+  width: 336px;
   height: 480px;
   scroll-snap-align: start;
 }
 
 .home-back {
-  width: 100%;
+  width: 336px;
   height: 480px;
   scroll-snap-align: start;
   object-fit: cover;
@@ -536,54 +569,45 @@ export default {
 /* ----------默认主题---------- */
 /* 时间卡片 */
 .component-indexCard {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
 
-  top: 6px;
-}
+  position: absolute;
+  top: 12px;
 
-.component-indexCard-left,
-.component-indexCard-right {
-  display: flex;
-  flex-direction: column;
+  width: 312px;
+  height: 133px;
 }
 
 .component-indexCard-timeHM {
-  width: 144px;
-  height: 80px;
-  border-radius: 26px;
+  position: absolute;
+  top: -7px;
+  left: 0px;
+
+  width: 157px;
+  height: 91px;
 }
 .component-indexCard-timeHM-text {
   color: rgba(255, 255, 255, 1);
   font-size: 48px;
   font-weight: 700;
+  font-family: 'MiSansRounded-Medium-colon';
 }
-.component-indexCard-Week {
-  width: 84px;
-  height: 32px;
-  border-radius: 26px;
-}
-.component-indexCard-Week-text,
-.component-indexCard-dayN-text {
-  color: rgba(255, 255, 255, 1);
-  font-size: 18px;
-  font-weight: 500;
-}
-.component-indexCard-dayN {
-  width: 56px;
-  height: 32px;
-  border-radius: 26px;
-}
-
 .component-indexCard-timeS {
-  width: 47px;
-  height: 44px;
-  border-radius: 26px;
+  position: absolute;
+  top: -2px;
+  left: 162px;
+
+  width: 50.07px;
+  height: 50.45px;
 }
 .component-indexCard-remainingTime {
-  width: 93px;
-  height: 44px;
-  border-radius: 26px;
+  position: absolute;
+  top: 1px;
+  left: 216px;
+
+  width: 92.2px;
+  height: 50.45px;
 }
 .component-indexCard-timeS-text,
 .component-indexCard-remainingTime-text {
@@ -591,10 +615,38 @@ export default {
   font-size: 20px;
   font-weight: 500;
 }
+.component-indexCard-timeS-text {
+  font-family: 'MiSansRounded-Medium-colon';
+}
+.component-indexCard-Week {
+  position: absolute;
+  top: 98px;
+  left: 9px;
+
+  width: 78.594px;
+  height: 36.69px;
+}
+.component-indexCard-dayN {
+  position: absolute;
+  top: 98px;
+  left: 92px;
+
+  width: 59.836px;
+  height: 36.69px;
+}
+.component-indexCard-Week-text,
+.component-indexCard-dayN-text {
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 500;
+}
 .component-indexCard-date {
-  width: 144px;
-  height: 68px;
-  border-radius: 26px;
+  position: absolute;
+  top: 57px;
+  left: 154px;
+
+  width: 158px;
+  height: 78px;
 }
 .component-indexCard-date-text {
   color: rgba(255, 255, 255, 1);
