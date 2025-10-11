@@ -21,8 +21,6 @@
           <image class="home-back" src="/common/assets/Horizon_back_1.png" else />
         </div>
         <div class="content-home horizontal-center">
-
-          
           <div class="component-indexCard">
             <div class="component-indexCard-timeHM screen-center">
               <text class="component-indexCard-timeHM-text">{{ time }}</text>
@@ -33,8 +31,15 @@
             </div>
 
             <div class="component-indexCard-remainingTime screen-center">
-              <text class="component-indexCard-remainingTime-text" if="courseSchedule === -1">---</text>
-              <text class="component-indexCard-remainingTime-text" if="courseSchedule[indexNow].type === 'end'">---</text>
+              <text class="component-indexCard-remainingTime-text" if="courseSchedule === -1">
+                ---
+              </text>
+              <text
+                class="component-indexCard-remainingTime-text"
+                if="courseSchedule[indexNow].type === 'end'"
+              >
+                ---
+              </text>
               <text class="component-indexCard-remainingTime-text" else>{{ remain }}</text>
             </div>
 
@@ -49,67 +54,37 @@
             <div class="component-indexCard-date screen-center">
               <text class="component-indexCard-date-text">{{ day }}</text>
             </div>
-
-
-
-            <!-- <div class="component-indexCard-left">
-              <div class="component-indexCard-timeHM screen-center bg-white-20">
-                <text class="component-indexCard-timeHM-text">{{ time }}</text>
-              </div>
-              <div class="gap-40"></div>
-              <div style="display: flex; flex-direction: row">
-                <div class="component-indexCard-Week screen-center bg-white-10">
-                  <text class="component-indexCard-Week-text">{{ weekNum }}</text>
-                </div>
-                <div class="gap-40"></div>
-                <div class="component-indexCard-dayN screen-center bg-white-10">
-                  <text class="component-indexCard-dayN-text">{{ dayNum }}</text>
-                </div>
-              </div>
-            </div>
-            <div class="gap-40"></div>
-            <div class="component-indexCard-right">
-              <div style="display: flex; flex-direction: row">
-                <div class="component-indexCard-timeS screen-center bg-white-10">
-                  <text class="component-indexCard-timeS-text">{{ seconds }}</text>
-                </div>
-                <div class="gap-40"></div>
-                <div class="component-indexCard-remainingTime screen-center bg-white-10">
-                  <text class="component-indexCard-remainingTime-text" if="courseSchedule === -1">---</text>
-                  <text class="component-indexCard-remainingTime-text" if="courseSchedule[indexNow].type === 'end'">---</text>
-                  <text class="component-indexCard-remainingTime-text" else>{{ remain }}</text>
-                </div>
-              </div>
-              <div class="gap-40"></div>
-              <div class="component-indexCard-date screen-center bg-white-20">
-                <text class="component-indexCard-date-text">{{ day }}</text>
-              </div>
-            </div> -->
           </div>
-          <div
-            if="courseSchedule === -1"
-            class="component-courseCard bg-white-10 screen-center"
-          >
+
+          <div if="courseSchedule === -1" class="component-courseCard screen-center">
             <!-- 课程结束卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1">今日暂无课程</text>
-            <text class="component-courseCard-nowCourseContent-text2" style="width: 300px;">好好休息，明天见</text>
+            <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
+            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">
+              今日暂无课程
+            </text>
+            <text
+              class="omponent-courseCard-nextCourseContent-text2"
+              style="top: 213px; width: 300px"
+            >
+              好好休息，明天见
+            </text>
           </div>
           <div
             elif="courseSchedule[indexNow].type === 'end'"
-            class="component-courseCard bg-white-10 screen-center"
+            class="component-courseCard screen-center"
           >
             <!-- 课程结束卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1">课程结束</text>
-            <text class="component-courseCard-nowCourseContent-text2">明天见</text>
+            <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
+            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">课程结束</text>
+            <text class="omponent-courseCard-nextCourseContent-text2" style="top: 213px">明天见</text>
           </div>
-          <div else class="component-courseCard bg-white-10 horizontal-center">
+          <div else class="component-courseCard horizontal-center">
             <!-- 上课期间卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1" style="top: 12px">当前</text>
+            <text class="component-courseCard-nowCourseContent-text1">当前</text>
             <marquee
               text-offset="{{8}}"
               scrollamount="{{20}}"
               class="component-courseCard-nowCourseContent-text2"
-              style="top: 14px"
             >
               {{ courseSchedule[indexNow].courseName }}
             </marquee>
@@ -118,7 +93,6 @@
               text-offset="{{8}}"
               scrollamount="{{20}}"
               class="component-courseCard-nowCourseContent-text3"
-              style="top: 24px"
             >
               {{ courseSchedule[indexNow].timeRange }}｜{{
                 courseSchedule[indexNow].courseRoom
@@ -129,7 +103,6 @@
               text-offset="{{8}}"
               scrollamount="{{20}}"
               class="component-courseCard-nowCourseContent-text3"
-              style="top: 24px"
             >
               {{ courseSchedule[indexNow].timeRange }}
             </marquee>
@@ -198,7 +171,6 @@
               </marquee>
             </div>
           </div>
-        
         </div>
       </stack>
       <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
@@ -424,7 +396,7 @@ export default {
     this.courseRelatedUpadate()
   },
 
-  async showHandler () {
+  async showHandler() {
     this.$app.$def.router.clear()
 
     // 初始化数据
@@ -507,12 +479,6 @@ export default {
 @import "../../../common/style/universal.css";
 @import "../../../common/style/component.css";
 
-/* 自定义字体定义 */
-@font-face {
-  font-family: 'MiSansRounded-Medium-colon';
-  src: url('../../../common/assets/MiSansRounded-Medium_colon.otf');
-}
-
 /* 界面布局 */
 .content {
   width: 100%;
@@ -534,7 +500,6 @@ export default {
 .home-back {
   width: 336px;
   height: 480px;
-  scroll-snap-align: start;
   object-fit: cover;
 
   opacity: 1;
@@ -581,7 +546,7 @@ export default {
 
 .component-indexCard-timeHM {
   position: absolute;
-  top: -7px;
+  top: 0px;
   left: 0px;
 
   width: 157px;
@@ -591,11 +556,10 @@ export default {
   color: rgba(255, 255, 255, 1);
   font-size: 48px;
   font-weight: 700;
-  font-family: 'MiSansRounded-Medium-colon';
 }
 .component-indexCard-timeS {
   position: absolute;
-  top: -2px;
+  top: 0px;
   left: 162px;
 
   width: 50.07px;
@@ -604,7 +568,7 @@ export default {
 .component-indexCard-remainingTime {
   position: absolute;
   top: 1px;
-  left: 216px;
+  left: 217px;
 
   width: 92.2px;
   height: 50.45px;
@@ -614,9 +578,6 @@ export default {
   color: rgba(255, 255, 255, 1);
   font-size: 20px;
   font-weight: 500;
-}
-.component-indexCard-timeS-text {
-  font-family: 'MiSansRounded-Medium-colon';
 }
 .component-indexCard-Week {
   position: absolute;
@@ -656,31 +617,34 @@ export default {
 
 .component-courseCard {
   width: 312px;
-  height: 260px;
-  border-radius: 36px;
+  height: 299px;
   position: absolute;
   bottom: 12px;
 }
 
 .component-courseCard-nowCourseContent-text1 {
+  position: absolute;
+  top: 21px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   text-align: center;
 }
 .component-courseCard-nowCourseContent-text2 {
-  top: 2px;
+  position: absolute;
+  top: 55px;
   width: 200px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
   text-align: center;
 }
 .component-courseCard-nowCourseContent-text3 {
-  top: 10px;
+  position: absolute;
+  top: 118px;
   width: 280px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   text-align: center;
 }
@@ -693,6 +657,7 @@ export default {
   border-radius: 24px;
 }
 .component-courseCard-nextCourseContent-text1 {
+  position: absolute;
   top: 12px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
@@ -700,7 +665,8 @@ export default {
   text-align: center;
 }
 .component-courseCard-nextCourseContent-text2 {
-  top: 14px;
+  position: absolute;
+  top: 38px;
   width: 200px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 24px;
@@ -708,8 +674,8 @@ export default {
   text-align: center;
 }
 .component-courseCard-nextCourseContent-text3 {
-  top: 24px;
-  /* 别问我问什么 top 和设计稿的不一样，top0 是和上一个贴在一起的，现在懂我意思了吧 */
+  position: absolute;
+  bottom: 12px;
   width: 280px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 18px;
