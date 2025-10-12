@@ -2,7 +2,10 @@
   <div class="page">
     <stack>
       <stack class="content-home">
-        <div class="content-home horizontal-center">
+        <div class="content-home horizontal-center" if="courseSchedule !== -1">
+          <image class="home-back" src="/common/assets/Nucleus_back.png"/>
+        </div>
+        <div class="content-home horizontal-center" elif="courseSchedule[indexNow].type !== 'end'">
           <image class="home-back" src="/common/assets/Nucleus_back.png"/>
         </div>
       

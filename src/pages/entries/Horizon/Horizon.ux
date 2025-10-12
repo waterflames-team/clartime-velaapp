@@ -59,7 +59,7 @@
           <div if="courseSchedule === -1" class="component-courseCard screen-center">
             <!-- 课程结束卡片 -->
             <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
-            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">
+            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px; width: 300px">
               今日暂无课程
             </text>
             <text
