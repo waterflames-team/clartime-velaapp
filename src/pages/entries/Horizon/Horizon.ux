@@ -692,7 +692,7 @@ export default {
   height: 152px;
   opacity: 1;
   border-radius: 36px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #222222;
 }
 .component-other-button_qText {
   position: absolute;
@@ -730,7 +730,7 @@ export default {
   height: 138px;
   opacity: 1;
   border-radius: 36px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #222222;
 }
 .component-other-button-head {
   position: absolute;
