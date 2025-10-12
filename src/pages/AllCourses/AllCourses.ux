@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <scroll class="component-allCourses-list horizontal-center" scroll-y="true" bounces="true">
+      <scroll class="component-allCourses-list horizontal-center" id="scrollList" scroll-y="true" bounces="true">
         <div class="component-nav-noback"></div>
         <div class="component-allCourses-header"></div>
         <div for="{{courseSchedule}}" if="{{!loding && haveClass}}">
@@ -128,6 +128,10 @@ export default {
       this.haveClass = true
     }
     this.loding = false
+    this.$element("scrollList").scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   },
   async dayUp() {
     let currentIndex = this.dayMap.findIndex((item) => item.en === this.dayNum)
@@ -143,6 +147,11 @@ export default {
       this.haveClass = true
     }
     this.loding = false
+    
+    this.$element("scrollList").scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   },
 
   // getCourse() {
