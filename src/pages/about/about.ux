@@ -62,8 +62,8 @@
         <div class="gap-80"></div>
 
         <div class="component-about-textContent-container">
-          <text class="component-about-textContent-textS">©WaterFlames 2019-2025.</text>
-          <text class="component-about-textContent-textS">Lucent Project</text>
+          <text class="component-about-textContent-textS" style="text-align: center;">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS" style="text-align: center;">Lucent Project</text>
         </div>
         
       </scroll>
@@ -245,7 +245,5 @@ export default {
   padding: 12px;
 
   width: 312px;
-  border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 </style>
