@@ -63,7 +63,7 @@
               今日暂无课程
             </text>
             <text
-              class="omponent-courseCard-nextCourseContent-text2"
+              class="component-courseCard-nextCourseContent-text2"
               style="top: 213px; width: 300px"
             >
               好好休息，明天见
@@ -76,7 +76,7 @@
             <!-- 课程结束卡片 -->
             <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
             <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">课程结束</text>
-            <text class="omponent-courseCard-nextCourseContent-text2" style="top: 213px">明天见</text>
+            <text class="component-courseCard-nextCourseContent-text2" style="top: 213px">明天见</text>
           </div>
           <div else class="component-courseCard horizontal-center">
             <!-- 上课期间卡片 -->
@@ -400,7 +400,7 @@ export default {
     }
   },
 
-  onInit() {
+  async initHandler() {
     // 初始化数据
     const dateData = this.$app.$def.dateUpdate.updateDate()
     this.day = dateData.day
@@ -408,7 +408,16 @@ export default {
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
     // console.log("首页初始化")
-    this.courseRelatedUpadate()
+    if (this.courseSchedule !== -1) {
+      // 使用异步调用但不等待，避免阻塞初始化
+      this.courseRelatedUpadate().catch(err => {
+        console.error('初始化课程更新失败:', err)
+      })
+    }
+  },
+
+  onInit() {
+    this.initHandler()
   },
 
   async showHandler() {
@@ -420,7 +429,12 @@ export default {
     this.dayNum = dateData.dayNum
     this.time = this.$app.$def.timeUpdate.updateTime().time
     this.seconds = this.$app.$def.timeUpdate.updateTime().seconds
-    await this.courseRelatedUpadate()
+    if (this.courseSchedule !== -1) {
+      // 使用异步调用但不等待，避免阻塞定时器启动
+      this.courseRelatedUpadate().catch(err => {
+        console.error('显示时课程更新失败:', err)
+      })
+    }
     await this.userSettingGet()
 
     // 启动定时器，每秒更新
@@ -428,7 +442,12 @@ export default {
       this.time = timeData.time
       this.seconds = timeData.seconds
       if (this.getCurrentCourseIndex() != this.indexNow) {
-        this.courseRelatedUpadate()
+        if (this.courseSchedule !== -1) {
+          // 使用异步调用但不等待，避免阻塞定时器
+          this.courseRelatedUpadate().catch(err => {
+            console.error('课程更新失败:', err)
+          })
+        }
       }
     })
   },
