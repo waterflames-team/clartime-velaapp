@@ -65,7 +65,21 @@ export default {
   },
 
   exit() {
-    this.$app.$def.router.back()
+    this.$app.$def.router.push({
+      uri: "pages/entries",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  onBackPress() {
+    this.$app.$def.router.push({
+      uri: "pages/entries",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+    return true
   }
 }
 </script>

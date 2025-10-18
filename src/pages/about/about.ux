@@ -55,12 +55,6 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-button" onclick="toAfd()">
-          <text class="component-text">赞助支持</text>
-        </div>
-
-        <div class="gap-80"></div>
-
         <div class="component-button" onclick="toDetail()">
           <text class="component-text">版本详情</text>
         </div>
@@ -146,12 +140,6 @@ export default {
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
-    })
-  },
-
-  toAfd() {
-    this.$app.$def.router.push({
-      uri: "pages/about/afd"
     })
   },
 

@@ -222,13 +222,28 @@
 
           <div class="gap-60"></div>
 
-          <div class="component-other-button_l" onclick="jumpAb">
+          <div style="display: flex; flex-direction: row">
+            <div class="component-other-button_q" onclick="jumpAFD">
+              <image class="component-other-icon_q" src="/common/assets/icon_afd.png" />
+              <text class="component-other-button_qText">捐赠支持</text>
+            </div>
+
+            <div class="gap-80"></div>
+
+            <div class="component-other-button_q" onclick="jumpAb">
+              <image class="component-other-icon_q" src="/common/assets/icon_About.png" />
+              <text class="component-other-button_qText">关于应用</text>
+            </div>
+          </div>
+
+          <!-- <div class="component-other-button_l" onclick="jumpAb">
             <div class="component-other-button-head vertical-left">
               <text class="component-other-button_lText">关于</text>
               <text class="component-other-button_lDescribe">课程表相关信息</text>
             </div>
             <image class="component-other-icon_l" src="/common/assets/icon_About.png" />
-          </div>
+          </div> -->
+
         </div>
       </scroll>
     </stack>
@@ -435,6 +450,14 @@ export default {
   jumpAC() {
     this.$app.$def.router.push({
       uri: "pages/AllCourses",
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask"
+      }
+    })
+  },
+  jumpAFD() {
+    this.$app.$def.router.push({
+      uri: "pages/about/afd",
       params: {
         ___PARAM_LAUNCH_FLAG___: "clearTask"
       }
@@ -696,10 +719,10 @@ export default {
 }
 .component-other-button_qText {
   position: absolute;
-  left: 12px;
-  bottom: 12px;
+  left: 14px;
+  bottom: 14px;
 
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 0px;
   line-height: 39.78px;
