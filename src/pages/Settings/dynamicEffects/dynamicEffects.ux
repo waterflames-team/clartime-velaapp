@@ -36,6 +36,10 @@ export default {
     //     console.log(`handling fail, code = ${code}`)
     //   }
     // })
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
   },
 
   onShow() {

@@ -39,6 +39,13 @@ export default {
     this.$app.$def.dataManage.clearData()
   },
 
+  onInit() {
+    ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
+      (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
+        this.time = timeData.time
+      }))
+  },
+
   onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
