@@ -84,7 +84,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.4.1 - Beta",
+    version: "0.5.0 - Dev",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
