@@ -14,6 +14,12 @@
           <text class="component-about-titleVersion" onclick="onVersionClick">
             v{{ version }}
           </text>
+          <text class="component-about-titleVersion" style="font-size: 14px;" onclick="onVersionClick">
+            DEV_BUILD
+          </text>
+          <text class="component-about-titleVersion" style="font-size: 14px;" onclick="onVersionClick">
+            {{ timeStamp }}
+          </text>
         </div>
 
         <div class="gap-480"></div>
@@ -62,7 +68,7 @@
         <div class="gap-80"></div>
 
         <div class="component-about-textContent-container">
-          <text class="component-about-textContent-textS" style="text-align: center;">©WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-textS" style="text-align: center;">© WaterFlames 2019-2025.</text>
           <text class="component-about-textContent-textS" style="text-align: center;">Lucent Project</text>
         </div>
         
@@ -80,6 +86,8 @@
 </template>
 
 <script>
+import file from "@system.file"
+
 export default {
   private: {
     title: "关于",
@@ -88,6 +96,7 @@ export default {
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
+    timeStamp: "",
   },
 
   updateHighlightLength(event) {
@@ -104,6 +113,17 @@ export default {
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
         this.time = timeData.time
       }))
+    file.readText({
+      uri: "/META-INF/build.txt",
+      success: (data) => {
+        let buildDataList = data.text.split("\n")
+        // console.log("text list: ", buildDataList[0])
+        this.timeStamp = buildDataList[2].split("=")[1]
+      },
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
   },
 
   onShow() {
