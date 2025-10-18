@@ -381,22 +381,22 @@
       },
       {
         "type": "course",
-        "timeHour": "19",
+        "timeHour": "00",
         "timeMinute": "00"
       },
       {
         "type": "interval",
-        "timeHour": "20",
+        "timeHour": "00",
         "timeMinute": "10"
       },
       {
         "type": "course",
-        "timeHour": "20",
+        "timeHour": "00",
         "timeMinute": "20"
       },
       {
         "type": "end",
-        "timeHour": "21",
+        "timeHour": "00",
         "timeMinute": "30"
       }
     ]

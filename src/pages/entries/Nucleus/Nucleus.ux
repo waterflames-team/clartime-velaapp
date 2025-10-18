@@ -3,10 +3,7 @@
     <stack>
       <stack class="content-home">
         <div class="content-home horizontal-center" if="courseSchedule !== -1">
-          <image class="home-back" src="/common/assets/Nucleus_back.png"/>
-        </div>
-        <div class="content-home horizontal-center" elif="courseSchedule[indexNow].type !== 'end'">
-          <image class="home-back" src="/common/assets/Nucleus_back.png"/>
+          <image class="home-back" if="courseSchedule[indexNow].type !== 'end'" src="/common/assets/Nucleus_back.png"/>
         </div>
       
         <div class="content-home nucleus-NowCourse horizontal-center">

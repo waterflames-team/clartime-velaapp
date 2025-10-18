@@ -2,7 +2,7 @@
  * 课程数据读取工具
  */
 import dataManage from './dataManage'
-// dataManage.changeCourseData("system")
+dataManage.changeCourseData("system")
 
 
 /**
