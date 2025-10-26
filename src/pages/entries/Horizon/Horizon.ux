@@ -64,7 +64,7 @@
             </text>
             <text
               class="component-courseCard-nextCourseContent-text2"
-              style="top: 188px; width: 300px"
+              style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 188px"
             >
               好好休息，明天见
             </text>
@@ -176,75 +176,25 @@
       <scroll class="content horizontal-center" scroll-y="true" @scroll="updateHighlightLength">
         <div class="content-home"></div>
 
-        <div class="content-other horizontal-center">
-          <div
-            style="
-              position: absolute;
-              top: 8px;
-              width: 60px;
-              height: 8px;
-              border-radius: 4px;
-              background-color: rgba(255, 255, 255, 0.5);
-            "
-          ></div>
-          <div class="gap-240"></div>
-          <!-- <div style="display: flex; flex-direction: row">
-            <div class="component-other-button_q" onclick="jumpAC">
-              <image class="component-other-icon_q" src="/common/assets/icon_AllCourses.png" />
-              <text class="component-other-button_qText">全部课程</text>
-            </div>
+        <stack class="content-other">
+          <image
+            class="home-back"
+            src="/common/assets/more_back.png"
+          />
+          <div class="content-other horizontal-center">
 
-            <div class="gap-80"></div>
+            <div class="component-other-button_l" style="position: absolute;top: 36px" onclick="jumpAC"></div>
 
-            <div class="component-other-button_q" onclick="jumpCC">
-              <image class="component-other-icon_q" src="/common/assets/icon_CourseChange.png" />
-              <text class="component-other-button_qText">课程调节</text>
-            </div>
-          </div> -->
+            <div class="component-other-button_l" style="position: absolute;top: 179px" onclick="jumpSt"></div>
 
-          <div class="component-other-button_l" onclick="jumpAC">
-            <div class="component-other-button-head vertical-left">
-              <text class="component-other-button_lText">全部课程</text>
-              <text class="component-other-button_lDescribe">一览课程数据</text>
-            </div>
-            <image class="component-other-icon_l" src="/common/assets/icon_AllCourses.png" />
+            <div class="component-other-button_q" style="position: absolute;bottom: 24px;left: 24px" onclick="jumpAFD"></div>
+
+            <div class="component-other-button_q" style="position: absolute;bottom: 24px;right: 24px" onclick="jumpAb"></div>
+
           </div>
+        </stack>
 
-          <div class="gap-60"></div>
-
-          <div class="component-other-button_l" onclick="jumpSt">
-            <div class="component-other-button-head vertical-left">
-              <text class="component-other-button_lText">设置</text>
-              <text class="component-other-button_lDescribe">应用相关设置</text>
-            </div>
-            <image class="component-other-icon_l" src="/common/assets/icon_Set.png" />
-          </div>
-
-          <div class="gap-60"></div>
-
-          <div style="display: flex; flex-direction: row">
-            <div class="component-other-button_q" onclick="jumpAFD">
-              <image class="component-other-icon_q" src="/common/assets/icon_afd.png" />
-              <text class="component-other-button_qText">捐赠支持</text>
-            </div>
-
-            <div class="gap-80"></div>
-
-            <div class="component-other-button_q" onclick="jumpAb">
-              <image class="component-other-icon_q" src="/common/assets/icon_About.png" />
-              <text class="component-other-button_qText">关于应用</text>
-            </div>
-          </div>
-
-          <!-- <div class="component-other-button_l" onclick="jumpAb">
-            <div class="component-other-button-head vertical-left">
-              <text class="component-other-button_lText">关于</text>
-              <text class="component-other-button_lDescribe">课程表相关信息</text>
-            </div>
-            <image class="component-other-icon_l" src="/common/assets/icon_About.png" />
-          </div> -->
-
-        </div>
+        
       </scroll>
     </stack>
   </div>
@@ -550,8 +500,6 @@ export default {
   width: 100%;
   height: 514px;
   scroll-snap-align: start;
-
-  background-color: rgba(0, 0, 0);
 }
 
 /* 指示器 */
@@ -732,84 +680,15 @@ export default {
 /* 更多卡片 - 方形部分 */
 
 .component-other-button_q {
-  width: 152px;
-  height: 152px;
+  width: 186px;
+  height: 168px;
   opacity: 1;
-  border-radius: 36px;
-  background-color: #222222;
-}
-.component-other-button_qText {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0px;
-  line-height: 39.78px;
-  color: rgba(255, 255, 255, 1);
-  text-align: left;
-}
-.component-other-icon_q {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  width: 60px;
-  height: 60px;
-
-  object-fit: contain;
-}
-.icon_AC {
-  box-shadow: 0px 0px 20px rgba(31, 136, 255, 0.5);
-  border-radius: 30px;
-}
-.icon_CC {
-  box-shadow: 0px 0px 20px rgba(255, 171, 31, 0.5);
-  border-radius: 30px;
 }
 
 /* 更多卡片 - 长方形部分 */
 .component-other-button_l {
-  width: 312px;
-  height: 138px;
+  width: 384px;
+  height: 131px;
   opacity: 1;
-  border-radius: 36px;
-  background-color: #222222;
-}
-.component-other-button-head {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-}
-.component-other-button_lText {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 1);
-  text-align: left;
-}
-.component-other-button_lDescribe {
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: left;
-}
-.component-other-icon_l {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  right: 12px;
-  bottom: 12px;
-
-  object-fit: contain;
-}
-.icon_ST {
-  box-shadow: 0px 0px 20px rgba(130, 130, 130, 0.5);
-  border-radius: 30px;
-}
-.icon_Ab {
-  box-shadow: 0px 0px 20px rgba(106, 31, 255, 0.5);
-  border-radius: 30px;
 }
 </style>
