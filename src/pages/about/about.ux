@@ -175,8 +175,8 @@ export default {
 @import "../../common/style/universal.css";
 @import "../../common/style/component.css";
 .content {
-  width: 336px;
-  height: 480px;
+  width: 432px;
+  height: 514px;
 
   display: flex;
   flex-direction: column;
@@ -184,7 +184,7 @@ export default {
   scroll-snap-type: y cross;
 }
 .scroll-content {
-  width: 336px;
+  width: 432px;
   height: 1680px;
   display: flex;
   flex-direction: column;

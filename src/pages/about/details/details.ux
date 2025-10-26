@@ -94,8 +94,8 @@ export default {
 @import "../../../common/style/universal.css";
 @import "../../../common/style/component.css";
 .content {
-  width: 336px;
-  height: 480px;
+  width: 432px;
+  height: 514px;
 }
 
 .component-about-textContent-container {
