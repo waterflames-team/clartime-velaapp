@@ -64,7 +64,7 @@
             </text>
             <text
               class="component-courseCard-nextCourseContent-text2"
-              style="top: 213px; width: 300px"
+              style="top: 188px; width: 300px"
             >
               好好休息，明天见
             </text>
@@ -76,7 +76,7 @@
             <!-- 课程结束卡片 -->
             <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
             <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">课程结束</text>
-            <text class="component-courseCard-nextCourseContent-text2" style="top: 213px">明天见</text>
+            <text style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 188px">明天见</text>
           </div>
           <div else class="component-courseCard horizontal-center">
             <!-- 上课期间卡片 -->
@@ -580,10 +580,10 @@ export default {
   flex-direction: row; */
 
   position: absolute;
-  top: 12px;
+  top: 25px;
 
-  width: 312px;
-  height: 133px;
+  width: 402px;
+  height: 173px;
 }
 
 .component-indexCard-timeHM {
@@ -591,136 +591,138 @@ export default {
   top: 0px;
   left: 0px;
 
-  width: 157px;
-  height: 91px;
+  width: 202px;
+  height: 117px;
 }
 .component-indexCard-timeHM-text {
   color: rgba(255, 255, 255, 1);
-  font-size: 48px;
+  font-size: 62px;
   font-weight: 700;
 }
 .component-indexCard-timeS {
   position: absolute;
   top: 0px;
-  left: 162px;
+  left: 208px;
 
-  width: 50.07px;
-  height: 50.45px;
+  width: 64px;
+  height: 64px;
 }
 .component-indexCard-remainingTime {
   position: absolute;
   top: 1px;
-  left: 217px;
+  left: 278px;
 
-  width: 92.2px;
-  height: 50.45px;
+  width: 114px;
+  height: 64px;
 }
 .component-indexCard-timeS-text,
 .component-indexCard-remainingTime-text {
   color: rgba(255, 255, 255, 1);
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 500;
 }
 .component-indexCard-Week {
   position: absolute;
-  top: 98px;
+  top: 124px;
   left: 9px;
 
-  width: 78.594px;
-  height: 36.69px;
+  width: 101px;
+  height: 47px;
 }
 .component-indexCard-dayN {
   position: absolute;
-  top: 98px;
-  left: 92px;
+  top: 125px;
+  left: 116px;
 
-  width: 59.836px;
-  height: 36.69px;
+  width: 77px;
+  height: 47px;
 }
 .component-indexCard-Week-text,
 .component-indexCard-dayN-text {
   color: rgba(255, 255, 255, 1);
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
 }
 .component-indexCard-date {
   position: absolute;
-  top: 57px;
-  left: 154px;
+  top: 72px;
+  left: 198px;
 
-  width: 158px;
-  height: 78px;
+  width: 203px;
+  height: 100px;
 }
 .component-indexCard-date-text {
   color: rgba(255, 255, 255, 1);
-  font-size: 40px;
+  font-size: 52px;
   font-weight: 700;
 }
 
 .component-courseCard {
-  width: 312px;
-  height: 299px;
+  width: 408px;
+  height: 277px;
   position: absolute;
   bottom: 12px;
 }
 
 .component-courseCard-nowCourseContent-text1 {
   position: absolute;
-  top: 21px;
+  top: 16px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 500;
   text-align: center;
 }
 .component-courseCard-nowCourseContent-text2 {
   position: absolute;
-  top: 55px;
-  width: 200px;
+  top: 50px;
+  width: 260px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 40px;
+  font-size: 42px;
   font-weight: 700;
   text-align: center;
 }
 .component-courseCard-nowCourseContent-text3 {
   position: absolute;
-  top: 118px;
-  width: 280px;
+  top: 102px;
+  width: 340px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 500;
   text-align: center;
 }
 
 .component-courseCard-nextCourseContent {
   position: absolute;
-  bottom: 12px;
-  width: 288px;
-  height: 116px;
+  bottom: 28px;
+  width: 352px;
+  height: 94px;
   border-radius: 24px;
 }
 .component-courseCard-nextCourseContent-text1 {
   position: absolute;
-  top: 12px;
+  top: 15px;
+  left: 113px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
 }
 .component-courseCard-nextCourseContent-text2 {
   position: absolute;
-  top: 38px;
+  top: 11px;
+  left: 187px;
   width: 200px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
 }
 .component-courseCard-nextCourseContent-text3 {
   position: absolute;
   bottom: 12px;
   width: 280px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
 }
