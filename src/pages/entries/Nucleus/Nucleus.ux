@@ -6,16 +6,13 @@
           <image class="home-back" if="courseSchedule[indexNow].type !== 'end'" src="/common/assets/Nucleus_back.png"/>
         </div>
       
-        <div class="content-home nucleus-NowCourse horizontal-center">
-          <div class="component-nav-noback">
-            <text class="component-nav-title-text" onclick="quit">{{ title_home }}</text>
-            <text class="component-nav-title-time">{{ time }}</text>
-          </div>
+        <div class="content-home horizontal-center">
+          <text style="position: absolute; top: 12px; font-size: 20px; color: rgba(255, 255, 255, 0.6);">{{ time }}</text>
 
           <!-- 以下为当前态的展示 -->
           <text
             class="nucleus-NowCourse-text1"
-            style="top: 60px"
+            style="top: 84px"
             if="courseSchedule === -1"
           >
             今日
@@ -23,14 +20,14 @@
           <text
             class="nucleus-NowCourse-text1"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 60px"
+            style="top: 84px"
           >
             今日
           </text>
           <text
             class="nucleus-NowCourse-text1"
             elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
-            style="top: 36px"
+            style="top: 60px"
           >
             当前
           </text>
@@ -39,14 +36,14 @@
           <text
             class="nucleus-NowCourse-text2"
             if="courseSchedule === -1"
-            style="top: 60px"
+            style="top: 84px"
           >
             暂无课程
           </text>
           <text
             class="nucleus-NowCourse-text2"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 60px"
+            style="top: 84px"
           >
             课程结束
           </text>
@@ -55,58 +52,59 @@
             scrollamount="{{20}}"
             class="nucleus-NowCourse-text2"
             elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest'"
-            style="top: 36px"
+            style="top: 92px"
           >
             {{ courseSchedule[indexNow].courseName }}
           </marquee>
           <marquee text-offset="{{8}}" scrollamount="{{20}}" class="nucleus-NowCourse-text2" else>
             {{ courseSchedule[indexNow].courseName }}
           </marquee>
-
-          <marquee
-            if="courseSchedule[indexNow].timeRange !== '' && courseSchedule[indexNow].type === 'course'"
-            text-offset="{{8}}"
-            scrollamount="{{20}}"
-            class="nucleus-NowCourse-text3"
-          >
-            {{ courseSchedule[indexNow].timeRange }}
-          </marquee>
-          <marquee
-            if="courseSchedule[indexNow].timeRange !== '' && (courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest')"
-            text-offset="{{8}}"
-            scrollamount="{{20}}"
-            class="nucleus-NowCourse-text3"
-            style="top: 48px"
-          >
-            {{ courseSchedule[indexNow].timeRange }}
-          </marquee>
-          <marquee
-            if="courseSchedule[indexNow].courseRoom !== '' && courseSchedule[indexNow].type === 'course'"
-            text-offset="{{8}}"
-            scrollamount="{{20}}"
-            class="nucleus-NowCourse-text3"
-          >
-            {{ courseSchedule[indexNow].courseRoom }}
-          </marquee>
-          <marquee
-            if="courseSchedule[indexNow].courseTeacher !== '' && courseSchedule[indexNow].type === 'course'"
-            text-offset="{{8}}"
-            scrollamount="{{20}}"
-            class="nucleus-NowCourse-text3"
-          >
-            {{ courseSchedule[indexNow].courseTeacher }}
-          </marquee>
+          <div class="horizontal-center" style="top: 178px;">
+            <marquee
+              if="courseSchedule[indexNow].timeRange !== '' && courseSchedule[indexNow].type === 'course'"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="nucleus-NowCourse-text3"
+            >
+              {{ courseSchedule[indexNow].timeRange }}
+            </marquee>
+            <marquee
+              if="courseSchedule[indexNow].timeRange !== '' && (courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest')"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="nucleus-NowCourse-text3"
+              style="top: 178px"
+            >
+              {{ courseSchedule[indexNow].timeRange }}
+            </marquee>
+            <marquee
+              if="courseSchedule[indexNow].courseRoom !== '' && courseSchedule[indexNow].type === 'course'"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="nucleus-NowCourse-text3"
+            >
+              {{ courseSchedule[indexNow].courseRoom }}
+            </marquee>
+            <marquee
+              if="courseSchedule[indexNow].courseTeacher !== '' && courseSchedule[indexNow].type === 'course'"
+              text-offset="{{8}}"
+              scrollamount="{{20}}"
+              class="nucleus-NowCourse-text3"
+            >
+              {{ courseSchedule[indexNow].courseTeacher }}
+            </marquee>
+          </div>
           <text
             class="nucleus-NowCourse-text3"
             if="courseSchedule === -1"
-            style="top: 72px"
+            style="top: 96px"
           >
             好好休息，明天见
           </text>
           <text
             class="nucleus-NowCourse-text3"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 72px"
+            style="top: 96px"
           >
             明天见
           </text>
@@ -543,14 +541,16 @@ export default {
   align-items: center;
 }
 .nucleus-NowCourse-text1 {
-  top: 8px;
+  position: absolute;
+  top: 60px;
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
   font-size: 24px;
   font-weight: 500;
 }
 .nucleus-NowCourse-text2 {
-  top: 8px;
+  position: absolute;
+  top: 92px;
   color: #fff;
   text-align: center;
   font-size: 56px;
@@ -558,80 +558,79 @@ export default {
   width: 250px;
 }
 .nucleus-NowCourse-text3 {
-  top: 20px;
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
   width: 280px;
 }
 
 .nucleus-NextCourseCard {
-  width: 152px;
-  height: 152px;
+  width: 182px;
+  height: 182px;
 
   position: absolute;
-  bottom: 12px;
-  left: 12px;
+  bottom: 30px;
+  left: 30px;
 }
 .nucleus-NextCourseCard-text1 {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 22px;
+  left: 22px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
 }
 .nucleus-NextCourseCard-text2 {
   position: absolute;
-  top: 42px;
-  left: 18px;
+  top: 49px;
+  left: 22px;
   color: rgba(255, 255, 255);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  width: 116px;
+  width: 138px;
 }
 .nucleus-NextCourseCard-text3 {
   position: absolute;
-  bottom: 38px;
-  left: 18px;
+  bottom: 49px;
+  left: 22px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  width: 116px;
+  width: 138px;
 }
 .nucleus-NextCourseCard-text4 {
   position: absolute;
-  bottom: 14px;
-  left: 18px;
+  bottom: 22px;
+  left: 22px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  width: 116px;
+  width: 138px;
 }
 .nucleus-RemainCard {
-  width: 152px;
-  height: 152px;
+  width: 182px;
+  height: 182px;
 
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 30px;
+  right: 30px;
 }
 .nucleus-RemainCard-text1 {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 22px;
+  left: 22px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
 }
 .nucleus-RemainCard-text2 {
   position: absolute;
-  bottom: 14px;
-  left: 18px;
+  bottom: 22px;
+  left: 22px;
   width: 102px;
   color: rgba(255, 255, 255);
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 700;
 }
 .nucleus-ClassOver-text {

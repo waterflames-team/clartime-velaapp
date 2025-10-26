@@ -21,7 +21,7 @@
 
 .component-nav-backGroup {
   top: 7px;
-  left: 16px;
+  left: 36px;
   width: 202px;
   /* display: flex;
   flex-direction: row */
@@ -53,7 +53,7 @@
 .component-nav-title-time {
   position: absolute;
   color: #ffffff;
-  right: 16px;
+  right: 36px;
   top: 7px;
   font-size: 32px;
   font-weight: 600;
@@ -64,7 +64,7 @@
 
 .component-button {
   display: flex;
-  width: 312px;
+  width: 408px;
   height: 112px;
   padding: 16px 12px;
   align-items: center;
