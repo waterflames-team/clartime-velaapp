@@ -108,7 +108,7 @@
             </marquee>
             <div
               if="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type !== 'end'"
-              class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
+              class="component-courseCard-nextCourseContent horizontal-center"
             >
               <!-- 上课情况 -->
               <text class="component-courseCard-nextCourseContent-text1">下一节</text>
@@ -131,7 +131,7 @@
             </div>
             <div
               elif="courseSchedule[indexNow].type === 'course' && courseSchedule[indexNow+1].type === 'end'"
-              class="component-courseCard-nextCourseContent horizontal-center bg-white-10"
+              class="component-courseCard-nextCourseContent horizontal-center"
             >
               <!-- 最后一节课情况 -->
               <text class="component-courseCard-nextCourseContent-text1">下一节</text>
@@ -150,7 +150,7 @@
                 今天的课马上要结束哩～
               </marquee>
             </div>
-            <div else class="component-courseCard-nextCourseContent horizontal-center bg-white-10">
+            <div else class="component-courseCard-nextCourseContent horizontal-center">
               <!-- 课间情况 -->
               <text class="component-courseCard-nextCourseContent-text1">下一节</text>
               <marquee
