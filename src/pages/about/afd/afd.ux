@@ -99,7 +99,7 @@ export default {
   flex-direction: column;
   padding: 12px;
 
-  width: 312px;
+  width: 408px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.1);
 }

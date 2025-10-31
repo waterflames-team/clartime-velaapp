@@ -236,7 +236,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  width: 318px;
+  width: 408px;
   height: 185px;
 }
 
@@ -248,7 +248,7 @@ export default {
 
   left: 0px;
   top: 0px;
-  width: 318px;
+  width: 408px;
   height: 177px;
   opacity: 1;
   border-radius: 36px;
