@@ -183,6 +183,16 @@
           />
           <div class="content-other horizontal-center">
 
+            <text class="component-other-remainingtext" style="top: 43px;text-align: center;">{{time}}</text>
+
+            <!-- <div class="" style="position: absolute;top: 43px;width: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;">
+              <text class="component-other-remainingtext" style="text-align: right;">{{time}}</text>
+              <div class="gap-60"></div>
+              <img src="/common/assets/more-vector.png" style="width: 3px;height: 24px;">
+              <div class="gap-60"></div>
+              <text class="component-other-remainingtext" style="text-align: left;">{{remain}}</text>
+            </div> -->
+
             <div class="component-other-button_l" style="position: absolute;top: 102px" onclick="jumpAC"></div>
 
             <div class="component-other-button_l" style="position: absolute;top: 236px" onclick="jumpSt"></div>
@@ -676,6 +686,14 @@ export default {
 }
 
 /* ----------默认主题---------- */
+
+.component-other-remainingtext {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.40);
+  
+  font-size: 28px;
+  font-weight: 380;
+}
 
 /* 更多卡片 - 方形部分 */
 
