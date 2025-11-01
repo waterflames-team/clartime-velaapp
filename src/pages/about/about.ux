@@ -24,33 +24,36 @@
           <img src="/common/assets/about_t1dev.png"/>
           <div class="gap-140"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">总制作 总设计</text>
             <text class="component-about-devTextPersonName">@蠢鱼Yulimfish</text>
+            <text class="component-about-textContent-text">总制作/设计</text>
           </div>
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">主页设计辅助</text>
             <text class="component-about-devTextPersonName">@NEORUAA</text>
+            <text class="component-about-textContent-text">主页设计辅助</text>
           </div>
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">总视觉修改，主页设计辅助</text>
+            
             <text class="component-about-devTextPersonName">@安龙Aurysian</text>
+            <text class="component-about-textContent-text">视觉设计辅助</text>
           </div>
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">细节设计优化</text>
+            
             <text class="component-about-devTextPersonName">@Charlie_Q</text>
+            <text class="component-about-textContent-text">细节设计优化</text>
           </div>
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">课程编辑器开发</text>
+            
             <text class="component-about-devTextPersonName">@Eason chen</text>
+            <text class="component-about-textContent-text">课程编辑器开发</text>
           </div>
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
-            <text class="component-about-devTextSubTitle">编辑器、主应用开发辅助</text>
             <text class="component-about-devTextPersonName">@绫凌子Rinko</text>
+            <text class="component-about-textContent-text">开发辅助</text>
           </div>
         </div>
 
@@ -60,7 +63,7 @@
           <img src="/common/assets/about_t2thank.png"/>
           <div class="gap-140"></div>
           <text class="component-about-textContent-text">本应用灵感来源于</text>
-          <text class="component-about-textContent-textBold">米坛社区「环间课表」</text>
+          <text class="component-about-textContent-textBold" style="font-size: 32px;">米坛社区「环间课表」</text>
           <text class="component-about-textContent-text">感谢他们做出如此好用的环上应用</text>
           <div class="gap-120"></div>
           <img src="/common/assets/about_divider.png"/>
