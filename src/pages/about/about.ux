@@ -9,102 +9,101 @@
         @scroll="updateHighlightLength"
       >
 
-        <div class="horizontal-center" style="width: 432px;height: 514px;scroll-snap-align: start;">
-          <img src="/common/assets/about_bg.png"/>
-          <text class="component-about-titleVersion" onclick="onVersionClick">
-            v{{ version }}
-          </text>
+        <img src="/common/assets/about_bg.png"/>
+        <text class="component-about-titleVersion" onclick="onVersionClick">
+          v{{ version }}
+        </text>
 
-          <div class="component-button" style="position: absolute; bottom: 64px;" onclick="toDetail()">
-            <text class="component-text">版本详细信息</text>
+        <div class="component-button" onclick="toDetail()">
+          <text class="component-text">版本详细信息</text>
+        </div>
+
+        <div class="gap-140"></div>
+
+        <div class="component-about-devCard vertical-left">
+          <img src="/common/assets/about_t1dev.png"/>
+          <div class="gap-140"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">总制作 总设计</text>
+            <text class="component-about-devTextPersonName">@蠢鱼Yulimfish</text>
           </div>
-
-          <img src="/common/assets/about_down.png" style="position: absolute; bottom: 10px;"/>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">主页设计辅助</text>
+            <text class="component-about-devTextPersonName">@NEORUAA</text>
+          </div>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">总视觉修改，主页设计辅助</text>
+            <text class="component-about-devTextPersonName">@安龙Aurysian</text>
+          </div>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">细节设计优化</text>
+            <text class="component-about-devTextPersonName">@Charlie_Q</text>
+          </div>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">课程编辑器开发</text>
+            <text class="component-about-devTextPersonName">@Eason chen</text>
+          </div>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-devTextSubTitle">编辑器、主应用开发辅助</text>
+            <text class="component-about-devTextPersonName">@绫凌子Rinko</text>
+          </div>
         </div>
 
-        <scroll class="component-about-textCard vertical-left" scroll-y="true" style="scroll-snap-type: y cross">
-          <text class="component-about-textContent-textSubTitle">主要参与开发的人员</text>
-          <div class="gap-20"></div>
-          <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
-          <text class="component-about-textContent-text">@NEORUAA</text>
-          <text class="component-about-textContent-text">@Eason chen</text>
-          <text class="component-about-textContent-text">@绫凌子Rinko</text>
-          <div class="gap-240"></div>
-          <text class="component-about-textContent-textS">本应用灵感来源于</text>
-          <text class="component-about-textContent-textS">米坛社区「环间课表」,</text>
-          <text class="component-about-textContent-textS">感谢他们做出</text>
-          <text class="component-about-textContent-textS">如此好用的环上应用</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">UI设计参考来自@无源流沙，</text>
-          <text class="component-about-textContent-textS">感谢(人´v`)</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢</text>
-          <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
-          <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢</text>
-          <text class="component-about-textContent-textS">@乐色桶 帮助我解决通信问题</text>
-          <text class="component-about-textContent-textS">@冬灰条 帮助我解决异步问题</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢你愿意来使用</text>
-          <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
-          <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
-        </scroll>
+        <div class="gap-140"></div>
 
-
-
-        <!-- <div style="width: 100%" class="horizontal-center">
-          <text class="component-about-titleText">澄序课程表</text>
-          
-          <text class="component-about-titleVersion" style="font-size: 14px;" onclick="onVersionClick">
-            DEV_BUILD
-          </text>
-          <text class="component-about-titleVersion" style="font-size: 14px;" onclick="onVersionClick">
-            {{ timeStamp }}
-          </text>
+        <div class="vertical-left" style="width: 392px;">
+          <img src="/common/assets/about_t2thank.png"/>
+          <div class="gap-140"></div>
+          <text class="component-about-textContent-text">本应用灵感来源于</text>
+          <text class="component-about-textContent-textBold">米坛社区「环间课表」</text>
+          <text class="component-about-textContent-text">感谢他们做出如此好用的环上应用</text>
+          <div class="gap-120"></div>
+          <img src="/common/assets/about_divider.png"/>
+          <div class="gap-120"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-textContent-textBold">@无源流沙</text>
+            <text class="component-about-textContent-text">@制作的设计参考</text>
+          </div>
+          <div class="gap-100"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-textContent-textBold">@过客是个铁憨憨</text>
+            <text class="component-about-textContent-textBold">@Zaona</text>
+            <text class="component-about-textContent-text">为本应用的 UI 设计</text>
+            <text class="component-about-textContent-text">提出宝贵的修改建议</text>
+          </div>
+          <div class="gap-100"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-textContent-textBold">@乐色桶</text>
+            <text class="component-about-textContent-text">帮助我解决通信问题</text>
+          </div>
+          <div class="gap-100"></div>
+          <div class="component-about-devPersonBlock">
+            <text class="component-about-textContent-textBold">@冬灰条</text>
+            <text class="component-about-textContent-text">帮助我解决异步问题</text>
+          </div>
+          <div class="gap-120"></div>
+          <img src="/common/assets/about_divider.png"/>
+          <div class="gap-120"></div>
+          <img src="/common/assets/about_t3more.png"/>
+          <div class="gap-140"></div>
+          <text class="component-about-textContent-textBold">谢谢你愿意来使用</text>
+          <text class="component-about-textContent-textBold">这个没啥意思的小应用</text>
+          <text class="component-about-textContent-text">愿它可以陪伴你每一天的学习生活～</text>
+          <div class="gap-120"></div>
+          <img src="/common/assets/about_divider.png"/>
+          <div class="gap-120"></div>
         </div>
-
-        <div class="gap-480"></div>
-
-        <div class="component-about-textCard vertical-left">
-          <text class="component-about-textContent-textSubTitle">主要参与开发的人员</text>
-          <div class="gap-20"></div>
-          <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
-          <text class="component-about-textContent-text">@NEORUAA</text>
-          <text class="component-about-textContent-text">@Eason chen</text>
-          <text class="component-about-textContent-text">@绫凌子Rinko</text>
-          <div class="gap-240"></div>
-          <text class="component-about-textContent-textS">本应用灵感来源于</text>
-          <text class="component-about-textContent-textS">米坛社区「环间课表」,</text>
-          <text class="component-about-textContent-textS">感谢他们做出</text>
-          <text class="component-about-textContent-textS">如此好用的环上应用</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">UI设计参考来自@无源流沙，</text>
-          <text class="component-about-textContent-textS">感谢(人´v`)</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢</text>
-          <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
-          <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢</text>
-          <text class="component-about-textContent-textS">@乐色桶 帮助我解决通信问题</text>
-          <text class="component-about-textContent-textS">@冬灰条 帮助我解决异步问题</text>
-          <div class="gap-120"></div>
-          <text class="component-about-textContent-textS">感谢你愿意来使用</text>
-          <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
-          <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
-        </div>
-
-        <div class="gap-80"></div>
-
-        
-
-        <div class="gap-80"></div>
 
         <div class="component-about-textContent-container">
-          <text class="component-about-textContent-textS" style="text-align: center;">© WaterFlames 2019-2025.</text>
-          <text class="component-about-textContent-textS" style="text-align: center;">Lucent Project</text>
-        </div> -->
+          <text class="component-about-textContent-text" style="text-align: center;font-size: 20px;">© WaterFlames 2019-2025.</text>
+          <text class="component-about-textContent-text" style="text-align: center;font-size: 20px;">Lucent Project</text>
+        </div>
+
         
       </scroll>
       <img src="/common/assets/nav-bg.png" style="opacity:{{navOpacity}}" />
@@ -260,9 +259,8 @@ export default {
 }
 
 /* 感谢描述 */
-.component-about-textCard {
-  width: 312px;
-  height: 1000px;
+.component-about-devCard {
+  width: 408px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -270,29 +268,33 @@ export default {
   flex-direction: column;
   padding: 12px;
 }
-.component-about-textContent-textSubTitle {
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 44.8px;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: left;
+.component-about-devPersonBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: -4px;
 }
-.component-about-textContent-text {
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 44.8px;
-  color: rgba(255, 255, 255, 1);
-  text-align: left;
-}
-.component-about-textContent-textS {
+.component-about-devTextSubTitle {
+  color: rgba(255, 255, 255, 0.60);
   font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0px;
+  font-weight: 380;
+}
+.component-about-devTextPersonName {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 550;
+  /* font-weight: 380; */
+}
+
+.component-about-textContent-text {
+  font-size: 26px;
+  font-weight: 380;
   color: rgba(255, 255, 255, 0.6);
-  white-space: pre-line;
-  flex-wrap: wrap;
+}
+.component-about-textContent-textBold {
+  font-size: 26px;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .component-about-textContent-container {
@@ -302,6 +304,6 @@ export default {
   flex-direction: column;
   padding: 12px;
 
-  width: 312px;
+  width: 392px;
 }
 </style>
