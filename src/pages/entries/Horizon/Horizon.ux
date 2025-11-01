@@ -58,13 +58,13 @@
 
           <div if="courseSchedule === -1" class="component-courseCard screen-center">
             <!-- 课程结束卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
-            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px; width: 300px">
+            <text class="component-courseCard-nowCourseContent-text1" style="top: 34px">当前</text>
+            <text class="component-courseCard-nowCourseContent-text2" style="top: 68px; width: 300px">
               今日暂无课程
             </text>
             <text
-              class="component-courseCard-nextCourseContent-text2"
-              style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 188px"
+              class=""
+              style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 189px"
             >
               好好休息，明天见
             </text>
@@ -74,9 +74,9 @@
             class="component-courseCard screen-center"
           >
             <!-- 课程结束卡片 -->
-            <text class="component-courseCard-nowCourseContent-text1" style="top: 42px">当前</text>
-            <text class="component-courseCard-nowCourseContent-text2" style="top: 76px">课程结束</text>
-            <text style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 188px">明天见</text>
+            <text class="component-courseCard-nowCourseContent-text1" style="top: 34px">当前</text>
+            <text class="component-courseCard-nowCourseContent-text2" style="top: 68px">课程结束</text>
+            <text style="position: absolute; color: rgba(255, 255, 255, 0.6);font-size: 25px;font-weight: 700;top: 189px">明天见</text>
           </div>
           <div else class="component-courseCard horizontal-center">
             <!-- 上课期间卡片 -->
@@ -546,7 +546,7 @@ export default {
 
 .component-indexCard-timeHM {
   position: absolute;
-  top: 0px;
+  top: 2px;
   left: 0px;
 
   width: 202px;
@@ -559,7 +559,7 @@ export default {
 }
 .component-indexCard-timeS {
   position: absolute;
-  top: 0px;
+  top: 2px;
   left: 208px;
 
   width: 64px;
@@ -567,7 +567,7 @@ export default {
 }
 .component-indexCard-remainingTime {
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: 278px;
 
   width: 114px;
@@ -581,16 +581,16 @@ export default {
 }
 .component-indexCard-Week {
   position: absolute;
-  top: 124px;
-  left: 9px;
+  top: 126px;
+  left: 10px;
 
   width: 101px;
   height: 47px;
 }
 .component-indexCard-dayN {
   position: absolute;
-  top: 125px;
-  left: 116px;
+  top: 126px;
+  left: 117px;
 
   width: 77px;
   height: 47px;
@@ -633,7 +633,7 @@ export default {
 .component-courseCard-nowCourseContent-text2 {
   position: absolute;
   top: 50px;
-  width: 260px;
+  width: 343px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 42px;
   font-weight: 700;
@@ -641,8 +641,8 @@ export default {
 }
 .component-courseCard-nowCourseContent-text3 {
   position: absolute;
-  top: 102px;
-  width: 340px;
+  top: 107px;
+  width: 360px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 25px;
   font-weight: 500;
@@ -678,7 +678,7 @@ export default {
 .component-courseCard-nextCourseContent-text3 {
   position: absolute;
   bottom: 12px;
-  width: 280px;
+  width: 299px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 20px;
   font-weight: 500;

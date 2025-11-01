@@ -12,7 +12,7 @@
           <!-- 以下为当前态的展示 -->
           <text
             class="nucleus-NowCourse-text1"
-            style="top: 84px"
+            style="top: 153px"
             if="courseSchedule === -1"
           >
             今日
@@ -20,7 +20,7 @@
           <text
             class="nucleus-NowCourse-text1"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 84px"
+            style="top: 153px"
           >
             今日
           </text>
@@ -36,14 +36,14 @@
           <text
             class="nucleus-NowCourse-text2"
             if="courseSchedule === -1"
-            style="top: 84px"
+            style="top: 190px"
           >
             暂无课程
           </text>
           <text
             class="nucleus-NowCourse-text2"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 84px"
+            style="top: 190px"
           >
             课程结束
           </text>
@@ -97,14 +97,14 @@
           <text
             class="nucleus-NowCourse-text3"
             if="courseSchedule === -1"
-            style="top: 96px"
+            style="top: 275px"
           >
             好好休息，明天见
           </text>
           <text
             class="nucleus-NowCourse-text3"
             elif="courseSchedule[indexNow].type === 'end'"
-            style="top: 96px"
+            style="top: 275px"
           >
             明天见
           </text>
@@ -177,6 +177,7 @@
             <text class="nucleus-RemainCard-text1" if="courseSchedule[indexNow].type === 'course'">距离下课还有</text>
             <text class="nucleus-RemainCard-text1" elif="courseSchedule[indexNow].type === 'interval' || courseSchedule[indexNow].type === 'rest' || courseSchedule[indexNow].type === 'start'">距离上课还有</text>
             <text class="nucleus-RemainCard-text2">{{ remain }}</text>
+            <text class="nucleus-RemainCard-text3">分钟</text>
           </div>
 
           <text class="nucleus-ClassOver-text" if="courseSchedule === -1">
@@ -200,14 +201,6 @@
           <div class="content-other horizontal-center">
 
             <text class="component-other-remainingtext" style="top: 43px;text-align: center;">{{time}}</text>
-
-            <!-- <div class="" style="position: absolute;top: 43px;width: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;">
-              <text class="component-other-remainingtext" style="text-align: right;">{{time}}</text>
-              <div class="gap-60"></div>
-              <img src="/common/assets/more-vector.png" style="width: 3px;height: 24px;">
-              <div class="gap-60"></div>
-              <text class="component-other-remainingtext" style="text-align: left;">{{remain}}</text>
-            </div> -->
 
             <div class="component-other-button_l" style="position: absolute;top: 102px" onclick="jumpAC"></div>
 
@@ -340,13 +333,13 @@ export default {
     const remainingMinutes = nextCourseTotalMinutes - currentTotalMinutes
 
     if (thisCourse.type === "course") {
-      return remainingMinutes + "'"
+      return remainingMinutes
     } else if (
       thisCourse.type === "interval" ||
       thisCourse.type === "rest" ||
       thisCourse.type === "start"
     ) {
-      return remainingMinutes + "'"
+      return remainingMinutes
     }
 
     return remainingMinutes
@@ -565,7 +558,7 @@ export default {
   text-align: center;
   font-size: 56px;
   font-weight: 700;
-  width: 250px;
+  width: 384px;
 }
 .nucleus-NowCourse-text3 {
   color: rgba(255, 255, 255, 0.6);
@@ -576,34 +569,34 @@ export default {
 }
 
 .nucleus-NextCourseCard {
-  width: 182px;
-  height: 182px;
+  width: 188px;
+  height: 188px;
 
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 24px;
+  left: 24px;
 }
 .nucleus-NextCourseCard-text1 {
   position: absolute;
-  top: 22px;
-  left: 22px;
+  top: 20px;
+  left: 20px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
 .nucleus-NextCourseCard-text2 {
   position: absolute;
-  top: 49px;
-  left: 22px;
+  top: 52px;
+  left: 20px;
   color: rgba(255, 255, 255);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
-  width: 138px;
+  width: 140px;
 }
 .nucleus-NextCourseCard-text3 {
   position: absolute;
-  bottom: 49px;
-  left: 22px;
+  bottom: 52px;
+  left: 20px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 20px;
   font-weight: 500;
@@ -611,36 +604,45 @@ export default {
 }
 .nucleus-NextCourseCard-text4 {
   position: absolute;
-  bottom: 22px;
-  left: 22px;
+  bottom: 20px;
+  left: 20px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   width: 138px;
 }
 .nucleus-RemainCard {
-  width: 182px;
-  height: 182px;
+  width: 188px;
+  height: 188px;
 
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 24px;
+  right: 24px;
 }
 .nucleus-RemainCard-text1 {
   position: absolute;
-  top: 22px;
-  left: 22px;
+  top: 20px;
+  left: 20px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 20px;
   font-weight: 500;
 }
 .nucleus-RemainCard-text2 {
   position: absolute;
-  bottom: 22px;
-  left: 22px;
+  bottom: 51.82px;
+  left: 20px;
+  width: 102px;
+  color: #84A3D2;
+  font-size: 46px;
+  font-weight: 700;
+}
+.nucleus-RemainCard-text3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
   width: 102px;
   color: rgba(255, 255, 255);
-  font-size: 48px;
+  font-size: 20px;
   font-weight: 700;
 }
 .nucleus-ClassOver-text {
