@@ -22,11 +22,19 @@
     },
     {
       "name": "system.brightness"
+    },
+    {
+      "name": "system.audio"
     }
   ],
   "config": {
     "logLevel": "log",
-    "designWidth": 432
+    "designWidth": 432,
+    "background": {
+      "features":[
+        "system.audio"
+      ]
+    }
   },
   "router": {
     "entry": "pages/entries",
