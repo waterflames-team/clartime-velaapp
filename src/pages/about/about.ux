@@ -67,7 +67,7 @@
           <div class="gap-120"></div>
           <div class="component-about-devPersonBlock">
             <text class="component-about-textContent-textBold">@无源流沙</text>
-            <text class="component-about-textContent-text">@制作的设计参考</text>
+            <text class="component-about-textContent-text">制作的设计参考</text>
           </div>
           <div class="gap-100"></div>
           <div class="component-about-devPersonBlock">
@@ -93,7 +93,7 @@
           <div class="gap-140"></div>
           <text class="component-about-textContent-textBold">谢谢你愿意来使用</text>
           <text class="component-about-textContent-textBold">这个没啥意思的小应用</text>
-          <text class="component-about-textContent-text">愿它可以陪伴你每一天的学习生活～</text>
+          <text class="component-about-textContent-text" style="font-size: 24px;">愿它可以陪伴你每一天的学习生活～</text>
           <div class="gap-120"></div>
           <img src="/common/assets/about_divider.png"/>
           <div class="gap-120"></div>
