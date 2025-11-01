@@ -20,7 +20,7 @@
 }
 
 .component-nav-backGroup {
-  top: 7px;
+  top: 15px;
   left: 45px;
   width: 202px;
   /* display: flex;
@@ -36,8 +36,8 @@
   position: absolute;
   color: #ffffff;
   width: 202px;
-  left: 16px;
-  top: 7px;
+  left: 45px;
+  top: 15px;
   font-size: 32px;
   font-weight: 380;
 }
@@ -54,7 +54,7 @@
   position: absolute;
   color: #ffffff;
   right: 45px;
-  top: 7px;
+  top: 15px;
   font-size: 32px;
   font-weight: 380;
   text-align: right;

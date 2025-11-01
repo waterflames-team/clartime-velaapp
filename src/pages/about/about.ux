@@ -8,12 +8,54 @@
         bounces="true"
         @scroll="updateHighlightLength"
       >
-        <img src="/common/assets/about_bg.png"/>
-        <div style="width: 100%" class="horizontal-center">
-          <text class="component-about-titleText">澄序课程表</text>
+
+        <div class="horizontal-center" style="width: 432px;height: 514px;scroll-snap-align: start;">
+          <img src="/common/assets/about_bg.png"/>
           <text class="component-about-titleVersion" onclick="onVersionClick">
             v{{ version }}
           </text>
+
+          <div class="component-button" style="position: absolute; bottom: 64px;" onclick="toDetail()">
+            <text class="component-text">版本详细信息</text>
+          </div>
+
+          <img src="/common/assets/about_down.png" style="position: absolute; bottom: 10px;"/>
+        </div>
+
+        <scroll class="component-about-textCard vertical-left" scroll-y="true" style="scroll-snap-type: y cross">
+          <text class="component-about-textContent-textSubTitle">主要参与开发的人员</text>
+          <div class="gap-20"></div>
+          <text class="component-about-textContent-text">@蠢鱼Yulimfish</text>
+          <text class="component-about-textContent-text">@NEORUAA</text>
+          <text class="component-about-textContent-text">@Eason chen</text>
+          <text class="component-about-textContent-text">@绫凌子Rinko</text>
+          <div class="gap-240"></div>
+          <text class="component-about-textContent-textS">本应用灵感来源于</text>
+          <text class="component-about-textContent-textS">米坛社区「环间课表」,</text>
+          <text class="component-about-textContent-textS">感谢他们做出</text>
+          <text class="component-about-textContent-textS">如此好用的环上应用</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">UI设计参考来自@无源流沙，</text>
+          <text class="component-about-textContent-textS">感谢(人´v`)</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢</text>
+          <text class="component-about-textContent-textS">@过客是个铁憨憨/@藻钠Zaona</text>
+          <text class="component-about-textContent-textS">为本应用UI提出宝贵的修改建议</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢</text>
+          <text class="component-about-textContent-textS">@乐色桶 帮助我解决通信问题</text>
+          <text class="component-about-textContent-textS">@冬灰条 帮助我解决异步问题</text>
+          <div class="gap-120"></div>
+          <text class="component-about-textContent-textS">感谢你愿意来使用</text>
+          <text class="component-about-textContent-textS">这个没啥意思的小应用</text>
+          <text class="component-about-textContent-textS">愿它可以陪伴你的学习生活～</text>
+        </scroll>
+
+
+
+        <!-- <div style="width: 100%" class="horizontal-center">
+          <text class="component-about-titleText">澄序课程表</text>
+          
           <text class="component-about-titleVersion" style="font-size: 14px;" onclick="onVersionClick">
             DEV_BUILD
           </text>
@@ -55,16 +97,14 @@
 
         <div class="gap-80"></div>
 
-        <div class="component-button" onclick="toDetail()">
-          <text class="component-text">版本详情</text>
-        </div>
+        
 
         <div class="gap-80"></div>
 
         <div class="component-about-textContent-container">
           <text class="component-about-textContent-textS" style="text-align: center;">© WaterFlames 2019-2025.</text>
           <text class="component-about-textContent-textS" style="text-align: center;">Lucent Project</text>
-        </div>
+        </div> -->
         
       </scroll>
       <img src="/common/assets/nav-bg.png" style="opacity:{{navOpacity}}" />
@@ -209,6 +249,8 @@ export default {
   text-align: center;
 }
 .component-about-titleVersion {
+  position: absolute;
+  top: 285px;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0px;
@@ -220,6 +262,7 @@ export default {
 /* 感谢描述 */
 .component-about-textCard {
   width: 312px;
+  height: 1000px;
   opacity: 1;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.1);
