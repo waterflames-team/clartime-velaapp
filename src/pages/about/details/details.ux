@@ -1,24 +1,29 @@
 <template>
   <div class="page">
     <stack>
+      <img
+        src="/common/assets/about_buildBack.png"
+        style="width: 432px; height: 514px; object-fit: cover"
+      />
       <scroll class="content horizontal-center" scroll-y="true" bounces="true">
-        <div class="component-nav"></div>
-        <div class="gap-110"></div>
-        <div class="component-about-textContent-container">
+        <div class="component-about-textContent-container vertical-left">
+          <img src="/common/assets/about_t4build.png"/>
+          <div class="gap-140"></div>
           <text class="component-about-textContent-text">构建时间</text>
-          <text class="component-about-textContent-textS">{{ timeStamp }}</text>
+          <text class="component-about-textContent-textBold">{{ timeStamp }}</text>
           <div class="gap-120"></div>
           <text class="component-about-textContent-text">构建工具版本</text>
-          <text class="component-about-textContent-textS">toolkit - v{{ toolkit }}</text>
+          <text class="component-about-textContent-textBold">toolkit - v{{ toolkit }}</text>
           <div class="gap-120"></div>
           <text class="component-about-textContent-text">构建Node版本</text>
-          <text class="component-about-textContent-textS">{{ nodev }}</text>
+          <text class="component-about-textContent-textBold">{{ nodev }}</text>
           <div class="gap-120"></div>
           <text class="component-about-textContent-text">构建平台</text>
-          <text class="component-about-textContent-textS">{{ platform }}</text>
+          <text class="component-about-textContent-textBold">{{ platform }}</text>
           <div class="gap-120"></div>
           <text class="component-about-textContent-text">构建平台架构</text>
-          <text class="component-about-textContent-textS">{{ arch }}</text>
+          <text class="component-about-textContent-textBold">{{ arch }}</text>
+          <div class="gap-140"></div>
         </div>
       </scroll>
       <div class="component-nav">
@@ -69,7 +74,6 @@ export default {
     })
   },
 
-
   onShow() {
     ;(this.time = this.$app.$def.timeUpdate.updateTime().time),
       (this.timer = this.$app.$def.timeUpdate.updateTimePerminute((timeData) => {
@@ -99,15 +103,13 @@ export default {
 }
 
 .component-about-textContent-container {
-  opacity: 1;
-
+  position: absolute;
+  top: 72px;
   display: flex;
   flex-direction: column;
   padding: 12px;
 
-  width: 312px;
-  border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
+  width: 392px;
 }
 .component-about-textContent-textSubTitle {
   font-size: 32px;
@@ -117,20 +119,22 @@ export default {
   color: rgba(255, 255, 255, 0.6);
   text-align: left;
 }
-.component-about-textContent-text {
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 44.8px;
-  color: rgba(255, 255, 255, 1);
-  text-align: left;
+
+.component-about-textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: -4px;
 }
-.component-about-textContent-textS {
+.component-about-textContent-text {
+  color: rgba(255, 255, 255, 0.60);
   font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: pre-line;
-  flex-wrap: wrap;
+  font-weight: 380;
+}
+.component-about-textContent-textBold {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 550;
+  /* font-weight: 380; */
 }
 </style>
