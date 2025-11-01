@@ -11,7 +11,7 @@
 
         <img src="/common/assets/about_bg.png"/>
         <text class="component-about-titleVersion" onclick="onVersionClick">
-          v{{ version }}
+          v{{ version }} - DEVBUILD {{ timeStamp }}
         </text>
 
         <div class="component-button" onclick="toDetail()">
@@ -128,7 +128,7 @@ export default {
   private: {
     title: "关于",
     time: "",
-    version: "0.5.0 - Dev",
+    version: "0.5.0",
     timer: null,
     eggClickCount: 0,
     navOpacity: 0,
