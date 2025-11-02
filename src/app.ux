@@ -1,8 +1,7 @@
 <script>
 // 系统接口
 import router from "@system.router"
-import app from '@system.app'
-import audio from '@system.audio' 
+import app from '@system.app' 
 
 // 内置函数提取
 import courseDataParse from "./common/utils/courseDataParse"
@@ -12,7 +11,6 @@ import dataManage from "./common/utils/dataManage"
 
 export default {
   onCreate() {
-    this.audio.play()
     console.log("app created")
   },
 
